@@ -19,16 +19,6 @@ Comments can be submitted https://github.com/IHE/ITI.IUA/issues/new?assignees=&l
 
 ## Breaking changes
 
-* Reworked the Use Cases section and added descriptions of the use cases from the user perspective.
-
-* Reworked the text descriptions to establish the borders between authentication, authorization and policy enforcement. 
-
-* Established options to the Get Authorization Token transaction to distinguish authorization code and client credential flow.
-
-* Added support for OAuth public clients and aligned the profile with the latest OAuth 2.1 draft specification.
-
-* Established UDAP extensions to improve the structure of JWT and reworked the examples.  
-
 * Replacement of the "Bearer" option with "Token Introspection" option. This option utilizes OAuth2 Introspect (RFC 7662). This option allows Resources Servers to deal with any token format (JWT/SAML/other) by obtaining the claims associated with an access token through an introspect API offered by the Authorization Server.
 
 * Removal of hard requirement for JWT formatted access token support. JWT, SAML and Introspect have all become optional. Resource and Authorization Servers need to implement at least one.
@@ -44,6 +34,20 @@ Comments can be submitted https://github.com/IHE/ITI.IUA/issues/new?assignees=&l
 * The addendum contains a section on IHE-MHD to indicate authorization scope specification and usage. MHD is used as example case, extendable to other profiles that employ RESTful APIs. Open question is how the profile specific authorization scopes should be specified, and if, when an how they should relate to HEART/SmartOnFHIR scopes.
 
 ## Other changes
+
+* August 2020, ms: Reworked the Use Cases section and added descriptions of the use cases from the user perspective.
+
+* August 2020, ms: Reworked the text descriptions to establish the borders between authentication, authorization and policy enforcement.
+
+* August 2020, ms: Aligned with the new OAuth 2.1 draft specification.
+
+* August 2020, ms: Cleaned up and updated references to OAuth related RFC's.
+
+* August 2020, ms: Established authorization code and client credential flow to the Get Authorization Token options.
+
+* August 2020, ms: Added support for OAuth public clients.
+
+* August 2020, ms: Established UDAP extensions to improve the structure of JWT and reworked the examples.  
 
 * Aligned the profile with the latest standards such as OAuth 2.1, OpenId Connect, JWT, OAuth2 Introspect.
 
