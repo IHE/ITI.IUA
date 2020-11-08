@@ -39,6 +39,8 @@ Comments can be submitted https://github.com/IHE/ITI.IUA/issues/new?assignees=&l
 
 * August 2020, ms: Reworked the text descriptions to establish the borders between authentication, authorization and policy enforcement.
 
+* August 2020, ms: Incorporated the Change Proposals on IUA
+
 * August 2020, ms: Aligned with the new OAuth 2.1 draft specification.
 
 * August 2020, ms: Cleaned up and updated references to OAuth related RFC's.
@@ -47,7 +49,7 @@ Comments can be submitted https://github.com/IHE/ITI.IUA/issues/new?assignees=&l
 
 * August 2020, ms: Added support for OAuth public clients.
 
-* August 2020, ms: Established UDAP extensions to improve the structure of JWT and reworked the examples.  
+* August 2020, ms: Established UDAP extensions to improve the structure of JWT and reworked the examples.
 
 * Aligned the profile with the latest standards such as OAuth 2.1, OpenId Connect, JWT, OAuth2 Introspect.
 
