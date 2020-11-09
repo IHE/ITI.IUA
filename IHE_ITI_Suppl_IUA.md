@@ -63,7 +63,7 @@ The current version of the IHE Technical Framework can be found at: [http://www.
     - [3.102 Introspect Token](#3102-introspect-token)
     - [3.103 Get Authorization Server Metadata](#3103-get-authorization-server-metadata)
 - [33 MHD Profile](#33-mhd-profile)
-- [9 ATNA Profile](##9-atna-profile)
+- [9 ATNA Profile](#9-atna-profile)
 
 <!-- /TOC -->
 
