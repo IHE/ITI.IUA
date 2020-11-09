@@ -71,55 +71,55 @@ The current version of the IHE Technical Framework can be found at: [http://www.
 
 ### Problem Statement
 
-This profile is motivated by customer requirements for authorizing network transactions, when using HTTP RESTful transports. IHE has authorization profiles for the Web Services and SOAP based transactions. This profile provides an authorization profile for the HTTP RESTful transactions.
+This profile is motivated by customer requirements for authorizing network transactions when using HTTP RESTful transports. IHE has authorization profiles for the Web Services and SOAP based transactions, and this profile provides an authorization profile for the HTTP RESTful transactions.
 
-Being authorized means that the user, patient or provider, has legitimate access to this HTTP RESTful service. The authorization includes identifying the user and the application that is making the request to the HTTP RESTful server, so that server can make further access control decisions.
+Being authorized means that the user, patient, or provider has legitimate access to this HTTP RESTful service. The authorization includes identifying the user and the application that is making the request to the HTTP RESTful server, so that server can make further access control decisions.
 
 The HTTP RESTful transport is being used by many healthcare applications and smart devices. These share a common set of issues. A typical use case example is:
 
--   The patient has a tablet and installs an application onto that tablet.
+-   The patient installs an application onto his tablet.
 
--   An application will need to retrieve and update health related data that is stored on a Resource Server. It uses HTTP RESTful transactions for both retrieve and update because HTTP support is integrated into the platform services.
+-   The application will need to retrieve and update health related data that is stored on a Resource Server. It uses HTTP RESTful transactions for both retrieve and update because HTTP support is integrated into the platform services.
 
--   Patients want to configure the application to have access to their data without needing the IT staff at the application vendor and resource vendor to set things up.
+-   The patient wants to configure the application to have access to his data without needing the IT staff at the application vendor and resource vendor to set things up.
 
-The HTTP RESTful services may include user driven browser activity, downloaded applications, and automatic devices. The existing IHE ITI XUA Profile fills these needs for the SOAP transport based transactions. The existing IHE ITI EUA Profile fills these needs for various different transports within a single enterprise environment, including HTTP RESTful transports.
+The HTTP RESTful services may include user-driven browser activity, downloaded applications, and automatic devices. The existing IHE ITI Cross-Enterprise User Assertion (XUA) Profile fills these needs for the SOAP transport based transactions. The existing IHE ITI Enterprise User Authentication (EUA) Profile fills these needs for various different transports within a single enterprise environment, including HTTP RESTful transports.
 
-The Basic Patient Privacy Consent (BPPC) Profile is associated with this profile and these other existing profile. BPPC covers the legal and administrative needs for consent documentation and associating the patient consent with policy documentation. The BPPC profile includes the ability to associate the electronic authorizations with the patient agreements and organizational policies.
+The Basic Patient Privacy Consent (BPPC) Profile is associated with this profile and these other existing profiles. BPPC covers the legal and administrative needs for consent documentation and associating the patient consent with policy documentation. The BPPC profile includes the ability to associate the electronic authorizations with the patient agreements and organizational policies.
 
-It is important to understand that IUA is not a substitute for the administrative activities (such as withdrawing consent), policy setting, and other activities that BPPC documents provide. Greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE BPPC Profile, are a future effort. This profile starts with just the basic authorization activities.
+IUA is not a substitute for the administrative activities such as withdrawing consent, policy setting, and other activities that BPPC documents provide. The current scope of IUA is the basic authorization activities.  Future scope may include greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE BPPC Profile. 
 
-The administrative actions needed to establish an Authorization Server for IUA is not covered by these profile. These activities depend upon the operational needs, organizational and privacy policies that apply to a particular deployment.
+The administrative actions needed to establish an Authorization Server for IUA are not covered by these profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
 
 ### Background on the problem environment
 
 The application interacts with both patient and Authorization Server to support the granting of an access token. The application then uses the access token to retrieve and update health related data.
 
-The key issues here are:
+The key issues include:
 
--   Reliable and accurate authorization decisions, as part of an overall privacy protecting and security environment.
+-   Making reliable and accurate authorization decisions as part of an overall privacy protecting and security environment.
 
--   Application developers expect one common method for obtaining and using access tokens.
+-   Application developers expecting one common method for obtaining and using access tokens.
 
--   Resource Servers expect one common method for receiving access tokens as part of HTTP RESTful transactions, and one common method for processing these tokens.
+-   Resource Servers expecting one common method for receiving access tokens as part of HTTP RESTful transactions, and one common method for processing these tokens.
 
--   Users, patients and providers, expect to be in control, do not want to depend on support staff to set up their applications, and want to minimize the interference from authorization requirements.
+-   Users, patients, and providers expecting to be in control, do not want to depend on support staff to set up their applications, and want to minimize the interference from authorization requirements.
 
-Similar issues arise with:
+Additional issues:
 
--   In house application distribution that needs authorization for applications used within the facility.
+-   In-house application distribution needing to provide authorization for applications used within the facility.
 
--   IT administrators prefer a common method to authorize use of in house web applications and access to in house resources.
+-   IT administrators prefering a common method to authorize use of in-house web applications and access to in-house resources.
 
--   Providers and Specialists have authorization needs for dealing with other organizations and need to deal with many resource services.
+-   Providers and Specialists having authorization needs to deal with other organizations and with many resource services.
 
--   Granting subset access to specialized provider. E.g., read access to cardiac info to physical therapy organization, forbidding access to other sensitive health data.
+-   Granting subset access to specialized provider. E.g., granting a physical therapy organization read access to a patient's cardiac information but forbidding access to other sensitive health data.
 
 There are also environmental assumptions made by this profile.
 
-First, it is assumed that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about it will be rejected.
+IUA assumes that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose-related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about i will be rejected.
 
-Second, this profile is operating in an environment where access consents are managed by BPPC or other mechanisms. IUA is not a substitute for documenting, establishing, and modifying these legal agreements. For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. BPPC is one way to document that agreement.
+IUA also assumes that this profile is operating in an environment where access consents are managed by BPPC or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. BPPC is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
 
 # Open Issues and Question
 
