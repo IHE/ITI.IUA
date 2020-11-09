@@ -8,9 +8,9 @@
 
 **Internet User Authorization (IUA)** with updates to MHD and ATNA.
 
-**Trial Implementation**
+**Public Comment Candidate**
 
-Date: October 29, 2020
+Date: November 5, 2020
 
 Author: ITI Technical Committee
 
@@ -63,6 +63,7 @@ The current version of the IHE Technical Framework can be found at: [http://www.
     - [3.102 Introspect Token](#3102-introspect-token)
     - [3.103 Get Authorization Server Metadata](#3103-get-authorization-server-metadata)
 - [33 MHD Profile](#33-mhd-profile)
+- [9 ATNA Profile](##9-atna-profile)
 
 <!-- /TOC -->
 
@@ -1481,9 +1482,10 @@ All security considerations as described in [RFC8414, Section 6.2] MUST be imple
 
 As the metadata document is intended to support the authorization processes, there is no need to provide client credentials towards the metadata endpoint. To prevent unnecessary disclosure of credentials, the Authorization Server Metadata Request MUST NOT include and credentials from the Authorization Client or Resource Server.
 
+# 33 MHD Profile
+
 | **Editor: Please add the following to MHD Volume 1: section 33.5 MHD Security Considerations**                      |
 |------------------------------------------------|
-# 33 MHD Profile
 
 ### 33.5.1 Use with IUA Profile
 
@@ -1548,7 +1550,7 @@ scope: "ITI-68"
 
 This scope request authorizes the full [ITI-68] transaction. This scope implicitly requests patient specific Read for Binary resources as defined in [ITI-68]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here. 
 
-
+# 9 ATNA Profile
 
 | **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table**                      |
 | add row after "STX WS-Security" for both Secure Node and Secure Application                                              |
