@@ -71,61 +71,61 @@ The current version of the IHE Technical Framework can be found at: [http://www.
 
 ### Problem Statement
 
-This profile is motivated by customer requirements for authorizing network transactions, when using HTTP RESTful transports. IHE has authorization profiles for the Web Services and SOAP based transactions. This profile provides an authorization profile for the HTTP RESTful transactions.
+This profile is motivated by customer requirements for authorizing network transactions when using HTTP RESTful transports. IHE has authorization profiles for the Web Services and SOAP based transactions, and this profile provides an authorization profile for the HTTP RESTful transactions.
 
-Being authorized means that the user, patient or provider, has legitimate access to this HTTP RESTful service. The authorization includes identifying the user and the application that is making the request to the HTTP RESTful server, so that server can make further access control decisions.
+Being authorized means that the user, patient, or provider has legitimate access to this HTTP RESTful service. The authorization includes identifying the user and the application that is making the request to the HTTP RESTful server, so that server can make further access control decisions.
 
 The HTTP RESTful transport is being used by many healthcare applications and smart devices. These share a common set of issues. A typical use case example is:
 
--   The patient has a tablet and installs an application onto that tablet.
+-   The patient installs an application onto his tablet.
 
--   An application will need to retrieve and update health related data that is stored on a Resource Server. It uses HTTP RESTful transactions for both retrieve and update because HTTP support is integrated into the platform services.
+-   The application will need to retrieve and update health related data that is stored on a Resource Server. It uses HTTP RESTful transactions for both retrieve and update because HTTP support is integrated into the platform services.
 
--   Patients want to configure the application to have access to their data without needing the IT staff at the application vendor and resource vendor to set things up.
+-   The patient wants to configure the application to have access to his data without needing the IT staff at the application vendor and resource vendor to set things up.
 
-The HTTP RESTful services may include user driven browser activity, downloaded applications, and automatic devices. The existing IHE ITI XUA Profile fills these needs for the SOAP transport based transactions. The existing IHE ITI EUA Profile fills these needs for various different transports within a single enterprise environment, including HTTP RESTful transports.
+The HTTP RESTful services may include user-driven browser activity, downloaded applications, and automatic devices. The existing IHE ITI Cross-Enterprise User Assertion (XUA) Profile fills these needs for the SOAP transport based transactions. The existing IHE ITI Enterprise User Authentication (EUA) Profile fills these needs for various different transports within a single enterprise environment, including HTTP RESTful transports.
 
-The Basic Patient Privacy Consent (BPPC) Profile is associated with this profile and these other existing profile. BPPC covers the legal and administrative needs for consent documentation and associating the patient consent with policy documentation. The BPPC profile includes the ability to associate the electronic authorizations with the patient agreements and organizational policies.
+The Basic Patient Privacy Consent (BPPC) Profile is associated with this profile and these other existing profiles. BPPC covers the legal and administrative needs for consent documentation and associating the patient consent with policy documentation. The BPPC profile includes the ability to associate the electronic authorizations with the patient agreements and organizational policies.
 
-It is important to understand that IUA is not a substitute for the administrative activities (such as withdrawing consent), policy setting, and other activities that BPPC documents provide. Greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE BPPC Profile, are a future effort. This profile starts with just the basic authorization activities.
+IUA is not a substitute for the administrative activities such as withdrawing consent, policy setting, and other activities that BPPC documents provide. The current scope of IUA is the basic authorization activities.  Future scope may include greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE BPPC Profile. 
 
-The administrative actions needed to establish an Authorization Server for IUA is not covered by these profile. These activities depend upon the operational needs, organizational and privacy policies that apply to a particular deployment.
+The administrative actions needed to establish an Authorization Server for IUA are not covered by these profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
 
 ### Background on the problem environment
 
 The application interacts with both patient and Authorization Server to support the granting of an access token. The application then uses the access token to retrieve and update health related data.
 
-The key issues here are:
+The key issues include:
 
--   Reliable and accurate authorization decisions, as part of an overall privacy protecting and security environment.
+-   Making reliable and accurate authorization decisions as part of an overall privacy protecting and security environment.
 
--   Application developers expect one common method for obtaining and using access tokens.
+-   Application developers expecting one common method for obtaining and using access tokens.
 
--   Resource Servers expect one common method for receiving access tokens as part of HTTP RESTful transactions, and one common method for processing these tokens.
+-   Resource Servers expecting one common method for receiving access tokens as part of HTTP RESTful transactions, and one common method for processing these tokens.
 
--   Users, patients and providers, expect to be in control, do not want to depend on support staff to set up their applications, and want to minimize the interference from authorization requirements.
+-   Users, patients, and providers expecting to be in control, do not want to depend on support staff to set up their applications, and want to minimize the interference from authorization requirements.
 
-Similar issues arise with:
+Additional issues:
 
--   In house application distribution that needs authorization for applications used within the facility.
+-   In-house application distribution needing to provide authorization for applications used within the facility.
 
--   IT administrators prefer a common method to authorize use of in house web applications and access to in house resources.
+-   IT administrators prefering a common method to authorize use of in-house web applications and access to in-house resources.
 
--   Providers and Specialists have authorization needs for dealing with other organizations and need to deal with many resource services.
+-   Providers and Specialists having authorization needs to deal with other organizations and with many resource services.
 
--   Granting subset access to specialized provider. E.g., read access to cardiac info to physical therapy organization, forbidding access to other sensitive health data.
+-   Granting subset access to specialized provider. E.g., granting a physical therapy organization read access to a patient's cardiac information but forbidding access to other sensitive health data.
 
 There are also environmental assumptions made by this profile.
 
-First, it is assumed that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about it will be rejected.
+IUA assumes that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose-related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about i will be rejected.
 
-Second, this profile is operating in an environment where access consents are managed by BPPC or other mechanisms. IUA is not a substitute for documenting, establishing, and modifying these legal agreements. For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. BPPC is one way to document that agreement.
+IUA also assumes that this profile is operating in an environment where access consents are managed by BPPC or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. BPPC is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
 
 # Open Issues and Question
 
-- **Issue 11**: IUA does not define scopes at all, therefore IUA is not in conflict with SMART-on-FHIR. However this supplement includes updates to MHD and does define a Scope for use with MHD transactions. This definition today does not use SMART pattern, but does not forbid SMART scopes too. IHE requests comments on the IUA, MHD, and SMART-on-FHIR scope harmonization. 
+- **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to MHD and does define a Scope for use with MHD transactions. That Scope for MHD does not use SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization. 
 
-- **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE defined actor, and that actor has audit logging requirements; IUA does not need to give a defined audit event for success. IUA does impose adding an AuditEvent.entity to that audit even defined in the other profile. But this should be explained well enough for the reader to understand already. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile (e.g. MHD Document Responder). This AuditEvent would cover reasons for DENY that are thus not specific to the content of the grouped transaction. Reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
+- **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. MHD Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
   
 # Closed Issues
 
@@ -171,9 +171,9 @@ Second, this profile is operating in an environment where access consents are ma
 |Transaction                                |Definition
 |-----------                                |----------
 |Incorporate Authorization Token \[ITI-72\] |Add an access token to a transaction.
-|Get Authorization Token \[ITI-71\]         |A transaction that is used to request and obtain an access token for use in Authorized transactions.
-|Introspect Token \[ITI-102\]               |A transaction that is used to obtain the state and claims associated with an access token.
-|Get Authorization Server Metadata \[ITI-103\]               |A transaction that is used to obtain metadata about a Authorization Server such as endpoint locations and signing key material
+|Get Authorization Token \[ITI-71\]         |Request and obtain an access token for use in Authorized transactions.
+|Introspect Token \[ITI-102\]               |Obtain the state and claims associated with an access token.
+|Get Authorization Server Metadata \[ITI-103\]               |Obtain metadata about a Authorization Server such as endpoint locations and signing key material
 
 
 # Volume 1 -- Profiles
@@ -189,23 +189,23 @@ The IUA Profile adds authorization information to HTTP RESTful transactions. The
 
 The actors in the IUA Profile manage the tokens used for authorization of access to HTTP RESTful services based on the flows and transactions defined in the OAuth 2.1 Authorization Framework [OAuth 2.1]. Authorization Clients interact with the Authorization Server to retrieve access tokens and incorporate them into HTTP RESTful transactions to authorize access to resources on the Resource Servers.
 
-The OAuth 2.1 Authorization Framework requires client identification, which may be based on a *client\_id* parameter [OAuth 2.1, Section 2.2]. Depending on the grant type, the use of the *client\_id* MAY be required. For example the *Authorization Code* grant type requires the use of the *client\_id* for client identification [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2].
+The OAuth 2.1 Authorization Framework requires client identification, which may be based on a *client\_id* parameter [OAuth 2.1, Section 2.2]. Depending on the grant type, the use of the *client\_id* may be required. For example the *Authorization Code* grant type requires the use of the *client\_id* for client identification [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2].
 
 The OAuth 2.1 Authorization Framework also requires client authentication for confidential and credential clients [OAuth 2.1, Section 2.3]. It recommends the use of to use asymmetric (public-key based) methods for client authentication [OAuth 2.1, Section 9.1], but allows other suitable HTTP based authentication schemes matching the security policy of the Authorization Server [OAuth 2.1, Section 2.3.2].
 
 This profile requires the use of a *client_id* for client identification and a *client_secret* used with the HTTP Basic Authentication scheme for client authentication of confidential and credentialed clients, if no other methods for identification and authentication are used.  
 
-Depending on the grant type, the OAuth 2.1 Framework also requires user authentication. For example, the *Authorization Code* grant type covered by this profile requires user authentication [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2]. The methods used by the Authorization Server to authenticate the user (e.g., username and password login, session cookies, delegation to Authentication Server) is not scoped in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 3.1].
+Depending on the grant type, the OAuth 2.1 Framework also requires user authentication. For example, the *Authorization Code* grant type covered by this profile requires user authentication [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2]. The methods used by the Authorization Server to authenticate the user (e.g., username and password login, session cookies, delegation to Authentication Server) are not scoped in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 3.1].
 
-Since user authentication methods chosen depend on the projects or national security policy, they are not scoped in this profile and SHALL be defined in the specific implementation projects or national extensions of this profile. If the user authentication is not implemented in the Authorization Server, the use of OpenID Connect with the Authorization Grant or Hybrid flow is recommended.
+Since user authentication methods chosen depend on the projects or national security policy, they are not scoped in this profile and shall be defined in the specific implementation projects or national extensions of this profile. If the user authentication is not implemented in the Authorization Server, the use of OpenID Connect with the Authorization Grant or Hybrid flow is recommended.
 
-It is the responsibility of the Resource Server to enforce the access policies based on the transaction performed and the information provided in the access token. Therefore the Resource Server MUST be able to rely upon the decisions made by the Authorization Server (e.g., client identification, user authentication), which requires that a trust relation between the Resource Server and the Authorization Server was established beforehand.  
+It is the responsibility of the Resource Server to enforce the access policies based on the transaction performed and the information provided in the access token. Therefore, the Resource Server must be able to rely upon the decisions made by the Authorization Server (e.g., client identification, user authentication), which requires that a trust relation between the Resource Server and the Authorization Server was established beforehand.  
 
-The Resource Server MAY delegate the access policy enforcement to actors it is grouped with by providing the information from the access token and transaction data, or to other actors (e.g., by implementing the Authorization Decisions Verifier actor of the Secure Retrieve (SeR) supplement).
+The Resource Server may delegate the access policy enforcement to actors it is grouped with by providing the information from the access token and transaction data, or to other actors (e.g., by implementing the Authorization Decisions Verifier actor of the Secure Retrieve (SeR) Profile).
 
-Note: An analogy of the segregation of duties for access control between the Authorization Server and the Resource Server is given in a  textbook (*Solving Identity Management in Modern Applications*, *APress 2019* by Yvonne Wilson and Abhishek Hingnikar) comparing the authorization and policy enforcement with a ticketing and entrance control to events (e.g, opera, cinema). In this analogy the Authorization Server provides the ticket which authorizes participation, while additional checks are performed to finally participate to the event.  
+Note: An analogy of the segregation of duties for access control between the Authorization Server and the Resource Server is given in a textbook (*Solving Identity Management in Modern Applications*, *APress 2019* by Yvonne Wilson and Abhishek Hingnikar) comparing the authorization and policy enforcement with a ticketing and entrance control to events (e.g, opera, cinema). In this analogy, the Authorization Server provides the ticket which authorizes participation, while additional checks are performed to finally participate to the event.  
 
-This profile relies on the OAuth 2.1 Authorization Framework. Since the original publication of OAuth 2.0 in 2012, several new RFCs have been published that add or remove functionality from the core specification. Version 2.1 of the OAuth Authorization Framework consolidates and simplifies the most commonly used features and best practices of OAuth 2.0.
+The IUA Profile relies on the OAuth 2.1 Authorization Framework. Since the original publication of OAuth 2.0 in 2012, several new RFCs have been published that add or remove functionality from the core specification. Version 2.1 of the OAuth Authorization Framework consolidates and simplifies the most commonly used features and best practices of OAuth 2.0.
 
 ![IUA Actor Diagram](media/1.2_IUA-actor-diagram.png)
 
@@ -217,34 +217,34 @@ Table 34.1-1: IUA Profile - Actors and Transactions
 
 |Actors               |Transactions                      |Optionality	|Reference      
 |----                 |----                              |---        	|-----          
-|Authorization Client |Incorporate Authorization Token   |R          	|Section 3.72
-|                     |Get Authorization Token           |O          	|Section 3.71
-|                     |Get Authorization Server Metadata |O           |Section 3.103
-|Authorization Server |Get Authorization Token           |R          	|Section 3.71
-|                     |Introspect Token                  |C  Note 1  	|Section 3.102
-|                     |Get Authorization Server Metadata |O           |Section 3.103
-|Resource Server      |Incorporate Authorization Token   |R          	|Section 3.72
-|                     |Get Authorization Token           |C  Note 1   |Section 3.71
-|                     |Introspect Token                  |C  Note 1  	|Section 3.102
-|                     |Get Authorization Server Metadata |O           |Section 3.103
+|Authorization Client |Get Authorization Token           |O          	|ITI TF-2b: 3.71
+|                     |Incorporate Authorization Token   |R          	|ITI TF-2b: 3.72
+|                     |Get Authorization Server Metadata |O           |ITI TF-2c: 3.103
+|Authorization Server |Get Authorization Token           |R          	|ITI TF-2b:  3.71
+|                     |Introspect Token                  |O  Note 1  	|ITI TF-2c: 3.102
+|                     |Get Authorization Server Metadata |O           |ITI TF-2c: 3.103
+|Resource Server      |Get Authorization Token  |O  Note 1          	|ITI TF-2b: 3.71
+|                     |Incorporate Authorization Token            |R   |ITI TF-2b: 3.72
+|                     |Introspect Token                  |O  Note 1  	|ITI TF-2c:  3.102
+|                     |Get Authorization Server Metadata |O           |ITI TF-2c: 3.103
 
-*Note 1:* Mandatory when the Token Introspection Option is declared.
+*Note 1:* Optionality of this transaction is "R" for an actor that supports the Token Instrospection Option.
 
 ### 34.1.1 Actor Descriptions and Actor Profile Requirements
 
-The IUA actors are expected to be grouped with other actors that perform HTTP RESTful transactions. Grouping an Authorization Client with another actor means that this other actor will provide an access token as part of the HTTP transaction to a HTTP RESTful server. It MAY perform the Get Authorization Token transaction to obtain the access token. The corresponding HTTP RESTful server SHOULD be grouped with the Resource Server actor to indicate that the server can perform access control.
+The IUA actors are expected to be grouped with other actors that perform HTTP RESTful transactions. Grouping an Authorization Client with another actor means that this other actor will provide an access token as part of the HTTP transaction to a HTTP RESTful server. It may perform the Get Authorization Token transaction to obtain the access token. The corresponding HTTP RESTful server SHOULD be grouped with the Resource Server actor to indicate that the server can perform access control.
 
 #### 34.1.1.1 Authorization Client
 
 The Authorization Client performs the network transactions and user interactions needed to obtain an access token and to attach that token to transactions to indicate that the transactions are authorized. An Authorization Client in IUA supports the following associated transactions:
 
--   Get Authorization Server Metadata: In this case the Authorization Client interacts with the Authorization Server to obtain configuration metadata required for the further authorization steps such as Authorization endpoint locations and supported authorization grant types.
+-   Get Authorization Server Metadata [ITI-103]: In this case the Authorization Client interacts with the Authorization Server to obtain configuration metadata required for the further authorization steps such as Authorization endpoint locations and supported authorization grant types.
 
--   Get Authorization Token: In this case, the Authorization Client interacts with an Authorization Server to obtain a token that indicates HTTP RESTful transactions for a particular kind of service and device are authorized by the user. This MAY include interactions with the user for authentication purposes.
+-   Get Authorization Token [ITI-71]: In this case, the Authorization Client interacts with an Authorization Server to obtain a token that indicates HTTP RESTful transactions for a particular kind of service and device are authorized by the user. This MAY include interactions with the user for authentication purposes.
 
--   Incorporate Authorization Token: In this case the access token has already been obtained and is communicated as part of the HTTP RESTful transaction for some other profile or service. With this token the Authorization Client indicates that the HTTP RESTful transaction has been authorized by the Authorization Server. The Resource Server will validate the client's token with associated claims and enforce configured access policies before serving the request.
+-   Incorporate Authorization Token [ITI-72]: In this case the access token has already been obtained and is communicated as part of the HTTP RESTful transaction for some other profile or service. With this token the Authorization Client indicates that the HTTP RESTful transaction has been authorized by the Authorization Server. The Resource Server will validate the client's token with associated claims and enforce configured access policies before serving the request.
 
--   When the Incorporate Authorization Token is to be used with a FHIR server, an Authorization Client SHOULD query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) will be populated with the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
+-   When the Incorporate Authorization Token [ITI-72] is used with a FHIR server, an Authorization Client shoul query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) will be populated with the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
 
 #### 34.1.1.2 Authorization Server
 
