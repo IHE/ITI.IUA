@@ -26,21 +26,21 @@ using kanban board for managing tasks https://github.com/IHE/ITI.IUA/projects/1
 
 ## Other changes
 
-* August 2020, ms: Reworked the Use Cases section and added descriptions of the use cases from the user perspective.
+* Reworked the Use Cases section and added descriptions of the use cases from the user perspective.
 
-* August 2020, ms: Reworked the text descriptions to establish the borders between authentication, authorization and policy enforcement.
+* Reworked the text descriptions to establish the borders between authentication, authorization and policy enforcement.
 
-* August 2020, ms: Incorporated the Change Proposals on IUA
+* Incorporated the Change Proposals on IUA
 
-* August 2020, ms: Aligned with the new OAuth 2.1 draft specification.
+* Aligned with the new OAuth 2.1 draft specification.
 
-* August 2020, ms: Cleaned up and updated references to OAuth related RFC's.
+* Cleaned up and updated references to OAuth related RFC's.
 
-* August 2020, ms: Established authorization code and client credential flow to the Get Authorization Token options.
+* Established authorization code and client credential flow to the Get Authorization Token options.
 
-* August 2020, ms: Added support for OAuth public clients.
+* Added support for OAuth public clients.
 
-* August 2020, ms: Established UDAP extensions to improve the structure of JWT and reworked the examples.
+* Established UDAP extensions to improve the structure of JWT and reworked the examples.
 
 * Aligned the profile with the latest standards such as OAuth 2.1, OpenId Connect, JWT, OAuth2 Introspect.
 
