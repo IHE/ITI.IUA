@@ -2,7 +2,7 @@
 
 ![IHE\_LOGO\_for\_tf-docs](media/IHE-logo.jpeg)
 
-**IHE ITI**
+**[IHE ITI](https://profiles.ihe.net/ITI)**
 
 **Technical Framework Supplement**
 
@@ -10,13 +10,13 @@
 
 **Public Comment Candidate**
 
-Date: November 5, 2020
+Date: November 10, 2020
 
 Author: ITI Technical Committee
 
 Email: iti@ihe.net
 
-**Please verify you have the most recent version of this document.** See [here](http://ihe.net/Technical_Frameworks/) for Trial Implementation and Final Text versions and [here](http://ihe.net/Public_Comment/) for Public Comment versions.
+**Please verify you have the most recent version of this document.** See [here](http://profiles.ihe.net/ITI) for Trial Implementation and Final Text versions and [here](http://profiles.ihe.net/ITI/IUA/index.html) for Public Comment versions.
 
 **Foreword**
 
