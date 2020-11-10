@@ -6,16 +6,7 @@ Working group rendering https://ihe.github.io/ITI.IUA/IHE_ITI_Suppl_IUA
 
 Comments can be submitted https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=
 
-## Working Process
-
-* Bi-Weekly meeting on ititech calendar
-* Ballot plan for two phase ballot. First to be minimal corrections where there is problems. Second to focus on new features or more involved clarifications.
-* using github issues for all changes big or small
-* using kanban board for managing tasks https://github.com/IHE/ITI.IUA/projects/1
-  * two columns for in progress (discussion vs editing) - where issues in editing state are agreed on what the edit should be, discussion is for consensus building.
-* Editors will edit the markdown (we no longer maintain the WORD docx)
-* Editors will create pull-requests, include issue being closed, and assign to John, Walco, and Martin for review of the pull-request. Three approvals will merge automatically. Anyone can request it be further reviewed on bi-weekly call
-
+using kanban board for managing tasks https://github.com/IHE/ITI.IUA/projects/1
 
 ## Breaking changes
 
@@ -64,3 +55,6 @@ Comments can be submitted https://github.com/IHE/ITI.IUA/issues/new?assignees=&l
 * Improved profiling of OAuth2 interactions providing clarity on request/response data requirements and semantics.
 
 * Support for alternative authorization grants (e.g. client jwt_grants). Not mandatory to be supported by an Authorization Server
+
+* Added an option to ATNA that leverages IUA with server side https
+
