@@ -28,7 +28,7 @@ This supplement describes changes to the existing technical framework documents.
 
 "Boxed" instructions like the sample below indicate to the Volume Editor how to integrate the relevant section(s) into the relevant Technical Framework volume.
 
-| **Editor please Amend Section X.X by the following:**  |
+|**Editor please Amend Section X.X by the following:**  |
 |--------------------------------------------------------|
 
 Where the amendment adds text, make the added text **<ins>bold underline</ins>**. Where the amendment removes text, make the removed text **~~bold strikethrough~~**. When entire new sections are added, introduce with editor's instructions to "add new text" or similar, which for readability are not bolded or underlined.
@@ -146,12 +146,12 @@ Second, this profile is operating in an environment where access consents are ma
 
 # General Introduction
 
-| **Editor please Update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.**  |
+|**Editor please Update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.**  |
 |------------------------------|
 
 **Appendix A - Actor Summary Definitions**
 
-| **Editor please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
+|**Editor please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
 |------------------------------|
 
 
@@ -164,7 +164,7 @@ Second, this profile is operating in an environment where access consents are ma
 
 **Appendix B - Transaction Summary Definitions**
 
-| **Editor please Add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:**  |
+|**Editor please Add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:**  |
 |------------------------------|
 
 
@@ -1552,14 +1552,14 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 
 # 9 ATNA Profile
 
-| **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table**                      |
-| add row after "STX WS-Security" for both Secure Node and Secure Application                                              |
+| **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table**   |
+| add row after "STX WS-Security" for both Secure Node and Secure Application                           |
 |------------------------------------------------|
  
  "STX: HTTPS IUA" | ITI TF-1:9.2.6.7
  
- | **Editor: Please add section 9.2.6.7 as follows**      |
- |--------------------------------------------------------|
+| **Editor: Please add section 9.2.6.7 as follows**      |
+|--------------------------------------------------------|
  
 #### 9.2.6.7 STX: HTTPS IUA
 The system will utilize server side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the IUA Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
