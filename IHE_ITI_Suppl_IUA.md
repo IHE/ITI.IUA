@@ -162,7 +162,7 @@ IUA also assumes that this profile is operating in an environment where access c
 
 |Actor                |Definition
 |-----                |----------
-|Authorization Client |A client that retrieve access tokens and presents them as part of transactions.
+|Authorization Client |A client that retrieves access tokens and presents them as part of transactions.
 |Authorization Server |A server that issues access tokens to requesting clients.
 |Resource Server      |A server that provides services that need authorization.
 
@@ -178,9 +178,9 @@ IUA also assumes that this profile is operating in an environment where access c
 |Transaction                                |Definition
 |-----------                                |----------
 |Incorporate Authorization Token \[ITI-72\] |Add an access token to a transaction.
-|Get Authorization Token \[ITI-71\]         |Request and obtain an access token for use in Authorized transactions.
+|Get Authorization Token \[ITI-71\]         |Request and obtain an access token for use in authorized transactions.
 |Introspect Token \[ITI-102\]               |Obtain the state and claims associated with an access token.
-|Get Authorization Server Metadata \[ITI-103\]               |Obtain metadata about a Authorization Server such as endpoint locations and signing key material
+|Get Authorization Server Metadata \[ITI-103\]               |Obtain metadata about a Authorization Server, such as endpoint locations and signing key material.
 
 
 # Volume 1 -- Profiles
@@ -192,7 +192,7 @@ IUA also assumes that this profile is operating in an environment where access c
 
 # 34 IUA Profile
 
-The IUA Profile adds authorization information to HTTP RESTful transactions. The IUA actors and behavior will be added to other profiles and transactions that need authorization.
+The IUA Profile adds authorization information to HTTP RESTful transactions. The IUA actors and behavior can be added to other profiles and transactions that need authorization.
 
 ## 34.1 IUA Actors, Transactions, and Content Modules
 
@@ -208,7 +208,7 @@ Depending on the grant type, the OAuth 2.1 Framework also requires user authenti
 
 Since user authentication methods chosen depend on the projects or national security policy, they are not scoped in this profile and shall be defined in the specific implementation projects or national extensions of this profile. If the user authentication is not implemented in the Authorization Server, the use of OpenID Connect with the Authorization Grant or Hybrid flow is recommended.
 
-It is the responsibility of the Resource Server to enforce the access policies based on the transaction performed and the information provided in the access token. Therefore, the Resource Server must be able to rely upon the decisions made by the Authorization Server (e.g., client identification, user authentication), which requires that a trust relation between the Resource Server and the Authorization Server was established beforehand.  
+It is the responsibility of the Resource Server to enforce the access policies based on the transaction performed and the information provided in the access token. Therefore, the Resource Server must be able to rely upon the decisions made by the Authorization Server (e.g., client identification, user authentication) which requires that a trust relation between the Resource Server and the Authorization Server was established beforehand.  
 
 The Resource Server may delegate the access policy enforcement to actors it is grouped with by providing the information from the access token and transaction data, or to other actors (e.g., by implementing the Authorization Decisions Verifier actor of the Secure Retrieve (SeR) Profile).
 
@@ -218,11 +218,11 @@ The IUA Profile relies on the OAuth 2.1 Authorization Framework. Since the origi
 
 ![IUA Actor Diagram](media/1.2_IUA-actor-diagram.png)
 
-Figure 34.1-1: IUA Actor Diagram
+**Figure 34.1-1: IUA Actor Diagram**
 
 Table 34.1-1 lists the transactions for each actor directly involved in the IUA Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled "R") and may support the optional transactions (labeled "O").
 
-Table 34.1-1: IUA Profile - Actors and Transactions
+**Table 34.1-1: IUA Profile - Actors and Transactions** TODO: Lynn broke this table
 
 |Actors               |Transactions                      |Optionality	|Reference      
 |----                 |----                              |---        	|-----          
@@ -253,7 +253,7 @@ The Authorization Client performs the network transactions and user interactions
 
 -   Incorporate Authorization Token [ITI-72]: In this case the access token has already been obtained and is communicated as part of the HTTP RESTful transaction for some other profile or service. With this token the Authorization Client indicates that the HTTP RESTful transaction has been authorized by the Authorization Server. The Resource Server will validate the client's token with associated claims and enforce configured access policies before serving the request.
 
--   When the Incorporate Authorization Token [ITI-72] is used with a FHIR server, an Authorization Client shoul query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) will be populated with the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
+-   When Incorporate Authorization Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) will be populated with the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
 
 #### 34.1.1.2 Authorization Server
 
@@ -261,7 +261,7 @@ The Authorization Server provides access tokens to requesting clients. In IUA, t
 
 Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials. This information greatly simplifies the configuration of those Authorization Clients and Resource Servers.
 
-Authorization Servers declaring the Token Introspection option SHALL provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server MAY provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used the Authorization Server SHALL provide the Token Introspection [ITI-102] transaction service.
+Authorization Servers declaring the Token Introspection option SHALL provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server MAY provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server SHALL provide the Token Introspection [ITI-102] transaction service.  TODO: We can omit this paragraph because it is redundant (text belongs in the Options section.
 
 
 #### 34.1.1.3 Resource Server
@@ -303,7 +303,7 @@ The Authorization Client is not and does not need to be aware of the token proce
 ### 34.2.1 Authorization Server Metadata option
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
-An Authorization Client that supports this option shall...
+TODO: An Authorization Client that supports this option shall...
 
 An Authorization Server that supports this option shall...
 
@@ -312,21 +312,21 @@ A Resource Server that supports this option shall...
 ### 34.2.2 JWT Token Option
 This option uses JSON Web Token encoding of the Token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option)
 
-An Authorization Server that supports this option shall...
+TO DO: An Authorization Server that supports this option shall...
 
 A Resource Server that supports this option shall...
 
 ### 34.2.3 SAML Token Option
 This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure. 
 
-An Authorization Server that supports this option shall...
+TO DO: An Authorization Server that supports this option shall...
 
 A Resource Server that supports this option shall...
 
 ### 34.2.3 Token Introspection Option
 Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token; see ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option). Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
 
-An Authorization Server that supports this option shall...
+TO DO:An Authorization Server that supports this option shall...
 
 A Resource Server that supports this option shall...
 
