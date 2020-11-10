@@ -28,7 +28,10 @@ This supplement describes changes to the existing technical framework documents.
 
 "Boxed" instructions like the sample below indicate to the Volume Editor how to integrate the relevant section(s) into the relevant Technical Framework volume.
 
-| **Editor please Amend Section X.X by the following:** |
+
+|  **Editor please Amend Section X.X by the following**  |
+|----|
+
 
 Where the amendment adds text, make the added text **<ins>bold underline</ins>**. Where the amendment removes text, make the removed text **~~bold strikethrough~~**. When entire new sections are added, introduce with editor's instructions to "add new text" or similar, which for readability are not bolded or underlined.
 
@@ -148,11 +151,14 @@ IUA also assumes that this profile is operating in an environment where access c
 |**Editor please Update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.**  |
 |------------------------------|
 
+
 **Appendix A - Actor Summary Definitions**
 
-|**Editor please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
-|------------------------------|
 
+|**Editor please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
+|------------------------------|  
+
+&nbsp;  
 
 |Actor                |Definition
 |-----                |----------
@@ -163,9 +169,11 @@ IUA also assumes that this profile is operating in an environment where access c
 
 **Appendix B - Transaction Summary Definitions**
 
-|**Editor please Add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:**  |
-|------------------------------|
 
+|**Editor please Add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:**  |
+|------------------------------|  
+
+&nbsp;  
 
 |Transaction                                |Definition
 |-----------                                |----------
@@ -177,8 +185,10 @@ IUA also assumes that this profile is operating in an environment where access c
 
 # Volume 1 -- Profiles
 
+
 |  **Editor please add the following section 34 to Volume 1** |
 |------------------------------|
+
 
 # 34 IUA Profile
 
