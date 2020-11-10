@@ -458,12 +458,13 @@ The OAuth 2.1 Authorization Framework further defines extension points to implem
 
 - *JSON Web Token (JWT) grants* [RFC7523]: To use a JWT Token as credential for client or user authentication, the Authorization Client SHALL perform the access token request in conformance with the *JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant provides better security properties than the client credential flow as it allows for asymmetric keys to be used for client and user authentication. 
 
-The SAML and JWT grants from RFC7522 and RFC7523 MAY be used in federation scenarios where an Authorization Server will accept tokens from another Authorization Server as credentials for issuing access tokens.
+The SAML and JWT grants from RFC7522 and RFC7523 may be used in federation scenarios where an Authorization Server will accept tokens from another Authorization Server as credentials for issuing access tokens.
 
 Both the RFC7522 and RFC7523 require the existence of a public key infrastructure. The operational aspects of such infrastructure are beyond the scope of this specification.
 
 This transaction is scoped to the *Authorization Code* and *Client Credential* grant types. 
 
+TODO: These shall statements have to move out of this intro.  If we think this transaction will be used outside if IUA, then the rqmts can move to actor rqmts for Auth Server in Vol 1; otherwise, move them to Message Semantics.
 The Authorization Server shall support these grant types:
 
 - *Authorization Code*  
@@ -474,7 +475,7 @@ The Authorization Server may support these grant types:
 
 - *Device Authorization* 
 
-- *SAML Client or User Assertions*
+- *SAML Client or User Assertions* 
 
 - *JSON Web Token (JWT) Grants*
 
@@ -482,7 +483,7 @@ The Authorization Server may support these grant types:
 
 ### 3.71.1 Scope
 
-This transaction is used by Authorization Clients to retrieve an OAuth 2.1 compliant access token defined in [Section 3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
+This transaction is used by an Authorization Client to retrieve an OAuth 2.1-compliant access token defined in [Section 3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
 
 ### 3.71.2 Actor Roles
 
@@ -496,7 +497,7 @@ Table 3.71.2-1: Actor Roles
 |Resource Server        | Server requesting an access token to authorize token introspection requests    |
 |Authorization Server   | Server that grants access tokens.                             |
 
-*Note:* The requirements for the Authorization Client and Resource Server are identical for this transaction. For brevity, the solely term Authorization Client is used in the remainder of this transaction description. 
+*Note:* The requirements for the Authorization Client and Resource Server are identical for this transaction. For brevity, the solely term Authorization Client is used in the remainder of this transaction description. TODO:  REmove this note and use the "Role" convention instead in the actor table above.
 
 ### 3.71.3 Referenced Standards
 
@@ -506,21 +507,21 @@ This transaction relies on standards defined in the following documents and the 
 
 - *JWT Access Token*: JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens, published as draft-ietf-oauth-access-token-jwt-10, September 2020.
 
-- *RFC 7519*: JSON Web Token (JWT), May 2015.  
+- *RFC7519*: JSON Web Token (JWT), May 2015.  
 
-- *RFC 7522*: Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants, May 2015.
+- *RFC7522*: Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants, May 2015.
 
-- *RFC 7515*: JSON Web Signature (JWS), May 2015.
+- *RFC7515*: JSON Web Signature (JWS), May 2015.
 
-- *RFC 7518*: JSON Web Algorithms (JWA), May 2015.
+- *RFC7518*: JSON Web Algorithms (JWA), May 2015.
 
-- *RFC 4648*: The Base16, Base32, and Base64 Data Encodings, October 2006
+- *RFC4648*: The Base16, Base32, and Base64 Data Encodings, October 2006
 
 ### 3.71.4 Messages
 
 ![ITI-71 Flow Diagram](media/basic-flow.png)
 
-Figure 3.71.4-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction
+**Figure 3.71.4-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction** TO
 
 ```plantuml
 @startuml basic-flow
@@ -543,7 +544,7 @@ end
 @enduml
 ```
 
-Main Flow:
+Main Flow TODO: Discuss moving this multi-transaction process flow to Vol1:
 
 1.  (Optional) The Authorization Client fetches the metadata document from the Authorization Server to detect the relevant authorization endpoints and supported grant types.
 
@@ -560,15 +561,15 @@ Main Flow:
 
 The Get Authorization Token Request is performed by an Authorization Client or Resource Server (in case of the Introspect option) to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform an Get Authorization Token transaction depends on the grant type (type of credentials) chosen.
 
-This profile currently requires support for two types of grants:
-* OAuth2 Client Credential grant
-* Authorization Code grant
+This transaction requires support for two types of grants:
+1. OAuth2 Client Credential grant
+2. Authorization Code grant
 
 ##### 3.71.4.1.1 Client Credential grant type
 
 ![ITI-71 Client Credential](media/client-credential-grant.png)
 
-Figure 3.71.4.1.1-1: Sequence of HTTP requests in the client credential grant type.
+**Figure 3.71.4.1.1-1: Sequence of HTTP requests in the client credential grant type.**
 
 ```plantuml
 @startuml client-credential-grant
@@ -590,21 +591,20 @@ autonumber stop
 
 The Authorization Client requests an access token using client credentials (or other supported means of authentication). This grant type SHALL be used by confidential clients only [OAuth 2.1, Section 4.2].
 
-The Authorization Client actor claiming the Authorization Server Metadata option SHALL use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token.
+An Authorization Client that supports the Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token.  TODO: This option-specific rqmt is mixed in with non-option rqmts.  Factor it out into a separate sub-section, or consider moving to the end of the section
 
 The Authorization Client makes a HTTP(s) POST request to the token endpoint with the following parameters in the HTTP request entity-body [OAuth 2.1, Section 4.2.2]:
 
 - *grant_type* (REQUIRED): The value of the parameter SHALL be *client_credentials*.
-
 - *resource* (OPTIONAL): Single valued identifier of the Resource Server api endpoint to be accessed [JWT Access Token, Section 3].
 
 - *scope* (OPTIONAL): The scope claimed by the Authorization Client.
 
-The request SHALL use the *application/x-www-form-urlencoded* format with a character encoding of UTF-8 [OAuth 2.1, Section 4.2.2].
+The request shall use the *application/x-www-form-urlencoded* format with a character encoding of UTF-8 [OAuth 2.1, Section 4.2.2].
 
-The Authorization Clients SHALL present its client\_id and client\_secret in a HTTP Basic Authentication Header to the Authorization Server.
+The Authorization Clients SHALL present its *client\_id* and *client\_secret* in a HTTP Basic Authentication Header to the Authorization Server.
 
-A non-normative example of the access token request with client authentication using the *client_id* and *client_secret* in the HTTP Authorization header, MAY be as follows:
+Figure 3.71.4.1.2 is a non-normative example of the access token request with client authentication using the *client_id* and *client_secret* in the HTTP Authorization header:
 
 ```http
 POST /token HTTP/1.1
@@ -616,12 +616,13 @@ grant_type=client_credentials
 &scope=scope_1 scope_2 ... scope_N
 &resource=https://rs.example.com/
 ```
+**Figure 3.71.4.1.1-2: Example Access Token Request**
 
 ##### 3.71.4.1.2 Authorization Code grant type
 
 ![ITI-71 Authorization Code](media/authorization-code-grant.png)
 
-Figure 3.71.4.1.1-1: Sequence of HTTP requests in the client authorization code grant type.
+**Figure 3.71.4.1.1-3: Sequence of HTTP requests in the client authorization code grant type**
 
 ```plantuml
 @startuml authorization-code-grant
@@ -653,7 +654,7 @@ end
 @enduml
 ```
 
-This grant type SHALL be used by confidential, credential and public clients, if the explicit consent of the user is required to authorize the Authorization Client to access data on behalf of the user.
+This grant type shall be used by confidential, credential and public clients, if the explicit consent of the user is required to authorize the Authorization Client to access data on behalf of the user.
 
 The Authorization Client actor claiming the Authorization Server Metadata option SHALL use the "authorization_endpoint" URL from the Authorization Server Metadata Document to redirect the User-Agent.
 
@@ -675,7 +676,7 @@ The Authorization Client directs the user-agent to make a HTTP GET request to th
 
 - *scope* (OPTIONAL): The scope claimed by the Authorization Client.
 
-A non-normative example of the authorization request is as follows:
+Figure 3.71.4.1.1-4 is a non-normative example of the authorization request:
 
 ```http
 GET /authorize?
@@ -690,10 +691,11 @@ GET /authorize?
   HTTP/1.1
 Host: server.example.com
 ```
+**Figure 3.71.4.1.1-4: Example Authorization Request**
 
 If the access request is granted (by the user or some other access policy), the Authorization Server issues an authorization code. 
 
-The Authorization Server SHALL redirect the user agent to the Authorization Clients redirect URI with the authorization response parameter in the *application/x-www-form-urlencoded* format. The response parameter SHALL be as follows:
+The Authorization Server shall redirect the user agent to the Authorization Clients redirect URI with the authorization response parameter in the *application/x-www-form-urlencoded* format. The response parameter shall be as follows:
 
 - *code* (REQUIRED): The authorization code generated by the Authorization Server.  
 
@@ -704,7 +706,7 @@ HTTP/1.1 302 Found
 Location: https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=xyz
 ```
 
-The Authorization Client SHALL use the *authorization code* in an access token request to retrieve an access token and token metadata from the Authorization Server.
+The Authorization Client shall use the *authorization code* in an access token request to retrieve an access token and token metadata from the Authorization Server.
 
 The Authorization Client actor claiming the Authorization Server Metadata option SHALL use the "token_endpoint" URL from the Authorization Server Metadata Document to obtain the access token.
 
@@ -720,7 +722,7 @@ It makes a HTTP POST request to the token endpoint with the following parameters
 
 - *code_verifier*: The original code verifier string. REQUIRED, if the "code_challenge" parameter was used in the authorization request. SHALL NOT be used otherwise.
 
-A non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header, MAY be as follows:
+Figure 3.71.4.1.1-6 non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header:
 
 ```http
 POST /token HTTP/1.1
@@ -734,9 +736,10 @@ grant_type=authorization_code
 &code_verifier=3641a2d12d66101249cdf7a79c000c1f8c05d2aafcf14bf146497bed
 
 ```
+**Figure 3.71.4.1.1-5: Example Access Token Request**
 
 ##### 3.71.4.1.3 Expected Actions
-The Authorization Server upon receiving a Get Token Request SHALL validate all incoming values, including (non-exhaustive):
+The Authorization Server upon receiving a Get Token Request shall validate all incoming values, including (non-exhaustive) TODO:  Not too helpful to make a non-exhaustive list:
 * scope values
 * client identifier and credentials
 * resource values
@@ -745,27 +748,27 @@ The Authorization Server upon receiving a Get Token Request SHALL validate all i
 
 The scope parameter incorporated in the token requests SHALL be used to restrict authorization grants to specific actions (e.g., restrict authorization to specific resources to read-only) and to convey claims, which at runtime are known to the Authorization Client only (e.g., if the user claims a breaking-the-glass access in a emergency situation). The Authorization Server MAY refuse token requests that mention scope values that are unknown to the Authorization Server.
 
-Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.
+Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.  TODO: Does this belong in Security Considerations?  (Same with the next paragraph
 
 The Authorization Client is RECOMMENDED to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server SHOULD evaluate any resource values provided as part of the token request procedure. The Authorization Server SHOULD execute policies to detect wether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers MUST limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
-If the request is valid, all access policy criteria are met the Authorization Server SHALL respond with the access token response as outlined in section [3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
+If the request is valid, all access policy criteria are met the Authorization Server SHALL respond with the access token response as outlined in Section [3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
 
 If the authorization request is invalid, the Authorization Server SHALL react as defined in [OAuth 2.1, Section 4.1.2.1].
 
 ###### 3.71.4.1.3.1 Client Credential grant type
 
-The Authorization Server SHALL authenticate the Authorization Client using it's client identifier and secret as communicated in the HTTP Authorization header.
+The Authorization Server shall authenticate the Authorization Client using its client identifier and secret as communicated in the HTTP Authorization header.
 
-The Authorization Server SHALL verify the access token request as described in [OAuth 2.1, Section 4.2.2]
+The Authorization Server shall verify the access token request as described in [OAuth 2.1, Section 4.2.2]
 
 ###### 3.71.4.1.3.2 Authorization Code grant type
 
-The Authorization Server SHALL authenticate confidential and credential clients using the *client\_id* and *client\_secret*, or by other reliable client authentication method. In the latter case, the Authorization Server SHALL resolve the client authentication to a *client\_id* which was registered beforehand.     
+The Authorization Server shall authenticate confidential and credential clients using the *client\_id* and *client\_secret*, or by other reliable client authentication method. In the latter case, the Authorization Server SHALL resolve the client authentication to a *client\_id* which was registered beforehand.     
 
-The Authorization Server SHALL verify that all required parameters of the authorization request are present and valid. If valid, the Authorization Server SHALL authenticate the user and obtain the user consent (by presenting the user a form to authorize specific scopes or by establishing approval via other means). When the user consent is established, the Authorization Server SHALL issue an authorization code to the client redirect URI conveying the authorization code and client state value.
+The Authorization Server shall verify that all required parameters of the authorization request are present and valid. If valid, the Authorization Server shall authenticate the user and obtain the user consent (by presenting the user a form to authorize specific scopes or by establishing approval via other means). When the user consent is established, the Authorization Server shall issue an authorization code to the client redirect URI conveying the authorization code and client state value.
 
-The Authorization Client SHALL use the authorization code to request the access token from the Authorization Server. The Authorization Server SHALL verify the access token request as described in [OAuth 2.1, Section 4.1.3]. 
+The Authorization Client shall use the authorization code to request the access token from the Authorization Server. The Authorization Server SHALL verify the access token request as described in [OAuth 2.1, Section 4.1.3]. 
 
 #### 3.71.4.2 Get Authorization Token Response
 
@@ -788,7 +791,7 @@ The access token response MAY contain other parameter or extensions depending on
 
 The Authorization Server SHALL include the HTTP *Cache-Control* response header field with value *no-store* and the *Pragma* response header field value *no-cache* to the access token response [OAuth 2.1, Section 4.2.3].
 
-A non-normative example of the access token response is as follows:
+Figure 3.71.4.2.1-1 is non-normative example of the access token response:
 
 ```http
 HTTP/1.1 200 OK
@@ -804,13 +807,14 @@ Pragma: no-cache
   "example_parameter": "example_value"
 }
 ```
+**Figure 3.71.4.2.1-1 0 Example Access Token Response**
 
 ##### 3.71.4.2.2 JSON Web Token Option
 The OAuth2 specifications does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option SHALL support access tokens formatted as signed JWT Tokens.
 
 JWT token SHALL be signed as specified in JSON Web Signature [RFC 7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) SHALL be used as described in [RFC 7515, Section 7.1].
 
-Any actor that supports this transaction MAY support the JWE (unsigned but encrypted) alternative of the JWT token.
+Any actor that supports this transaction MAY support the JWE (unsigned but encrypted) alternative of the JWT token. TODO:  Discuss in committee
 
 Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC 7518], the following algorithm SHALL be supported:
 - *HS256*: HMAC using SHA-256 hash algorithm.
@@ -841,7 +845,7 @@ In the JSON Web Token option the access token is defined as JSON object with the
 
 - *iat* (REQUIRED): The issuing date in Numeric Date format [JWT Access Token, Section 2.2].  
 
-The JWT access token MAY contain other parameter or extensions depending on the implementation details.
+The JWT access token may contain other parameter or extensions depending on the implementation details.
 
 
 ###### 3.71.4.2.2.1 JWT IUA extension
@@ -863,7 +867,7 @@ The Authorization Server and Resource Server SHALL support the following extensi
 
 - *person\_id* (OPTIONAL): Patient identifier, Citizen identifier, or other similar public identifier.
 
-The above claims SHALL be wrapped in an "extensions" object with key 'ihe\_iua' and a JSON value object containing the claims, as such
+The above claims shall be wrapped in an "extensions" object with key 'ihe\_iua' and a JSON value object containing the claims, e.g.,
 
 ```json
 "extensions" : {  
@@ -878,9 +882,9 @@ The above claims SHALL be wrapped in an "extensions" object with key 'ihe\_iua' 
 
 The claim content SHALL correspond to the content defined in the XUA specification (see ITI TF-2b: 3.40.4.1.2 Message Semantics).
 
-The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attributes is shown in Table 3.71.6.1.2-1 below.
+The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attributes is shown in Table 3.71.3.2.2.1-1 below.
 
-Table 3.71.6.1.1-1: JWT claims of the IUA extension and corresponding XUA Assertion attributes
+**Table 3.71.4.2.2.1-1: JWT claims of the IUA extension and corresponding XUA Assertion attributes**
 
 |JWT Claim                      |XUA Attribute              
 |-------------------------------|---------------------------
@@ -896,7 +900,7 @@ Table 3.71.6.1.1-1: JWT claims of the IUA extension and corresponding XUA Assert
 
 ###### 3.71.4.2.2.2 JWT BPPC extension
 
-In an environment which uses the IHE BPPC profile for documenting the consent, the Authorization Server and Resource Server SHALL support the following extension parameter:
+In an environment which uses the IHE Basic Patient Privacy Consents (BPPC) Profile for documenting the consent, the Authorization Server and Resource Server SHALL support the following extension parameter:
 
 - *patient\_id*: Patient identifier related to the Patient Privacy Policy Identifier. It's value SHOULD be the patient identifier in CX syntax or as URL.
 
@@ -904,7 +908,7 @@ In an environment which uses the IHE BPPC profile for documenting the consent, t
 
 - *acp*: Patient Privacy Policy Identifier.
 
-If present, the claims SHALL be wrapped in an "extensions" object with key 'ihe\_bppc' and a JSON value object containing the claims, as such
+If present, the claims SHALL be wrapped in an "extensions" object with key 'ihe\_bppc' and a JSON value object containing the claims, e.g.,
 
 ```json
 "extensions" : {  
@@ -917,9 +921,9 @@ If present, the claims SHALL be wrapped in an "extensions" object with key 'ihe\
 }
 ```
 
-The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attributes is shown in table Table 3.71.6.1.2-1 below.  
+The mapping of IUA extension claims to XUA-compliant SAML 2.0 Assertion attributes is shown in table Table 3.71.6.1.2-1 below.  
 
-Table 3.71.6.1.2-1: JWT claims of the BPPC extension and corresponding XUA Assertion attributes
+**Table 3.71.6.1.2-1: JWT claims of the BPPC extension and corresponding XUA Assertion attributes**
 
 |JWT Claim                      |XUA Attribute              
 |-------------------------------|---------------------------
@@ -982,29 +986,29 @@ The SAML 2.0 assertion content SHALL comply with XUA SAML assertion rules (see I
 In accordance to [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It MUST NOT contain more than one SAML 2.0 Assertion. The SAML Assertion XML data MUST be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data MUST NOT be line wrapped and pad characters ("=") MUST NOT be included.
 
 ##### 3.71.4.2.3 Token Introspection Option
-Implementations relying on Token Introspection option are not restricted in the access token format. This format MAY be different from the JWT or SAML tokens as described in section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option). 
+Implementations relying on Token Introspection option are not restricted in the access token format. This format MAY be different from the JWT or SAML tokens as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option). 
 
-*Note:* using this option, the access token MAY be formatted as an opaque identifier without further (security sensitive) content. In such cases, the Authorization Server MUST have means to retrieve and communicate the associated claims during token introspection (for details see transaction ITI-103)
+*Note:* using this option, the access token may be formatted as an opaque identifier without further (security sensitive) content. In such cases, the Authorization Server MUST have means to retrieve and communicate the associated claims during token introspection (for details see transaction ITI-103)
 
 ### 3.71.5 Security Considerations
 
-Authorization Client and Authorization Server claiming compliance with this profile SHALL fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], especially:
+Authorization Client and Authorization Server claiming compliance with this profile SHALL fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], especially:  TODO:  "especially" sounds like you've selected some.  Is it all, or this list?
 
-- All HTTP transaction MUST be secured by using TLS or equivalent transport security.
+- All HTTP transaction shall be secured by using TLS or equivalent transport security.
 
-- Authorization Clients SHALL verify the identity of the Authorization Server, either by validating the TLS certificate chain or by other reliable methods.
+- Authorization Clients shall verify the identity of the Authorization Server, either by validating the TLS certificate chain or by other reliable methods.
 
-- Authorization codes SHALL be for single use and short-lived with a lifetime less or equal to 5 minutes.
+- Authorization codes shall be for single use and short-lived with a lifetime less or equal to 5 minutes.
 
-- Access token SHOULD be short-lived with a lifetime of 1 hour or less. A lifetime less or equal to 5 minutes is RECOMMENDED.
+- Access token should be short-lived with a lifetime of 1 hour or less. A lifetime less or equal to 5 minutes is recommended.
 
-- Refresh token MAY be long lived.
+- Refresh token may be long lived.
 
 - To reduce the attack surface, client claims and authorization grants SHALL be the minimal. I.e., the authorization grant scope requested by the Authorization Client SHALL be the minimal required scope for the resource request to be used for.
 
 #### 3.71.5.1 Security Audit Considerations
 
-Authorization Servers SHOULD produce an audit record for any failed attempt to obtain authorization. IHE does not specify the format of audit records for Authorization Servers.
+TODO: Revisit the "should" and " may in this section Authorization Servers SHOULD produce an audit record for any failed attempt to obtain authorization. IHE does not specify the format of audit records for Authorization Servers.
 
 Authorization Clients MAY generate an audit message when an authorized transaction is performed or attempted.
 
