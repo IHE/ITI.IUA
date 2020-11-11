@@ -29,8 +29,8 @@ This supplement describes changes to the existing technical framework documents.
 "Boxed" instructions like the sample below indicate to the Volume Editor how to integrate the relevant section(s) into the relevant Technical Framework volume.
 
 
-|  **Editor please Amend Section X.X by the following**  |
-|----|
+| **Editor please Amend Section X.X by the following** |
+| ---------------------------------------------------- |
 
 
 Where the amendment adds text, make the added text **<ins>bold underline</ins>**. Where the amendment removes text, make the removed text **~~bold strikethrough~~**. When entire new sections are added, introduce with editor's instructions to "add new text" or similar, which for readability are not bolded or underlined.
@@ -59,8 +59,8 @@ The current version of the IHE Technical Framework can be found at: [http://www.
     - [34.4 IUA Overview](#344-iua-overview)
     - [34.5 IUA Security Considerations](#345-iua-security-considerations)
     - [34.6 IUA Cross Profile Considerations](#346-iua-cross-profile-considerations)
-- [Volume 2 -- Transactions](#volume-2----transactions)
-    - [3.71 Get Authorization Token](#371-get-authorization-token)
+- [Volume 2b -- Transactions](#volume-2b----transactions)
+    - [3.71 Get Authorization Token [ITI-71]](#371-get-authorization-token-iti-71)
     - [3.72 Incorporate Authorization Token](#372-incorporate-authorization-token)
     - [3.102 Introspect Token](#3102-introspect-token)
     - [3.103 Get Authorization Server Metadata](#3103-get-authorization-server-metadata)
@@ -111,7 +111,7 @@ Additional issues:
 
 -   In-house application distribution needing to provide authorization for applications used within the facility.
 
--   IT administrators prefering a common method to authorize use of in-house web applications and access to in-house resources.
+-   IT administrators preferring a common method to authorize use of in-house web applications and access to in-house resources.
 
 -   Providers and Specialists having authorization needs to deal with other organizations and with many resource services.
 
@@ -148,46 +148,46 @@ IUA also assumes that this profile is operating in an environment where access c
 
 # General Introduction
 
-|**Editor please Update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.**  |
-|------------------------------|
+| **Editor please Update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.** |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 
 **Appendix A - Actor Summary Definitions**
 
 
-|**Editor please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
-|------------------------------|  
+| **Editor please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
+| --------------------------------------------------------------------------------------------------------------- |
 
 &nbsp;  
 
-|Actor                |Definition
-|-----                |----------
-|Authorization Client |A client that retrieves access tokens and presents them as part of transactions.
-|Authorization Server |A server that issues access tokens to requesting clients.
-|Resource Server      |A server that provides services that need authorization.
+| Actor                | Definition                                                                       |
+| -------------------- | -------------------------------------------------------------------------------- |
+| Authorization Client | A client that retrieves access tokens and presents them as part of transactions. |
+| Authorization Server | A server that issues access tokens to requesting clients.                        |
+| Resource Server      | A server that provides services that need authorization.                         |
 
 
 **Appendix B - Transaction Summary Definitions**
 
 
-|**Editor please Add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:**  |
-|------------------------------|  
+| **Editor please Add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:** |
+| --------------------------------------------------------------------------------------------------------------------------- |
 
 &nbsp;  
 
-|Transaction                                |Definition
-|-----------                                |----------
-|Incorporate Authorization Token \[ITI-72\] |Add an access token to a transaction.
-|Get Authorization Token \[ITI-71\]         |Request and obtain an access token for use in authorized transactions.
-|Introspect Token \[ITI-102\]               |Obtain the state and claims associated with an access token.
-|Get Authorization Server Metadata \[ITI-103\]               |Obtain metadata about a Authorization Server, such as endpoint locations and signing key material.
+| Transaction                                   | Definition                                                                                         |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Incorporate Authorization Token \[ITI-72\]    | Add an access token to a transaction.                                                              |
+| Get Authorization Token \[ITI-71\]            | Request and obtain an access token for use in authorized transactions.                             |
+| Introspect Token \[ITI-102\]                  | Obtain the state and claims associated with an access token.                                       |
+| Get Authorization Server Metadata \[ITI-103\] | Obtain metadata about a Authorization Server, such as endpoint locations and signing key material. |
 
 
 # Volume 1 -- Profiles
 
 
-|  **Editor please add the following section 34 to Volume 1** |
-|------------------------------|
+| **Editor please add the following section 34 to Volume 1** |
+| ---------------------------------------------------------- |
 
 
 # 34 IUA Profile
@@ -224,18 +224,18 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 
 **Table 34.1-1: IUA Profile - Actors and Transactions** TODO: Lynn broke this table
 
-|Actors               |Transactions                      |Optionality	|Reference      
-|----                 |----                              |---        	|-----          
-|Authorization Client |Get Authorization Token           |O          	|ITI TF-2b: 3.71
-|                     |Incorporate Authorization Token   |R          	|ITI TF-2b: 3.72
-|                     |Get Authorization Server Metadata |O           |ITI TF-2c: 3.103
-|Authorization Server |Get Authorization Token           |R          	|ITI TF-2b:  3.71
-|                     |Introspect Token                  |O  Note 1  	|ITI TF-2c: 3.102
-|                     |Get Authorization Server Metadata |O           |ITI TF-2c: 3.103
-|Resource Server      |Get Authorization Token  |O  Note 1          	|ITI TF-2b: 3.71
-|                     |Incorporate Authorization Token            |R   |ITI TF-2b: 3.72
-|                     |Introspect Token                  |O  Note 1  	|ITI TF-2c:  3.102
-|                     |Get Authorization Server Metadata |O           |ITI TF-2c: 3.103
+| Actors               | Transactions                      | Optionality | Reference         |
+| -------------------- | --------------------------------- | ----------- | ----------------- |
+| Authorization Client | Get Authorization Token           | O           | ITI TF-2b: 3.71   |
+|                      | Incorporate Authorization Token   | R           | ITI TF-2b: 3.72   |
+|                      | Get Authorization Server Metadata | O           | ITI TF-2c: 3.103  |
+| Authorization Server | Get Authorization Token           | R           | ITI TF-2b:  3.71  |
+|                      | Introspect Token                  | O  Note 1   | ITI TF-2c: 3.102  |
+|                      | Get Authorization Server Metadata | O           | ITI TF-2c: 3.103  |
+| Resource Server      | Get Authorization Token           | O  Note 1   | ITI TF-2b: 3.71   |
+|                      | Incorporate Authorization Token   | R           | ITI TF-2b: 3.72   |
+|                      | Introspect Token                  | O  Note 1   | ITI TF-2c:  3.102 |
+|                      | Get Authorization Server Metadata | O           | ITI TF-2c: 3.103  |
 
 *Note 1:* Optionality of this transaction is "R" for an actor that supports the Token Instrospection Option.
 
@@ -285,20 +285,19 @@ Options that may be selected for each actor in this profile, if any, are listed 
 
 Table 34.2-1: IUA - Actors and Options
 
-| IUA Actor            | Option                        | Reference
-|----------------------|-------------------------------|----------------
-| Authorization Client | Authorization Server Metadata | Section 34.2.1  		
-| Authorization Server | JWT Token (Note 1)  	 | Section 34.2.2  	
-|                      | SAML Token (Note 1)         | Section 34.2.3  	
-|                      | Token Introspection (Note 1)    | Section 34.2.4  		
-|                      | Authorization Server Metadata 	 | Section 34.2.1  	
-| Resource Server      | JWT Token (Note 1) 	 | Section 34.2.2  	
-|                      | SAML Token (Note 1) 		 | Section 34.2.3  	
-|                      | Token Introspection( Note 1)	 | Section 34.2.4  	
-|                      | Authorization Server Metadata  | Section 34.2.1  	
+| IUA Actor            | Option                        | Reference      |
+| -------------------- | ----------------------------- | -------------- |
+| Authorization Client | Authorization Server Metadata | Section 34.2.1 |
+| Authorization Server | JWT Token (Note 1)            | Section 34.2.2 |
+|                      | SAML Token (Note 1)           | Section 34.2.3 |
+|                      | Token Introspection (Note 1)  | Section 34.2.4 |
+|                      | Authorization Server Metadata | Section 34.2.1 |
+| Resource Server      | JWT Token (Note 1)            | Section 34.2.2 |
+|                      | SAML Token (Note 1)           | Section 34.2.3 |
+|                      | Token Introspection( Note 1)  | Section 34.2.4 |
+|                      | Authorization Server Metadata | Section 34.2.1 |
 
-*Note 1:* Authorization Server or Resource Server actors shall support at least one of the following options: JWT Token, SAML, or Token Introspection.
-The Authorization Client is not and does not need to be aware of the token processing options.
+*Note 1:* Authorization Server or Resource Server actors shall support at least one of the following options: JWT Token, SAML, or Token Introspection. The Authorization Client is not and does not need to be aware of the token processing options.
 
 ### 34.2.1 Authorization Server Metadata option
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
@@ -338,11 +337,11 @@ An actor from this profile shall implement the required transactions and/or cont
 Table 34.3-1: Required Actor Groupings
 
 
-  |IUA Actor            |Actor to be grouped with   |Reference                    |Content Bindings Reference
-  |----                 |-----                      |-----                        |-----                      
-  |Authorization Server |CT / Time Client                |ITI TF-1:7 Consistent Time   | --                          
-  |Resource Server      |CT / Time Client                |ITI TF-1:7 Consistent Time   | --                          
-  |Authorization Client | --                        | --                          | --                          
+  | IUA Actor            | Actor to be grouped with | Reference                  | Content Bindings Reference |
+  | -------------------- | ------------------------ | -------------------------- | -------------------------- |
+  | Authorization Server | CT / Time Client         | ITI TF-1:7 Consistent Time | --                         |
+  | Resource Server      | CT / Time Client         | ITI TF-1:7 Consistent Time | --                         |
+  | Authorization Client | --                       | --                         | --                         |
 
 ## 34.4 IUA Overview
 
@@ -436,8 +435,8 @@ The SAML Token Option in IUA enables an Authorization Client to incorporate acce
 
 # Volume 2b -- Transactions
 
-| **Editor please Add Section 3.71**  |
-|------------------------------|
+| **Editor please Add Section 3.71** |
+| ---------------------------------- |
 
 
 ## 3.71 Get Authorization Token [ITI-71]
@@ -491,11 +490,11 @@ This profile defines the following actors and roles:
 
 Table 3.71.2-1: Actor Roles
 
-|Actor                  |Role                                                           |
-|-------                |-----                                                          |
-|Authorization Client   | Client requesting an access token to authorize RESTful transactions    |
-|Resource Server        | Server requesting an access token to authorize token introspection requests    |
-|Authorization Server   | Server that grants access tokens.                             |
+| Actor                | Role                                                                        |
+| -------------------- | --------------------------------------------------------------------------- |
+| Authorization Client | Client requesting an access token to authorize RESTful transactions         |
+| Resource Server      | Server requesting an access token to authorize token introspection requests |
+| Authorization Server | Server that grants access tokens.                                           |
 
 *Note:* The requirements for the Authorization Client and Resource Server are identical for this transaction. For brevity, the solely term Authorization Client is used in the remainder of this transaction description. TODO:  REmove this note and use the "Role" convention instead in the actor table above.
 
@@ -886,16 +885,16 @@ The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attribut
 
 **Table 3.71.4.2.2.1-1: JWT claims of the IUA extension and corresponding XUA Assertion attributes**
 
-|JWT Claim                      |XUA Attribute              
-|-------------------------------|---------------------------
-|subject\_name                  |urn:oasis:names:tc:xspa:1.0:subject:subject-id
-|subject\_organization          |urn:oasis:names:tc:xspa:1.0:subject:organization
-|subject\_organization\_id      |urn:oasis:names:tc:xspa:1.0:subject:organization-id
-|subject\_role                  |urn:oasis:names:tc:xacml:2.0:subject:role
-|purpose\_of\_use               |urn:oasis:names:tc:xspa:1.0:subject:purposeofuse
-|home\_community\_id            |urn:ihe:iti:xca:2010:homeCommunityId
-|national\_provider\_identifier |urn:oasis:names:tc:xspa:1.0:subject:npi
-|person\_id 					|*not defined*
+| JWT Claim                      | XUA Attribute                                       |
+| ------------------------------ | --------------------------------------------------- |
+| subject\_name                  | urn:oasis:names:tc:xspa:1.0:subject:subject-id      |
+| subject\_organization          | urn:oasis:names:tc:xspa:1.0:subject:organization    |
+| subject\_organization\_id      | urn:oasis:names:tc:xspa:1.0:subject:organization-id |
+| subject\_role                  | urn:oasis:names:tc:xacml:2.0:subject:role           |
+| purpose\_of\_use               | urn:oasis:names:tc:xspa:1.0:subject:purposeofuse    |
+| home\_community\_id            | urn:ihe:iti:xca:2010:homeCommunityId                |
+| national\_provider\_identifier | urn:oasis:names:tc:xspa:1.0:subject:npi             |
+| person\_id                     | *not defined*                                       |
 
 
 ###### 3.71.4.2.2.2 JWT BPPC extension
@@ -925,11 +924,11 @@ The mapping of IUA extension claims to XUA-compliant SAML 2.0 Assertion attribut
 
 **Table 3.71.6.1.2-1: JWT claims of the BPPC extension and corresponding XUA Assertion attributes**
 
-|JWT Claim                      |XUA Attribute              
-|-------------------------------|---------------------------
-|patient\_id                    |urn:oasis:names:tc:xacml:2.0:resource:resource-id
-|doc\_id                        |urn:ihe:iti:bppc:2007:docid
-|acp                            |urn:ihe:iti:xua:2012:acp
+| JWT Claim   | XUA Attribute                                     |
+| ----------- | ------------------------------------------------- |
+| patient\_id | urn:oasis:names:tc:xacml:2.0:resource:resource-id |
+| doc\_id     | urn:ihe:iti:bppc:2007:docid                       |
+| acp         | urn:ihe:iti:xua:2012:acp                          |
 
 ###### 3.71.4.2.2.3 Example
 The following is a non-normative example of JWT access token:
@@ -1013,48 +1012,48 @@ TODO: Revisit the "should" and " may in this section Authorization Servers SHOUL
 Authorization Clients MAY generate an audit message when an authorized transaction is performed or attempted.
 
 
-|                                   | Field Name              | Opt             | Value Constraints|
-|-----------------                  |-----------------        |-----------------|------------------|
-| **Event**<br/>(AuditMessage/EventIdentification)                             | EventID                 | M               | EV(110114, DCM, "User Authentication") |
-|                                   | EventActionCode         | M               | "E" (Execute)   |
-|                                   | *EventDateTime*         | *M*             | *not specialized* |
-|                                   | *EventOutcomeIndicator* | *M*             | *not specialized* |
-|                                   | EventTypeCode           | M               | EV("ITI-71", IHE, "User Authorization")|
-| **Source (1)**                    |                 |                 |                 |
-| **Human Requestor (0)**           |                 |                 |                 |
-| **Destination  (0)**              |                 |                 |                 |
-| **Audit Source (Client Authentication  Agent) (1)** ||                |                 |                
-| **Participant Object (1)**        |                 |                 |                 |
+|                                                     | Field Name              | Opt | Value Constraints                       |
+| --------------------------------------------------- | ----------------------- | --- | --------------------------------------- |
+| **Event**<br/>(AuditMessage/EventIdentification)    | EventID                 | M   | EV(110114, DCM, "User Authentication")  |
+|                                                     | EventActionCode         | M   | "E" (Execute)                           |
+|                                                     | *EventDateTime*         | *M* | *not specialized*                       |
+|                                                     | *EventOutcomeIndicator* | *M* | *not specialized*                       |
+|                                                     | EventTypeCode           | M   | EV("ITI-71", IHE, "User Authorization") |
+| **Source (1)**                                      |                         |     |                                         |
+| **Human Requestor (0)**                             |                         |     |                                         |
+| **Destination  (0)**                                |                         |     |                                         |
+| **Audit Source (Client Authentication  Agent) (1)** |                         |     |                                         |
+| **Participant Object (1)**                          |                         |     |                                         |
 
 Where:
 
-|                                   | Field Name              | Opt             | Value Constraints|
-|-----------------                  |-----------------        |-----------------|------------------|
-| **Source** <br/>(AuditMessage/ActiveParticipant) | UserID          | M               | The process ID as used within the local operating system in the local system logs.|
-|                 | *Alternative UserID*  |  *U*       | *not specialized*            |
-|                 | *UserName*      | *U*         | *not specialized*            |
-|                 | *UserIsRequestor*  |  *M*         | *not specialized*           |
-|                 | RoleIDCode      | M               | EV(110150, DCM, "Application")  |
-|                 | NetworkAccessPointTypeCode  | M               | "1" for machine (DNS) name, "2" for IP address
-|                 | NetworkAccessPointID  | M               | The machine name or IP address       |
-| **Audit Source**<br/> AuditMessage/ AuditSourceIdentification    | *AuditSourceID* | *U* | *not specialized* |
-|                                                             | *AuditEnterpriseSiteID* | *U* | *not specialized* |
-|                                                             | *AuditSourceTypeCode*   | *U* | *not specialized* |
-| **Token** <br/>(AuditMessage/ ParticipantObjectIdentification)  | ParticipantObjectTypeCode | M               | "2" (System)    |
-|                 | ParticipantObjectTypeCodeRole | M               | "13" (Security Resource) |
-|                 | *ParticipantObjectDataLifeCycle* | *U*         | *not specialized*            |
-|                 | *ParticipantObjectIDTypeCode* | *U*         | *not specialized*           |
-|                 | *ParticipantObjectSensitivity*  | *U*         | *not specialized*           |
-|                 | *ParticipantObjectID*   | *U*         | *not specialized*            |
-|                 | *ParticipantObjectName*  | *U*         | *not specialized*            |
-|                 | ParticipantObjectQuery | M               | URL requested   |
-|                 | *ParticipantObjectDetail* | *U*         | *not specialized*           |
+|                                                                | Field Name                       | Opt | Value Constraints                                                                  |
+| -------------------------------------------------------------- | -------------------------------- | --- | ---------------------------------------------------------------------------------- |
+| **Source** <br/>(AuditMessage/ActiveParticipant)               | UserID                           | M   | The process ID as used within the local operating system in the local system logs. |
+|                                                                | *Alternative UserID*             | *U* | *not specialized*                                                                  |
+|                                                                | *UserName*                       | *U* | *not specialized*                                                                  |
+|                                                                | *UserIsRequestor*                | *M* | *not specialized*                                                                  |
+|                                                                | RoleIDCode                       | M   | EV(110150, DCM, "Application")                                                     |
+|                                                                | NetworkAccessPointTypeCode       | M   | "1" for machine (DNS) name, "2" for IP address                                     |
+|                                                                | NetworkAccessPointID             | M   | The machine name or IP address                                                     |
+| **Audit Source**<br/> AuditMessage/ AuditSourceIdentification  | *AuditSourceID*                  | *U* | *not specialized*                                                                  |
+|                                                                | *AuditEnterpriseSiteID*          | *U* | *not specialized*                                                                  |
+|                                                                | *AuditSourceTypeCode*            | *U* | *not specialized*                                                                  |
+| **Token** <br/>(AuditMessage/ ParticipantObjectIdentification) | ParticipantObjectTypeCode        | M   | "2" (System)                                                                       |
+|                                                                | ParticipantObjectTypeCodeRole    | M   | "13" (Security Resource)                                                           |
+|                                                                | *ParticipantObjectDataLifeCycle* | *U* | *not specialized*                                                                  |
+|                                                                | *ParticipantObjectIDTypeCode*    | *U* | *not specialized*                                                                  |
+|                                                                | *ParticipantObjectSensitivity*   | *U* | *not specialized*                                                                  |
+|                                                                | *ParticipantObjectID*            | *U* | *not specialized*                                                                  |
+|                                                                | *ParticipantObjectName*          | *U* | *not specialized*                                                                  |
+|                                                                | ParticipantObjectQuery           | M   | URL requested                                                                      |
+|                                                                | *ParticipantObjectDetail*        | *U* | *not specialized*                                                                  |
 
 
 
 
-| **Editor please Add Section 3.72**  |
-|------------------------------|
+| **Editor please Add Section 3.72** |
+| ---------------------------------- |
 
 
 ## 3.72 Incorporate Authorization Token
@@ -1068,10 +1067,10 @@ This transaction is used to incorporate authorization information to HTTP RESTfu
 
 Table 3.72.2-1: Actor Roles
 
-|Actor                |Role
-|------------         |-------------------------------------------------------------
-| Authorization Client| Authorization component of a HTTP RESTful transaction client.
-| Resource Server     | Authorization component of a HTTP RESTful transaction server.
+| Actor                | Role                                                          |
+| -------------------- | ------------------------------------------------------------- |
+| Authorization Client | Authorization component of a HTTP RESTful transaction client. |
+| Resource Server      | Authorization component of a HTTP RESTful transaction server. |
 
 
 ### 3.72.3 Referenced Standards
@@ -1208,7 +1207,7 @@ where:
 
 
 | **Editor please Add Section 3.102** |
-|------------------------------|
+| ----------------------------------- |
 
 
 ## 3.102 Introspect Token
@@ -1230,10 +1229,10 @@ This profile defines the following actors and roles:
 
 Table 3.102.2-1: Actor Roles
 
-|Actor                  |Role                                                           |
-|-------                |-----                                                          |
-|Resource Server        | Introspection Requester    |
-|Authorization Server   | Introspection Responder    |
+| Actor                | Role                    |
+| -------------------- | ----------------------- |
+| Resource Server      | Introspection Requester |
+| Authorization Server | Introspection Responder |
 
 ### 3.102.3 Referenced Standards
 
@@ -1396,7 +1395,7 @@ Resource Servers SHALL use the introspection results as authorization claims whe
 
 
 | **Editor please Add Section 3.103** |
-|------------------------------|
+| ----------------------------------- |
 
 ## 3.103 Get Authorization Server Metadata
 
@@ -1412,11 +1411,11 @@ This profile defines the following actors and roles:
 
 Table 3.103.2-1: Actor Roles
 
-|Actor                  |Role                                                           |
-|-------                |-----                                                          |
-|Authorization Client   | Metadata Requester    |
-|Resource Server        | Metadata Requester |
-|Authorization Server   | Metadata Provider|
+| Actor                | Role               |
+| -------------------- | ------------------ |
+| Authorization Client | Metadata Requester |
+| Resource Server      | Metadata Requester |
+| Authorization Server | Metadata Provider  |
 
 ### 3.103.3 Referenced Standards
 
@@ -1535,22 +1534,22 @@ As the metadata document is intended to support the authorization processes, the
 
 # 33 MHD Profile
 
-| **Editor: Please add the following to MHD Volume 1: section 33.5 MHD Security Considerations**                      |
-|------------------------------------------------|
+| **Editor: Please add the following to MHD Volume 1: section 33.5 MHD Security Considerations** |
+| ---------------------------------------------------------------------------------------------- |
 
 ### 33.5.1 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific. See the Security Considerations sections of the MHD defined transactions for guidance on scope definition when grouped with IUA actors.
 
-| **Editor: Please add the following to MHD Volume 1: section 33.6 MHD Cross Profile Considerations**                      |
-|------------------------------------------------|
+| **Editor: Please add the following to MHD Volume 1: section 33.6 MHD Cross Profile Considerations** |
+| --------------------------------------------------------------------------------------------------- |
 
 ### 33.6.4 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific. See the Security Considerations sections of the MHD defined transactions for guidance on scope definition when grouped with IUA actors.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.65.5 Security Considerations**                      |
-|------------------------------------------------|
+| **Editor: Please add the following to MHD Volume 2: section 3.65.5 Security Considerations** |
+| -------------------------------------------------------------------------------------------- |
 
 #### 3.65.5.2 Use with IUA Profile
 
@@ -1562,8 +1561,8 @@ scope: "ITI-65"
 
 This scope request authorizes the full ITI-65 transaction. This scope implicitly requests patient specific Create/Update for DocumentManifest, DocumentReference, List, and Binary. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.66.5 Security Considerations**                      |
-|------------------------------------------------|
+| **Editor: Please add the following to MHD Volume 2: section 3.66.5 Security Considerations** |
+| -------------------------------------------------------------------------------------------- |
 
 #### 3.66.5.2 Use with IUA Profile
 
@@ -1575,8 +1574,8 @@ scope: "ITI-66"
 
 This scope request authorizes the full [ITI-66] transaction. This scope implicitly requests patient specific Search/Read for DocumentManifest resources as defined in [ITI-66]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.67.5 Security Considerations**                      |
-|------------------------------------------------|
+| **Editor: Please add the following to MHD Volume 2: section 3.67.5 Security Considerations** |
+| -------------------------------------------------------------------------------------------- |
 
 #### 3.67.5.2 Use with IUA Profile
 
@@ -1588,8 +1587,8 @@ scope: "ITI-67"
 
 This scope request authorizes the full [ITI-67] transaction. This scope implicitly requests patient specific Search/Read for DocumentReference resources as defined in [ITI-67]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.68.5 Security Considerations**                      |
-|------------------------------------------------|
+| **Editor: Please add the following to MHD Volume 2: section 3.68.5 Security Considerations** |
+| -------------------------------------------------------------------------------------------- |
 
 #### 3.68.5.2 Use with IUA Profile
 
@@ -1603,20 +1602,20 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 
 # 9 ATNA Profile
 
-| **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table**   |
-| add row after "STX WS-Security" for both Secure Node and Secure Application                           |
-|------------------------------------------------|
+| **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table** |
+| a-------------------------------------------------------------------------------------------------n |
+| ------------------------------------------------                                                    |
 
  "STX: HTTPS IUA" | ITI TF-1:9.2.6.7
 
-| **Editor: Please add section 9.2.6.7 as follows**      |
-|--------------------------------------------------------|
+| **Editor: Please add section 9.2.6.7 as follows** |
+| ------------------------------------------------- |
 
 #### 9.2.6.7 STX: HTTPS IUA
 The system will utilize server side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the IUA Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
 
-| **Editor: Please add the following section to Volume 2 as follows**    |
-|------------------------------------------------------------------------|
+| **Editor: Please add the following section to Volume 2 as follows** |
+| ------------------------------------------------------------------- |
 
 #### 3.19.6.6 STX: HTTPS IUA
 
