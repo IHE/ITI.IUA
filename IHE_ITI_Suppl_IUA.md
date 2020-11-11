@@ -1,4 +1,4 @@
- shall not  may **Integrating the Healthcare Enterprise**
+ **Integrating the Healthcare Enterprise**
 
 ![IHE\_LOGO\_for\_tf-docs](media/IHE-logo.jpeg)
 
