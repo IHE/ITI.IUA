@@ -61,7 +61,7 @@ The current version of the IHE Technical Framework can be found at: [http://www.
     - [34.6 IUA Cross Profile Considerations](#346-iua-cross-profile-considerations)
 - [Volume 2b -- Transactions](#volume-2b----transactions)
     - [3.71 Get Authorization Token [ITI-71]](#371-get-authorization-token-iti-71)
-    - [3.72 Incorporate Authorization Token](#372-incorporate-authorization-token)
+    - [3.72 Incorporate Authorization Token [ITI-72]](#372-incorporate-authorization-token-iti-72)
     - [3.102 Introspect Token](#3102-introspect-token)
     - [3.103 Get Authorization Server Metadata](#3103-get-authorization-server-metadata)
 - [33 MHD Profile](#33-mhd-profile)
@@ -442,7 +442,7 @@ The Authorization Server will typically have an administratively-managed list of
 
 The XUA Profile provides equivalent functionality as IUA, but fo for SOAP-based transactions. Both XUA and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
 
-- The XUA Profile defines the Provide X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not specify it (***what is"it" here***)  in detail, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
+- The XUA Profile defines the Get X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
 
 - While the XUA Profile relies on ATNA the Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
 
@@ -514,7 +514,9 @@ Table 3.71.2-1: Actor Roles
 | Resource Server      | Server requesting an access token to authorize token introspection requests |
 | Authorization Server | Server that grants access tokens.                                           |
 
-*Note:* The requirements for the Authorization Client and Resource Server are identical for this transaction. For brevity, the solely term Authorization Client is used in the remainder of this transaction description. TODO:  REmove this note and use the "Role" convention instead in the actor table above.
+*Note:* The requirements for the Authorization Client and Resource Server are identical for this transaction. For brevity, the solely term Authorization Client is used in the remainder of this transaction description.
+
+TODO:  Remove this note and use the "Role" convention instead in the actor table above.
 
 ### 3.71.3 Referenced Standards
 
@@ -1076,7 +1078,7 @@ Where:
 | ---------------------------------- |
 
 
-## 3.72 Incorporate Authorization Token
+## 3.72 Incorporate Authorization Token [ITI-72]
 
 ### 3.72.1 Scope
 
