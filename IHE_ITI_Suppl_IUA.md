@@ -460,6 +460,8 @@ The SAML Token Option in IUA enables an Authorization Client to incorporate acce
 
 This transaction is used by Authorization Clients to obtain an OAuth 2.1 compliant access token for use in a RESTful transaction to access data from a Resource Server.
 
+TODO ms: I agree to move the whole block starting from here to Vol1, but don't know where to put it?
+
 The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the following authorization grant types:
 
 -   *Authorization Code Grant* [OAuth 2.1, Section 4.1]. This grant type is optimized for confidential clients who make use of User Agents (e.g., web browsers).
@@ -517,6 +519,11 @@ Table 3.71.2-1: Actor Roles
 *Note:* The requirements for the Authorization Client and Resource Server are identical for this transaction. For brevity, the solely term Authorization Client is used in the remainder of this transaction description.
 
 TODO:  Remove this note and use the "Role" convention instead in the actor table above.
+
+TODO ms: We have to take into account, that we are talking of very different things here:
+- The Auth Client requests an access token to be incorporated into a request to a Resource Server to be used for authorize access to health data;
+- The Resource Server does not request an access token to incorporate to request to Resource Servers, but to convert the access token to a JWT or XUA assertion;   
+
 
 ### 3.71.3 Referenced Standards
 
