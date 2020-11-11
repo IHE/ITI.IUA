@@ -292,9 +292,9 @@ Table 34.2-1: IUA - Actors and Options
 ### 34.2.1 Authorization Server Metadata option
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
-TODO: An Authorization Client that supports this option shall... (Done)
+TODO: An Authorization Client that supports this option shall... (DONE)
 
-An Authorization Client that supports this option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint.
+An Authorization Client that supports this option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
 TODO: An Authorization Server that supports this option shall... (DONE)
 
@@ -302,18 +302,18 @@ Authorization Servers declaring the Authorization Server Metadata option SHALL p
 
 TODO: A Resource Server that supports this option shall... (DONE)
 
-Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint.
+Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
 
 ### 34.2.2 JWT Token Option
 This option uses JSON Web Token encoding of the Token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option)
 
-TODO: An Authorization Server that supports this option shall... (Done)
+TODO: An Authorization Server that supports this option shall... (DONE)
 
 An Authorization Servers that supports this option SHALL provide an endpoint to retrieve JWT access tokens to be
 incorporated in RESTful requests to Resource Servers.
 
-TODO: A Resource Server that supports this option shall... (Done)
+TODO: A Resource Server that supports this option shall... (DONE)
 
 A Resource Server that supports this option SHALL be able to accept JWT access tokens in RESTful requests,
 extract and validate the information provided in the JWT access token, and to enforce access policies based on it.
@@ -321,12 +321,12 @@ extract and validate the information provided in the JWT access token, and to en
 ### 34.2.3 SAML Token Option
 This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure.
 
-TODO: An Authorization Server that supports this option shall... (Done)
+TODO: An Authorization Server that supports this option shall... (DONE)
 
 An Authorization Servers that supports this option SHALL provide an endpoint to retrieve XUA compliant SAML 2.0
 access token to be incorporated in RESTful requests to Resource Servers.
 
-TODO: A Resource Server that supports this option shall... (Done)
+TODO: A Resource Server that supports this option shall... (DONE)
 
 A Resource Server that supports this option SHALL be able to accept XUA compliant access tokens in RESTful requests,
 extract and validate the information provided in the token, and to enforce access policies based on it.
@@ -608,7 +608,9 @@ autonumber stop
 
 The Authorization Client requests an access token using client credentials (or other supported means of authentication). This grant type SHALL be used by confidential clients only [OAuth 2.1, Section 4.2].
 
-An Authorization Client that supports the Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token.  TODO: This option-specific rqmt is mixed in with non-option rqmts.  Factor it out into a separate sub-section, or consider moving to the end of the section
+An Authorization Client that supports the Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token.  
+
+TODO: This option-specific rqmt is mixed in with non-option rqmts.  Factor it out into a separate sub-section, or consider moving to the end of the section
 
 The Authorization Client makes a HTTP(s) POST request to the token endpoint with the following parameters in the HTTP request entity-body [OAuth 2.1, Section 4.2.2]:
 
