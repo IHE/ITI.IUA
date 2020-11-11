@@ -91,7 +91,7 @@ The Basic Patient Privacy Consent (BPPC) Profile is associated with this profile
 
 IUA is not a substitute for the administrative activities such as withdrawing consent, policy setting, and other activities that BPPC documents provide. The current scope of IUA is the basic authorization activities.  Future scope may include greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE BPPC Profile.
 
-The administrative actions needed to establish an Authorization Server for IUA are not covered by these profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
+The administrative actions needed to establish an Authorization Server for IUA are not covered by this profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
 
 ### Background on the problem environment
 
@@ -119,13 +119,13 @@ Additional issues:
 
 There are also environmental assumptions made by this profile.
 
-IUA assumes that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose-related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about i will be rejected.
+IUA assumes that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose-related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about the patient, it will be rejected.
 
 IUA also assumes that this profile is operating in an environment where access consents are managed by BPPC or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. BPPC is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
 
 # Open Issues and Question
 
-- **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to MHD and does define a Scope for use with MHD transactions. That Scope for MHD does not use SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
+- **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to MHD and does define a Scope for use with MHD transactions. That Scope for MHD does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
 
 - **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. MHD Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
 
@@ -198,7 +198,7 @@ The IUA Profile adds authorization information to HTTP RESTful transactions. The
 
 The actors in the IUA Profile manage the tokens used for authorization of access to HTTP RESTful services based on the flows and transactions defined in the OAuth 2.1 Authorization Framework [OAuth 2.1]. Authorization Clients interact with the Authorization Server to retrieve access tokens and incorporate them into HTTP RESTful transactions to authorize access to resources on the Resource Servers.
 
-The OAuth 2.1 Authorization Framework requires client identification, which may be based on a *client\_id* parameter [OAuth 2.1, Section 2.2]. Depending on the grant type, the use of the *client\_id* may be required. For example the *Authorization Code* grant type requires the use of the *client\_id* for client identification [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2].
+The OAuth 2.1 Authorization Framework requires client identification, which may be based on a *client\_id* parameter [OAuth 2.1, Section 2.2]. Depending on the grant type, the use of the *client\_id* may be required. For example, the *Authorization Code* grant type requires the use of the *client\_id* for client identification [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2].
 
 The OAuth 2.1 Authorization Framework also requires client authentication for confidential and credential clients [OAuth 2.1, Section 2.3]. It recommends the use of to use asymmetric (public-key based) methods for client authentication [OAuth 2.1, Section 9.1], but allows other suitable HTTP based authentication schemes matching the security policy of the Authorization Server [OAuth 2.1, Section 2.3.2].
 
@@ -212,7 +212,7 @@ It is the responsibility of the Resource Server to enforce the access policies b
 
 The Resource Server may delegate the access policy enforcement to actors it is grouped with by providing the information from the access token and transaction data, or to other actors (e.g., by implementing the Authorization Decisions Verifier actor of the Secure Retrieve (SeR) Profile).
 
-Note: An analogy of the segregation of duties for access control between the Authorization Server and the Resource Server is given in a textbook (*Solving Identity Management in Modern Applications*, *APress 2019* by Yvonne Wilson and Abhishek Hingnikar) comparing the authorization and policy enforcement with a ticketing and entrance control to events (e.g, opera, cinema). In this analogy, the Authorization Server provides the ticket which authorizes participation, while additional checks are performed to finally participate to the event.  
+Note: An analogy of the segregation of duties for access control between the Authorization Server and the Resource Server is given in a textbook (*Solving Identity Management in Modern Applications*, *APress 2019* by Yvonne Wilson and Abhishek Hingnikar) comparing the authorization and policy enforcement with a ticketing and entrance control to events (e.g., opera, cinema). In this analogy, the Authorization Server provides the ticket which authorizes participation, while additional checks are performed to finally participate to the event.  
 
 The IUA Profile relies on the OAuth 2.1 Authorization Framework. Since the original publication of OAuth 2.0 in 2012, several new RFCs have been published that add or remove functionality from the core specification. Version 2.1 of the OAuth Authorization Framework consolidates and simplifies the most commonly used features and best practices of OAuth 2.0.
 
@@ -237,7 +237,7 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 |                      | Introspect Token                  | O  Note 1   | ITI TF-2c:  3.102 |
 |                      | Get Authorization Server Metadata | O           | ITI TF-2c: 3.103  |
 
-*Note 1:* Optionality of this transaction is "R" for an actor that supports the Token Instrospection Option.
+*Note 1:* Optionality of this transaction is "R" for an actor that supports the Token Introspection Option.
 
 ### 34.1.1 Actor Descriptions and Actor Profile Requirements
 
@@ -351,7 +351,7 @@ The term "authorization" and "access control" are used colloquially for a variet
 
 -   Provisioning -- Setting up the initial rules and updating them when the situation changes. The administrator may say "Authorize Dr. X to have access". The steps taken to make this happen are called provisioning.
 
--   Delegation -- Adding, transferring and revoking authorization from one person to another. This is closely related to provisioning. It differs in that it can only transfer authority that has already been provisioned, and it may track changes to provisioned access for the original person.
+-   Delegation -- Adding, transferring, and revoking authorization from one person to another. This is closely related to provisioning. It differs in that it can only transfer authority that has already been provisioned, and it may track changes to provisioned access for the original person.
 
 -   Authentication -- Determining that the actual user (at the moment of authentication) is the claimed identity.
 
@@ -365,7 +365,7 @@ The IUA Profile uses the terms "access token", "refresh token", "bearer token", 
 
 This profile also uses the terms "token introspection", "introspection endpoint", "introspection request", and "introspection response" as defined by the OAuth2 Token Introspection specification [RFC7662].
 
-The OAuth 2.1 Authorization Framework uses the term "resource owner" for the user an authorized client may access data on behalf of. Typically in health related environments, a healthcare professional accesses patients or organization related data (resources) for which the healthcare professional is not the "legal owner", but may access according to the access policies of the environment. To avoid any misunderstandings related to the OAuth terms "resource owner" and "legal owner", this profile uses the term "user" instead.
+The OAuth 2.1 Authorization Framework uses the term "resource owner" for the user an authorized client may access data on behalf of. Typically, in health related environments, a healthcare professional accesses patients or organization related data (resources) for which the healthcare professional is not the "legal owner", but may access according to the access policies of the environment. To avoid any misunderstandings related to the OAuth terms "resource owner" and "legal owner", this profile uses the term "user" instead.
 
 In accordance with the definitions in the OAuth 2.1 Authorization Framework [OAuth 2.1], this profile distinguishes confidential clients, credentialed clients and public clients as follows:
 
@@ -375,7 +375,7 @@ In accordance with the definitions in the OAuth 2.1 Authorization Framework [OAu
 
 - *public client* - a client where the user (in principle) has access to the client code and client data. Public clients cannot store client authentication data in a confidential way (e.g., single page web applications, native mobile apps on a device, if no additional features are implemented to make the client authentication data unavailable for the user).
 
-*Note:* A public client classification does not automatically mean the client is insecure. Public clients typically are under the full control of the user (e.g., a native app on the users device) and secured against malicious attacks. Public clients just cannot hide authentication data from the user, making client authentication useless.
+*Note:* A public client classification does not automatically mean the client is insecure. Public clients typically are under the full control of the user (e.g., a native app on the user's device) and secured against malicious attacks. Public clients just cannot hide authentication data from the user, making client authentication useless.
 
 ### 34.4.2 Use Cases
 
@@ -383,7 +383,7 @@ In accordance with the definitions in the OAuth 2.1 Authorization Framework [OAu
 
 The IUA Profile applies to use cases where a user authorizes an client application to access health data on behalf of the user using OAuth, including:   
 
-A healthcare professional uses a server hosted web application to access a patient's electronic health record (EHR) using RESTful transactions. The web application has been registered beforehand at the Authorization Server with client identifier and client authentication method (e.g. client secret) by a system administrator. When accessing a view on the EHR, the browser is redirected to the EHR's Authorization Server. The Authorization Server authenticates the healthcare professional either by enabling the user to enter the authentication factors (e.g. username, password and 2nd factor) or by redirecting to an Identity Provider (IdP). This step may be omitted if the browser already has an authenticated session (e.g. session cookie). After user authentication, the Authorization Server performs the necessary steps to authorize the web application access to the EHR data with application specific scope, either by contract or by explicit consent given by the healthcare professional. When authorized, the web application retrieves an access token which authorizes it to request and retrieve,on behalf of the healthcare professional the EHR data from the Resource Server(s) with an application-specific scope .
+A healthcare professional uses a server hosted web application to access a patient's electronic health record (EHR) using RESTful transactions. The web application has been registered beforehand at the Authorization Server with client identifier and client authentication method (e.g. client secret) by a system administrator. When accessing a view on the EHR, the browser is redirected to the EHR's Authorization Server. The Authorization Server authenticates the healthcare professional either by enabling the user to enter the authentication factors (e.g. username, password and 2nd factor) or by redirecting to an Identity Provider (IdP). This step may be omitted if the browser already has an authenticated session (e.g. session cookie). After user authentication, the Authorization Server performs the necessary steps to authorize the web application access to the EHR data with application specific scope, either by contract or by explicit consent given by the healthcare professional. When authorized, the web application retrieves an access token which authorizes it to request and retrieve, on behalf of the healthcare professional the EHR data from the Resource Server(s) with an application-specific scope .
 
 A healthcare professional uses a single page web application to access a patient's electronic health record (EHR) using RESTful transactions. At initial startup, the app registers with the Authorization Server using a dynamic client registration protocol. When accessing a view on the EHR, the steps follow the same steps as in the web application use case above.   
 
@@ -410,22 +410,22 @@ Revocation of delegation needs to be clearly specified by policy. Revocation may
 
 IUA uses OAuth 2.1 which contains references to security analyses. There are also a variety of analyses available in the public literature. The IUA Profile does not introduce new considerations to those analyses. We have not identified any new issues specific to healthcare.
 
-For confidential clients, this profiles requires client authentication using client\_id and client\_secret, if no other reliable client authentication method is used, and the client registration with a fixed redirect\_uri.
+For confidential clients, this profile requires client authentication using client\_id and client\_secret, if no other reliable client authentication method is used, and the client registration with a fixed redirect\_uri.
 
 IUA does not address issues around issuing and revoking client\_ids. OAuth 2.1 relies upon the client\_id for client identification and authorization. OAuth 2.1 does not further define how client\_ids are managed.
 
 Usually an Authorization Server publishes web forms where system administrators and users can apply for a client\_id. OAuth 2.1 defines a mechanism for dynamically registering clients with Authorization Servers, by defining a set of desired client metadata values to be made available to the Authorization Servers [OAuth 2.1, Section 2].  
 
-The Authorization Server will have an administratively-managed list of approved client\_ids for accepted clients. This list will be updated as new clients are approved or existing clients are removed. An access token will not be issued for unapproved clients. This assumes that the client\_id management will deal with these security considerations in a manner similar to the certificate management assumptions made for secure communication transactions.
+The Authorization Server will have an administratively managed list of approved client\_ids for accepted clients. This list will be updated as new clients are approved or existing clients are removed. An access token will not be issued for unapproved clients. This assumes that the client\_id management will deal with these security considerations in a manner similar to the certificate management assumptions made for secure communication transactions.
 
-The Authorization Server will typically have an administratively-managed list of approved Resource Servers. The list of Resource Servers is used in access control decisions to determine if a client has access to a Resource Server. These access control decisions take place when an access token is created, are associated with the access token, and may be re-evaluated when an access token is introspected. Introspection is initiated by a Resource Server just prior to servicing a client request. Introspection can therefore can be used to signal token revocation, or provide Resource Server specific authorization results (such as a limited view on the authorized scopes).
+The Authorization Server will typically have an administratively managed list of approved Resource Servers. The list of Resource Servers is used in access control decisions to determine if a client has access to a Resource Server. These access control decisions take place when an access token is created, are associated with the access token, and may be re-evaluated when an access token is introspected. Introspection is initiated by a Resource Server just prior to servicing a client request. Introspection can therefore be used to signal token revocation, or provide Resource Server specific authorization results (such as a limited view on the authorized scopes).
 
 
 ## 34.6 IUA Cross Profile Considerations
 
-The XUA Profile provides equivalent functionality as IUA, but fo for SOAP-based transactions. Both XUA and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
+The XUA Profile provides equivalent functionality as IUA, but for SOAP-based transactions. Both XUA and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
 
-- The XUA Profile defines the Provide X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not specify it (***what is"it" here***)  in detail, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
+- The XUA Profile defines the Provide X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not specify it (***what is "it" here***)  in detail, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
 
 - While the XUA Profile relies on ATNA the Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
 
@@ -449,7 +449,7 @@ The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the followi
 
 -   *Client Credentials Grant* [OAuth 2.1, Section 4.2]. This grant type is optimized for clients requesting access tokens using only its client credentials and is restricted to confidential clients (e.g., medical devices, back end applications).
 
-The OAuth 2.1 Authorization Framework further defines extension points to implement extension grant types [OAuth 2.1, Section 4.3],specifically:
+The OAuth 2.1 Authorization Framework further defines extension points to implement extension grant types [OAuth 2.1, Section 4.3], specifically:
 
 - *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don’t provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
 
@@ -742,14 +742,14 @@ The Authorization Server upon receiving a Get Token Request shall validate all i
 * scope values
 * client identifier and credentials
 * resource values
-* redirect uris
+* redirect URIs
 * authorization codes
 
 The scope parameter incorporated in the token requests SHALL be used to restrict authorization grants to specific actions (e.g., restrict authorization to specific resources to read-only) and to convey claims, which at runtime are known to the Authorization Client only (e.g., if the user claims a breaking-the-glass access in a emergency situation). The Authorization Server MAY refuse token requests that mention scope values that are unknown to the Authorization Server.
 
 Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.  TODO: Does this belong in Security Considerations?  (Same with the next paragraph
 
-The Authorization Client is RECOMMENDED to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server SHOULD evaluate any resource values provided as part of the token request procedure. The Authorization Server SHOULD execute policies to detect wether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers MUST limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
+The Authorization Client is RECOMMENDED to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server SHOULD evaluate any resource values provided as part of the token request procedure. The Authorization Server SHOULD execute policies to detect whether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers MUST limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
 If the request is valid, all access policy criteria are met the Authorization Server SHALL respond with the access token response as outlined in Section [3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
 
@@ -901,9 +901,9 @@ The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attribut
 
 In an environment which uses the IHE Basic Patient Privacy Consents (BPPC) Profile for documenting the consent, the Authorization Server and Resource Server SHALL support the following extension parameter:
 
-- *patient\_id*: Patient identifier related to the Patient Privacy Policy Identifier. It's value SHOULD be the patient identifier in CX syntax or as URL.
+- *patient\_id*: Patient identifier related to the Patient Privacy Policy Identifier. Its value SHOULD be the patient identifier in CX syntax or as URL.
 
-- *doc\_id*: Patient Privacy Policy Acknowledgment Document. It's value SHOULD be an URN or URL.
+- *doc\_id*: Patient Privacy Policy Acknowledgment Document. Its value SHOULD be an URN or URL.
 
 - *acp*: Patient Privacy Policy Identifier.
 
@@ -982,7 +982,7 @@ Authorization Servers implementing the SAML Token Options SHALL be able to forma
 
 The SAML 2.0 assertion content SHALL comply with XUA SAML assertion rules (see ITI TF-2b:3.40).
 
-In accordance to [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It MUST NOT contain more than one SAML 2.0 Assertion. The SAML Assertion XML data MUST be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data MUST NOT be line wrapped and pad characters ("=") MUST NOT be included.
+In accordance with [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It MUST NOT contain more than one SAML 2.0 Assertion. The SAML Assertion XML data MUST be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data MUST NOT be line wrapped and pad characters ("=") MUST NOT be included.
 
 ##### 3.71.4.2.3 Token Introspection Option
 Implementations relying on Token Introspection option are not restricted in the access token format. This format MAY be different from the JWT or SAML tokens as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option).
@@ -1137,7 +1137,7 @@ A client needs to make an HTTP RESTful transaction to a Resource Server that enf
 
 The Authorization Client SHALL incorporate the access token as received from the Authorization Server in a HTTP Authorization header of the type *Bearer* [OAuth2.1, Bearer token] as-is.
 
-A non normative example of the access token incorporation to a RESTful transaction is as follows:
+A non-normative example of the access token incorporation to a RESTful transaction is as follows:
 
 ```http
 GET /example/url/to/resource/location HTTP/1.1
@@ -1215,7 +1215,7 @@ Token introspection defines a protocol that allows Resource Servers to query the
 
 Token introspection allows a Resource Server to query this information regardless of whether or not it is carried in the token itself (e.g. as encoded in a JWT token), allowing this method to be used along with or independently of structured token values.
 
-The Authorization Server MAY decide to mark an token as active or inactive based on internal policies executed during introspection. For example, a token MAY be marked inactive if it has expired, been revoked, or if the introspection requesting Resource Server is not part of the intended audience of the token. Note that the introspection response for inactive tokens do not contain other (privacy/security sensitive) claims, nor do they mention the reason why the token is marked inactive.
+The Authorization Server MAY decide to mark a token as active or inactive based on internal policies executed during introspection. For example, a token MAY be marked inactive if it has expired, been revoked, or if the introspection requesting Resource Server is not part of the intended audience of the token. Note that the introspection response for inactive tokens do not contain other (privacy/security sensitive) claims, nor do they mention the reason why the token is marked inactive.
 
 Additionally, token introspection is carried out in the context of a particular Resource Server, allowing the returned authorization claims to be tuned to that authorization context. For example, the Authorization Server MAY limit the list of scopes to those that are deemed relevant for the particular Resource Server.
 
@@ -1334,7 +1334,7 @@ The token being introspected MAY be opaque to the Resource Server. It MAY be for
 
 ##### 3.102.4.1.3 Expected Actions
 
-Upon receiving the introspect request, the Authorization Server MUST evaluate the Resource Server access to the introspect endpoint. In accordance to ITI-72, when access to the introspect endpoint is not allowed, the Authorization Server MUST return HTTP 401 (Not Authorized).
+Upon receiving the introspect request, the Authorization Server MUST evaluate the Resource Server access to the introspect endpoint. In accordance with ITI-72, when access to the introspect endpoint is not allowed, the Authorization Server MUST return HTTP 401 (Not Authorized).
 
 The Authorization Server SHALL:
 * Validate the structure and authenticity of the token to be introspected
@@ -1358,7 +1358,7 @@ The Authorization has formulated an access policy decision for the introspected 
 
 The introspect response is a JSON formatted object. There are two variants of this object.
 
-1. The Authorization Server considers the token to be invalid for the given Resource Server because of formatting issues, revocation data, expiry or other access policy considerations. The introspect result object contains a single field "active" with boolean value "false".
+1. The Authorization Server considers the token to be invalid for the given Resource Server because of formatting issues, revocation data, expiry, or other access policy considerations. The introspect result object contains a single field "active" with boolean value "false".
 2. The Authorization Server considers the token to be valid for the given Resource Server. The object will contain a field "active" with boolean value "true". In addition, it will contain the same fields and values as formulated for the JWT token content as specified in section [3.71.4.2.2 JSON Web Token](#371422-json-web-token-option), including defined extensions.
 
 ##### 3.102.4.2.3 Expected Actions
@@ -1612,14 +1612,14 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 | ------------------------------------------------- |
 
 #### 9.2.6.7 STX: HTTPS IUA
-The system will utilize server side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the IUA Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
+The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the IUA Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
 
 | **Editor: Please add the following section to Volume 2 as follows** |
 | ------------------------------------------------------------------- |
 
 #### 3.19.6.6 STX: HTTPS IUA
 
-This configuration utilizes server side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption; and the IUA Profile to authenticate the client application to the server (IUA Resource Server).
+This configuration utilizes server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption; and the IUA Profile to authenticate the client application to the server (IUA Resource Server).
 
 The ATNA Local Secure Node shall be grouped with an IUA Authorization Client. The ATNA Remove Secure Node shall be grouped with an IUA Resource Server.
 
