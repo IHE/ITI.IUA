@@ -295,11 +295,11 @@ This option enables automated configuration of Resource Servers and Authorizatio
 
 TODO: An Authorization Client that supports this option shall...
 
-TODO: An Authorization Server that supports this option shall...
+TODO: An Authorization Server that supports this option shall... (DONE)
 
 Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials. This information greatly simplifies the configuration of those Authorization Clients and Resource Servers.
 
-TODO: A Resource Server that supports this option shall...
+TODO: A Resource Server that supports this option shall... (DONE)
 
 Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint. The obtained configuration information includes endpoint locations, token format, and signing key materials. This information simplifies the configuration of a Resource Server by allowing the majority of this information to be requested from an Authorization Server.
 
@@ -321,11 +321,11 @@ TODO: A Resource Server that supports this option shall...
 ### 34.2.3 Token Introspection Option
 Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token; see ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option). Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
 
-TODO:An Authorization Server that supports this option shall...
+TODO:An Authorization Server that supports this option shall... (DONE)
 
-Authorization Servers declaring the Token Introspection option SHALL provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server MAY provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server SHALL provide the Token Introspection [ITI-102] transaction service.  TODO: We can omit this paragraph because it is redundant (text belongs in the Options section.
+Authorization Servers declaring the Token Introspection option SHALL provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server MAY provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server SHALL provide the Token Introspection [ITI-102] transaction service.
 
-TODO: A Resource Server that supports this option shall...
+TODO: A Resource Server that supports this option shall... (DONE)
 
 The Resource Server declaring the Token Introspection option SHALL have the ability to use the Token Introspection transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server MUST authenticate itself. It MAY obtain a access token of its own from the Authorization Server for this purpose.
 
@@ -466,6 +466,7 @@ Both the RFC7522 and RFC7523 require the existence of a public key infrastructur
 This transaction is scoped to the *Authorization Code* and *Client Credential* grant types.
 
 TODO: These shall statements have to move out of this intro.  If we think this transaction will be used outside if IUA, then the rqmts can move to actor rqmts for Auth Server in Vol 1; otherwise, move them to Message Semantics.
+
 The Authorization Server shall support these grant types:
 
 - *Authorization Code*  
