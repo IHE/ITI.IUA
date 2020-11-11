@@ -292,30 +292,44 @@ Table 34.2-1: IUA - Actors and Options
 ### 34.2.1 Authorization Server Metadata option
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
-TODO: An Authorization Client that supports this option shall...
+TODO: An Authorization Client that supports this option shall... (Done)
+
+An Authorization Client that supports this option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint.
 
 TODO: An Authorization Server that supports this option shall... (DONE)
 
-Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials. This information greatly simplifies the configuration of those Authorization Clients and Resource Servers.
+Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
 
 TODO: A Resource Server that supports this option shall... (DONE)
 
-Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint. The obtained configuration information includes endpoint locations, token format, and signing key materials. This information simplifies the configuration of a Resource Server by allowing the majority of this information to be requested from an Authorization Server.
+Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint.
 
 
 ### 34.2.2 JWT Token Option
 This option uses JSON Web Token encoding of the Token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option)
 
-TODO:: An Authorization Server that supports this option shall...
+TODO: An Authorization Server that supports this option shall... (Done)
 
-TODO: A Resource Server that supports this option shall...
+An Authorization Servers that supports this option SHALL provide an endpoint to retrieve JWT access tokens to be
+incorporated in RESTful requests to Resource Servers.
+
+TODO: A Resource Server that supports this option shall... (Done)
+
+A Resource Server that supports this option SHALL be able to accept JWT access tokens in RESTful requests,
+extract and validate the information provided in the JWT access token, and to enforce access policies based on it.
 
 ### 34.2.3 SAML Token Option
 This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure.
 
-TODO:: An Authorization Server that supports this option shall...
+TODO: An Authorization Server that supports this option shall... (Done)
 
-TODO: A Resource Server that supports this option shall...
+An Authorization Servers that supports this option SHALL provide an endpoint to retrieve XUA compliant SAML 2.0
+access token to be incorporated in RESTful requests to Resource Servers.
+
+TODO: A Resource Server that supports this option shall... (Done)
+
+A Resource Server that supports this option SHALL be able to accept XUA compliant access tokens in RESTful requests,
+extract and validate the information provided in the token, and to enforce access policies based on it.
 
 ### 34.2.3 Token Introspection Option
 Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token; see ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option). Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
@@ -365,6 +379,8 @@ The term "authorization" and "access control" are used colloquially for a variet
 The IUA Profile uses the terms "access token", "refresh token", "bearer token", "Authorization Server", "Resource Server", "authorization endpoint", "authorization request", "authorization response", "token endpoint", "grant type", "access token request", and "access token response" as defined by The OAuth 2.1 Authorization Framework [OAuth 2.1].
 
 This profile also uses the terms "token introspection", "introspection endpoint", "introspection request", and "introspection response" as defined by the OAuth2 Token Introspection specification [RFC7662].
+
+TODO: unclear sentence
 
 The OAuth 2.1 Authorization Framework uses the term "resource owner" for the user an authorized client may access data on behalf of. Typically in health related environments, a healthcare professional accesses patients or organization related data (resources) for which the healthcare professional is not the "legal owner", but may access according to the access policies of the environment. To avoid any misunderstandings related to the OAuth terms "resource owner" and "legal owner", this profile uses the term "user" instead.
 
