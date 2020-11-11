@@ -521,8 +521,8 @@ Table 3.71.2-1: Actor Roles
 TODO:  Remove this note and use the "Role" convention instead in the actor table above.
 
 TODO ms: We have to take into account, that we are talking of very different things here:
-- The Auth Client requests an access token to be incorporated into a request to a Resource Server to be used for authorize access to health data;
-- The Resource Server does not request an access token to incorporate to request to Resource Servers, but to convert the access token to a JWT or XUA assertion;   
+- The Authorization Client requests an access token to be incorporated into a request to a Resource Server to be used for authorize access to health data;
+- The Resource Server requests an access token be able to convert the access token to a JWT, XUA assertion or other token format;   
 
 
 ### 3.71.3 Referenced Standards
@@ -570,7 +570,11 @@ end
 @enduml
 ```
 
-Main Flow TODO: Discuss moving this multi-transaction process flow to Vol1:
+Main Flow
+
+TODO: Discuss moving this multi-transaction process flow to Vol1
+
+TODO ms: Any suggestions where to put it?
 
 1.  (Optional) The Authorization Client fetches the metadata document from the Authorization Server to detect the relevant authorization endpoints and supported grant types.
 
@@ -775,10 +779,6 @@ The Authorization Server upon receiving a Get Token Request shall validate all i
 * authorization codes
 
 The scope parameter incorporated in the token requests SHALL be used to restrict authorization grants to specific actions (e.g., restrict authorization to specific resources to read-only) and to convey claims, which at runtime are known to the Authorization Client only (e.g., if the user claims a breaking-the-glass access in a emergency situation). The Authorization Server MAY refuse token requests that mention scope values that are unknown to the Authorization Server.
-
-Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.  TODO: Does this belong in Security Considerations?  (Same with the next paragraph
-
-The Authorization Client is RECOMMENDED to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server SHOULD evaluate any resource values provided as part of the token request procedure. The Authorization Server SHOULD execute policies to detect wether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers MUST limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
 If the request is valid, all access policy criteria are met the Authorization Server SHALL respond with the access token response as outlined in Section [3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
 
@@ -1020,7 +1020,10 @@ Implementations relying on Token Introspection option are not restricted in the 
 
 ### 3.71.5 Security Considerations
 
-Authorization Client and Authorization Server claiming compliance with this profile SHALL fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], especially:  TODO:  "especially" sounds like you've selected some.  Is it all, or this list?
+Authorization Client and Authorization Server claiming compliance with this profile SHALL fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], especially:  
+
+TODO:  "especially" sounds like you've selected some.  Is it all, or this list?
+TODO ms: Yes, I selected the one which were most discussed in Switzerland
 
 - All HTTP transaction shall be secured by using TLS or equivalent transport security.
 
@@ -1034,9 +1037,17 @@ Authorization Client and Authorization Server claiming compliance with this prof
 
 - To reduce the attack surface, client claims and authorization grants SHALL be the minimal. I.e., the authorization grant scope requested by the Authorization Client SHALL be the minimal required scope for the resource request to be used for.
 
+TODO: Does this belong in Security Considerations? (DONE: moved to security consideration)
+
+Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.
+
+The Authorization Client is RECOMMENDED to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server SHOULD evaluate any resource values provided as part of the token request procedure. The Authorization Server SHOULD execute policies to detect wether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers MUST limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
+
 #### 3.71.5.1 Security Audit Considerations
 
-TODO: Revisit the "should" and " may in this section Authorization Servers SHOULD produce an audit record for any failed attempt to obtain authorization. IHE does not specify the format of audit records for Authorization Servers.
+TODO: Revisit the "should" and " may in this section
+
+Authorization Servers SHOULD produce an audit record for any failed attempt to obtain authorization. IHE does not specify the format of audit records for Authorization Servers.
 
 Authorization Clients MAY generate an audit message when an authorized transaction is performed or attempted.
 
