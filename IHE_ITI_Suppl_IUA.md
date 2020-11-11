@@ -222,7 +222,7 @@ The IUA Profile relies on the OAuth 2.1 Authorization Framework. Since the origi
 
 Table 34.1-1 lists the transactions for each actor directly involved in the IUA Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled "R") and may support the optional transactions (labeled "O").
 
-**Table 34.1-1: IUA Profile - Actors and Transactions** TODO: Lynn broke this table
+**Table 34.1-1: IUA Profile - Actors and Transactions**
 
 | Actors               | Transactions                      | Optionality | Reference         |
 | -------------------- | --------------------------------- | ----------- | ----------------- |
@@ -292,15 +292,13 @@ Table 34.2-1: IUA - Actors and Options
 ### 34.2.1 Authorization Server Metadata option
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
-TODO: An Authorization Client that supports this option shall... (DONE)
+TODO: Reference Vol2 section
+
+TODO: make all MAY, SHALL lowercase
 
 An Authorization Client that supports this option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
-TODO: An Authorization Server that supports this option shall... (DONE)
-
 Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
-
-TODO: A Resource Server that supports this option shall... (DONE)
 
 Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
@@ -308,25 +306,14 @@ Resource Servers declaring the Authorization Server Metadata option SHALL have t
 ### 34.2.2 JWT Token Option
 This option uses JSON Web Token encoding of the Token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option)
 
-TODO: An Authorization Server that supports this option shall... (DONE)
+An Authorization Servers that supports this option SHALL provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers.
 
-An Authorization Servers that supports this option SHALL provide an endpoint to retrieve JWT access tokens to be
-incorporated in RESTful requests to Resource Servers.
-
-TODO: A Resource Server that supports this option shall... (DONE)
-
-A Resource Server that supports this option SHALL be able to accept JWT access tokens in RESTful requests,
-extract and validate the information provided in the JWT access token, and to enforce access policies based on it.
+A Resource Server that supports this option SHALL be able to accept JWT access tokens in RESTful requests, extract and validate the information provided in the JWT access token, and to enforce access policies based on it.
 
 ### 34.2.3 SAML Token Option
 This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure.
 
-TODO: An Authorization Server that supports this option shall... (DONE)
-
-An Authorization Servers that supports this option SHALL provide an endpoint to retrieve XUA compliant SAML 2.0
-access token to be incorporated in RESTful requests to Resource Servers.
-
-TODO: A Resource Server that supports this option shall... (DONE)
+An Authorization Servers that supports this option SHALL provide an endpoint to retrieve XUA compliant SAML 2.0 access token to be incorporated in RESTful requests to Resource Servers.
 
 A Resource Server that supports this option SHALL be able to accept XUA compliant access tokens in RESTful requests,
 extract and validate the information provided in the token, and to enforce access policies based on it.
@@ -334,11 +321,7 @@ extract and validate the information provided in the token, and to enforce acces
 ### 34.2.3 Token Introspection Option
 Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token; see ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option). Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
 
-TODO:An Authorization Server that supports this option shall... (DONE)
-
 Authorization Servers declaring the Token Introspection option SHALL provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server MAY provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server SHALL provide the Token Introspection [ITI-102] transaction service.
-
-TODO: A Resource Server that supports this option shall... (DONE)
 
 The Resource Server declaring the Token Introspection option SHALL have the ability to use the Token Introspection transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server MUST authenticate itself. It MAY obtain a access token of its own from the Authorization Server for this purpose.
 
@@ -458,7 +441,7 @@ The SAML Token Option in IUA enables an Authorization Client to incorporate acce
 
 This transaction is used by Authorization Clients to obtain an OAuth 2.1 compliant access token for use in a RESTful transaction to access data from a Resource Server.
 
-TODO ms: I agree to move the whole block starting from here to Vol1, but don't know where to put it?
+TODO ms: I agree to move the whole block starting from here to Vol1, but don't know where to put it? -> move to Vol 1, 34.4.1 as subsection
 
 The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the following authorization grant types:
 
@@ -479,8 +462,6 @@ The SAML and JWT grants from RFC7522 and RFC7523 may be used in federation scena
 Both the RFC7522 and RFC7523 require the existence of a public key infrastructure. The operational aspects of such infrastructure are beyond the scope of this specification.
 
 This transaction is scoped to the *Authorization Code* and *Client Credential* grant types.
-
-TODO: These shall statements have to move out of this intro.  If we think this transaction will be used outside if IUA, then the rqmts can move to actor rqmts for Auth Server in Vol 1; otherwise, move them to Message Semantics.
 
 The Authorization Server shall support these grant types:
 
@@ -515,13 +496,6 @@ Table 3.71.2-1: Actor Roles
 | Authorization Server | Server that grants access tokens.                                           |
 
 *Note:* The requirements for the Authorization Client and Resource Server are identical for this transaction. For brevity, the solely term Authorization Client is used in the remainder of this transaction description.
-
-TODO:  Remove this note and use the "Role" convention instead in the actor table above.
-
-TODO ms: We have to take into account, that we are talking of very different things here:
-- The Authorization Client requests an access token to be incorporated into a request to a Resource Server to be used for authorize access to health data;
-- The Resource Server requests an access token be able to convert the access token to a JWT, XUA assertion or other token format;   
-
 
 ### 3.71.3 Referenced Standards
 
@@ -570,9 +544,7 @@ end
 
 Main Flow
 
-TODO: Discuss moving this multi-transaction process flow to Vol1
-
-TODO ms: Any suggestions where to put it?
+TODO: Move to Use Case Section (put on top)
 
 1.  (Optional) The Authorization Client fetches the metadata document from the Authorization Server to detect the relevant authorization endpoints and supported grant types.
 
@@ -619,10 +591,6 @@ autonumber stop
 
 The Authorization Client requests an access token using client credentials (or other supported means of authentication). This grant type SHALL be used by confidential clients only [OAuth 2.1, Section 4.2].
 
-An Authorization Client that supports the Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token.  
-
-TODO: This option-specific rqmt is mixed in with non-option rqmts.  Factor it out into a separate sub-section, or consider moving to the end of the section
-
 The Authorization Client makes a HTTP(s) POST request to the token endpoint with the following parameters in the HTTP request entity-body [OAuth 2.1, Section 4.2.2]:
 
 - *grant_type* (REQUIRED): The value of the parameter SHALL be *client_credentials*.
@@ -647,6 +615,8 @@ grant_type=client_credentials
 &resource=https://rs.example.com/
 ```
 **Figure 3.71.4.1.1-2: Example Access Token Request**
+
+An Authorization Client that supports the Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token.  
 
 ##### 3.71.4.1.2 Authorization Code grant type
 
