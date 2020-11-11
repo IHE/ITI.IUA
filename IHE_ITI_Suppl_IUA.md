@@ -259,20 +259,10 @@ The Authorization Client performs the network transactions and user interactions
 
 The Authorization Server provides access tokens to requesting clients. In IUA, the Authorization Server uses an authenticated user identity, the requested HTTP RESTful service URL to the Resource Server, and/or other information to determine whether HTTP RESTful transactions are authorized. If authorized, the Authorization Server provides an access token which authorizes the client to retrieve data and documents from the Resource Server.  
 
-Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials. This information greatly simplifies the configuration of those Authorization Clients and Resource Servers.
-
-Authorization Servers declaring the Token Introspection option SHALL provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server MAY provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server SHALL provide the Token Introspection [ITI-102] transaction service.  TODO: We can omit this paragraph because it is redundant (text belongs in the Options section.
-
 
 #### 34.1.1.3 Resource Server
 
 The Resource Server provides services to access protected resources that need authorization. In IUA the Resource Server accepts a HTTP RESTful transaction request with an incorporated access token. It evaluates the access token to verify that the Authorization Server has authorized the transaction. The Resource Server MUST enforce this authorization and MAY perform additional authorization decisions that are specific to the requested service. The Resource Server MAY then allow the transaction to proceed, subject to access control constraints that MAY also be in place.
-
-Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint. The obtained configuration information includes endpoint locations, token format, and signing key materials. This information simplifies the configuration of a Resource Server by allowing the majority of this information to be requested from an Authorization Server.
-
-The Resource Server declaring the Token Introspection option SHALL have the ability to use the Token Introspection transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server MUST authenticate itself. It MAY obtain a access token of its own from the Authorization Server for this purpose.
-
-When the Incorporate Authorization Token [ITI-72] transaction [ is used with a FHIR server, Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
 
 Notes:
 
@@ -305,30 +295,41 @@ This option enables automated configuration of Resource Servers and Authorizatio
 
 TODO: An Authorization Client that supports this option shall...
 
-An Authorization Server that supports this option shall...
+TODO: An Authorization Server that supports this option shall...
 
-A Resource Server that supports this option shall...
+Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials. This information greatly simplifies the configuration of those Authorization Clients and Resource Servers.
+
+TODO: A Resource Server that supports this option shall...
+
+Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint. The obtained configuration information includes endpoint locations, token format, and signing key materials. This information simplifies the configuration of a Resource Server by allowing the majority of this information to be requested from an Authorization Server.
+
 
 ### 34.2.2 JWT Token Option
 This option uses JSON Web Token encoding of the Token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option)
 
-TO DO: An Authorization Server that supports this option shall...
+TODO:: An Authorization Server that supports this option shall...
 
-A Resource Server that supports this option shall...
+TODO: A Resource Server that supports this option shall...
 
 ### 34.2.3 SAML Token Option
 This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure.
 
-TO DO: An Authorization Server that supports this option shall...
+TODO:: An Authorization Server that supports this option shall...
 
-A Resource Server that supports this option shall...
+TODO: A Resource Server that supports this option shall...
 
 ### 34.2.3 Token Introspection Option
 Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token; see ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option). Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
 
-TO DO:An Authorization Server that supports this option shall...
+TODO:An Authorization Server that supports this option shall...
 
-A Resource Server that supports this option shall...
+Authorization Servers declaring the Token Introspection option SHALL provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server MAY provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server SHALL provide the Token Introspection [ITI-102] transaction service.  TODO: We can omit this paragraph because it is redundant (text belongs in the Options section.
+
+TODO: A Resource Server that supports this option shall...
+
+The Resource Server declaring the Token Introspection option SHALL have the ability to use the Token Introspection transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server MUST authenticate itself. It MAY obtain a access token of its own from the Authorization Server for this purpose.
+
+When the Incorporate Authorization Token [ITI-72] transaction [ is used with a FHIR server, Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
 
 ## 34.3 IUA Required Actor Groupings
 
