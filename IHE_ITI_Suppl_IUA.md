@@ -298,9 +298,9 @@ TODO: make all MAY, SHALL lowercase
 
 An Authorization Client that supports this option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
-Authorization Servers declaring the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
+Authorization Servers supporting the Authorization Server Metadata option SHALL provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
 
-Resource Servers declaring the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
+Resource Servers supporting the Authorization Server Metadata option SHALL have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
 
 ### 34.2.2 JWT Token Option
@@ -441,7 +441,7 @@ The SAML Token Option in IUA enables an Authorization Client to incorporate acce
 
 This transaction is used by Authorization Clients to obtain an OAuth 2.1 compliant access token for use in a RESTful transaction to access data from a Resource Server.
 
-TODO ms: I agree to move the whole block starting from here to Vol1, but don't know where to put it? -> move to Vol 1, 34.4.1 as subsection
+TODO ms: move to Vol 1, 34.4.1 as subsection
 
 The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the following authorization grant types:
 
@@ -739,16 +739,11 @@ grant_type=authorization_code
 **Figure 3.71.4.1.1-5: Example Access Token Request**
 
 ##### 3.71.4.1.3 Expected Actions
-The Authorization Server upon receiving a Get Token Request shall validate all incoming values, including (non-exhaustive) TODO:  Not too helpful to make a non-exhaustive list:
-* scope values
-* client identifier and credentials
-* resource values
-* redirect URIs
-* authorization codes
+The Authorization Server upon receiving a Get Token Request validates all request parameter.
 
 The scope parameter incorporated in the token requests SHALL be used to restrict authorization grants to specific actions (e.g., restrict authorization to specific resources to read-only) and to convey claims, which at runtime are known to the Authorization Client only (e.g., if the user claims a breaking-the-glass access in a emergency situation). The Authorization Server MAY refuse token requests that mention scope values that are unknown to the Authorization Server.
 
-Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.  TODO: Does this belong in Security Considerations?  (Same with the next paragraph
+Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.
 
 The Authorization Client is RECOMMENDED to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server SHOULD evaluate any resource values provided as part of the token request procedure. The Authorization Server SHOULD execute policies to detect whether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers MUST limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
@@ -814,7 +809,7 @@ The OAuth2 specifications does not indicate the structure of the access token. A
 
 JWT token SHALL be signed as specified in JSON Web Signature [RFC 7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) SHALL be used as described in [RFC 7515, Section 7.1].
 
-Any actor that supports this transaction MAY support the JWE (unsigned but encrypted) alternative of the JWT token. TODO:  Discuss in committee
+Any actor MAY support the JWE (unsigned but encrypted) alternative of the JWT token.
 
 Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC 7518], the following algorithm SHALL be supported:
 - *HS256*: HMAC using SHA-256 hash algorithm.
@@ -992,10 +987,9 @@ Implementations relying on Token Introspection option are not restricted in the 
 
 ### 3.71.5 Security Considerations
 
-Authorization Client and Authorization Server claiming compliance with this profile SHALL fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], especially:  
+Authorization Client and Authorization Server claiming compliance with this profile SHALL fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], including:  
 
-TODO:  "especially" sounds like you've selected some.  Is it all, or this list?
-TODO ms: Yes, I selected the one which were most discussed in Switzerland
+TODO: reference ATNA option (see below)
 
 - All HTTP transaction shall be secured by using TLS or equivalent transport security.
 
@@ -1009,19 +1003,13 @@ TODO ms: Yes, I selected the one which were most discussed in Switzerland
 
 - To reduce the attack surface, client claims and authorization grants SHALL be the minimal. I.e., the authorization grant scope requested by the Authorization Client SHALL be the minimal required scope for the resource request to be used for.
 
-TODO: Does this belong in Security Considerations? (DONE: moved to security consideration)
-
 Authorization Servers SHOULD limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.
 
 The Authorization Client is RECOMMENDED to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server SHOULD evaluate any resource values provided as part of the token request procedure. The Authorization Server SHOULD execute policies to detect wether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers MUST limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
 #### 3.71.5.1 Security Audit Considerations
 
-TODO: Revisit the "should" and " may in this section
-
-Authorization Servers SHOULD produce an audit record for any failed attempt to obtain authorization. IHE does not specify the format of audit records for Authorization Servers.
-
-Authorization Clients MAY generate an audit message when an authorized transaction is performed or attempted.
+The Authorization Client or Authorization Server that is grouped with an ATNA Secure Node or Secure Application shall be able to send an audit event as defined below:  
 
 
 |                                                     | Field Name              | Opt | Value Constraints                       |
