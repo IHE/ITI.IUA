@@ -125,15 +125,18 @@ IUA also assumes that this profile is operating in an environment where access c
 
 ## Relation to SMART-on-FHIR
 
-IUA is not based on SMART-on-FHIR, but does strive not to conflict with that standard. Reasons for not basing IUA on SMART include:
-* SMART is bound to FHIR, where the IUA profile should also be usable for non-FHIR APIs. For example, profiles may want to use DICOM-Web in the future.
-* SMART is directed towards a set of use cases, eg. "EMR-launch". IUA contains use-cases not covered by SMART, such as cross-enterprise data exchange, or service-2-service integrations (with or without an EMR). The IUA supported use-cases in that sense are often more in line with those mentioned in SMART for backend services. IUA is compatible with that specification.
-* A number of IHE profiles are using FHIR operations and FHIR messaging. Currently, the SMART scopes are covering these types of interactions.
-* The current published version of SMART, the launch context is not explicitly communicated to the Resource Server, creating an additional dependency between resource server and authorization server. The access token format is not specified, nor another mechanism to obtain the authorization claims associated with the access token. IUA specifically addresses these issues by specifying structured token formats and a token introspection interaction, along with authorization claim extensions for consent and organizational context. 
-* SMART is creating a non-further specified dependency between the Authorization Server and the app-launching Resource Server, by embedding a launch context into the authorization mechanisms. In SMART the authorization server is aware of the launch context and the associated permissions. This may work in EMR cases where both authorization and data access are controlled from the same (EMR) system, but these are not so obvious in other situations. In IUA there is a more strict separation of the Resource Server and Authorization Server actors, allowing setups with multiple resource servers and/or multiple (or even no) Authorization Servers (eg., when XUA tokens are reused)!
+IUA is not based on SMART-on-FHIR, but does strive not to conflict with that standard. Concerns about SMART were raised surrounding the tight dependency between Resource and Authorization Server, the inclusion of launch/view context in the authorization flow, and the dependency on FHIR.
 
-Given these stated concerns IUA does not utilize SMART-on-FHIR as base standard. That said, and as indicated in Issue 13, community feedback is welcomed on the harmonization of IUA and SMART.
+In our view IUA provides the following advantages over SMART:
 
+- IUA promotes a loose coupling of Resource Server and Authorization Servers. This allows for deployments with multiple Resource Servers per Authorization Server as well as deployments with several or even no Authorization Servers.
+- IUA supports a wide range of use-cases ranging from mobile application access to data, cross-enterprise data exchange to complex system integration scenarios.
+- IUA is base-standard agnostic and can be combined with any HTTP RESTful transaction
+- IUA provides explicit means of obtaining authorization claims from an access token by a resource server (with and without the involvement of an Authorization Server)
+- IUA specifies additional authorization context claims such as BPPC consents and a user's organizational context
+- IUA provides explicit compatibility with IHE XUA
+
+That said, it is recognized that SMART-on-FHIR is evolving and adoption rates are increasing. Therefore, as indicated in Issue 13, community feedback is welcomed on the harmonization of IUA and SMART.
 
 # Open Issues and Questions
 
@@ -141,7 +144,7 @@ Given these stated concerns IUA does not utilize SMART-on-FHIR as base standard.
 
 - **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. MHD Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
 
-- **Issue 13**: IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
+- **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
 
 # Closed Issues
 
