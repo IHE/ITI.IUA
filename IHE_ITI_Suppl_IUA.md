@@ -1600,8 +1600,7 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 # 9 ATNA Profile
 
 | **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table** |
-| a-------------------------------------------------------------------------------------------------n |
-| ------------------------------------------------                                                    |
+| -------------------------------------------------------------------------------------------------|
 
  "STX: HTTPS IUA" | ITI TF-1:9.2.6.7
 
