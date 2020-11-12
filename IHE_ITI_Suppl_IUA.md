@@ -353,6 +353,46 @@ The term "authorization" and "access control" are used colloquially for a variet
 
 -   Access Control -- A system of provisioning, delegation, authentication, and authorization. It is normal to have multiple nested levels of access control. This profile is concerned with whether access is allowed to make the HTTP transaction requests to the specified resources. There are likely also building access controls, Resource Server access controls, and other access controls involved.
 
+#### 34.4.1.1 Dont know yet
+
+TODO ms: move to Vol 1, 34.4.1 as subsection
+
+The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the following authorization grant types:
+
+-   *Authorization Code Grant* [OAuth 2.1, Section 4.1]. This grant type is optimized for confidential clients who make use of User Agents (e.g., web browsers).
+
+-   *Client Credentials Grant* [OAuth 2.1, Section 4.2]. This grant type is optimized for clients requesting access tokens using only its client credentials and is restricted to confidential clients (e.g., medical devices, back end applications).
+
+The OAuth 2.1 Authorization Framework further defines extension points to implement extension grant types [OAuth 2.1, Section 4.3], specifically:
+
+- *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don’t provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
+
+- *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a XUA Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
+
+- *JSON Web Token (JWT) grants* [RFC7523]: To use a JWT Token as credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant provides better security properties than the client credential flow as it allows for asymmetric keys to be used for client and user authentication.
+
+The SAML and JWT grants from RFC7522 and RFC7523 may be used in federation scenarios where an Authorization Server will accept tokens from another Authorization Server as credentials for issuing access tokens.
+
+Both the RFC7522 and RFC7523 require the existence of a public key infrastructure. The operational aspects of such infrastructure are beyond the scope of this specification.
+
+This transaction is scoped to the *Authorization Code* and *Client Credential* grant types.
+
+The Authorization Server shall support these grant types:
+
+- *Authorization Code*  
+
+- *Client Credential*
+
+The Authorization Server may support these grant types:
+
+- *Device Authorization*
+
+- *SAML Client or User Assertions*
+
+- *JSON Web Token (JWT) Grants*
+
+- other OAuth 2.1 extension grant types
+
 #### 34.4.1.2 Terminology
 
 The IUA Profile uses the terms "access token", "refresh token", "bearer token", "Authorization Server", "Resource Server", "authorization endpoint", "authorization request", "authorization response", "token endpoint", "grant type", "access token request", and "access token response" as defined by The OAuth 2.1 Authorization Framework [OAuth 2.1].
@@ -435,45 +475,9 @@ The SAML Token Option in IUA enables an Authorization Client to incorporate acce
 
 ## 3.71 Get Authorization Token [ITI-71]
 
+TODO
+
 This transaction is used by Authorization Clients to obtain an OAuth 2.1 compliant access token for use in a RESTful transaction to access data from a Resource Server.
-
-TODO ms: move to Vol 1, 34.4.1 as subsection
-
-The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the following authorization grant types:
-
--   *Authorization Code Grant* [OAuth 2.1, Section 4.1]. This grant type is optimized for confidential clients who make use of User Agents (e.g., web browsers).
-
--   *Client Credentials Grant* [OAuth 2.1, Section 4.2]. This grant type is optimized for clients requesting access tokens using only its client credentials and is restricted to confidential clients (e.g., medical devices, back end applications).
-
-The OAuth 2.1 Authorization Framework further defines extension points to implement extension grant types [OAuth 2.1, Section 4.3], specifically:
-
-- *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don’t provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
-
-- *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a XUA Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
-
-- *JSON Web Token (JWT) grants* [RFC7523]: To use a JWT Token as credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant provides better security properties than the client credential flow as it allows for asymmetric keys to be used for client and user authentication.
-
-The SAML and JWT grants from RFC7522 and RFC7523 may be used in federation scenarios where an Authorization Server will accept tokens from another Authorization Server as credentials for issuing access tokens.
-
-Both the RFC7522 and RFC7523 require the existence of a public key infrastructure. The operational aspects of such infrastructure are beyond the scope of this specification.
-
-This transaction is scoped to the *Authorization Code* and *Client Credential* grant types.
-
-The Authorization Server shall support these grant types:
-
-- *Authorization Code*  
-
-- *Client Credential*
-
-The Authorization Server may support these grant types:
-
-- *Device Authorization*
-
-- *SAML Client or User Assertions*
-
-- *JSON Web Token (JWT) Grants*
-
-- other OAuth 2.1 extension grant types
 
 ### 3.71.1 Scope
 
@@ -666,7 +670,7 @@ The Authorization Client directs the user-agent to make a HTTP GET request to th
 
 - *code_challenge* (required): A challenge derived from the client generated code verifier used to correlate the authorization request to the token request [OAuth 2.1, Section 4.1.1 and references therein].
 
-- *code_challenge_method* (optional): Indicator used for the code challenge transformation method. It's value may be *plain* or *S256* [OAuth 2.1, Section 9.8].  
+- *code_challenge_method* (optional): Indicator used for the code challenge transformation method. It's value may be *S256* [OAuth 2.1, Section 9.8].  
 
 - *redirect_uri* (optional): The absolute URI of the Authorization Client callback endpoint to which the Authorization Server will send the user agent back once access is granted (or denied). This parameter is required if the Authorization Client is registered at the Authorization Server with multiple redirect URI, optional otherwise [OAuth 2.1, Section 3.1.2.3].  
 
