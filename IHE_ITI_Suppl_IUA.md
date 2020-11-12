@@ -244,7 +244,7 @@ The IUA actors are expected to be grouped with other actors that perform HTTP RE
 
 #### 34.1.1.1 Authorization Client
 
-The Authorization Client performs the network transactions and user interactions needed to obtain an access token and to attach that token to transactions to indicate that the transactions are authorized. 
+The Authorization Client performs the network transactions and user interactions needed to obtain an access token and to attach that token to transactions to indicate that the transactions are authorized.
 
 When Incorporate Authorization Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) will be populated with the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
 
@@ -443,16 +443,16 @@ Figure 34.4.2..3-1 shows the basis flow of information exchange common to IUA us
 
 ```plantuml
 @startuml basic-flow
- 
+
 participant "Authorization Client" as Client
 participant "Authorization Server" as AS
 participant "Resource Server" as RS
- 
+
 autonumber 0 1 "<b>[00]</b>"
 autoactivate on
- 
+
 group (optional) Get Authorization Server Metadata (ITI-103)
- 
+
     Client-> AS : Authorization Server Metadata Request (ITI-103)
     AS --> Client: Authorization Server Metadata Response
 
@@ -460,31 +460,31 @@ group (optional) Get Authorization Server Metadata (ITI-103)
     AS --> RS: Authorization Server Metadata Response
 
 end
- 
+
 group Get Authorization Token (ITI-71)
     Client -> AS: Get Authorization Token Request
-    Client <-- AS: Get Authorization Token Response 
+    Client <-- AS: Get Authorization Token Response
 end
- 
+
 group Incorporate Authorization Token (ITI-72)
- 
+
 Client -> RS : Resource Request + Incorporate Authorization Token
- 
+
 alt JWT or SAML token
   RS -> RS: validate token
   deactivate RS
- 
+
 else introspect token
- 
+
   group Introspect Token (ITI-102)
         RS -> AS : Introspect Token Request
         AS --> RS: Introspect Token Response
   end
 end
- 
+
 Client <-- RS : Resource Response  
 end
- 
+
 @enduml
 
 ```
@@ -495,7 +495,7 @@ Process Flow:
 
 1. (Optional) The Resource Server fetches the metadata document from the Authorization Server to detect the supported token format, relevant introspection endpoints and signature verification key material.
 
-1. The Authorization Client authenticates to the Authorization Server and (optionally) provides claims related to the intended request to access protected resources of a Resource Server. 
+1. The Authorization Client authenticates to the Authorization Server and (optionally) provides claims related to the intended request to access protected resources of a Resource Server.
 
 1. The Authorization Server authenticates the client, validates the claims against any policy rules (such as user consent) and returns an access token that authorizes the Authorization Client to request the protected resources from Resource Servers. This may entail interaction with the user to establish user authentication and/or consent.
 
@@ -523,7 +523,7 @@ The Authorization Server will typically have an administratively managed list of
 
 The XUA Profile provides equivalent functionality as IUA, but for SOAP-based transactions. Both XUA and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
 
-- The XUA Profile defines the Provide X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not specify it (***what is "it" here***)  in detail, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
+- The XUA Profile defines the Get X-User Assertion transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
 
 - While the XUA Profile relies on ATNA the Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
 
@@ -1361,7 +1361,7 @@ The Resource Server shall use the introspection results as access token claims i
 The Resource Server may cache introspection results for a given access token in case the introspection result contains an expiry field. This cache must not extend the period as defined by the expiry field. In case no expiry field is provided, the introspection results must not be cached.
 
 ### 3.102.5 Security Considerations
-The Resource Server must securely identify himself towards the Authorization Server by using credentials agreed between the Authorization Server and Resource Server. 
+The Resource Server must securely identify himself towards the Authorization Server by using credentials agreed between the Authorization Server and Resource Server.
 
 At minimum the Authorization Server and Resource Server must support the use of *Bearer* tokens for Resource Server authentication as defined in [OAuth2.1, Section 7.2]. To obtain a bearer token, the Resource Server may request such a token from the Authorization Server, reusing the client credential grant flow as described in the Get Authorization Token transaction (see [ITI TF-2b: 3.71.4.1.2.1 Client Credential Grant Type](#3714121-client-credential-grant-type)).
 
