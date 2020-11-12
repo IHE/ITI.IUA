@@ -298,16 +298,16 @@ Authorization Servers supporting the Authorization Server Metadata option shall 
 
 Resource Servers supporting the Authorization Server Metadata option shall have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
-See ITI TF-2b: [3.103](#3103-get-authorization-server-metadata) for transaction requirements.
+See [ITI TF-2b: 3.103](#3103-get-authorization-server-metadata) for transaction requirements.
 
 ### 34.2.2 JWT Token Option
-This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2](#371422-json-web-token-option)
+This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in [ITI TF-2b: 3.71.4.2.2](#371422-json-web-token-option)
 
 An Authorization Servers that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers.
 
 A Resource Server that supports this option shall be able to accept JWT access tokens in RESTful requests, extract and validate the information provided in the JWT access token, and to enforce access policies based on it.
 
-See ITI TF-2b: [3.71.4.2.2](#371422-json-web-token-option) for transaction requirements.
+See [ITI TF-2b: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction requirements.
 
 ### 34.2.3 SAML Token Option
 This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure.
@@ -316,7 +316,7 @@ An Authorization Servers that supports this option shall provide an endpoint to 
 
 A Resource Server that supports this option shall be able to accept XUA compliant access tokens in RESTful requests, extract and validate the information provided in the token, and to enforce access policies based on it.
 
-See ITI TF-2b: [3.71.4.2.3](#3423-saml-token-option) for transaction requirements.
+See [ITI TF-2b: 3.71.4.2.2.2](#3714221-saml-token-option) for transaction requirements.
 
 ### 34.2.3 Token Introspection Option
 Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token; see ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option). Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
@@ -327,7 +327,7 @@ The Resource Server declaring the Token Introspection option shall have the abil
 
 When the Incorporate Authorization Token [ITI-72] transaction [ is used with a FHIR server, Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
 
-See ITI TF-2b: [3.102](#3102-introspect-token) for transaction requirements.
+See [ITI TF-2b: 3.102](#3102-introspect-token) for transaction requirements.
 
 ## 34.3 IUA Required Actor Groupings
 
@@ -976,7 +976,7 @@ JWS Payload:
 }
 ```
 
-**3.71.4.2.2.1.2 SAML Token Option**
+###### 3.71.4.2.2.2 SAML Token Option
 
 Authorization Servers implementing the SAML Token Options shall be able to format the access token as a SAML 2.0 assertion.
 
@@ -984,7 +984,7 @@ The SAML 2.0 assertion content shall comply with XUA SAML assertion rules (see I
 
 In accordance with [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It must not contain more than one SAML 2.0 Assertion. The SAML Assertion XML data must be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data must not be line wrapped and pad characters ("=") must not be included.
 
-**3.71.4.2.2.1.3 Token Introspection Option**
+###### 3.71.4.2.2.3 Token Introspection Option
 
 Implementations relying on Token Introspection option are not restricted in the access token format. This format may be different from the JWT or SAML tokens as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option).
 
