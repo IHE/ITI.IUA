@@ -425,7 +425,6 @@ A patient uses a native app on her mobile device to access data from her electro
 
 The limitation of the scope is common to all use cases and one of the key concepts of OAuth to ensure data privacy protection by user consent. While the need for restricting the scope might be less obvious for primary system applications, it is apparently for mobile or web applications which provide specific services for patients or healthcare professionals, e.g., for medication or vaccinations or other specific use cases. An Authorization Server therefore in general will present a form to the user to consent to an application specific and limited scope, e.g., to specific transactions, document types or classes or subject specific data the application is authorized to access.    
 
-
 #### 34.4.2.2 Delegation Use Case
 
 There are multiple reasons to perform delegations. These cases primarily involve patient delegation choices. IT staff may use delegation as part of the support for autonomous devices.  Providers rarely have the authority to delegate.
@@ -437,6 +436,47 @@ Users may delegate authority to:
 -   Organizations that are acting for the patient, such as a visiting nurse organization that is providing support to the patient.
 
 Revocation of delegation needs to be clearly specified by policy. Revocation may be removal of rights because of swapping devices. Expiration, re-authorization, etc. also need to be covered. Revocation is not just a response to breaches and failures. Revocation is a normal response to changes in people, equipment, and relationships.
+
+#### 34.4.2.3 Don't know yet
+
+![ITI-71 Flow Diagram](media/basic-flow.png)
+
+**Figure 3.71.4-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
+
+```plantuml
+@startuml basic-flow
+
+group Get Authorization Server Metadata (ITI-103)
+AuthorizationClient -> AuthorizationServer : Get Authorization Server Metadata
+AuthorizationClient <-- AuthorizationServer : configuration metadata
+end
+
+group Get Authorization Token (ITI-71)
+AuthorizationClient -> AuthorizationServer : Authorization Request
+AuthorizationClient <-- AuthorizationServer : Authorization Response + Authorization Token
+end
+
+group Incorporate Authorization Token (ITI-72)
+AuthorizationClient -> ResourceServer : Resource Request + Authorization Token
+AuthorizationClient <-- ResourceServer : Resource Response
+end
+
+@enduml
+```
+
+Main Flow
+
+TODO: Move to Use Case Section (put on top)
+
+1.  (Optional) The Authorization Client fetches the metadata document from the Authorization Server to detect the relevant authorization endpoints and supported grant types.
+
+2.  The Authorization Client authenticates to the Authorization Sever and (optionally) provides claims related to the intended request to access protected resources of the Resource Server.
+
+3.  The Authorization Server authenticates the client, validates the claims against any policy rules (such as user consent) and generates an access token that authorizes the Authorization Client to request the protected resources from Resource Servers.
+
+4. The Authorization Server incorporates the access token to the requests of the protected resources to Resource Servers.
+
+5. The Resource Server evaluates the access token and the resource request and enforces the access policies. This may involve an additional token introspection request towards the Authorization Server if the Introspection Option is used.
 
 ## 34.5 IUA Security Considerations
 
@@ -451,7 +491,6 @@ Usually an Authorization Server publishes web forms where system administrators 
 The Authorization Server will have an administratively managed list of approved client\_ids for accepted clients. This list will be updated as new clients are approved or existing clients are removed. An access token will not be issued for unapproved clients. This assumes that the client\_id management will deal with these security considerations in a manner similar to the certificate management assumptions made for secure communication transactions.
 
 The Authorization Server will typically have an administratively managed list of approved Resource Servers. The list of Resource Servers is used in access control decisions to determine if a client has access to a Resource Server. These access control decisions take place when an access token is created, are associated with the access token, and may be re-evaluated when an access token is introspected. Introspection is initiated by a Resource Server just prior to servicing a client request. Introspection can therefore be used to signal token revocation, or provide Resource Server specific authorization results (such as a limited view on the authorized scopes).
-
 
 ## 34.6 IUA Cross Profile Considerations
 
@@ -514,46 +553,6 @@ This transaction relies on standards defined in the following documents and the 
 - *RFC4648*: The Base16, Base32, and Base64 Data Encodings, October 2006
 
 ### 3.71.4 Messages
-
-![ITI-71 Flow Diagram](media/basic-flow.png)
-
-**Figure 3.71.4-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
-
-```plantuml
-@startuml basic-flow
-
-group Get Authorization Server Metadata (ITI-103)
-AuthorizationClient -> AuthorizationServer : Get Authorization Server Metadata
-AuthorizationClient <-- AuthorizationServer : configuration metadata
-end
-
-group Get Authorization Token (ITI-71)
-AuthorizationClient -> AuthorizationServer : Authorization Request
-AuthorizationClient <-- AuthorizationServer : Authorization Response + Authorization Token
-end
-
-group Incorporate Authorization Token (ITI-72)
-AuthorizationClient -> ResourceServer : Resource Request + Authorization Token
-AuthorizationClient <-- ResourceServer : Resource Response
-end
-
-@enduml
-```
-
-Main Flow
-
-TODO: Move to Use Case Section (put on top)
-
-1.  (Optional) The Authorization Client fetches the metadata document from the Authorization Server to detect the relevant authorization endpoints and supported grant types.
-
-2.  The Authorization Client authenticates to the Authorization Sever and (optionally) provides claims related to the intended request to access protected resources of the Resource Server.
-
-3.  The Authorization Server authenticates the client, validates the claims against any policy rules (such as user consent) and generates an access token that authorizes the Authorization Client to request the protected resources from Resource Servers.
-
-4. The Authorization Server incorporates the access token to the requests of the protected resources to Resource Servers.
-
-5. The Resource Server evaluates the access token and the resource request and enforces the access policies. This may involve an additional token introspection request towards the Authorization Server if the Introspection Option is used.
-
 
 #### 3.71.4.1 Get Authorization Token Request
 
