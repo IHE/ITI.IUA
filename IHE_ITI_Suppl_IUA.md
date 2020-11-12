@@ -557,17 +557,17 @@ This transaction relies on standards defined in the following documents and the 
 
 #### 3.71.4.1 Get Authorization Token Request
 
+##### 3.71.4.1.1 Trigger Events
+
 The Get Authorization Token Request is performed by an Authorization Client or Resource Server (in case of the Introspect option) to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform an Get Authorization Token transaction depends on the grant type (type of credentials) chosen.
 
-This transaction requires support for two types of grants:
-1. OAuth2 Client Credential grant
-2. Authorization Code grant
+##### 3.71.4.1.2 Message Semantics
 
-##### 3.71.4.1.1 Client Credential grant type
+##### 3.71.4.1.2.1 Client Credential grant type
 
 ![ITI-71 Client Credential](media/client-credential-grant.png)
 
-**Figure 3.71.4.1.1-1: Sequence of HTTP requests in the client credential grant type.**
+**Figure 3.71.4.1.2.1-1: Sequence of HTTP requests in the client credential grant type.**
 
 ```plantuml
 @startuml client-credential-grant
@@ -612,15 +612,15 @@ grant_type=client_credentials
 &scope=scope_1 scope_2 ... scope_N
 &resource=https://rs.example.com/
 ```
-**Figure 3.71.4.1.1-2: Example Access Token Request**
+**Figure 3.71.4.1.2.1-2: Example Access Token Request**
 
 An Authorization Client that supports the Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token.  
 
-##### 3.71.4.1.2 Authorization Code grant type
+##### 3.71.4.1.2.2 Authorization Code grant type
 
 ![ITI-71 Authorization Code](media/authorization-code-grant.png)
 
-**Figure 3.71.4.1.2-1: Sequence of HTTP requests in the client authorization code grant type**
+**Figure 3.71.4.1.2.2-1: Sequence of HTTP requests in the client authorization code grant type**
 
 ```plantuml
 @startuml authorization-code-grant
@@ -674,7 +674,7 @@ The Authorization Client directs the user-agent to make a HTTP GET request to th
 
 - *scope* (optional): The scope claimed by the Authorization Client.
 
-Figure 3.71.4.1.1-4 is a non-normative example of the authorization request:
+Figure 3.71.4.1.2.2-4 is a non-normative example of the authorization request:
 
 ```http
 GET /authorize?
@@ -689,7 +689,7 @@ GET /authorize?
   HTTP/1.1
 Host: server.example.com
 ```
-**Figure 3.71.4.1.1-4: Example Authorization Request**
+**Figure 3.71.4.1.2.2-4: Example Authorization Request**
 
 If the access request is granted (by the user or some other access policy), the Authorization Server issues an authorization code.
 
@@ -765,7 +765,11 @@ The Authorization Client shall use the authorization code to request the access 
 
 #### 3.71.4.2 Get Authorization Token Response
 
-##### 3.71.4.2.1 Message Semantics
+##### 3.71.4.2.1 Trigger Event
+
+TODO
+
+##### 3.71.4.2.2 Message Semantics
 The Authorization Server shall respond an error response as defined in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 5.2] if the request does not match the requirements or is not understood.
 
 If the access token request is valid and authorized, the Authorization Server responds the access token response message in JSON format with the following attributes [OAuth 2.1, Section 4.2.3]:
@@ -784,7 +788,7 @@ The access token response may contain other parameter or extensions depending on
 
 The Authorization Server shall include the HTTP *Cache-Control* response header field with value *no-store* and the *Pragma* response header field value *no-cache* to the access token response [OAuth 2.1, Section 4.2.3].
 
-Figure 3.71.4.2.1-1 is non-normative example of the access token response:
+Figure 3.71.4.2.2-1 is non-normative example of the access token response:
 
 ```http
 HTTP/1.1 200 OK
@@ -800,9 +804,9 @@ Pragma: no-cache
   "example_parameter": "example_value"
 }
 ```
-**Figure 3.71.4.2.1-1 Example Access Token Response**
+**Figure 3.71.4.2.2-1 Example Access Token Response**
 
-##### 3.71.4.2.2 JSON Web Token Option
+###### 3.71.4.2.2.1 JSON Web Token Option
 The OAuth2 specifications does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
 
 JWT token shall be signed as specified in JSON Web Signature [RFC 7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) shall be used as described in [RFC 7515, Section 7.1].
@@ -841,7 +845,7 @@ In the JSON Web Token option the access token is defined as JSON object with the
 The JWT access token may contain other parameter or extensions depending on the implementation details.
 
 
-###### 3.71.4.2.2.1 JWT IUA extension
+####### 3.71.4.2.2.1.1 JWT IUA extension
 
 The Authorization Server and Resource Server shall support the following extensions to the JWT access token:
 
@@ -877,7 +881,7 @@ The claim content shall correspond to the content defined in the XUA specificati
 
 The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attributes is shown in Table 3.71.3.2.2.1-1 below.
 
-**Table 3.71.4.2.2.1-1: JWT claims of the IUA extension and corresponding XUA Assertion attributes**
+**Table 3.71.4.2.2.1.1-1: JWT claims of the IUA extension and corresponding XUA Assertion attributes**
 
 | JWT Claim                      | XUA Attribute                                       |
 | ------------------------------ | --------------------------------------------------- |
@@ -891,7 +895,7 @@ The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attribut
 | person\_id                     | *not defined*                                       |
 
 
-###### 3.71.4.2.2.2 JWT BPPC extension
+####### 3.71.4.2.2.1.2 JWT BPPC extension
 
 In an environment which uses the IHE Basic Patient Privacy Consents (BPPC) Profile for documenting the consent, the Authorization Server and Resource Server shall support the following extension parameter:
 
@@ -924,7 +928,7 @@ The mapping of IUA extension claims to XUA-compliant SAML 2.0 Assertion attribut
 | doc\_id     | urn:ihe:iti:bppc:2007:docid                       |
 | acp         | urn:ihe:iti:xua:2012:acp                          |
 
-###### 3.71.4.2.2.3 Example
+####### 3.71.4.2.2.1.3 Example
 The following is a non-normative example of JWT access token:
 
 JOSE Header:
@@ -971,14 +975,14 @@ JWS Payload:
 }
 ```
 
-##### 3.71.4.2.3 SAML Token Option
+####### 3.71.4.2.2.1.2 SAML Token Option
 Authorization Servers implementing the SAML Token Options shall be able to format the access token as a SAML 2.0 assertion.
 
 The SAML 2.0 assertion content shall comply with XUA SAML assertion rules (see ITI TF-2b:3.40).
 
 In accordance with [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It must not contain more than one SAML 2.0 Assertion. The SAML Assertion XML data must be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data must not be line wrapped and pad characters ("=") must not be included.
 
-##### 3.71.4.2.3 Token Introspection Option
+####### 3.71.4.2.2.1.3 Token Introspection Option
 Implementations relying on Token Introspection option are not restricted in the access token format. This format may be different from the JWT or SAML tokens as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option).
 
 *Note:* using this option, the access token may be formatted as an opaque identifier without further (security sensitive) content. In such cases, the Authorization Server must have means to retrieve and communicate the associated claims during token introspection (for details see transaction ITI-103)
@@ -1051,13 +1055,13 @@ Where:
 | **Editor please Add Section 3.72** |
 | ---------------------------------- |
 
+TODO: hier
 
 ## 3.72 Incorporate Authorization Token [ITI-72]
 
 ### 3.72.1 Scope
 
 This transaction is used to incorporate authorization information to HTTP RESTful transactions.
-
 
 ### 3.72.2 Actor Roles
 
@@ -1079,7 +1083,7 @@ This transaction relies on standards defined in the following documents and the 
 
 XUA Cross-Enterprise User Assertion -- Attribute Extension
 
-### 3.72.4 Interaction Diagram
+### 3.72.4 Messages
 
 ![simple-iauth](media/incorporate-token.png)
 
@@ -1125,11 +1129,11 @@ Main Flow:
 
 This transaction works in conjunction with other HTTP RESTful transaction. It extends the transaction by adding information to the HTTP request for that HTTP RESTful transaction.
 
-### 3.72.5 Trigger Events
+#### 3.72.4.1 Trigger Events
 
 A client needs to make an HTTP RESTful transaction to a Resource Server that enforces access authorization.
 
-### 3.72.6 Message Semantics
+#### 3.72.4.2 Message Semantics
 
 The Authorization Client shall incorporate the access token as received from the Authorization Server in a HTTP Authorization header of the type *Bearer* [OAuth2.1, Bearer token] as-is.
 
@@ -1141,7 +1145,7 @@ Authorization: Bearer vGHTPOJzh3QFd\[...omitted for brevity...\]99bhgT8Ya
 Host: example.com
 ```
 
-### 3.72.7 Expected Actions
+#### 3.72.4.3 Expected Actions
 The Resource Server shall be able to determine the token format (JWT, SAML or other) through evaluating the "access_token_format" value in the Authorization Server Metadata document (see ITI-103), inspection of the access token value, or otherwise. When the Resource Server is not able to process the token format (through local verification or introspection) it must respond with HTTP 401 (Unauthorized).
 
 The Resource Server shall validate or introspect the access token and ensure that it has not expired.
@@ -1158,17 +1162,17 @@ If the token verification, scope matching or the access policy enforcement fails
 
 Authorization Clients receiving a HTTP 401 (Unauthorized) error should  NOT retry the request with the same token. An Authorization Client should  reformulate the request or obtain a new token from the Authorization Server before retrying.
 
-#### 3.72.7.1 JSON Web Token Option
+##### 3.72.4.3.1 JSON Web Token Option
 A Resource Server that claims conformance to the JSON Web Token Option shall be able to interpret and validate the access token as a JWT Token as defined in Section [3.71.4.2.2](#371422-json-web-token-option).
 
 A Resource Server that claims conformance to the Authorization Server Metadata Option shall use the keys published through the Authorization Server Metadata Document for validating the JWT token's signature.
 
-#### 3.72.7.3 SAML Token Option
+##### 3.72.4.3.2 SAML Token Option
 A Resource Server that claims conformance to the SAML Token Option shall be able to interpret and validate the access token as a XUA compliant SAML Assertion as defined in Section [3.71.4.2.3](#371423-saml-token-option).
 
 A Resource Server that claims conformance to the Authorization Server Metadata Option shall use the keys published through the Authorization Server Metadata Document for validating the SAML token's signature.
 
-#### 3.72.7.4 Introspect Token Option
+##### 3.72.4.3.3 Introspect Token Option
 A Resource Server that claims conformance to the Token Introspection Option shall be able to interact with the Authorization Server using transaction ITI-102 as described in section [3.102](#3102-introspect-token) to validate the access token and obtain the related claims.
 
 A Resource Server that claims conformance to the Authorization Server Metadata Option shall use the introspection endpoint published through the Authorization Server Metadata Document for validating the token and obtaining the related claims.
