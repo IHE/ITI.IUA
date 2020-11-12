@@ -71,7 +71,7 @@ The current version of the IHE Technical Framework can be found at: [http://www.
 
 # Introduction to this Supplement
 
-### Problem Statement
+## Problem Statement
 
 This profile is motivated by customer requirements for authorizing network transactions when using HTTP RESTful transports. IHE has authorization profiles for the Web Services and SOAP based transactions, and this profile provides an authorization profile for the HTTP RESTful transactions.
 
@@ -93,7 +93,7 @@ IUA is not a substitute for the administrative activities such as withdrawing co
 
 The administrative actions needed to establish an Authorization Server for IUA are not covered by this profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
 
-### Background on the problem environment
+## Background on the problem environment
 
 The application interacts with both patient and Authorization Server to support the granting of an access token. The application then uses the access token to retrieve and update health related data.
 
@@ -123,7 +123,16 @@ IUA assumes that there will many systems working together to build the access co
 
 IUA also assumes that this profile is operating in an environment where access consents are managed by BPPC or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. BPPC is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
 
-# Open Issues and Question
+## Relation to SMART-on-FHIR
+
+IUA is not based on SMART-on-FHIR, but does strive not to conflict with that standard. Reasons for not basing IUA on SMART include:
+* SMART is bound to FHIR, where the IUA profile should also be usable for non-FHIR APIs. For example, profiles may want to use DICOM-Web in the future.
+* SMART is directed towards a set of use cases, eg. "EMR-launch". IUA contains use-cases not covered by SMART, such as cross-enterprise data exchange, or service-2-service integrations (with or without an EMR). The IUA supported use-cases in that sense are often more in line with those mentioned in SMART for backend services. IUA is compatible with that specification.
+* A number of IHE profiles are using FHIR operations and FHIR messaging. Currently, the SMART scopes are covering these types of interactions.
+* The current published version of SMART, the launch context is not explicitly communicated to the Resource Server, creating an additional dependency between resource server and authorization server. The access token format is not specified, nor another mechanism to obtain the authorization claims associated with the access token. IUA specifically addresses these issues by specifying structured token formats and a token introspection interaction, along with authorization claim extensions for consent and organizational context. 
+* SMART is creating a non-further specified dependency between the Authorization Server and the app-launching Resource Server, by embedding a launch context into the authorization mechanisms. In SMART the authorization server is aware of the launch context and the associated permissions. This may work in EMR cases where both authorization and data access are controlled from the same (EMR) system, but these are not so obvious in other situations. In IUA there is a more strict separation of the Resource Server and Authorization Server actors, allowing setups with multiple resource servers and/or multiple (or even no) Authorization Servers (eg., when XUA tokens are reused)!
+
+# Open Issues and Questions
 
 - **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to MHD and does define a Scope for use with MHD transactions. That Scope for MHD does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
 
