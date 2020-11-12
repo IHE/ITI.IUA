@@ -767,7 +767,7 @@ The Authorization Client shall use the authorization code to request the access 
 
 ##### 3.71.4.2.1 Trigger Event
 
-TODO
+The Get Authorization Token Response is returned by an Authorization Server upon request from an Authorization Client. a to obtain an access token to be used in further communication.
 
 ##### 3.71.4.2.2 Message Semantics
 The Authorization Server shall respond an error response as defined in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 5.2] if the request does not match the requirements or is not understood.
@@ -845,7 +845,7 @@ In the JSON Web Token option the access token is defined as JSON object with the
 The JWT access token may contain other parameter or extensions depending on the implementation details.
 
 
-####### 3.71.4.2.2.1.1 JWT IUA extension
+**3.71.4.2.2.1.1 JWT IUA extension**
 
 The Authorization Server and Resource Server shall support the following extensions to the JWT access token:
 
@@ -895,7 +895,7 @@ The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attribut
 | person\_id                     | *not defined*                                       |
 
 
-####### 3.71.4.2.2.1.2 JWT BPPC extension
+**3.71.4.2.2.1.2 JWT BPPC extension**
 
 In an environment which uses the IHE Basic Patient Privacy Consents (BPPC) Profile for documenting the consent, the Authorization Server and Resource Server shall support the following extension parameter:
 
@@ -928,7 +928,8 @@ The mapping of IUA extension claims to XUA-compliant SAML 2.0 Assertion attribut
 | doc\_id     | urn:ihe:iti:bppc:2007:docid                       |
 | acp         | urn:ihe:iti:xua:2012:acp                          |
 
-####### 3.71.4.2.2.1.3 Example
+**3.71.4.2.2.1.3 Example**
+
 The following is a non-normative example of JWT access token:
 
 JOSE Header:
@@ -975,14 +976,16 @@ JWS Payload:
 }
 ```
 
-####### 3.71.4.2.2.1.2 SAML Token Option
+**3.71.4.2.2.1.2 SAML Token Option**
+
 Authorization Servers implementing the SAML Token Options shall be able to format the access token as a SAML 2.0 assertion.
 
 The SAML 2.0 assertion content shall comply with XUA SAML assertion rules (see ITI TF-2b:3.40).
 
 In accordance with [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It must not contain more than one SAML 2.0 Assertion. The SAML Assertion XML data must be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data must not be line wrapped and pad characters ("=") must not be included.
 
-####### 3.71.4.2.2.1.3 Token Introspection Option
+**3.71.4.2.2.1.3 Token Introspection Option**
+
 Implementations relying on Token Introspection option are not restricted in the access token format. This format may be different from the JWT or SAML tokens as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option).
 
 *Note:* using this option, the access token may be formatted as an opaque identifier without further (security sensitive) content. In such cases, the Authorization Server must have means to retrieve and communicate the associated claims during token introspection (for details see transaction ITI-103)
@@ -1054,8 +1057,6 @@ Where:
 
 | **Editor please Add Section 3.72** |
 | ---------------------------------- |
-
-TODO: hier
 
 ## 3.72 Incorporate Authorization Token [ITI-72]
 
