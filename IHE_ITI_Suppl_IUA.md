@@ -495,9 +495,9 @@ Process Flow:
 
 1. (Optional) The Resource Server fetches the metadata document from the Authorization Server to detect the supported token format, relevant introspection endpoints and signature verification key material.
 
-1. The Authorization Client authenticates to the Authorization Server and (optionally) provides claims related to the intended request to access protected resources of a Resource Server. This may entail interaction with the user to establish user authentication and/or consent establishment.
+1. The Authorization Client authenticates to the Authorization Server and (optionally) provides claims related to the intended request to access protected resources of a Resource Server. 
 
-1. The Authorization Server authenticates the client, validates the claims against any policy rules (such as user consent) and returns an access token that authorizes the Authorization Client to request the protected resources from Resource Servers.
+1. The Authorization Server authenticates the client, validates the claims against any policy rules (such as user consent) and returns an access token that authorizes the Authorization Client to request the protected resources from Resource Servers. This may entail interaction with the user to establish user authentication and/or consent.
 
 1. The Authorization Client incorporates the access token to the requests of the protected resources to Resource Servers.
 
