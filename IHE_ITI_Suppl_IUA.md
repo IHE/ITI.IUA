@@ -437,11 +437,13 @@ Users may delegate authority to:
 
 Revocation of delegation needs to be clearly specified by policy. Revocation may be removal of rights because of swapping devices. Expiration, re-authorization, etc. also need to be covered. Revocation is not just a response to breaches and failures. Revocation is a normal response to changes in people, equipment, and relationships.
 
-#### 34.4.2.3 Don't know yet
+#### 34.4.2.3 Basic Flow
+
+Figure 34.4.2..3-1 shows the basis flow of information exchange common to all IUA use cases.
 
 ![ITI-71 Flow Diagram](media/basic-flow.png)
 
-**Figure 3.71.4-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
+**Figure 34.4.2..3-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
 
 ```plantuml
 @startuml basic-flow
@@ -465,8 +467,6 @@ end
 ```
 
 Main Flow
-
-TODO: Move to Use Case Section (put on top)
 
 1.  (Optional) The Authorization Client fetches the metadata document from the Authorization Server to detect the relevant authorization endpoints and supported grant types.
 
