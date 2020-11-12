@@ -439,7 +439,7 @@ Revocation of delegation needs to be clearly specified by policy. Revocation may
 
 #### 34.4.2.3 Basic Flow
 
-Figure 34.4.2..3-1 shows the basis flow of information exchange common to all IUA use cases.
+Figure 34.4.2..3-1 shows the basis flow of information exchange common to IUA use cases.
 
 ![ITI-71 Flow Diagram](media/basic-flow.png)
 
@@ -599,7 +599,7 @@ The request shall use the *application/x-www-form-urlencoded* format with a char
 
 The Authorization Clients shall present its *client\_id* and *client\_secret* in a HTTP Basic Authentication Header to the Authorization Server.
 
-Figure 3.71.4.1.2 is a non-normative example of the access token request with client authentication using the *client_id* and *client_secret* in the HTTP Authorization header:
+Figure 3.71.4.1.1-2 is a non-normative example of the access token request with client authentication using the *client_id* and *client_secret* in the HTTP Authorization header:
 
 ```http
 POST /token HTTP/1.1
@@ -619,7 +619,7 @@ An Authorization Client that supports the Authorization Server Metadata Option s
 
 ![ITI-71 Authorization Code](media/authorization-code-grant.png)
 
-**Figure 3.71.4.1.1-3: Sequence of HTTP requests in the client authorization code grant type**
+**Figure 3.71.4.1.2-1: Sequence of HTTP requests in the client authorization code grant type**
 
 ```plantuml
 @startuml authorization-code-grant
@@ -719,7 +719,7 @@ It makes a HTTP POST request to the token endpoint with the following parameters
 
 - *code_verifier*: The original code verifier string. REQUIRED, if the "code_challenge" parameter was used in the authorization request. shall not be used otherwise.
 
-Figure 3.71.4.1.1-6 non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header:
+Figure 3.71.4.1.1-5 shows a non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header:
 
 ```http
 POST /token HTTP/1.1
@@ -799,7 +799,7 @@ Pragma: no-cache
   "example_parameter": "example_value"
 }
 ```
-**Figure 3.71.4.2.1-1 0 Example Access Token Response**
+**Figure 3.71.4.2.1-1 Example Access Token Response**
 
 ##### 3.71.4.2.2 JSON Web Token Option
 The OAuth2 specifications does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
