@@ -517,13 +517,9 @@ The SAML Token Option in IUA enables an Authorization Client to incorporate acce
 
 ## 3.71 Get Authorization Token [ITI-71]
 
-TODO
-
-This transaction is used by Authorization Clients to obtain an OAuth 2.1 compliant access token for use in a RESTful transaction to access data from a Resource Server.
-
 ### 3.71.1 Scope
 
-This transaction is used by an Authorization Client to retrieve an OAuth 2.1-compliant access token defined in [Section 3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
+This transaction is used by an Authorization Client to retrieve an OAuth 2.1-compliant access token.
 
 ### 3.71.2 Actor Roles
 
