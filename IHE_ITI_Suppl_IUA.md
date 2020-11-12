@@ -292,20 +292,22 @@ Table 34.2-1: IUA - Actors and Options
 ### 34.2.1 Authorization Server Metadata option
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
-TODO: Reference the transaction in Vol2 section
-
 An Authorization Client that supports this option shall have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
 Authorization Servers supporting the Authorization Server Metadata option shall provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
 
 Resource Servers supporting the Authorization Server Metadata option shall have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
+See ITI TF-2b: [3.103](#3103-get-authorization-server-metadata) for transaction requirements.
+
 ### 34.2.2 JWT Token Option
-This option uses JSON Web Token encoding of the Token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option)
+This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in ITI TF-2b: [3.71.4.2.2](#371422-json-web-token-option)
 
 An Authorization Servers that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers.
 
 A Resource Server that supports this option shall be able to accept JWT access tokens in RESTful requests, extract and validate the information provided in the JWT access token, and to enforce access policies based on it.
+
+See ITI TF-2b: [3.71.4.2.2](#371422-json-web-token-option) for transaction requirements.
 
 ### 34.2.3 SAML Token Option
 This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure.
@@ -313,6 +315,8 @@ This option enables integration of environments that use both, XUA compatible SA
 An Authorization Servers that supports this option shall provide an endpoint to retrieve XUA compliant SAML 2.0 access token to be incorporated in RESTful requests to Resource Servers.
 
 A Resource Server that supports this option shall be able to accept XUA compliant access tokens in RESTful requests, extract and validate the information provided in the token, and to enforce access policies based on it.
+
+See ITI TF-2b: [3.71.4.2.3](#3423-saml-token-option) for transaction requirements.
 
 ### 34.2.3 Token Introspection Option
 Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token; see ITI TF-2b: [3.71.4.2.2 JSON Web Token Option](#371422-json-web-token-option). Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
@@ -323,10 +327,11 @@ The Resource Server declaring the Token Introspection option shall have the abil
 
 When the Incorporate Authorization Token [ITI-72] transaction [ is used with a FHIR server, Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes".
 
+See ITI TF-2b: [3.102](#3102-introspect-token) for transaction requirements.
+
 ## 34.3 IUA Required Actor Groupings
 
 An actor from this profile shall implement the required transactions and/or content modules in this profile ***in addition to*** all of the transactions required for the grouped actor (Column 2).
-
 
 Table 34.3-1: Required Actor Groupings
 
@@ -437,7 +442,7 @@ Users may delegate authority to:
 
 Revocation of delegation needs to be clearly specified by policy. Revocation may be removal of rights because of swapping devices. Expiration, re-authorization, etc. also need to be covered. Revocation is not just a response to breaches and failures. Revocation is a normal response to changes in people, equipment, and relationships.
 
-#### 34.4.2.3 Basic Flow
+#### 34.4.2.3 Process Flow
 
 Figure 34.4.2..3-1 shows the basis flow of information exchange common to IUA use cases.
 
@@ -466,7 +471,7 @@ end
 @enduml
 ```
 
-Main Flow
+Process Flow:
 
 1.  (Optional) The Authorization Client fetches the metadata document from the Authorization Server to detect the relevant authorization endpoints and supported grant types.
 
@@ -986,9 +991,7 @@ Implementations relying on Token Introspection option are not restricted in the 
 
 Authorization Client and Authorization Server claiming compliance with this profile shall fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], including:  
 
-TODO: reference ATNA option (see below)
-
-- All HTTP transaction shall be secured by using TLS or equivalent transport security.
+- All HTTP transactions shall be secured by using TLS or equivalent transport security (e.g., ATNA option STX: HTTPS IUA).
 
 - Authorization Clients shall verify the identity of the Authorization Server, either by validating the TLS certificate chain or by other reliable methods.
 
