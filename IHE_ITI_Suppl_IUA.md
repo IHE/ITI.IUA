@@ -30,18 +30,18 @@ This supplement describes changes to the existing technical framework documents.
 
 
 | **Editor please Amend Section X.X by the following** |
-| ---------------------------------------------------- |
+|------------------------------------------------------|
 
 
 Where the amendment adds text, make the added text **<ins>bold underline</ins>**. Where the amendment removes text, make the removed text **~~bold strikethrough~~**. When entire new sections are added, introduce with editor's instructions to "add new text" or similar, which for readability are not bolded or underlined.
 
 General information about IHE can be found at: [http://www.ihe.net](http://www.ihe.net/).
 
-Information about the IHE IT Infrastructure domain can be found at: [http://www.ihe.net/IHE\_Domains](http://www.ihe.net/IHE_Domains/).
+Information about the IHE IT Infrastructure domain can be found at: [http://profiles.ihe.net](https://profiles.ihe.net).
 
-Information about the structure of IHE Technical Frameworks and Supplements can be found at: [http://www.ihe.net/IHE\_Process](http://www.ihe.net/IHE_Process/) and [http://www.ihe.net/Profiles](http://www.ihe.net/Profiles/).
+Information about the structure of IHE Technical Frameworks and Supplements can be found at: [http://www.ihe.net/IHE\_Process](http://www.ihe.net/IHE_Process/) and [http://profiles.ihe.net](http://profiles.ihe.net).
 
-The current version of the IHE Technical Framework can be found at: [http://www.ihe.net/Technical\_Frameworks](http://www.ihe.net/Technical_Frameworks/).
+The current version of the IHE Technical Framework can be found at: [https://profiles.ihe.net](https://profiles.ihe.net/ITI).
 
 **CONTENTS**
 
