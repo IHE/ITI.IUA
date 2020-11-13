@@ -71,7 +71,7 @@ The current version of the IHE Technical Framework can be found at: [https://pro
 
 # Introduction to this Supplement
 
-### Problem Statement
+## Problem Statement
 
 This profile is motivated by customer requirements for authorizing network transactions when using HTTP RESTful transports. IHE has authorization profiles for the Web Services and SOAP based transactions, and this profile provides an authorization profile for the HTTP RESTful transactions.
 
@@ -93,7 +93,7 @@ IUA is not a substitute for the administrative activities such as withdrawing co
 
 The administrative actions needed to establish an Authorization Server for IUA are not covered by this profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
 
-### Background on the problem environment
+## Background on the problem environment
 
 The application interacts with both patient and Authorization Server to support the granting of an access token. The application then uses the access token to retrieve and update health related data.
 
@@ -123,11 +123,28 @@ IUA assumes that there will many systems working together to build the access co
 
 IUA also assumes that this profile is operating in an environment where access consents are managed by [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
 
-# Open Issues and Question
+## Relation to SMART-on-FHIR
+
+IUA is not based on SMART-on-FHIR, but does strive not to conflict with that standard. Concerns about SMART were raised surrounding the tight dependency between Resource and Authorization Server, the inclusion of launch/view context in the authorization flow, and the dependency on FHIR.
+
+In our view IUA provides the following advantages over SMART:
+
+- IUA promotes a loose coupling of Resource Server and Authorization Servers. This allows for deployments with multiple Resource Servers per Authorization Server as well as deployments with several or even no Authorization Servers.
+- IUA supports a wide range of use-cases ranging from mobile application access to data, cross-enterprise data exchange to complex system integration scenarios.
+- IUA is base-standard agnostic and can be combined with any HTTP RESTful transaction
+- IUA provides explicit means of obtaining authorization claims from an access token by a resource server (with and without the involvement of an Authorization Server)
+- IUA specifies additional authorization context claims such as BPPC consents and a user's organizational context
+- IUA provides explicit compatibility with IHE XUA
+
+That said, it is recognized that SMART-on-FHIR is evolving and adoption rates are increasing. Therefore, as indicated in Issue 13, community feedback is welcomed on the harmonization of IUA and SMART.
+
+# Open Issues and Questions
 
 - **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html and does define a Scope for use with [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html transactions. That Scope for [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
 
 - **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
+
+- **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
 
 # Closed Issues
 
@@ -421,25 +438,13 @@ A patient uses a native app on her mobile device to access data from her electro
 
 The limitation of the scope is common to all use cases and one of the key concepts of OAuth to ensure data privacy protection by user consent. While the need for restricting the scope might be less obvious for primary system applications, it is apparently for mobile or web applications which provide specific services for patients or healthcare professionals, e.g., for medication or vaccinations or other specific use cases. An Authorization Server therefore in general will present a form to the user to consent to an application specific and limited scope, e.g., to specific transactions, document types or classes or subject specific data the application is authorized to access.    
 
-#### 34.4.2.2 Delegation Use Case
+#### 34.4.2.2 Process Flow
 
-There are multiple reasons to perform delegations. These cases primarily involve patient delegation choices. IT staff may use delegation as part of the support for autonomous devices.  Providers rarely have the authority to delegate.
-
-Users may delegate authority to:
-
--   Advocates and proxies who are authorized by the patient to make decisions for the patient.
-
--   Organizations that are acting for the patient, such as a visiting nurse organization that is providing support to the patient.
-
-Revocation of delegation needs to be clearly specified by policy. Revocation may be removal of rights because of swapping devices. Expiration, re-authorization, etc. also need to be covered. Revocation is not just a response to breaches and failures. Revocation is a normal response to changes in people, equipment, and relationships.
-
-#### 34.4.2.3 Process Flow
-
-Figure 34.4.2..3-1 shows the basis flow of information exchange common to IUA use cases.
+Figure 34.4.2.2-1 shows the basis flow of information exchange common to IUA use cases.
 
 ![ITI-71 Flow Diagram](media/basic-flow.png)
 
-**Figure 34.4.2..3-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
+**Figure 34.4.2.2-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
 
 ```plantuml
 @startuml basic-flow
@@ -1006,9 +1011,11 @@ In accordance with [RFC7522, Section 2.2], the value of the access token contain
 
 ###### 3.71.4.2.2.3 Token Introspection Option
 
-Implementations relying on Token Introspection option are not restricted in the access token format. This format may be different from the JWT or SAML tokens as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option).
+Implementations relying on the Token Introspection option must provide a non-empty, unique and non-guessable access token value. 
 
-*Note:* using this option, the access token may be formatted as an opaque identifier without further (security sensitive) content. In such cases, the Authorization Server must have means to retrieve and communicate the associated claims during token introspection (for details see transaction ITI-103)
+The access token may be a structured value, for example using the JWT or SAML token formats as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
+
+The Authorization Server must have means to retrieve the claims associated with the access token during token introspection (for details see [ITI TF-2b: 3.102 Introspect Token](#3102-introspect-token)).
 
 ### 3.71.5 Security Considerations
 
@@ -1259,7 +1266,7 @@ This transaction relies on standards defined in the following documents and the 
 - *RFC7662*: OAuth 2.0 Token Introspection, published as RFC7662, October 2015
 
 ### 3.102.4 Messages
-Introspection entails a single request response between a Resource Server and an Authorization Server. This flow is typically executed as part of the authorization of RESTful resource request as depicted in [ITI TF-1: 34.4.2.3 Process Flow](#34423-process-flow).
+Introspection entails a single request response between a Resource Server and an Authorization Server. This flow is typically executed as part of the authorization of RESTful resource request as depicted in [ITI TF-1: 34.4.2.2 Process Flow](#34422-process-flow).
 
 ![ITI-102 Introspect Diagram](media/introspect.png)
 
