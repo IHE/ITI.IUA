@@ -127,7 +127,7 @@ IUA also assumes that this profile is operating in an environment where access c
 
 IUA is not based on SMART-on-FHIR, but does strive not to conflict with that standard. Concerns about SMART were raised surrounding the tight dependency between Resource and Authorization Server, the inclusion of launch/view context in the authorization flow, and the dependency on FHIR.
 
-In our view IUA provides the following advantages over SMART:
+In our view, IUA provides the following advantages over SMART:
 
 - IUA promotes a loose coupling of Resource Server and Authorization Servers. This allows for deployments with multiple Resource Servers per Authorization Server as well as deployments with several or even no Authorization Servers.
 - IUA supports a wide range of use-cases ranging from mobile application access to data, cross-enterprise data exchange to complex system integration scenarios.
