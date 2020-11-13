@@ -438,25 +438,13 @@ A patient uses a native app on her mobile device to access data from her electro
 
 The limitation of the scope is common to all use cases and one of the key concepts of OAuth to ensure data privacy protection by user consent. While the need for restricting the scope might be less obvious for primary system applications, it is apparently for mobile or web applications which provide specific services for patients or healthcare professionals, e.g., for medication or vaccinations or other specific use cases. An Authorization Server therefore in general will present a form to the user to consent to an application specific and limited scope, e.g., to specific transactions, document types or classes or subject specific data the application is authorized to access.    
 
-#### 34.4.2.2 Delegation Use Case
+#### 34.4.2.2 Process Flow
 
-There are multiple reasons to perform delegations. These cases primarily involve patient delegation choices. IT staff may use delegation as part of the support for autonomous devices.  Providers rarely have the authority to delegate.
-
-Users may delegate authority to:
-
--   Advocates and proxies who are authorized by the patient to make decisions for the patient.
-
--   Organizations that are acting for the patient, such as a visiting nurse organization that is providing support to the patient.
-
-Revocation of delegation needs to be clearly specified by policy. Revocation may be removal of rights because of swapping devices. Expiration, re-authorization, etc. also need to be covered. Revocation is not just a response to breaches and failures. Revocation is a normal response to changes in people, equipment, and relationships.
-
-#### 34.4.2.3 Process Flow
-
-Figure 34.4.2..3-1 shows the basis flow of information exchange common to IUA use cases.
+Figure 34.4.2.2-1 shows the basis flow of information exchange common to IUA use cases.
 
 ![ITI-71 Flow Diagram](media/basic-flow.png)
 
-**Figure 34.4.2..3-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
+**Figure 34.4.2.2-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
 
 ```plantuml
 @startuml basic-flow
@@ -1278,7 +1266,7 @@ This transaction relies on standards defined in the following documents and the 
 - *RFC7662*: OAuth 2.0 Token Introspection, published as RFC7662, October 2015
 
 ### 3.102.4 Messages
-Introspection entails a single request response between a Resource Server and an Authorization Server. This flow is typically executed as part of the authorization of RESTful resource request as depicted in [ITI TF-1: 34.4.2.3 Process Flow](#34423-process-flow).
+Introspection entails a single request response between a Resource Server and an Authorization Server. This flow is typically executed as part of the authorization of RESTful resource request as depicted in [ITI TF-1: 34.4.2.2 Process Flow](#34422-process-flow).
 
 ![ITI-102 Introspect Diagram](media/introspect.png)
 
