@@ -85,11 +85,11 @@ The HTTP RESTful transport is being used by many healthcare applications and sma
 
 -   The patient wants to configure the application to have access to his data without needing the IT staff at the application vendor and resource vendor to set things up.
 
-The HTTP RESTful services may include user-driven browser activity, downloaded applications, automatic devices, and IT systems. The existing IHE ITI Cross-Enterprise User Assertion (XUA) Profile fills these needs for the SOAP transport based transactions. The existing IHE ITI Enterprise User Authentication (EUA) Profile fills these needs for various different transports within a single enterprise environment, including HTTP RESTful transports.
+The HTTP RESTful services may include user-driven browser activity, downloaded applications, automatic devices, and IT systems. The existing IHE ITI [Cross-Enterprise User Assertion (XUA)](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile fills these needs for the SOAP transport based transactions. The existing IHE ITI Enterprise User Authentication (EUA) Profile fills these needs for various different transports within a single enterprise environment, including HTTP RESTful transports.
 
-The Basic Patient Privacy Consent (BPPC) Profile is associated with this profile and these other existing profiles. BPPC covers the legal and administrative needs for consent documentation and associating the patient consent with policy documentation. The BPPC profile includes the ability to associate the electronic authorizations with the patient agreements and organizational policies.
+The [Basic Patient Privacy Consent (BPPC)](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile is associated with this profile and these other existing profiles. [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html covers the legal and administrative needs for consent documentation and associating the patient consent with policy documentation. The [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html profile includes the ability to associate the electronic authorizations with the patient agreements and organizational policies.
 
-IUA is not a substitute for the administrative activities such as withdrawing consent, policy setting, and other activities that BPPC documents provide. The current scope of IUA is the basic authorization activities.  Future scope may include greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE BPPC Profile.
+IUA is not a substitute for the administrative activities such as withdrawing consent, policy setting, and other activities that [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html documents provide. The current scope of IUA is the basic authorization activities.  Future scope may include greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html Profile.
 
 The administrative actions needed to establish an Authorization Server for IUA are not covered by this profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
 
@@ -121,19 +121,19 @@ There are also environmental assumptions made by this profile.
 
 IUA assumes that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose-related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about the patient, it will be rejected.
 
-IUA also assumes that this profile is operating in an environment where access consents are managed by BPPC or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. BPPC is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
+IUA also assumes that this profile is operating in an environment where access consents are managed by [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. [BPPC]http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
 
 # Open Issues and Question
 
-- **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to MHD and does define a Scope for use with MHD transactions. That Scope for MHD does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
+- **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html and does define a Scope for use with [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html transactions. That Scope for [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
 
-- **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. MHD Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
+- **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
 
 # Closed Issues
 
 - **Issue 1**: At this time, the method for assignment of client identifiers is not included in the profile. Registration of clients is a significant operational and security problem that is being postponed until there is more experience with problems in the field and reasonable solutions. In the field there are a variety of methods being tried. Many depend upon physical distribution methods or out of band communications to manage the authentication problems.
 
-- **Issue 2**: This profile does support access token in JWT format and SAML 2.0 Assertions compliant with the XUA profile requirements. An operational environment must ensure, that access tokens are understood by the authorization and Resource Servers. The Bearer Token option of earlier versions of the profile has been removed, since it does not specify the access token format and attributes used and was thus not interoperable by design.  
+- **Issue 2**: This profile does support access token in JWT format and SAML 2.0 Assertions compliant with the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html profile requirements. An operational environment must ensure, that access tokens are understood by the authorization and Resource Servers. The Bearer Token option of earlier versions of the profile has been removed, since it does not specify the access token format and attributes used and was thus not interoperable by design.  
 
 - **Issue 3**: Audit messages are only defined for clients that are also Secure Applications. There is no defined auditing for other clients.
 
@@ -143,7 +143,7 @@ IUA also assumes that this profile is operating in an environment where access c
 
 - **Issue 9**: This profile does not explain the ways that some Resource Servers utilize HTTP redirects to automate some kinds of authorization activities. The actual HTTP transactions used for Obtain Authorization Token and Authorized RESTful Transaction are as defined within this profile. The other transactions are under the control of the Resource Server and its design.
 
-- **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the XUA extensions.                 |
+- **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html extensions.                 |
 
 
 # General Introduction
@@ -303,11 +303,11 @@ A Resource Server that supports this option shall be able to accept JWT access t
 See [ITI TF-2b: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction requirements.
 
 ### 34.2.3 SAML Token Option
-This option enables integration of environments that use both, XUA compatible SAML access token and the OAuth authorization infrastructure.
+This option enables integration of environments that use both, [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compatible SAML access token and the OAuth authorization infrastructure.
 
-An Authorization Servers that supports this option shall provide an endpoint to retrieve XUA compliant SAML 2.0 access token to be incorporated in RESTful requests to Resource Servers.
+An Authorization Servers that supports this option shall provide an endpoint to retrieve [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant SAML 2.0 access token to be incorporated in RESTful requests to Resource Servers.
 
-A Resource Server that supports this option shall be able to accept XUA compliant access tokens in RESTful requests, extract and validate the information provided in the token, and to enforce access policies based on it.
+A Resource Server that supports this option shall be able to accept [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant access tokens in RESTful requests, extract and validate the information provided in the token, and to enforce access policies based on it.
 
 See [ITI TF-2b: 3.71.4.2.2.2](#3714221-saml-token-option) for transaction requirements.
 
@@ -361,7 +361,7 @@ The OAuth 2.1 Authorization Framework further defines extension points to implem
 
 - *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don’t provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
 
-- *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a XUA Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
+- *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
 
 - *JSON Web Token (JWT) grants* [RFC7523]: To use a JWT Token as credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant provides better security properties than the client credential flow as it allows for asymmetric keys to be used for client and user authentication.
 
@@ -521,15 +521,15 @@ The Authorization Server will typically have an administratively managed list of
 
 ## 34.6 IUA Cross Profile Considerations
 
-The XUA Profile provides equivalent functionality as IUA, but for SOAP-based transactions. Both XUA and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
+The [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Profile provides equivalent functionality as IUA, but for SOAP-based transactions. Both [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
 
-- The XUA Profile defines the Get X-User Assertion transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
+- The [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Profile defines the Get X-User Assertion transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
 
-- While the XUA Profile relies on ATNA the Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
+- While the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Profile relies on [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html the Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
 
-- While XUA supports SAML 2 Assertions only, the IUA Profile supports access token in JWT, SAML 2.0 Assertion or custom formats (in case the Token Introspection Option is implemented).  
+- While [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html supports SAML 2 Assertions only, the IUA Profile supports access token in JWT, SAML 2.0 Assertion or custom formats (in case the Token Introspection Option is implemented).  
 
-The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a XUA X-Assertion Provider and use it in the Incorporate Authorization Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.   
+The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html X-Assertion Provider and use it in the Incorporate Authorization Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.   
 
 # Volume 2b -- Transactions
 
@@ -897,9 +897,9 @@ The above claims shall be wrapped in an "extensions" object with key 'ihe\_iua' 
 }
 ```
 
-The claim content shall correspond to the content defined in the XUA specification (see ITI TF-2b: 3.40.4.1.2 Message Semantics).
+The claim content shall correspond to the content defined in the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html specification (see ITI TF-2b: 3.40.4.1.2 Message Semantics).
 
-The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attributes is shown in Table 3.71.3.2.2.1-1 below.
+The mapping of IUA extension claims to [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant SAML 2.0 Assertion attributes is shown in Table 3.71.3.2.2.1-1 below.
 
 **Table 3.71.4.2.2.1.1-1: JWT claims of the IUA extension and corresponding XUA Assertion attributes**
 
@@ -917,7 +917,7 @@ The mapping of IUA extension claims to XUA compliant SAML 2.0 Assertion attribut
 
 **3.71.4.2.2.1.2 JWT BPPC extension**
 
-In an environment which uses the IHE Basic Patient Privacy Consents (BPPC) Profile for documenting the consent, the Authorization Server and Resource Server shall support the following extension parameter:
+In an environment which uses the IHE [Basic Patient Privacy Consents (BPPC)](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile for documenting the consent, the Authorization Server and Resource Server shall support the following extension parameter:
 
 - *patient\_id*: Patient identifier related to the Patient Privacy Policy Identifier. Its value should  be the patient identifier in CX syntax or as URL.
 
@@ -1000,7 +1000,7 @@ JWS Payload:
 
 Authorization Servers implementing the SAML Token Options shall be able to format the access token as a SAML 2.0 assertion.
 
-The SAML 2.0 assertion content shall comply with XUA SAML assertion rules (see ITI TF-2b:3.40).
+The SAML 2.0 assertion content shall comply with [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html SAML assertion rules (see ITI TF-2b:3.40).
 
 In accordance with [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It must not contain more than one SAML 2.0 Assertion. The SAML Assertion XML data must be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data must not be line wrapped and pad characters ("=") must not be included.
 
@@ -1032,7 +1032,7 @@ The Authorization Client is recommended to provide a resource value to limit usa
 
 #### 3.71.5.1 Security Audit Considerations
 
-The Authorization Client or Authorization Server that is grouped with an ATNA Secure Node or Secure Application shall be able to send an audit event as defined below:  
+The Authorization Client or Authorization Server that is grouped with an [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Secure Node or Secure Application shall be able to send an audit event as defined below:  
 
 
 |                                                     | Field Name              | Opt | Value Constraints                       |
@@ -1102,7 +1102,7 @@ This transaction relies on standards defined in the following documents and the 
 
 #### 3.72.3.1 Related IHE Profiles
 
-XUA Cross-Enterprise User Assertion -- Attribute Extension
+ [XUA Cross-Enterprise User Assertion]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html -- Attribute Extension
 
 ### 3.72.4 Messages
 
@@ -1184,7 +1184,7 @@ A Resource Server that claims conformance to the JSON Web Token Option shall be 
 A Resource Server that claims conformance to the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the JWT token's signature.
 
 ##### 3.72.4.3.2 SAML Token Option
-A Resource Server that claims conformance to the SAML Token Option shall be able to interpret and validate the access token as a XUA compliant SAML Assertion as defined in Section [3.71.4.2.3](#371423-saml-token-option).
+A Resource Server that claims conformance to the SAML Token Option shall be able to interpret and validate the access token as a [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant SAML Assertion as defined in Section [3.71.4.2.3](#371423-saml-token-option).
 
 A Resource Server that claims conformance to the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the SAML token's signature.
 
@@ -1203,7 +1203,7 @@ Authorization Clients and Resource Servers claiming compliance with this profile
 
 #### 3.72.5.1 Security Audit Considerations
 
-When an ATNA Audit message needs to be generated by the Resource Server and the user is authenticated by way of a JWT Token, the ATNA Audit message **UserName** element shall record the JWT Token information using the following encoding:
+When an [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message needs to be generated by the Resource Server and the user is authenticated by way of a JWT Token, the [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message **UserName** element shall record the JWT Token information using the following encoding:
 
 **alias\"\<\"user\"@\"issuer\"\>\"**
 
@@ -1212,7 +1212,7 @@ where:
 -   **user** shall match the JWT token's "sub" parameter
 -   **issuer** shall match the JWT token's "iss" parameter
 
-When an ATNA Audit message needs to be generated by the Resource Server and the user is authenticated by way of a SAML Token, the ATNA Audit message **UserName** element shall record the SAML token information using the following encoding:
+When an [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message needs to be generated by the Resource Server and the user is authenticated by way of a SAML Token, the [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message **UserName** element shall record the SAML token information using the following encoding:
 
 **alias\"\<\"user\"@\"issuer\"\>\"**
 
