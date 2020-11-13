@@ -1513,7 +1513,9 @@ The document shall be structured according to the rules set forth in [RFC8414, S
 * *response_types_supported (required)*: As the implicit grant flow is not supported in OAuth2.1, the response types should not include the value "token". Authorization Servers shall include the response type "code". Authorization Servers supporting [OpenId Connect] or other standards may include other token types, such as "id_token".
 * *grant_types_supported (required)*: A JSON array listing the type of grants supported toward the token endpoint. The list shall include the values "client_credentials", and "authorization_code". 
    * Authorization Servers supporting refresh tokens shall include "refresh-token". 
-   * Authorization Servers supporting the JWT grant shall include "urn:ietf:params:oauth:grant-type:jwt-bearer". Authorization Servers supporting the SAML grant shall include "urn:ietf:params:oauth:grant-type:saml2-bearer". Authorization Servers supporting other types of grants should  provide additional values to this list representing those grant types.
+   * Authorization Servers supporting the JWT grant shall include "urn:ietf:params:oauth:grant-type:jwt-bearer". 
+   * Authorization Servers supporting the SAML grant shall include "urn:ietf:params:oauth:grant-type:saml2-bearer". 
+   * Authorization Servers supporting other types of grants should provide additional values to this list representing those grant types.
 * *token_endpoint_auth_methods_supported (optional)*: JSON array containing a list of client authentication methods supported by this token endpoint. When provided, this list must include "client_secret_basic".
 * *introspection_endpoint (conditional)*: URL of the Authorization Server's OAuth 2.0 introspection endpoint. This claim must be provided by Authorization Servers supporting the Token Introspection Option.
 * *introspection_endpoint_auth_methods_supported (conditional)*: JSON array containing a list of client authentication methods supported by the introspection endpoint. This claim must be provided by Authorization Servers supporting the Token Introspection Option. As the introspect option mandates support for Resource Server bearer access tokens, this claim must include the "Bearer" value. Other authentication methods (e.g., "client_secret_basic") are allowed when supported by the Authorization Server.
@@ -1525,100 +1527,108 @@ In addition to the claims provided in [RFC8414] Authorization Servers should pro
 
 ##### 3.103.4.2.3 Expected Actions
 
-The Authorization Client or Resource Servers requesting the metadata document shall use the endpoint locations from the metadata document in their interactions with the Authorization Server.
+The Authorization Client or Resource Servers requesting the metadata document shall use the endpoint locations from the metadata document in its interactions with the Authorization Server.
 
-The Authorization Client or Resource Servers requesting the metadata document should  use the JWK values retrieved from the jwks_uri endpoint published in the metadata document for validating JWT and/or SAML tokens.
+The Authorization Client or Resource Servers requesting the metadata document should use the JWK values retrieved from the jwks_uri endpoint published in the metadata document for validating JWT and/or SAML tokens.
 
-Resource Servers requesting the metadata document should  use the "access_token_format" claim to determine the method of token validation and usage (e.g. interpret and validate access token as JWT structure).
+Resource Servers requesting the metadata document should use the "access_token_format" claim to determine the method of token validation and usage (e.g. interpret and validate access token as JWT structure).
 
 ### 3.103.5 Security Considerations
 
-All security considerations as described in [RFC8414, Section 6.2] must be implemented.
+All security considerations as described in [RFC8414, Section 6.2] shall be implemented.
 
-*Note:* The issuer claim value of the metadata document is not-necessarily the same as the issuer claim value associated with access-tokens. The issuer value in the metadata document refers to the source of the metadata document itself. This document may point to an token endpoint at a server other than the metadata document server. The issuer claim associated with the access token should  refer to the server that implements the token endpoint.
+*Note:* The issuer claim value of the metadata document is not necessarily the same as the issuer claim value associated with access-tokens. The issuer value in the metadata document refers to the source of the metadata document itself. This document may point to an token endpoint at a server other than the metadata document server. The issuer claim associated with the access token should  refer to the server that implements the token endpoint.
 
-As the metadata document is intended to support the authorization processes, there is no need to provide client credentials towards the metadata endpoint. To prevent unnecessary disclosure of credentials, the Authorization Server Metadata Request must not include and credentials from the Authorization Client or Resource Server.
+As the metadata document is intended to support the authorization processes, there is no need to provide client credentials towards the metadata endpoint. To prevent unnecessary disclosure of credentials, the Authorization Server Metadata Request shall not include and credentials from the Authorization Client or Resource Server.
 
 # 33 MHD Profile
 
-| **Editor: Please add the following to MHD Volume 1: section 33.5 MHD Security Considerations** |
+| **Editor: Please add the following to MHD Volume 1: Section 33.5 MHD Security Considerations** |
 |------------------------------------------------------------------------------------------------|
 
-### 33.5.1 Use with IUA Profile
+### 33.5.1 Use with the Internet User Authorization (IUA) Profile
 
-IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific. See the Security Considerations sections of the MHD defined transactions for guidance on scope definition when grouped with IUA actors.
+The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific. See the Security Considerations sections of the MHD-defined transactions for guidance on scope definition when grouped with IUA actors.
 
-| **Editor: Please add the following to MHD Volume 1: section 33.6 MHD Cross Profile Considerations** |
+| **Editor: Please add the following to MHD Volume 1: Section 33.6 MHD Cross Profile Considerations** |
 |-----------------------------------------------------------------------------------------------------|
 
-### 33.6.4 Use with IUA Profile
+### 33.6.4 Use with the Internet User Authorization (IUA) Profile
 
-IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific. See the Security Considerations sections of the MHD defined transactions for guidance on scope definition when grouped with IUA actors.
+The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction-specific. See the Security Considerations sections of the MHD-defined transactions for guidance on scope definition when grouped with IUA actors.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.65.5 Security Considerations** |
+| **Editor: Please add the following to MHD Volume 2: Section 3.65.5 Security Considerations** |
 |----------------------------------------------------------------------------------------------|
 
-#### 3.65.5.2 Use with IUA Profile
+#### 3.65.5.2 Use with the Internet User Authorization (IUA) Profile
 
-IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
+The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Source when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-65] transaction authorizing token [ITI-72].  The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-65] Provide Document Bundle, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Source, when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-65] transaction authorizing token [ITI-72].  T
+
+The MHD Document Recipient, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-65] Provide Document Bundle, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-65"
 
-This scope request authorizes the full ITI-65 transaction. This scope implicitly requests patient specific Create/Update for DocumentManifest, DocumentReference, List, and Binary. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
+This scope request authorizes the full ITI-65 transaction. This scope implicitly requests patient specific Create/Update for DocumentManifest, DocumentReference, List, and Binary. Further scope refinement is allowed in realm or project specific situations; these additional scopes would be in addition to the scope defined here.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.66.5 Security Considerations** |
+| **Editor: Please add the following to MHD Volume 2: Section 3.66.5 Security Considerations** |
 |----------------------------------------------------------------------------------------------|
 
-#### 3.66.5.2 Use with IUA Profile
+#### 3.66.5.2 Use with the Internet User Authorization (IUA) Profile
 
-IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
+The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-66] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-66] Find Document Manifests requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-66] transaction authorizing token [ITI-72]. 
+
+The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-66] Find Document Manifests requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-66"
 
-This scope request authorizes the full [ITI-66] transaction. This scope implicitly requests patient specific Search/Read for DocumentManifest resources as defined in [ITI-66]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
+This scope request authorizes the full [ITI-66] transaction. This scope implicitly requests patient specific Search/Read for DocumentManifest resources as defined in [ITI-66]. Further scope refinement is allowed in realm or project specific situations; these additional scopes would be in addition to the scope defined here.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.67.5 Security Considerations** |
+| **Editor: Please add the following to MHD Volume 2: Section 3.67.5 Security Considerations** |
 |----------------------------------------------------------------------------------------------|
 
-#### 3.67.5.2 Use with IUA Profile
+#### 3.67.5.2 Use with the Internet User Authorization (IUA) Profile
 
-IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
+The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-67] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-67] Find Document References requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-67] transaction authorizing token [ITI-72]. 
+
+An MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-67] Find Document References requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-67"
 
-This scope request authorizes the full [ITI-67] transaction. This scope implicitly requests patient specific Search/Read for DocumentReference resources as defined in [ITI-67]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
+This scope request authorizes the full [ITI-67] transaction. This scope implicitly requests patient specific Search/Read for DocumentReference resources as defined in [ITI-67]. Further scope refinement is allowed in realm or project specific situations; these additional scopes would be in addition to the scope defined here.
 
-| **Editor: Please add the following to MHD Volume 2: section 3.68.5 Security Considerations** |
+| **Editor: Please add the following to MHD Volume 2: Section 3.68.5 Security Considerations** |
 |----------------------------------------------------------------------------------------------|
 
-#### 3.68.5.2 Use with IUA Profile
+#### 3.68.5.2 Use with the Internet User Authorization (IUA) Profile
 
-IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
+The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-68] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-68] Retrieve Document requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-68] transaction authorizing token [ITI-72]. 
+
+The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-68] Retrieve Document requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-68"
 
-This scope request authorizes the full [ITI-68] transaction. This scope implicitly requests patient specific Read for Binary resources as defined in [ITI-68]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
+This scope request authorizes the full [ITI-68] transaction. This scope implicitly requests patient specific Read for Binary resources as defined in [ITI-68]. Further scope refinement is allowed in realm or project specific situations; these additional scopes would be in addition to the scope defined here.
 
 # 9 ATNA Profile
 
-| **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table** |
+| **Editor: Please add rows to the following to ATNA Volume 1: Section 9.2 ATNA Actor Options table for both the Secure Node and Secure Application actors** |
 |--------------------------------------------------------------------------------------------------|
 
  "STX: HTTPS IUA" | ITI TF-1:9.2.6.7
 
-| **Editor: Please add section 9.2.6.7 as follows** |
+| **Editor: Please add Section 9.2.6.7 as follows** |
 |---------------------------------------------------|
 
 #### 9.2.6.7 STX: HTTPS IUA
-The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the IUA Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
+The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the Internet User Authorization (IUA) Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
 
 | **Editor: Please add the following section to Volume 2 as follows** |
 |---------------------------------------------------------------------|
@@ -1627,9 +1637,9 @@ The system will utilize server-side authenticated TLS (also known as https) to a
 
 This configuration utilizes server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption; and the IUA Profile to authenticate the client application to the server (IUA Resource Server).
 
-The ATNA Local Secure Node shall be grouped with an IUA Authorization Client. The ATNA Remove Secure Node shall be grouped with an IUA Resource Server.
+The ATNA Local Secure Node or Secure Application shall be grouped with an IUA Authorization Client. The ATNA Remote Secure Node or Secure Application shall be grouped with an IUA Resource Server.
 
 * TLS shall be server side authenticated, and may be client authenticated
 * TLS shall be compliant with BCP195
-* Local Secure Node shall reject connections that are not https, and may enforce other policies
-* Remote Secure Node shall reject connections that do not carry a valid IUA token, and may enforce other policies
+* Local Secure Node or Secure Application shall reject connections that are not https, and may enforce other policies
+* Remote Secure Node or Secure Application shall reject connections that do not carry a valid IUA token, and may enforce other policies
