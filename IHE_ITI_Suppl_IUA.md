@@ -1023,9 +1023,11 @@ In accordance with [RFC7522, Section 2.2], the value of the access token contain
 
 ###### 3.71.4.2.2.3 Token Introspection Option
 
-Implementations relying on Token Introspection option are not restricted in the access token format. This format may be different from the JWT or SAML tokens as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option).
+Implementations relying on the Token Introspection option must provide a non-empty, unique and non-guessable access token value. 
 
-*Note:* using this option, the access token may be formatted as an opaque identifier without further (security sensitive) content. In such cases, the Authorization Server must have means to retrieve and communicate the associated claims during token introspection (for details see transaction ITI-103)
+The access token may be a structured value, for example using the JWT or SAML token formats as described in Section [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
+
+The Authorization Server must have means to retrieve the claims associated with the access token during token introspection (for details see [ITI TF-2b: 3.102 Introspect Token](#3102-introspect-token)).
 
 ### 3.71.5 Security Considerations
 
