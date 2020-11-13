@@ -202,7 +202,7 @@ The OAuth 2.1 Authorization Framework requires client identification, which may 
 
 The OAuth 2.1 Authorization Framework also requires client authentication for confidential and credential clients [OAuth 2.1, Section 2.3]. It recommends the use of to use asymmetric (public-key based) methods for client authentication [OAuth 2.1, Section 9.1], but allows other suitable HTTP based authentication schemes matching the security policy of the Authorization Server [OAuth 2.1, Section 2.3.2].
 
-This profile requires the use of a *client_id* for client identification and a *client_secret* used with the HTTP Basic Authentication scheme for client authentication of confidential and credentialed clients, if no other methods for identification and authentication are used.  
+This profile requires the capability of a *client_id* for client identification and a *client_secret* used with the HTTP Basic Authentication scheme for client authentication of confidential and credentialed clients. Other methods for identification and authentication are are allowed.  
 
 Depending on the grant type, the OAuth 2.1 Framework also requires user authentication. For example, the *Authorization Code* grant type covered by this profile requires user authentication [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2]. The methods used by the Authorization Server to authenticate the user (e.g., username and password login, session cookies, delegation to Authentication Server) are not scoped in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 3.1].
 
