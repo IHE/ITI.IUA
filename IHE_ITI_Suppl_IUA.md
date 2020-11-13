@@ -62,8 +62,8 @@ The current version of the IHE Technical Framework can be found at: [https://pro
 - [Volume 2b -- Transactions](#volume-2b----transactions)
     - [3.71 Get Access Token [ITI-71]](#371-get-access-token-iti-71)
     - [3.72 Incorporate Access Token [ITI-72]](#372-incorporate-access-token-iti-72)
-    - [3.102 Introspect Token](#3102-introspect-token)
-    - [3.103 Get Authorization Server Metadata](#3103-get-authorization-server-metadata)
+    - [3.102 Introspect Token [ITI-102]](#3102-introspect-token-iti-102)
+    - [3.103 Get Authorization Server Metadata [ITI-103]](#3103-get-authorization-server-metadata-iti-103)
 - [33 MHD Profile](#33-mhd-profile)
 - [9 ATNA Profile](#9-atna-profile)
 
@@ -323,7 +323,7 @@ Authorization Servers supporting the Authorization Server Metadata option shall 
 
 Resource Servers supporting the Authorization Server Metadata option shall have the means to be configured by interacting with an Authorization Server metadata endpoint to retrieve configuration information.
 
-See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata) for transaction requirements.
+See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for transaction requirements.
 
 ### 34.2.2 JWT Token Option
 This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in [ITI TF-2: 3.71.4.2.2](#371422-json-web-token-option)
@@ -344,13 +344,13 @@ A Resource Server that supports this option shall be able to accept [XUA](http:/
 See [ITI TF-2: 3.71.4.2.2.2](#3714221-saml-token-option) for transaction requirements.
 
 ### 34.2.4 Token Introspection Option
-Actors that support this option use the Token Introspection [ITI-102] transaction to validate and obtain the claims associated with an access token. Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
+Actors that support this option use the [Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction to validate and obtain the claims associated with an access token. Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
 
-Authorization Servers declaring the Token Introspection option shall provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server may provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server shall provide the Token Introspection [ITI-102] transaction service.
+Authorization Servers declaring the Token Introspection option shall provide an endpoint usable by Resource Servers to validate and evaluate the access token. With this option, the Authorization Server may provide other token formats than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server shall provide the [Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction service.
 
 The Resource Server declaring the Token Introspection option shall have the ability to use the Token Introspection transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server must authenticate itself. It may obtain a access token of its own from the Authorization Server for this purpose.
 
-See [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token) for transaction requirements.
+See [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token-iti-102) for transaction requirements.
 
 ## 34.3 IUA Required Actor Groupings
 
@@ -1018,7 +1018,7 @@ Actors that support the Token Introspection Option shall provide a non-empty, un
 
 The access token may be a structured value, for example using the JWT or SAML token formats as described in Sections [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
 
-The Authorization Server shall have means to retrieve the claims associated with the access token during token introspection (for details see [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token)).
+The Authorization Server shall have means to retrieve the claims associated with the access token during token introspection (for details see [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token-iti-102)).
 
 ### 3.71.5 Security Considerations
 
@@ -1172,7 +1172,7 @@ Host: example.com
 ```
 
 #### 3.72.4.3 Expected Actions
-The Resource Server shall be able to determine the token format (JWT, SAML or other) through evaluating the "access_token_format" value in the Authorization Server Metadata document (see ITI-103), inspection of the access token value, or otherwise. 
+The Resource Server shall be able to determine the token format (JWT, SAML or other) through evaluating the "access_token_format" value in the Authorization Server Metadata document (see [ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or otherwise. 
 
 When the Resource Server is not able to process the token format (through local verification or introspection), it shall respond with HTTP 401 (Unauthorized).
 
@@ -1201,7 +1201,7 @@ A Resource Server that supports the SAML Token Option shall be able to interpret
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the SAML token's signature.
 
 ##### 3.72.4.3.3 Introspect Token Option
-A Resource Server that supports the Token Introspection Option shall be able to interact with the Authorization Server using the Introspect Token [ITI-102] transaction as described in Section [3.102](#3102-introspect-token) to validate the access token and obtain the related claims.
+A Resource Server that supports the Token Introspection Option shall be able to interact with the Authorization Server using the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction as described in Section [3.102](#3102-introspect-token-iti-102) to validate the access token and obtain the related claims.
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the introspection endpoint published through the Authorization Server Metadata Document for validating the token and obtaining the related claims.
 
