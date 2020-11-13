@@ -60,8 +60,8 @@ The current version of the IHE Technical Framework can be found at: [https://pro
     - [34.5 IUA Security Considerations](#345-iua-security-considerations)
     - [34.6 IUA Cross Profile Considerations](#346-iua-cross-profile-considerations)
 - [Volume 2b -- Transactions](#volume-2b----transactions)
-    - [3.71 Get Authorization Token [ITI-71]](#371-get-authorization-token-iti-71)
-    - [3.72 Incorporate Authorization Token [ITI-72]](#372-incorporate-authorization-token-iti-72)
+    - [3.71 Get Access Token [ITI-71]](#371-get-access-token-iti-71)
+    - [3.72 Incorporate Access Token [ITI-72]](#372-incorporate-access-token-iti-72)
     - [3.102 Introspect Token](#3102-introspect-token)
     - [3.103 Get Authorization Server Metadata](#3103-get-authorization-server-metadata)
 - [33 MHD Profile](#33-mhd-profile)
@@ -132,7 +132,7 @@ In our view IUA provides the following advantages over SMART:
 - IUA promotes a loose coupling of Resource Server and Authorization Servers. This allows for deployments with multiple Resource Servers per Authorization Server as well as deployments with several or even no Authorization Servers.
 - IUA supports a wide range of use-cases ranging from mobile application access to data, cross-enterprise data exchange to complex system integration scenarios.
 - IUA is base-standard agnostic and can be combined with any HTTP RESTful transaction
-- IUA provides explicit means of obtaining authorization claims from an access token by a resource server (with and without the involvement of an Authorization Server)
+- IUA provides explicit means of obtaining access token claims from an access token by a resource server (with and without the involvement of an Authorization Server)
 - IUA specifies additional authorization context claims such as BPPC consents and a user's organizational context
 - IUA provides explicit compatibility with IHE XUA
 
@@ -142,7 +142,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html and does define a Scope for use with [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html transactions. That Scope for [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
 
-- **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. [MHD]http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
+- **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g. [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
 
 - **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
 
@@ -150,7 +150,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 1**: At this time, the method for assignment of client identifiers is not included in the profile. Registration of clients is a significant operational and security problem that is being postponed until there is more experience with problems in the field and reasonable solutions. In the field there are a variety of methods being tried. Many depend upon physical distribution methods or out of band communications to manage the authentication problems.
 
-- **Issue 2**: This profile does support access token in JWT format and SAML 2.0 Assertions compliant with the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html profile requirements. An operational environment must ensure, that access tokens are understood by the authorization and Resource Servers. The Bearer Token option of earlier versions of the profile has been removed, since it does not specify the access token format and attributes used and was thus not interoperable by design.  
+- **Issue 2**: This profile does support access token in JWT format and SAML 2.0 Assertions compliant with the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) profile requirements. An operational environment must ensure, that access tokens are understood by the authorization and Resource Servers. The Bearer Token option of earlier versions of the profile has been removed, since it does not specify the access token format and attributes used and was thus not interoperable by design.  
 
 - **Issue 3**: Audit messages are only defined for clients that are also Secure Applications. There is no defined auditing for other clients.
 
@@ -158,27 +158,27 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 8**: This profile uses the Authorization header only for conveying the authorization information. The parameter form is not prohibited but is not compliant with the profile.
 
-- **Issue 9**: This profile does not explain the ways that some Resource Servers utilize HTTP redirects to automate some kinds of authorization activities. The actual HTTP transactions used for Obtain Authorization Token and Authorized RESTful Transaction are as defined within this profile. The other transactions are under the control of the Resource Server and its design.
+- **Issue 9**: This profile does not explain the ways that some Resource Servers utilize HTTP redirects to automate some kinds of authorization activities. The actual HTTP transactions used for Obtain Access Token and Authorized RESTful Transaction are as defined within this profile. The other transactions are under the control of the Resource Server and its design.
 
-- **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html extensions.                 |
+- **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
 
 
 # General Introduction
 
 | **Editor please Update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.** |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
 **Appendix A - Actor Summary Definitions**
 
 
 | **Editor please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
-| --------------------------------------------------------------------------------------------------------------- |
+|-----------------------------------------------------------------------------------------------------------------|
 
 &nbsp;  
 
 | Actor                | Definition                                                                       |
-| -------------------- | -------------------------------------------------------------------------------- |
+|----------------------|----------------------------------------------------------------------------------|
 | Authorization Client | A client that retrieves access tokens and presents them as part of transactions. |
 | Authorization Server | A server that issues access tokens to requesting clients.                        |
 | Resource Server      | A server that provides services that need authorization.                         |
@@ -188,14 +188,14 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 
 | **Editor please Add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:** |
-| --------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------------------------------------------------------------------------------------------------------------|
 
 &nbsp;  
 
 | Transaction                                   | Definition                                                                                         |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Incorporate Authorization Token \[ITI-72\]    | Add an access token to a transaction.                                                              |
-| Get Authorization Token \[ITI-71\]            | Request and obtain an access token for use in authorized transactions.                             |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Incorporate Access Token \[ITI-72\]           | Add an access token to a transaction.                                                              |
+| Get Access Token \[ITI-71\]                   | Request and obtain an access token for use in authorized transactions.                             |
 | Introspect Token \[ITI-102\]                  | Obtain the state and claims associated with an access token.                                       |
 | Get Authorization Server Metadata \[ITI-103\] | Obtain metadata about a Authorization Server, such as endpoint locations and signing key material. |
 
@@ -204,7 +204,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 
 | **Editor please add the following section 34 to Volume 1** |
-| ---------------------------------------------------------- |
+|------------------------------------------------------------|
 
 
 # 34 IUA Profile
@@ -242,14 +242,14 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 **Table 34.1-1: IUA Profile - Actors and Transactions**
 
 | Actors               | Transactions                      | Optionality | Reference         |
-| -------------------- | --------------------------------- | ----------- | ----------------- |
-| Authorization Client | Get Authorization Token           | O           | ITI TF-2b: 3.71   |
-|                      | Incorporate Authorization Token   | R           | ITI TF-2b: 3.72   |
+|----------------------|-----------------------------------|-------------|-------------------|
+| Authorization Client | Get Access Token                  | O           | ITI TF-2b: 3.71   |
+|                      | Incorporate Access Token          | R           | ITI TF-2b: 3.72   |
 |                      | Get Authorization Server Metadata | O           | ITI TF-2c: 3.103  |
-| Authorization Server | Get Authorization Token           | R           | ITI TF-2b:  3.71  |
+| Authorization Server | Get Access Token                  | R           | ITI TF-2b:  3.71  |
 |                      | Introspect Token                  | O  Note 1   | ITI TF-2c: 3.102  |
 |                      | Get Authorization Server Metadata | O           | ITI TF-2c: 3.103  |
-| Resource Server      | Incorporate Authorization Token   | R           | ITI TF-2b: 3.72   |
+| Resource Server      | Incorporate Access Token          | R           | ITI TF-2b: 3.72   |
 |                      | Introspect Token                  | O  Note 1   | ITI TF-2c:  3.102 |
 |                      | Get Authorization Server Metadata | O           | ITI TF-2c: 3.103  |
 
@@ -257,13 +257,13 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 
 ### 34.1.1 Actor Descriptions and Actor Profile Requirements
 
-The IUA actors are expected to be grouped with other actors that perform HTTP RESTful transactions. Grouping an Authorization Client with another actor means that this other actor will provide an access token as part of the HTTP transaction to a HTTP RESTful server. It may perform the Get Authorization Token transaction to obtain the access token. The corresponding HTTP RESTful server should  be grouped with the Resource Server actor to indicate that the server can perform access control.
+The IUA actors are expected to be grouped with other actors that perform HTTP RESTful transactions. Grouping an Authorization Client with another actor means that this other actor will provide an access token as part of the HTTP transaction to a HTTP RESTful server. It may perform the Get Access Token transaction to obtain the access token. The corresponding HTTP RESTful server should  be grouped with the Resource Server actor to indicate that the server can perform access control.
 
 #### 34.1.1.1 Authorization Client
 
 The Authorization Client performs the network transactions and user interactions needed to obtain an access token and to attach that token to transactions to indicate that the transactions are authorized.
 
-When Incorporate Authorization Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) will be populated with the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes". The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
+When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) will be populated with the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes". The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
 
 #### 34.1.1.2 Authorization Server
 
@@ -276,7 +276,7 @@ The Resource Server provides services to access protected resources that need au
 
 In general, Resource Servers perform additional access control decisions and may restrict responses even for transactions authorized by the Authorization Server.
 
-When the Incorporate Authorization Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes". The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
+When the Incorporate Access Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes". The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
 
 The Resource Servers and Authorization Servers may be grouped into an integrated product together with user authentication, access control, and other services.
 
@@ -286,7 +286,7 @@ Options that may be selected for each actor in this profile, if any, are listed 
 Table 34.2-1: IUA - Actors and Options
 
 | IUA Actor            | Option                        | Reference      |
-| -------------------- | ----------------------------- | -------------- |
+|----------------------|-------------------------------|----------------|
 | Authorization Client | Authorization Server Metadata | Section 34.2.1 |
 | Authorization Server | JWT Token (Note 1)            | Section 34.2.2 |
 |                      | SAML Token (Note 1)           | Section 34.2.3 |
@@ -320,11 +320,11 @@ A Resource Server that supports this option shall be able to accept JWT access t
 See [ITI TF-2b: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction requirements.
 
 ### 34.2.3 SAML Token Option
-This option enables integration of environments that use both, [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compatible SAML access token and the OAuth authorization infrastructure.
+This option enables integration of environments that use both, [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) compatible SAML access token and the OAuth authorization infrastructure.
 
-An Authorization Servers that supports this option shall provide an endpoint to retrieve [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant SAML 2.0 access token to be incorporated in RESTful requests to Resource Servers.
+An Authorization Servers that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) compliant SAML 2.0 access token to be incorporated in RESTful requests to Resource Servers.
 
-A Resource Server that supports this option shall be able to accept [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant access tokens in RESTful requests, extract and validate the information provided in the token, and to enforce access policies based on it.
+A Resource Server that supports this option shall be able to accept [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) compliant access tokens in RESTful requests, extract and validate the information provided in the token, and to enforce access policies based on it.
 
 See [ITI TF-2b: 3.71.4.2.2.2](#3714221-saml-token-option) for transaction requirements.
 
@@ -345,10 +345,10 @@ Table 34.3-1: Required Actor Groupings
 
 
   | IUA Actor            | Actor to be grouped with | Reference                  | Content Bindings Reference |
-  | -------------------- | ------------------------ | -------------------------- | -------------------------- |
-  | Authorization Server | CT / Time Client         | ITI TF-1:7 Consistent Time | --                         |
-  | Resource Server      | CT / Time Client         | ITI TF-1:7 Consistent Time | --                         |
-  | Authorization Client | --                       | --                         | --                         |
+  |----------------------|--------------------------|----------------------------|----------------------------|
+  | Authorization Server | CT / Time Client         | ITI TF-1:7 Consistent Time |---                         |
+  | Resource Server      | CT / Time Client         | ITI TF-1:7 Consistent Time |---                         |
+  | Authorization Client |---                       |---                         |---                         |
 
 ## 34.4 IUA Overview
 
@@ -378,7 +378,7 @@ The OAuth 2.1 Authorization Framework further defines extension points to implem
 
 - *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don’t provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
 
-- *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
+- *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
 
 - *JSON Web Token (JWT) grants* [RFC7523]: To use a JWT Token as credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant provides better security properties than the client credential flow as it allows for asymmetric keys to be used for client and user authentication.
 
@@ -444,7 +444,7 @@ Figure 34.4.2.2-1 shows the basis flow of information exchange common to IUA use
 
 ![ITI-71 Flow Diagram](media/basic-flow.png)
 
-**Figure 34.4.2.2-1: Basic Process of the Authorization Token Request and Incorporate Authorization Token transaction**
+**Figure 34.4.2.2-1: Basic Process of the Access Token Request and Incorporate Access Token transaction**
 
 ```plantuml
 @startuml basic-flow
@@ -466,14 +466,14 @@ group (optional) Get Authorization Server Metadata (ITI-103)
 
 end
 
-group Get Authorization Token (ITI-71)
-    Client -> AS: Get Authorization Token Request
-    Client <-- AS: Get Authorization Token Response
+group Get Access Token (ITI-71)
+    Client -> AS: Get Access Token Request
+    Client <-- AS: Get Access Token Response
 end
 
-group Incorporate Authorization Token (ITI-72)
+group Incorporate Access Token (ITI-72)
 
-Client -> RS : Resource Request + Incorporate Authorization Token
+Client -> RS : Resource Request + Incorporate Access Token
 
 alt JWT or SAML token
   RS -> RS: validate token
@@ -526,23 +526,23 @@ The Authorization Server will typically have an administratively managed list of
 
 ## 34.6 IUA Cross Profile Considerations
 
-The [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Profile provides equivalent functionality as IUA, but for SOAP-based transactions. Both [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
+The [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile provides equivalent functionality as IUA, but for SOAP-based transactions. Both [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
 
-- The [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Profile defines the Get X-User Assertion transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Authorization Token [ITI-71] for OAuth 2.1 compliant access token.
+- The [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile defines the Get X-User Assertion transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Access Token [ITI-71] for OAuth 2.1 compliant access token.
 
-- While the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html Profile relies on [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html the Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
+- While the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile relies on [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) the Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
 
-- While [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html supports SAML 2 Assertions only, the IUA Profile supports access token in JWT, SAML 2.0 Assertion or custom formats (in case the Token Introspection Option is implemented).  
+- While [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) supports SAML 2 Assertions only, the IUA Profile supports access token in JWT, SAML 2.0 Assertion or custom formats (in case the Token Introspection Option is implemented).  
 
-The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html X-Assertion Provider and use it in the Incorporate Authorization Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.   
+The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) X-Assertion Provider and use it in the Incorporate Access Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.   
 
 # Volume 2b -- Transactions
 
 | **Editor please Add Section 3.71** |
-| ---------------------------------- |
+|------------------------------------|
 
 
-## 3.71 Get Authorization Token [ITI-71]
+## 3.71 Get Access Token [ITI-71]
 
 ### 3.71.1 Scope
 
@@ -555,7 +555,7 @@ This profile defines the following actors and roles:
 Table 3.71.2-1: Actor Roles
 
 | Actor                | Role                                                                        |
-| -------------------- | --------------------------------------------------------------------------- |
+|----------------------|-----------------------------------------------------------------------------|
 | Authorization Client | Client requesting an access token to authorize RESTful transactions         |
 | Authorization Server | Server that grants access tokens.                                           |
 
@@ -579,11 +579,11 @@ This transaction relies on standards defined in the following documents and the 
 
 ### 3.71.4 Messages
 
-#### 3.71.4.1 Get Authorization Token Request
+#### 3.71.4.1 Get Access Token Request
 
 ##### 3.71.4.1.1 Trigger Events
 
-The Get Authorization Token Request is performed by an Authorization Client or Resource Server (in case of the Introspect option) to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform an Get Authorization Token transaction depends on the grant type (type of credentials) chosen.
+The Get Access Token Request is performed by an Authorization Client or Resource Server (in case of the Introspect option) to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform an Get Access Token transaction depends on the grant type (type of credentials) chosen.
 
 ##### 3.71.4.1.2 Message Semantics
 This transaction supports two distinct grants for obtaining an access token: the Client Credential Grant type and the Authorization Code Grant Type. These grants require their own variation in message sequences as depicted in the following sections.
@@ -602,7 +602,7 @@ participant "Authorization Server" as AuthzServer
 
 autonumber 0 1 "<b>[00]</b>"
 
-group Get Authorization Token (ITI-71) [Client Credentials Grant]
+group Get Access Token (ITI-71) [Client Credentials Grant]
 Client -> AuthzServer: Access Token Request
 AuthzServer --> Client: Access Token Response
 end
@@ -658,7 +658,7 @@ participant "Authorization Server" as AuthzServer
 
 autonumber 0 1 "<b>[00]</b>"
 
-group Get Authorization Token (ITI-71) [Authorization Code Grant]
+group Get Access Token (ITI-71) [Authorization Code Grant]
 Client -> UserAgent: Redirect to Authorization Server \n(authorization request incl requested scopes, resource, etc.)
 UserAgent -> AuthzServer: authorization request
 
@@ -770,7 +770,7 @@ Authorization Servers should  limit the list of identifiers in the audience clai
 
 The Authorization Client is recommended to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server should  evaluate any resource values provided as part of the token request procedure. The Authorization Server should  execute policies to detect whether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers must  limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
-If the request is valid, all access policy criteria are met the Authorization Server shall respond with the access token response as outlined in Section [3.71.4.2 Get Authorization Token Response](#37142-get-authorization-token-response).
+If the request is valid, all access policy criteria are met the Authorization Server shall respond with the access token response as outlined in Section [3.71.4.2 Get Access Token Response](#37142-get-access-token-response).
 
 If the authorization request is invalid, the Authorization Server shall react as defined in [OAuth 2.1, Section 4.1.2.1].
 
@@ -788,11 +788,11 @@ The Authorization Server shall verify that all required parameters of the author
 
 The Authorization Client shall use the authorization code to request the access token from the Authorization Server. The Authorization Server shall verify the access token request as described in [OAuth 2.1, Section 4.1.3].
 
-#### 3.71.4.2 Get Authorization Token Response
+#### 3.71.4.2 Get Access Token Response
 
 ##### 3.71.4.2.1 Trigger Event
 
-The Get Authorization Token Response is returned by an Authorization Server upon request from an Authorization Client. a to obtain an access token to be used in further communication.
+The Get Access Token Response is returned by an Authorization Server upon request from an Authorization Client. a to obtain an access token to be used in further communication.
 
 ##### 3.71.4.2.2 Message Semantics
 The Authorization Server shall respond an error response as defined in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 5.2] if the request does not match the requirements or is not understood.
@@ -902,14 +902,14 @@ The above claims shall be wrapped in an "extensions" object with key 'ihe\_iua' 
 }
 ```
 
-The claim content shall correspond to the content defined in the [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html specification (see ITI TF-2b: 3.40.4.1.2 Message Semantics).
+The claim content shall correspond to the content defined in the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) specification (see ITI TF-2b: 3.40.4.1.2 Message Semantics).
 
-The mapping of IUA extension claims to [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant SAML 2.0 Assertion attributes is shown in Table 3.71.3.2.2.1-1 below.
+The mapping of IUA extension claims to [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) compliant SAML 2.0 Assertion attributes is shown in Table 3.71.3.2.2.1-1 below.
 
 **Table 3.71.4.2.2.1.1-1: JWT claims of the IUA extension and corresponding XUA Assertion attributes**
 
 | JWT Claim                      | XUA Attribute                                       |
-| ------------------------------ | --------------------------------------------------- |
+|--------------------------------|-----------------------------------------------------|
 | subject\_name                  | urn:oasis:names:tc:xspa:1.0:subject:subject-id      |
 | subject\_organization          | urn:oasis:names:tc:xspa:1.0:subject:organization    |
 | subject\_organization\_id      | urn:oasis:names:tc:xspa:1.0:subject:organization-id |
@@ -948,7 +948,7 @@ The mapping of IUA extension claims to XUA-compliant SAML 2.0 Assertion attribut
 **Table 3.71.6.1.2-1: JWT claims of the BPPC extension and corresponding XUA Assertion attributes**
 
 | JWT Claim   | XUA Attribute                                     |
-| ----------- | ------------------------------------------------- |
+|-------------|---------------------------------------------------|
 | patient\_id | urn:oasis:names:tc:xacml:2.0:resource:resource-id |
 | doc\_id     | urn:ihe:iti:bppc:2007:docid                       |
 | acp         | urn:ihe:iti:xua:2012:acp                          |
@@ -1005,7 +1005,7 @@ JWS Payload:
 
 Authorization Servers implementing the SAML Token Options shall be able to format the access token as a SAML 2.0 assertion.
 
-The SAML 2.0 assertion content shall comply with [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html SAML assertion rules (see ITI TF-2b:3.40).
+The SAML 2.0 assertion content shall comply with [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) SAML assertion rules (see ITI TF-2b:3.40).
 
 In accordance with [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It must not contain more than one SAML 2.0 Assertion. The SAML Assertion XML data must be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data must not be line wrapped and pad characters ("=") must not be included.
 
@@ -1035,15 +1035,15 @@ Authorization Client and Authorization Server claiming compliance with this prof
 
 Authorization Servers should limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.
 
-The Authorization Client is recommended to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server should  evaluate any resource values provided as part of the token request procedure. The Authorization Server should  execute policies to detect wether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers must limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
+The Authorization Client is recommended to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server should  evaluate any resource values provided as part of the token request procedure. The Authorization Server should  execute policies to detect whether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers must limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
 #### 3.71.5.1 Security Audit Considerations
 
-The Authorization Client or Authorization Server that is grouped with an [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Secure Node or Secure Application shall be able to send an audit event as defined below:  
+The Authorization Client or Authorization Server that is grouped with an [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Secure Node or Secure Application shall be able to send an audit event as defined below:  
 
 
 |                                                     | Field Name              | Opt | Value Constraints                       |
-| --------------------------------------------------- | ----------------------- | --- | --------------------------------------- |
+|-----------------------------------------------------|-------------------------|-----|-----------------------------------------|
 | **Event**<br/>(AuditMessage/EventIdentification)    | EventID                 | M   | EV(110114, DCM, "User Authentication")  |
 |                                                     | EventActionCode         | M   | "E" (Execute)                           |
 |                                                     | *EventDateTime*         | *M* | *not specialized*                       |
@@ -1058,7 +1058,7 @@ The Authorization Client or Authorization Server that is grouped with an [ATNA]h
 Where:
 
 |                                                                | Field Name                       | Opt | Value Constraints                                                                  |
-| -------------------------------------------------------------- | -------------------------------- | --- | ---------------------------------------------------------------------------------- |
+|----------------------------------------------------------------|----------------------------------|-----|------------------------------------------------------------------------------------|
 | **Source** <br/>(AuditMessage/ActiveParticipant)               | UserID                           | M   | The process ID as used within the local operating system in the local system logs. |
 |                                                                | *Alternative UserID*             | *U* | *not specialized*                                                                  |
 |                                                                | *UserName*                       | *U* | *not specialized*                                                                  |
@@ -1083,9 +1083,9 @@ Where:
 
 
 | **Editor please Add Section 3.72** |
-| ---------------------------------- |
+|------------------------------------|
 
-## 3.72 Incorporate Authorization Token [ITI-72]
+## 3.72 Incorporate Access Token [ITI-72]
 
 ### 3.72.1 Scope
 
@@ -1096,7 +1096,7 @@ This transaction is used to incorporate authorization information to HTTP RESTfu
 Table 3.72.2-1: Actor Roles
 
 | Actor                | Role                                                          |
-| -------------------- | ------------------------------------------------------------- |
+|----------------------|---------------------------------------------------------------|
 | Authorization Client | Authorization component of a HTTP RESTful transaction client. |
 | Resource Server      | Authorization component of a HTTP RESTful transaction server. |
 
@@ -1109,13 +1109,13 @@ This transaction relies on standards defined in the following documents and the 
 
 #### 3.72.3.1 Related IHE Profiles
 
- [XUA Cross-Enterprise User Assertion]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html -- Attribute Extension
+ [XUA Cross-Enterprise User Assertion](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) -- Attribute Extension
 
 ### 3.72.4 Messages
 
 ![simple-iauth](media/incorporate-token.png)
 
-Figure 3.72.4-1: Process flow for Incorporate Authorization Token
+Figure 3.72.4-1: Process flow for Incorporate Access Token
 Transaction
 
 ```plantuml
@@ -1125,7 +1125,7 @@ participant "Authorization Client" as client
 participant "Resource Server" as rs
 participant "Authorization Server" as as
 
-group Incorporate Authorization Token (ITI-72)
+group Incorporate Access Token (ITI-72)
 
 client -> rs : Resource Request + Access Token
 
@@ -1191,7 +1191,7 @@ A Resource Server that claims conformance to the JSON Web Token Option shall be 
 A Resource Server that claims conformance to the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the JWT token's signature.
 
 ##### 3.72.4.3.2 SAML Token Option
-A Resource Server that claims conformance to the SAML Token Option shall be able to interpret and validate the access token as a [XUA]http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html compliant SAML Assertion as defined in Section [3.71.4.2.3](#371423-saml-token-option).
+A Resource Server that claims conformance to the SAML Token Option shall be able to interpret and validate the access token as a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) compliant SAML Assertion as defined in Section [3.71.4.2.3](#371423-saml-token-option).
 
 A Resource Server that claims conformance to the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the SAML token's signature.
 
@@ -1210,7 +1210,7 @@ Authorization Clients and Resource Servers claiming compliance with this profile
 
 #### 3.72.5.1 Security Audit Considerations
 
-When an [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message needs to be generated by the Resource Server and the user is authenticated by way of a JWT Token, the [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message **UserName** element shall record the JWT Token information using the following encoding:
+When an [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Audit message needs to be generated by the Resource Server and the user is authenticated by way of a JWT Token, the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Audit message **UserName** element shall record the JWT Token information using the following encoding:
 
 **alias\"\<\"user\"@\"issuer\"\>\"**
 
@@ -1219,7 +1219,7 @@ where:
 -   **user** shall match the JWT token's "sub" parameter
 -   **issuer** shall match the JWT token's "iss" parameter
 
-When an [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message needs to be generated by the Resource Server and the user is authenticated by way of a SAML Token, the [ATNA]http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html Audit message **UserName** element shall record the SAML token information using the following encoding:
+When an [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Audit message needs to be generated by the Resource Server and the user is authenticated by way of a SAML Token, the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Audit message **UserName** element shall record the SAML token information using the following encoding:
 
 **alias\"\<\"user\"@\"issuer\"\>\"**
 
@@ -1230,11 +1230,11 @@ where:
 
 
 | **Editor please Add Section 3.102** |
-| ----------------------------------- |
+|-------------------------------------|
 
 
 ## 3.102 Introspect Token
-Token introspection defines a protocol that allows Resource Servers to query the Authorization Server to determine the set of claims for a given token that was presented to them by an Authorization Client. These claims include wether or not the token is currently active and the authorization context in which the token was granted.
+Token introspection defines a protocol that allows Resource Servers to query the Authorization Server to determine the set of claims for a given token that was presented to them by an Authorization Client. These claims include whether or not the token is currently active and the authorization context in which the token was granted.
 
 Token introspection allows a Resource Server to query this information regardless of whether or not it is carried in the token itself (e.g. as encoded in a JWT token), allowing this method to be used along with or independently of structured token values.
 
@@ -1253,7 +1253,7 @@ This profile defines the following actors and roles:
 Table 3.102.2-1: Actor Roles
 
 | Actor                | Role                    |
-| -------------------- | ----------------------- |
+|----------------------|-------------------------|
 | Resource Server      | Introspection Requester |
 | Authorization Server | Introspection Responder |
 
@@ -1370,7 +1370,7 @@ The Resource Server may cache introspection results for a given access token in 
 ### 3.102.5 Security Considerations
 The Resource Server must securely identify himself towards the Authorization Server by using credentials agreed between the Authorization Server and Resource Server.
 
-At minimum the Authorization Server and Resource Server must support the use of *Bearer* tokens for Resource Server authentication as defined in [OAuth2.1, Section 7.2]. To obtain a bearer token, the Resource Server may request such a token from the Authorization Server, reusing the client credential grant flow as described in the Get Authorization Token transaction (see [ITI TF-2b: 3.71.4.1.2.1 Client Credential Grant Type](#3714121-client-credential-grant-type)).
+At minimum the Authorization Server and Resource Server must support the use of *Bearer* tokens for Resource Server authentication as defined in [OAuth2.1, Section 7.2]. To obtain a bearer token, the Resource Server may request such a token from the Authorization Server, reusing the client credential grant flow as described in the Get Access Token transaction (see [ITI TF-2b: 3.71.4.1.2.1 Client Credential Grant Type](#3714121-client-credential-grant-type)).
 
 An Authorization Server that claims conformance to the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) should provide the available token introspection authentication options as part of its metadata document.
 
@@ -1400,7 +1400,7 @@ Resource Servers shall use the introspection results as authorization claims whe
 
 
 | **Editor please Add Section 3.103** |
-| ----------------------------------- |
+|-------------------------------------|
 
 ## 3.103 Get Authorization Server Metadata
 
@@ -1417,7 +1417,7 @@ This profile defines the following actors and roles:
 Table 3.103.2-1: Actor Roles
 
 | Actor                | Role               |
-| -------------------- | ------------------ |
+|----------------------|--------------------|
 | Authorization Client | Metadata Requester |
 | Resource Server      | Metadata Requester |
 | Authorization Server | Metadata Provider  |
@@ -1540,66 +1540,66 @@ As the metadata document is intended to support the authorization processes, the
 # 33 MHD Profile
 
 | **Editor: Please add the following to MHD Volume 1: section 33.5 MHD Security Considerations** |
-| ---------------------------------------------------------------------------------------------- |
+|------------------------------------------------------------------------------------------------|
 
 ### 33.5.1 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific. See the Security Considerations sections of the MHD defined transactions for guidance on scope definition when grouped with IUA actors.
 
 | **Editor: Please add the following to MHD Volume 1: section 33.6 MHD Cross Profile Considerations** |
-| --------------------------------------------------------------------------------------------------- |
+|-----------------------------------------------------------------------------------------------------|
 
 ### 33.6.4 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific. See the Security Considerations sections of the MHD defined transactions for guidance on scope definition when grouped with IUA actors.
 
 | **Editor: Please add the following to MHD Volume 2: section 3.65.5 Security Considerations** |
-| -------------------------------------------------------------------------------------------- |
+|----------------------------------------------------------------------------------------------|
 
 #### 3.65.5.2 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Source when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-65] transaction authorizing token [ITI-72].  The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Authorization Token in all [ITI-65] Provide Document Bundle, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Source when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-65] transaction authorizing token [ITI-72].  The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-65] Provide Document Bundle, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-65"
 
 This scope request authorizes the full ITI-65 transaction. This scope implicitly requests patient specific Create/Update for DocumentManifest, DocumentReference, List, and Binary. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
 
 | **Editor: Please add the following to MHD Volume 2: section 3.66.5 Security Considerations** |
-| -------------------------------------------------------------------------------------------- |
+|----------------------------------------------------------------------------------------------|
 
 #### 3.66.5.2 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-66] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Authorization Token in all [ITI-66] Find Document Manifests requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-66] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-66] Find Document Manifests requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-66"
 
 This scope request authorizes the full [ITI-66] transaction. This scope implicitly requests patient specific Search/Read for DocumentManifest resources as defined in [ITI-66]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
 
 | **Editor: Please add the following to MHD Volume 2: section 3.67.5 Security Considerations** |
-| -------------------------------------------------------------------------------------------- |
+|----------------------------------------------------------------------------------------------|
 
 #### 3.67.5.2 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-67] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Authorization Token in all [ITI-67] Find Document References requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-67] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-67] Find Document References requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-67"
 
 This scope request authorizes the full [ITI-67] transaction. This scope implicitly requests patient specific Search/Read for DocumentReference resources as defined in [ITI-67]. Further scope refinement is allowed in realm or project specific situations, these additional scopes would be in addition to the scope defined here.
 
 | **Editor: Please add the following to MHD Volume 2: section 3.68.5 Security Considerations** |
-| -------------------------------------------------------------------------------------------- |
+|----------------------------------------------------------------------------------------------|
 
 #### 3.68.5.2 Use with IUA Profile
 
 IUA profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-68] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Authorization Token in all [ITI-68] Retrieve Document requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-68] transaction authorizing token [ITI-72]. The MHD Document Responder when grouped with an IUA Resource Server shall require [ITI-72] Incorporate Access Token in all [ITI-68] Retrieve Document requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: "ITI-68"
 
@@ -1608,18 +1608,18 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 # 9 ATNA Profile
 
 | **Editor: Please add rows to the following to ATNA Volume 1: section 9.2 ATNA Actor Options table** |
-| -------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------|
 
  "STX: HTTPS IUA" | ITI TF-1:9.2.6.7
 
 | **Editor: Please add section 9.2.6.7 as follows** |
-| ------------------------------------------------- |
+|---------------------------------------------------|
 
 #### 9.2.6.7 STX: HTTPS IUA
 The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the IUA Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
 
 | **Editor: Please add the following section to Volume 2 as follows** |
-| ------------------------------------------------------------------- |
+|---------------------------------------------------------------------|
 
 #### 3.19.6.6 STX: HTTPS IUA
 
