@@ -365,9 +365,9 @@ An actor from this profile shall implement the required transactions and/or cont
   | Resource Server      | CT / Time Client         | ITI TF-1:7 Consistent Time |---                         |
   | Authorization Client |---                       |---                         |---                         |
 
-The IUA actors are expected to be grouped with other actors that perform HTTP RESTful transaction: 
+The IUA actors are expected to be grouped with other actors that perform HTTP RESTful transaction:
 
-- Grouping an Authorization Client with another actor means that this other actor will provide an access token as part of the HTTP transaction to a HTTP RESTful server. It may perform the Get Access Token transaction to obtain the access token. 
+- Grouping an Authorization Client with another actor means that this other actor will provide an access token as part of the HTTP transaction to a HTTP RESTful server. It may perform the Get Access Token transaction to obtain the access token.
 
 - The corresponding HTTP RESTful server should  be grouped with the Resource Server actor to indicate that the server can perform access control.
 
@@ -531,7 +531,7 @@ The Authorization Server will typically have an administratively managed list of
 
 The Cross-Enterprise User Assertion ([XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)) Profile provides equivalent functionality as IUA, but for SOAP-based transactions. Both [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) and IUA define a transaction to incorporate a token into other IHE transactions accessing protected data. These profiles have much in common, but also some remarkable differences:
 
-- The [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile defines the Get X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Access Token [ITI-71] for OAuth 2.1-compliant access token.
+- The [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile defines the Get X-User Assertion transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Access Token [ITI-71] for OAuth 2.1-compliant access token.
 
 - While the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile relies on the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Node Authentication [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
 
@@ -845,7 +845,7 @@ Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC 751
 - *HS256*: HMAC using SHA-256 hash algorithm.
 - *RS256*: RSA using SHA-256 hash algorithm.
 
-Other algorithms such as *ES256*: ECDSA using P-256 curve and the SHA-256 hash algorithm ("ES256") are recommended. 
+Other algorithms such as *ES256*: ECDSA using P-256 curve and the SHA-256 hash algorithm ("ES256") are recommended.
 
 Other algorithms may be supported except the "NONE" that must not be used.
 
@@ -1014,7 +1014,7 @@ In accordance with [RFC7522, Section 2.2], the value of the access token contain
 
 ###### 3.71.4.2.2.3 Token Introspection Option
 
-Actors that support the Token Introspection Option shall provide a non-empty, unique and non-guessable access token value. 
+Actors that support the Token Introspection Option shall provide a non-empty, unique and non-guessable access token value.
 
 The access token may be a structured value, for example using the JWT or SAML token formats as described in Sections [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
 
@@ -1172,7 +1172,7 @@ Host: example.com
 ```
 
 #### 3.72.4.3 Expected Actions
-The Resource Server shall be able to determine the token format (JWT, SAML or other) through evaluating the "access_token_format" value in the Authorization Server Metadata document (see [ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or otherwise. 
+The Resource Server shall be able to determine the token format (JWT, SAML or other) through evaluating the "access_token_format" value in the Authorization Server Metadata document (see [ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or otherwise.
 
 When the Resource Server is not able to process the token format (through local verification or introspection), it shall respond with HTTP 401 (Unauthorized).
 
@@ -1511,10 +1511,10 @@ The document shall be structured according to the rules set forth in [RFC8414, S
 * jwks_uri (conditional). URL of the Authorization Server's JWK Set [RFC7517, Section 5] document. An Authorization Server that supports the JWT Token or SAML Token Options shall provide this claim to communicate the public keys that can be used to verify JWT token or SAML token signatures.
 * *scopes_supported (optional)*: The list of scopes supported by the Authorization Server. Note this transaction does not define the scopes. Authorization Servers may opt to publish a subset of the scopes usable.
 * *response_types_supported (required)*: As the implicit grant flow is not supported in OAuth2.1, the response types should not include the value "token". Authorization Servers shall include the response type "code". Authorization Servers supporting [OpenId Connect] or other standards may include other token types, such as "id_token".
-* *grant_types_supported (required)*: A JSON array listing the type of grants supported toward the token endpoint. The list shall include the values "client_credentials", and "authorization_code". 
-   * Authorization Servers supporting refresh tokens shall include "refresh-token". 
-   * Authorization Servers supporting the JWT grant shall include "urn:ietf:params:oauth:grant-type:jwt-bearer". 
-   * Authorization Servers supporting the SAML grant shall include "urn:ietf:params:oauth:grant-type:saml2-bearer". 
+* *grant_types_supported (required)*: A JSON array listing the type of grants supported toward the token endpoint. The list shall include the values "client_credentials", and "authorization_code".
+   * Authorization Servers supporting refresh tokens shall include "refresh-token".
+   * Authorization Servers supporting the JWT grant shall include "urn:ietf:params:oauth:grant-type:jwt-bearer".
+   * Authorization Servers supporting the SAML grant shall include "urn:ietf:params:oauth:grant-type:saml2-bearer".
    * Authorization Servers supporting other types of grants should provide additional values to this list representing those grant types.
 * *token_endpoint_auth_methods_supported (optional)*: JSON array containing a list of client authentication methods supported by this token endpoint. When provided, this list must include "client_secret_basic".
 * *introspection_endpoint (conditional)*: URL of the Authorization Server's OAuth 2.0 introspection endpoint. This claim must be provided by Authorization Servers supporting the Token Introspection Option.
@@ -1579,7 +1579,7 @@ This scope request authorizes the full ITI-65 transaction. This scope implicitly
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer, when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-66] transaction authorizing token [ITI-72]. 
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-66] transaction authorizing token [ITI-72].
 
 The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-66] Find Document Manifests requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
@@ -1594,7 +1594,7 @@ This scope request authorizes the full [ITI-66] transaction. This scope implicit
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-67] transaction authorizing token [ITI-72]. 
+An MHD Document Consumer when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-67] transaction authorizing token [ITI-72].
 
 An MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-67] Find Document References requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
@@ -1609,7 +1609,7 @@ This scope request authorizes the full [ITI-67] transaction. This scope implicit
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer, when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-68] transaction authorizing token [ITI-72]. 
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall request [ITI-71] the following scope from the IUA Authorization Server to enable the MHD [ITI-68] transaction authorizing token [ITI-72].
 
 The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-68] Retrieve Document requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
