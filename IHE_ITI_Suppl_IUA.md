@@ -341,7 +341,7 @@ An Authorization Servers that supports this option shall provide an endpoint to 
 
 A Resource Server that supports this option shall be able to accept [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant access tokens in RESTful requests, extract and validate the information provided in the token, and to enforce access policies based on it.
 
-See [ITI TF-2: 3.71.4.2.2.2](#3714221-saml-token-option) for transaction requirements.
+See [ITI TF-2: 3.71.4.2.2.2](#3714222-saml-token-option) for transaction requirements.
 
 ### 34.2.4 Token Introspection Option
 Actors that support this option use the [Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction to validate and obtain the claims associated with an access token. Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
