@@ -269,7 +269,7 @@ When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorizat
 
 The Authorization Server provides access tokens to requesting clients. In IUA, the Authorization Server uses an authenticated user identity, the requested HTTP RESTful service URL to the Resource Server, and/or other information to determine whether HTTP RESTful transactions are authorized. If authorized, the Authorization Server provides an access token which authorizes the client to retrieve data and documents from the Resource Server.  
 
-The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* and *Client Credential* grant types (see [Section 34.4.1.1.Authorization Grant Types] (34411-authorization-grant-types)). The Authorization Server shall support these grant types:
+The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* and *Client Credential* grant types (see [Section 34.4.1.1.Authorization Grant Types](34411-authorization-grant-types)). The Authorization Server shall support these grant types:
 
 - *Authorization Code*  
 
@@ -283,7 +283,7 @@ In general, Resource Servers perform additional access control decisions and may
 
 When the Incorporate Access Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes". The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
 
-The Authorization Server may support these grant types (see [Section 34.4.1.1.Authorization Grant Types] (34411-authorization-grant-types)):
+The Authorization Server may support these grant types (see [Section 34.4.1.1.Authorization Grant Types](34411-authorization-grant-types)):
 
 - *Device Authorization*
 
