@@ -10,7 +10,7 @@
 
 **Revision 2.0 - Public Comment**
 
-Date: November 10, 2020
+Date: November xx, 2020
 
 Author: ITI Technical Committee
 
