@@ -50,7 +50,7 @@ The current version of the IHE Technical Framework can be found at: [https://pro
 - [Introduction to this Supplement](#introduction-to-this-supplement)
 - [Open Issues and Question](#open-issues-and-question)
 - [Closed Issues](#closed-issues)
-- [General Introduction and Shared Appendices](#general-introduction-and-shared-appendices)
+- [IHE Technical Frameworks General Introduction Appendices](#ihe-technical-frameworks-general-introduction-appendices)
     - [Appendix A - Actor Summary Definitions](#appendix-a---actor-summary-definitions)
 	- [Appendix B - Transaction Summary Definitions](#appendix-b---transaction-summary-definitions)
 - [Volume 1 -- Profiles](#volume-1----profiles)
@@ -165,9 +165,9 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 - **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
 
 
-# General Introduction and Shared Appendices
+# IHE Technical Frameworks General Introduction Appendices
 
-| **Editor: Please update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.** |
+| **Editor: Please update the following appendices to the General Introduction as indicated below. Note that these are not appendices to this domain's Technical Framework but rather, they are appendices to the IHE Technical Frameworks General Introduction.** |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
