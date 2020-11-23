@@ -1016,7 +1016,7 @@ In accordance with [RFC7522, Section 2.2], the value of the access token contain
 
 Actors that support the Token Introspection Option shall provide a non-empty, unique and non-guessable access token value.
 
-The access token may be a structured value, for example using the JWT or SAML token formats as described in Sections [3.71.4.2.2](#371422-json-web-token-option) and [3.71.4.2.3](#371423-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
+The access token may be a structured value, for example using the JWT or SAML token formats as described in Sections [3.71.4.2.2.1](#3714221-json-web-token-option) and [3.71.4.2.2.2](#3714222-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
 
 The Authorization Server shall have means to retrieve the claims associated with the access token during token introspection (for details see [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token-iti-102)).
 
@@ -1196,7 +1196,7 @@ A Resource Server that supports the JSON Web Token Option shall be able to inter
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the JWT token's signature.
 
 ##### 3.72.4.3.2 SAML Token Option
-A Resource Server that supports the SAML Token Option shall be able to interpret and validate the access token as a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML Assertion as defined in Section [3.71.4.2.3](#371423-saml-token-option).
+A Resource Server that supports the SAML Token Option shall be able to interpret and validate the access token as a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML Assertion as defined in Section [3.71.4.2.2.2](#3714222-saml-token-option).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the SAML token's signature.
 
@@ -1360,7 +1360,7 @@ The Authorization has formulated an access policy decision for the introspected 
 The introspect response is a JSON formatted object. There are two variants of this object.
 
 1. The Authorization Server considers the token to be invalid for the given Resource Server because of formatting issues, revocation data, expiry, or other access policy considerations. The introspect result object contains a single field "active" with boolean value "false".
-2. The Authorization Server considers the token to be valid for the given Resource Server. The object shall contain a field "active" with boolean value "true". In addition, it shall contain the same fields and values as formulated for the JWT token content as specified in Section [3.71.4.2.2 JSON Web Token](#371422-json-web-token-option), including defined extensions.
+2. The Authorization Server considers the token to be valid for the given Resource Server. The object shall contain a field "active" with boolean value "true". In addition, it shall contain the same fields and values as formulated for the JWT token content as specified in Section [3.71.4.2.2.1 JSON Web Token](#3714221-json-web-token-option), including defined extensions.
 
 ##### 3.102.4.2.3 Expected Actions
 
