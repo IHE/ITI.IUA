@@ -35,13 +35,13 @@ This supplement describes changes to the existing technical framework documents.
 
 Where the amendment adds text, make the added text **<ins>bold underline</ins>**. Where the amendment removes text, make the removed text **~~bold strikethrough~~**. When entire new sections are added, introduce with editor's instructions to "add new text" or similar, which for readability are not bolded or underlined.
 
-General information about IHE can be found at: [http://www.ihe.net](http://www.ihe.net/).
+General information about IHE can be found at: [http://www.ihe.net](http://www.ihe.net).
 
-Information about the IHE IT Infrastructure domain can be found at: [http://profiles.ihe.net](https://profiles.ihe.net).
+Information about the IHE IT Infrastructure domain can be found at: [https://www.ihe.net/IHE_Domains/](https://www.ihe.net/IHE_Domains/).
 
-Information about the structure of IHE Technical Frameworks and Supplements can be found at: [https://profiles.ihe.net](https://profiles.ihe.net).
+Information about the structure of IHE Technical Frameworks and Supplements and the process used to create them can be found at: [http://ihe.net/IHE_Process](http://ihe.net/IHE_Process) and [https://profiles.ihe.net/ITI](https://profiles.ihe.net/ITI).
 
-The current version of the IHE Technical Framework can be found at: [https://profiles.ihe.net/ITI](https://profiles.ihe.net/ITI).
+The current version of the IHE Technical Framework can be found at: [https://www.ihe.net/resources/technical_frameworks/#IT(https://www.ihe.net/resources/technical_frameworks/#IT).
 
 **CONTENTS**
 
@@ -50,7 +50,9 @@ The current version of the IHE Technical Framework can be found at: [https://pro
 - [Introduction to this Supplement](#introduction-to-this-supplement)
 - [Open Issues and Question](#open-issues-and-question)
 - [Closed Issues](#closed-issues)
-- [General Introduction](#general-introduction)
+- [General Introduction and Shared Appendices](#general-introduction-and-shared-appendices)
+    - [Appendix A - Actor Summary Definitions] (#appendix-a---actor-summary-definitions)
+	- [Appendix B - Transaction Summary Definitions] (#appendix-b---transaction-summary-definitions)
 - [Volume 1 -- Profiles](#volume-1----profiles)
 - [34 IUA Profile](#34-iua-profile)
     - [34.1 IUA Actors, Transactions, and Content Modules](#341-iua-actors-transactions-and-content-modules)
@@ -163,7 +165,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 - **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
 
 
-# General Introduction
+# General Introduction and Shared Appendices
 
 | **Editor: Please update the following Appendices to the General Introduction as indicated below. Note that these are not appendices to Volume but rather to the General Introduction.** |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -832,7 +834,7 @@ Pragma: no-cache
   "example_parameter": "example_value"
 }
 ```
-**Figure 3.71.4.2.2-1 Example Access Token Response**
+**Figure 3.71.4.2.2-1: Example Access Token Response**
 
 ###### 3.71.4.2.2.1 JSON Web Token Option
 The OAuth2 specifications does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
@@ -1191,7 +1193,7 @@ If the token verification, or scope matching, or the access policy enforcement f
 Authorization Clients receiving a HTTP 401 (Unauthorized) error should NOT retry the request with the same token. An Authorization Client should reformulate the request or obtain a new token from the Authorization Server before retrying.
 
 ##### 3.72.4.3.1 JSON Web Token Option
-A Resource Server that supports the JSON Web Token Option shall be able to interpret and validate the access token as a JWT Token as defined in Section [3.71.4.2.2](#371422-json-web-token-option).
+A Resource Server that supports the JSON Web Token Option shall be able to interpret and validate the access token as a JWT Token as defined in Section [3.71.4.2.2.1](#3714221-json-web-token-option).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the JWT token's signature.
 
@@ -1619,7 +1621,7 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 
 # 9 ATNA Profile
 
-| **Editor: Please add the following row to ATNA Volume 1: Section 9.2 ATNA Actor Options table for both the Secure Node and Secure Application Actors** |
+| **Editor: Please add the following row to ATNA Volume 1: Section 9.2 ATNA Actor Options Table for both the Secure Node and Secure Application Actors** |
 |--------------------------------------------------------------------------------------------------|
 
  "STX: HTTPS IUA" | ITI TF-1:9.2.6.7
