@@ -37,11 +37,11 @@ Where the amendment adds text, make the added text **<ins>bold underline</ins>**
 
 General information about IHE can be found at: [http://www.ihe.net](http://www.ihe.net).
 
-Information about the IHE IT Infrastructure domain can be found at: [https://www.ihe.net/IHE_Domains/](https://www.ihe.net/IHE_Domains/).
+Information about the IHE IT Infrastructure domain can be found at: [https://profiles.ihe.net/](https://profiles.ihe.net/).
 
-Information about the structure of IHE Technical Frameworks and Supplements and the process used to create them can be found at: [http://ihe.net/IHE_Process](http://ihe.net/IHE_Process) and [https://profiles.ihe.net/ITI](https://profiles.ihe.net/ITI).
+Information about the structure of IHE Technical Frameworks and Supplements can be found at: [https://profiles.ihe.net/](https://profiles.ihe.net/). 
 
-The current version of the IHE Technical Framework can be found at: [https://www.ihe.net/resources/technical_frameworks/#IT(https://www.ihe.net/resources/technical_frameworks/#IT).
+The current version of the IHE Technical Framework can be found at: [https://profiles.ihe.net/](https://profiles.ihe.net/).
 
 **CONTENTS**
 
@@ -51,8 +51,8 @@ The current version of the IHE Technical Framework can be found at: [https://www
 - [Open Issues and Question](#open-issues-and-question)
 - [Closed Issues](#closed-issues)
 - [General Introduction and Shared Appendices](#general-introduction-and-shared-appendices)
-    - [Appendix A - Actor Summary Definitions] (#appendix-a---actor-summary-definitions)
-	- [Appendix B - Transaction Summary Definitions] (#appendix-b---transaction-summary-definitions)
+    - [Appendix A - Actor Summary Definitions](#appendix-a---actor-summary-definitions)
+	- [Appendix B - Transaction Summary Definitions](#appendix-b---transaction-summary-definitions)
 - [Volume 1 -- Profiles](#volume-1----profiles)
 - [34 IUA Profile](#34-iua-profile)
     - [34.1 IUA Actors, Transactions, and Content Modules](#341-iua-actors-transactions-and-content-modules)
