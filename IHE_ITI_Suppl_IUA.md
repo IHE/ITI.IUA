@@ -513,7 +513,7 @@ end
 
 1. The Resource Server obtains the claims associated with the access token. This may involve local validation of structured tokens or an additional token introspection request towards the Authorization Server.
 
-1. The Resource Server evaluates the claims and the request against a configured access policy and determines wether the client has access to the requested resources. If permitted, the Resource Server will return the requested resources.
+1. The Resource Server evaluates the claims and the request against a configured access policy and determines whether the client has access to the requested resources. If permitted, the Resource Server will return the requested resources.
 
 ## 34.5 IUA Security Considerations
 
@@ -839,11 +839,11 @@ Pragma: no-cache
 ###### 3.71.4.2.2.1 JSON Web Token Option
 The OAuth2 specifications does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
 
-JWT token shall be signed as specified in JSON Web Signature [RFC 7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) shall be used as described in [RFC 7515, Section 7.1].
+JWT token shall be signed as specified in JSON Web Signature [RFC7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) shall be used as described in [RFC7515, Section 7.1].
 
 Any actor may support the JWE (unsigned but encrypted) alternative of the JWT token.
 
-Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC 7518], the following algorithms shall be supported:
+Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC7518], the following algorithms shall be supported:
 - *HS256*: HMAC using SHA-256 hash algorithm.
 - *RS256*: RSA using SHA-256 hash algorithm.
 
@@ -1431,11 +1431,11 @@ This transaction relies on standards defined in the following documents and the 
 
 - *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-00, July 30, 2020.
 
-- *RFC 8414*: OAuth 2.0 Authorization Server Metadata, June 2018
+- *RFC8414*: OAuth 2.0 Authorization Server Metadata, June 2018
 
 - *OpenID Connect Discovery*: OpenID Connect Discovery 1.0 incorporating errata set 1, November 2014
 
-- *RFC 7517*:  JSON Web Key (JWK), May 2015
+- *RFC7517*:  JSON Web Key (JWK), May 2015
 
 
 ### 3.103.4 Messages
@@ -1472,7 +1472,7 @@ An Authorization Client or Resource Server wants to learn about Authorization Se
 
 The client issues a HTTP GET request to the well-known metadata endpoint associated with Authorization Server.
 
-There are various ways of formulating this endpoint as described in [RFC 8414, section 3.1], and [OpenID Connect Discovery, section 4]. Authorization Servers are recommended to follow one of these procedures, but may choose a different well-known endpoint location mechanism.
+There are various ways of formulating this endpoint as described in [RFC8414, section 3.1], and [OpenID Connect Discovery, section 4]. Authorization Servers are recommended to follow one of these procedures, but may choose a different well-known endpoint location mechanism.
 
 A non-normative example of such a request using [RFC8414] is:
 
