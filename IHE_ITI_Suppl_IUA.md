@@ -37,9 +37,9 @@ Where the amendment adds text, make the added text **<ins>bold underline</ins>**
 
 General information about IHE can be found at [http://www.ihe.net](http://www.ihe.net).
 
-Information about the IHE IT Infrastructure domain can be found at [https://www.ihe.net/IHE_Domains] (https://www.ihe.net/IHE_Domains/).
+Information about the IHE IT Infrastructure domain can be found at [https://www.ihe.net/IHE_Domains](https://www.ihe.net/IHE_Domains/).
 
-Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at [https://www.ihe.net/about_ihe/ihe_process] (https://www.ihe.net/about_ihe/ihe_process/) and [https://www.ihe.net/resources/profiles] (https://www.ihe.net/resources/profiles/)
+Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at [https://www.ihe.net/about_ihe/ihe_process](https://www.ihe.net/about_ihe/ihe_process/) and [https://www.ihe.net/resources/profiles](https://www.ihe.net/resources/profiles/)
 
 The current version of the IHE Technical Framework can be found at [https://profiles.ihe.net/](https://profiles.ihe.net/).
 
