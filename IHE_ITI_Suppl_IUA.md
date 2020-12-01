@@ -10,7 +10,7 @@
 
 **Revision 2.0 - Public Comment**
 
-Date: November xx, 2020
+Date: December 2, 2020
 
 Author: ITI Technical Committee
 
@@ -22,7 +22,7 @@ Email: iti@ihe.net
 
 This is a supplement to the IHE IT Infrastructure Technical Framework V17.0. Each supplement undergoes a process of public comment and trial implementation before being incorporated into the volumes of the Technical Frameworks.
 
-This supplement is published on November xx, 2020 for public comment. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=). In order to be considered in the development of the trial implementation version of the supplement, comments must be received by **January 15, 2021**.
+This supplement is published on December 2, 2020 for public comment. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=). In order to be considered in the development of the trial implementation version of the supplement, comments must be received by **January 15, 2021**.
 
 This supplement describes changes to the existing technical framework documents.
 
@@ -61,7 +61,7 @@ The current version of the IHE Technical Framework can be found at: [https://pro
     - [34.4 IUA Overview](#344-iua-overview)
     - [34.5 IUA Security Considerations](#345-iua-security-considerations)
     - [34.6 IUA Cross Profile Considerations](#346-iua-cross-profile-considerations)
-- [Volume 2b -- Transactions](#volume-2b----transactions)
+- [Volume 2 -- Transactions](#volume-2----transactions)
     - [3.71 Get Access Token [ITI-71]](#371-get-access-token-iti-71)
     - [3.72 Incorporate Access Token [ITI-72]](#372-incorporate-access-token-iti-72)
     - [3.102 Introspect Token [ITI-102]](#3102-introspect-token-iti-102)
@@ -541,7 +541,7 @@ The Cross-Enterprise User Assertion ([XUA](http://profiles.ihe.net/ITI/TF/Volume
 
 The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) X-Assertion Provider and use it in the Incorporate Access Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.   
 
-# Volume 2b -- Transactions
+# Volume 2 -- Transactions
 
 | **Editor: Please add Section 3.71** |
 |------------------------------------|
@@ -1630,7 +1630,7 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 |---------------------------------------------------|
 
 #### 9.2.6.7 STX: HTTPS IUA
-The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the Internet User Authorization (IUA) Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2a: 3.19.6.6.
+The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the Internet User Authorization (IUA) Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2: 3.19.6.6.
 
 | **Editor: Please add the following section to Volume 2 as follows** |
 |---------------------------------------------------------------------|
