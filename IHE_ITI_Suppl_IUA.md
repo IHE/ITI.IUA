@@ -39,7 +39,7 @@ General information about IHE can be found at [http://www.ihe.net](http://www.ih
 
 Information about the IHE IT Infrastructure domain can be found at [https://www.ihe.net/IHE_Domains](https://www.ihe.net/IHE_Domains/).
 
-Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at [https://www.ihe.net/about_ihe/ihe_process](https://www.ihe.net/about_ihe/ihe_process/) and [https://www.ihe.net/resources/profiles](https://www.ihe.net/resources/profiles/)
+Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at [https://www.ihe.net/about_ihe/ihe_process](https://www.ihe.net/about_ihe/ihe_process/) and [https://www.ihe.net/resources/profiles](https://www.ihe.net/resources/profiles/).
 
 The current version of the IHE Technical Framework can be found at [https://profiles.ihe.net/](https://profiles.ihe.net/).
 
@@ -117,7 +117,7 @@ Additional issues:
 
 -   Providers and Specialists having authorization needs to deal with other organizations and with many resource services.
 
--   Granting subset access to specialized provider. E.g., granting a physical therapy organization read access to a patient's cardiac information but forbidding access to other sensitive health data.
+-   Granting subset access to specialized provider. For example, granting a physical therapy organization read access to a patient's cardiac information but forbidding access to other sensitive health data.
 
 There are also environmental assumptions made by this profile.
 
