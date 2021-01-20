@@ -678,8 +678,8 @@ end note
 AuthzServer -> UserAgent: Redirect to Client \n(authorization response with Authorization Code)
 UserAgent -> Client: authorization response
 
-Client -> AuthzServer: Token Request \n(client credentials + Authorization Code)
-AuthzServer --> Client: Access Token Response (access token)
+Client -> AuthzServer: Get Access Token Request \n(client credentials + Authorization Code)
+AuthzServer --> Client: Get Access Token Response (access token)
 end
 
 @enduml
