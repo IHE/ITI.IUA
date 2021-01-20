@@ -213,8 +213,6 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 The IUA Profile adds authorization information to HTTP RESTful transactions. The IUA actors and behavior can be added to other profiles and transactions that need authorization.
 
-## 34.1 IUA Actors, Transactions, and Content Modules
-
 The actors in the IUA Profile manage the access tokens used for authorization of access to HTTP RESTful services based on the flows and transactions defined in the OAuth 2.1 Authorization Framework [OAuth 2.1]. Authorization Clients interact with the Authorization Server to retrieve access tokens and incorporate them into HTTP RESTful transactions to authorize access to resources on the Resource Servers.
 
 The OAuth 2.1 Authorization Framework requires client identification, which may be based on a *client\_id* parameter [OAuth 2.1, Section 2.2]. Depending on the grant type, the use of the *client\_id* may be required. For example, the *Authorization Code* grant type requires the use of the *client\_id* for client identification [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2].
@@ -234,6 +232,12 @@ The Resource Server may delegate the access policy enforcement to actors it is g
 *Note:* An analogy of the segregation of duties for access control between the Authorization Server and the Resource Server is given in a textbook (*Solving Identity Management in Modern Applications*, *APress 2019* by Yvonne Wilson and Abhishek Hingnikar) comparing the authorization and policy enforcement with a ticketing and entrance control to events (e.g., opera, cinema). In this analogy, the Authorization Server provides the ticket which authorizes participation, while additional checks are performed to finally participate in the event.  
 
 The IUA Profile relies on the OAuth 2.1 Authorization Framework. Since the original publication of OAuth 2.0 in 2012, several new RFCs have been published that add or remove functionality from the core specification. Version 2.1 of the OAuth Authorization Framework consolidates and simplifies the most commonly used features and best practices of OAuth 2.0.
+
+## 34.1 IUA Actors, Transactions, and Content Modules
+
+This section defines the actors, transactions, and/or content modules in this profile. General definitions of actors are given in the Technical Frameworks General Introduction Appendix A. IHE Transactions can be found in the Technical Frameworks General Introduction Appendix B. Both appendices are located at http://ihe.net/Technical_Frameworks/#GenIntro.
+
+Figure 34.1-1 shows the actors directly involved in the IUA Profile and the relevant transactions between them. If needed for context, other actors that may be indirectly involved due to their participation in other related profiles are shown in dotted lines. Actors which have a required grouping are shown in conjoined boxes (see Section 34.3).
 
 ![IUA Actor Diagram](media/1.2_IUA-actor-diagram.png)
 
