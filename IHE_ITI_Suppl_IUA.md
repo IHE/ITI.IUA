@@ -611,8 +611,8 @@ participant "Authorization Server" as AuthzServer
 autonumber 0 1 "<b>[00]</b>"
 
 group Get Access Token (ITI-71) [Client Credentials Grant]
-Client -> AuthzServer: Access Token Request
-AuthzServer --> Client: Access Token Response
+Client -> AuthzServer: Get Access Token Request
+AuthzServer --> Client: Get Access Token Response
 end
 
 autonumber stop
