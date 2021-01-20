@@ -127,7 +127,7 @@ IUA also assumes that this profile is operating in an environment where access c
 
 ## Relation to SMART-on-FHIR
 
-IUA is not based on SMART-on-FHIR, but does strive to not conflict with that standard. 
+IUA is not based on SMART-on-FHIR, but does strive to not conflict with that standard.
 
 Concerns about SMART were raised surrounding the tight dependency between Resource and Authorization Server, the inclusion of launch/view context in the authorization flow, and the dependency on FHIR.  The IHE IT Infrastructure Domain believes that IUA provides the following advantages over SMART:
 
@@ -770,7 +770,7 @@ grant_type=authorization_code
 **Figure 3.71.4.1.2.2-3: Example Access Token Request**
 
 ##### 3.71.4.1.3 Expected Actions
-The Authorization Server, upon receiving a Get Token Request, validates all request parameters.
+The Authorization Server, upon receiving a Get Access Token Request, validates all request parameters.
 
 The scope parameter incorporated in the token requests shall be used to restrict authorization grants to specific actions (e.g., restrict authorization to specific resources to read-only) and to convey claims, which at runtime are known to the Authorization Client only (e.g., if the user claims a breaking-the-glass access in a emergency situation). The Authorization Server may refuse token requests that mention scope values that are unknown to the Authorization Server.
 
@@ -800,7 +800,7 @@ The Authorization Client shall use the authorization code to request the access 
 
 ##### 3.71.4.2.1 Trigger Event
 
-The Get Access Token Response is returned by an Authorization Server upon request from an Authorization Client. a to obtain an access token to be used in further communication.
+The Get Access Token Response is returned by an Authorization Server upon request from an Authorization Client to obtain an access token to be used in further communication.
 
 ##### 3.71.4.2.2 Message Semantics
 The Authorization Server shall respond an error response as defined in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 5.2] if the request does not match the requirements or is not understood.
