@@ -253,10 +253,10 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 |                      | Incorporate Access Token          | R           | ITI TF-2: 3.72   |
 |                      | Get Authorization Server Metadata | O           | ITI TF-2: 3.103  |
 | Authorization Server | Get Access Token                  | R           | ITI TF-2: 3.71  |
-|                      | Introspect Token                  | O  Note 1   | ITI TF-2: 3.102  |
+|                      | Introspect Token                  | O (Note 1)  | ITI TF-2: 3.102  |
 |                      | Get Authorization Server Metadata | O           | ITI TF-2: 3.103  |
 | Resource Server      | Incorporate Access Token          | R           | ITI TF-2: 3.72   |
-|                      | Introspect Token                  | O  Note 1   | ITI TF-2: 3.102 |
+|                      | Introspect Token                  | O (Note 1)  | ITI TF-2: 3.102 |
 |                      | Get Authorization Server Metadata | O           | ITI TF-2: 3.103  |
 
 *Note 1:* Optionality of this transaction is "R" for an actor that supports the Token Introspection Option.
