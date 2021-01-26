@@ -237,7 +237,7 @@ The IUA Profile relies on the OAuth 2.1 Authorization Framework. Since the origi
 
 This section defines the actors, transactions, and/or content modules in this profile. General definitions of actors are given in the Technical Frameworks General Introduction Appendix A. IHE Transactions can be found in the Technical Frameworks General Introduction Appendix B. Both appendices are located at http://ihe.net/Technical_Frameworks/#GenIntro.
 
-Figure 34.1-1 shows the actors directly involved in the IUA Profile and the relevant transactions between them. If needed for context, other actors that may be indirectly involved due to their participation in other related profiles are shown in dotted lines. Actors which have a required grouping are shown in conjoined boxes (see Section 34.3).
+Figure 34.1-1 shows the actors directly involved in the IUA Profile and the relevant transactions between them. If needed for context, other actors that may be indirectly involved due to their participation in other related profiles are shown in dotted lines. Actors which have a required grouping are shown in conjoined boxes (see [ITI TF-1: 34.3 IUA Required Actor Groupings](#343-iua-required-actor-groupings)).
 
 ![IUA Actor Diagram](media/1.2_IUA-actor-diagram.png)
 
@@ -247,17 +247,17 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 
 **Table 34.1-1: IUA Profile - Actors and Transactions**
 
-| Actors               | Transactions                      | Optionality | Reference         |
-|----------------------|-----------------------------------|-------------|-------------------|
-| Authorization Client | Get Access Token                  | O           | ITI TF-2: 3.71   |
-|                      | Incorporate Access Token          | R           | ITI TF-2: 3.72   |
-|                      | Get Authorization Server Metadata | O           | ITI TF-2: 3.103  |
-| Authorization Server | Get Access Token                  | R           | ITI TF-2: 3.71  |
-|                      | Introspect Token                  | O (Note 1)  | ITI TF-2: 3.102  |
-|                      | Get Authorization Server Metadata | O           | ITI TF-2: 3.103  |
-| Resource Server      | Incorporate Access Token          | R           | ITI TF-2: 3.72   |
-|                      | Introspect Token                  | O (Note 1)  | ITI TF-2: 3.102 |
-|                      | Get Authorization Server Metadata | O           | ITI TF-2: 3.103  |
+| Actors               | Transactions                      | Optionality | Reference            |
+|----------------------|-----------------------------------|-------------|----------------------|
+| Authorization Client | Get Access Token                  | O           | [ITI TF-2: 3.71](#371-get-access-token-iti-71)   |
+|                      | Incorporate Access Token          | R           | [ITI TF-2: 3.72](#372-incorporate-access-token-iti-72)   |
+|                      | Get Authorization Server Metadata | O           | [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103)  |
+| Authorization Server | Get Access Token                  | R           | [ITI TF-2: 3.71](#371-get-access-token-iti-71)   |
+|                      | Introspect Token                  | O (Note 1)  | [ITI TF-2: 3.102](#3102-introspect-token-iti-102)  |
+|                      | Get Authorization Server Metadata | O           | [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103)  |
+| Resource Server      | Incorporate Access Token          | R           | [ITI TF-2: 3.72](#372-incorporate-access-token-iti-72)   |
+|                      | Introspect Token                  | O (Note 1)  | [ITI TF-2: 3.102](#3102-introspect-token-iti-102)  |
+|                      | Get Authorization Server Metadata | O           | [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103)  |
 
 *Note 1:* Optionality of this transaction is "R" for an actor that supports the Token Introspection Option.
 
@@ -275,7 +275,7 @@ When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorizat
 
 The Authorization Server provides access tokens to requesting clients. In IUA, the Authorization Server uses an authenticated user identity, the requested HTTP RESTful service URL to the Resource Server, and/or other information to determine whether HTTP RESTful transactions are authorized. If authorized, the Authorization Server provides an access token which authorizes the client to retrieve data and documents from the Resource Server.  
 
-The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* and *Client Credential* grant types (see Section [34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)). The Authorization Server shall support these grant types:
+The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* and *Client Credential* grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)). The Authorization Server shall support these grant types:
 
 - *Authorization Code*  
 
@@ -289,7 +289,7 @@ In general, Resource Servers perform additional access control decisions and may
 
 When the Incorporate Access Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes". The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
 
-The Authorization Server may support these grant types (see Section [34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)):
+The Authorization Server may support these grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)):
 
 - *Device Authorization*
 
@@ -341,7 +341,7 @@ A Resource Server that supports this option shall be able to accept JWT access t
 See [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction requirements.
 
 ### 34.2.3 SAML Token Option
-This option enables integration of environments that use both the x[XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compatible SAML access token and the OAuth authorization infrastructure.
+This option enables integration of environments that use both the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compatible SAML access token and the OAuth authorization infrastructure.
 
 An Authorization Servers that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 access tokens to be incorporated in RESTful requests to Resource Servers.
 
@@ -597,8 +597,8 @@ The Get Access Token Request is performed by an Authorization Client or Resource
 ##### 3.71.4.1.2 Message Semantics
 This transaction supports two distinct grants for obtaining an access token. These grants require their own variation in message sequences as depicted in the following sections:
 
-- Client Credential grant type - Section 3.71.4.1.2.1 and 3.71.4.1.3.1
-- Authorization Code grant Type - Section 3.71.4.1.2.2 and 3.71.4.1.3.2
+- Client Credential grant type  - see [ITI TF-2: 3.71.4.1.2.1](3714121-client-credential-grant-type) and [3.71.4.1.3.1](#3714131-client-credential-grant-type)
+- Authorization Code grant type - see [ITI TF-2: 3.71.4.1.2.2](#3714122-authorization-code-grant-type) and [3.71.4.1.3.2](#3714132-authorization-code-grant-type)
 
 ##### 3.71.4.1.2.1 Client Credential grant type
 
@@ -651,7 +651,7 @@ grant_type=client_credentials
 ```
 **Figure 3.71.4.1.2.1-2: Example Access Token Request**
 
-An Authorization Client that supports the Get Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token; see ITI TF-2: 3.103 Get Authorization Server Metadata.
+An Authorization Client that supports the Get Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token (see [ITI TF-2: 3.103 Get Authorization Server Metadata](#3103-get-authorization-server-metadata-iti-103)).
 
 ##### 3.71.4.1.2.2 Authorization Code grant type
 
@@ -782,7 +782,7 @@ Authorization Servers should  limit the list of identifiers in the audience clai
 
 The Authorization Client is recommended to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server should evaluate any resource values provided as part of the token request procedure. The Authorization Server should execute policies to detect whether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers shall limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
-If the request is valid and all access policy criteria are met, the Authorization Server shall respond with the access token response as outlined in Section [3.71.4.2 Get Access Token Response](#37142-get-access-token-response).
+If the request is valid and all access policy criteria are met, the Authorization Server shall respond with the access token response as outlined [ITI TF-2: 3.71.4.2 Get Access Token Response](#37142-get-access-token-response).
 
 If the authorization request is invalid, the Authorization Server shall react as defined in [OAuth 2.1, Section 4.1.2.1].
 
@@ -914,7 +914,7 @@ The above claims shall be wrapped in an "extensions" object with key 'ihe\_iua' 
 }
 ```
 
-The claim content shall correspond to the content defined in the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) specification (see ITI TF-2: 3.40.4.1.2 Message Semantics).
+The claim content shall correspond to the content defined in the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) specification (see [ITI TF-2: 3.40.4.1.2 Message Semantics](https://profiles.ihe.net/ITI/TF/Volume2/ITI-40.html#3.40.4.1.2)).
 
 The mapping of IUA extension claims to [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 Assertion attributes is shown in Table 3.71.3.2.2.1-1 below.
 
@@ -1025,7 +1025,7 @@ In accordance with [RFC7522, Section 2.2], the value of the access token contain
 
 Actors that support the Token Introspection Option shall provide a non-empty, unique and non-guessable access token value.
 
-The access token may be a structured value, for example using the JWT or SAML token formats as described in Sections [3.71.4.2.2.1](#3714221-json-web-token-option) and [3.71.4.2.2.2](#3714222-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
+The access token may be a structured value, for example using the JWT or SAML token formats as described in [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option) and [ITI TF-2: 3.71.4.2.2.2](#3714222-saml-token-option). Alternatively, the token may be a opaque identifier pointing to a stored record of claims retrievable by the Authorization Server.
 
 The Authorization Server shall have means to retrieve the claims associated with the access token during token introspection (for details see [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token-iti-102)).
 
@@ -1181,7 +1181,7 @@ Host: example.com
 ```
 
 #### 3.72.4.3 Expected Actions
-The Resource Server shall be able to determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document (see [ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or some other method.
+The Resource Server shall be able to determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document (see [ITI TF-2: ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or some other method.
 
 When the Resource Server is not able to process the token format (through local verification or introspection), it shall respond with HTTP 401 (Unauthorized).
 
@@ -1200,12 +1200,12 @@ If the token verification, or scope matching, or the access policy enforcement f
 Authorization Clients receiving a HTTP 401 (Unauthorized) error should NOT retry the request with the same token. An Authorization Client should reformulate the request or obtain a new token from the Authorization Server before retrying.
 
 ##### 3.72.4.3.1 JSON Web Token Option
-A Resource Server that supports the JSON Web Token Option shall be able to interpret and validate the access token as a JWT Token as defined in Section [3.71.4.2.2.1](#3714221-json-web-token-option).
+A Resource Server that supports the JSON Web Token Option shall be able to interpret and validate the access token as a JWT Token as defined in [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the JWT token's signature.
 
 ##### 3.72.4.3.2 SAML Token Option
-A Resource Server that supports the SAML Token Option shall be able to interpret and validate the access token as a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML Assertion as defined in Section [3.71.4.2.2.2](#3714222-saml-token-option).
+A Resource Server that supports the SAML Token Option shall be able to interpret and validate the access token as a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML Assertion as defined in [ITI TF-2: 3.71.4.2.2.2](#3714222-saml-token-option).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the SAML token's signature.
 
@@ -1369,13 +1369,13 @@ The Authorization Server has formulated an access policy decision for the intros
 The introspect response is a JSON-formatted object. There are two variants of this object.
 
 1. The Authorization Server considers the token to be invalid for the given Resource Server because of formatting issues, revocation data, expiry, or other access policy considerations. The introspect result object shall contain a single field "active" with boolean value "false".
-2. The Authorization Server considers the token to be valid for the given Resource Server. The object shall contain a field "active" with boolean value "true". In addition, it shall contain the same fields and values as formulated for the JWT token content as specified in Section [3.71.4.2.2.1 JSON Web Token](#3714221-json-web-token-option), including defined extensions.
+2. The Authorization Server considers the token to be valid for the given Resource Server. The object shall contain a field "active" with boolean value "true". In addition, it shall contain the same fields and values as formulated for the JWT token content as specified in [ITI TF-2: 3.71.4.2.2.1 JSON Web Token](#3714221-json-web-token-option), including defined extensions.
 
 ##### 3.102.4.2.3 Expected Actions
 
 The Resource Server shall inspect the "active" field of the introspect result. If the active field is set to "false", the Resource Server shall return HTTP 401 (Not Authorized) for all requests carrying the introspected access token.
 
-The Resource Server shall use the introspection results as access token claims in all access control evaluations as depicted in Section [3.72.4.3](#37243-expected-actions).
+The Resource Server shall use the introspection results as access token claims in all access control evaluations as depicted in [ITI TF-2: 3.72.4.3](#37243-expected-actions).
 
 The Resource Server may cache introspection results for a given access token in case the introspection result contains an expiry field. This cache shall not extend the period as defined by the expiry field. If no expiry field is provided, the Resource Server shall not cache the introspection results.
 
@@ -1490,7 +1490,7 @@ Host: example.com
 
 ##### 3.103.4.1.3 Expected Actions
 
-Upon receiving a metadata request, the Authorization Server should respond with the metadata document as described in Section [3.103.4.2](#310342-authorization-server-metadata-response).
+Upon receiving a metadata request, the Authorization Server should respond with the metadata document as described in [ITI TF-2: 3.103.4.2](#310342-authorization-server-metadata-response).
 
 Implementations supporting multi-tenancy shall respond with different metadata documents for different tenants, providing at least a different issuer value.
 
