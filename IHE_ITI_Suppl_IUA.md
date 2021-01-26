@@ -597,7 +597,7 @@ The Get Access Token Request is performed by an Authorization Client or Resource
 ##### 3.71.4.1.2 Message Semantics
 This transaction supports two distinct grants for obtaining an access token. These grants require their own variation in message sequences as depicted in the following sections:
 
-- Client Credential grant type  - see [ITI TF-2: 3.71.4.1.2.1](3714121-client-credential-grant-type) and [3.71.4.1.3.1](#3714131-client-credential-grant-type)
+- Client Credential grant type  - see [ITI TF-2: 3.71.4.1.2.1](#3714121-client-credential-grant-type) and [3.71.4.1.3.1](#3714131-client-credential-grant-type)
 - Authorization Code grant type - see [ITI TF-2: 3.71.4.1.2.2](#3714122-authorization-code-grant-type) and [3.71.4.1.3.2](#3714132-authorization-code-grant-type)
 
 ##### 3.71.4.1.2.1 Client Credential grant type
