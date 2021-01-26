@@ -199,7 +199,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 | Incorporate Access Token \[ITI-72\]           | Add an access token to a transaction.                                                              |
 | Get Access Token \[ITI-71\]                   | Request and obtain an access token for use in authorized transactions.                             |
 | Introspect Token \[ITI-102\]                  | Obtain the state and claims associated with an access token.                                       |
-| Get Authorization Server Metadata \[ITI-103\] | Obtain metadata about a Authorization Server, such as endpoint locations and signing key material. |
+| Get Authorization Server Metadata \[ITI-103\] | Obtain metadata about a Authorization Server. |
 
 
 # Volume 1 -- Profiles
