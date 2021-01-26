@@ -1408,7 +1408,7 @@ Resource Servers and Authorization Servers that support this transaction shall f
 
 #### 3.102.5.1 Security Audit Considerations
 
-Resource Servers shall use the introspection results as authorization claims when formulating audit messages, as specified in Section [3.72.5.1](#37251-security-audit-considerations).
+Resource Servers shall use the introspection results as authorization claims when formulating audit messages, as specified in [ITI TF-2 3.72.5.1](#37251-security-audit-considerations).
 
 
 | **Editor: Please add Section 3.103** |
