@@ -1375,7 +1375,7 @@ The introspect response is a JSON-formatted object. There are two variants of th
 
 The Resource Server shall inspect the "active" field of the introspect result. If the active field is set to "false", the Resource Server shall return HTTP 401 (Not Authorized) for all requests carrying the introspected access token.
 
-The Resource Server shall use the introspection results as access token claims in all access control evaluations as depicted in Section [3.72.7](#3727-expected-actions).
+The Resource Server shall use the introspection results as access token claims in all access control evaluations as depicted in Section [3.72.4.3](#37243-expected-actions).
 
 The Resource Server may cache introspection results for a given access token in case the introspection result contains an expiry field. This cache shall not extend the period as defined by the expiry field. If no expiry field is provided, the Resource Server shall not cache the introspection results.
 
