@@ -1170,7 +1170,7 @@ A client needs to make an HTTP RESTful transaction to a Resource Server that enf
 
 #### 3.72.4.2 Message Semantics
 
-The Authorization Client shall incorporate the access token as received from the Authorization Server in a HTTP Authorization header of the type *Bearer* [OAuth2.1, Bearer token] as-is.
+The Authorization Client shall incorporate the access token as received from the Authorization Server in a HTTP Authorization header of the type *Bearer* [OAuth2.1, Bearer token].
 
 A non-normative example of the access token incorporation to a RESTful transaction is:
 
