@@ -28,10 +28,8 @@ This supplement describes changes to the existing technical framework documents.
 
 "Boxed" instructions like the sample below indicate to the Volume Editor how to integrate the relevant section(s) into the relevant Technical Framework volume.
 
-
 | **Editor: Please amend Section X.X by the following** |
 |------------------------------------------------------|
-
 
 Where the amendment adds text, make the added text **<ins>bold underline</ins>**. Where the amendment removes text, make the removed text **~~bold strikethrough~~**. When entire new sections are added, introduce with editor's instructions to "add new text" or similar, which for readability are not bolded or underlined.
 
@@ -81,11 +79,9 @@ Being authorized means that the user, patient, or provider has legitimate access
 
 The HTTP RESTful transport is being used by many healthcare applications and smart devices. These share a common set of issues. A typical use case example is:
 
--   The patient installs an application onto his tablet.
-
--   The application will need to retrieve and update health related data that is stored on a Resource Server. It uses HTTP RESTful transactions for both retrieve and update because HTTP support is integrated into the platform services.
-
--   The patient wants to configure the application to have access to his data without needing the IT staff at the application vendor and resource vendor to set things up.
+- The patient installs an application onto his tablet.
+- The application will need to retrieve and update health related data that is stored on a Resource Server. It uses HTTP RESTful transactions for both retrieve and update because HTTP support is integrated into the platform services.
+- The patient wants to configure the application to have access to his data without needing the IT staff at the application vendor and resource vendor to set things up.
 
 The HTTP RESTful services may include user-driven browser activity, downloaded applications, automatic devices, and IT systems. The existing IHE ITI [Cross-Enterprise User Assertion (XUA)](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile fills these needs for the SOAP transport based transactions. The existing IHE ITI [Enterprise User Authentication (EUA)](https://profiles.ihe.net/ITI/TF/Volume1/ch-4.html) Profile fills these needs for various different transports within a single enterprise environment, including HTTP RESTful transports.
 
@@ -101,23 +97,17 @@ The application interacts with both patient and Authorization Server to support 
 
 The key issues include:
 
--   Making reliable and accurate authorization decisions as part of an overall privacy protecting and security environment.
-
--   Application developers expecting one common method for obtaining and using access tokens.
-
--   Resource Servers expecting one common method for receiving access tokens as part of HTTP RESTful transactions, and one common method for processing these tokens.
-
--   Users, patients, and providers, expecting to be in control, do not want to depend on support staff to set up their applications, and want to minimize the interference from authorization requirements.
+- Making reliable and accurate authorization decisions as part of an overall privacy protecting and security environment.
+- Application developers expecting one common method for obtaining and using access tokens.
+- Resource Servers expecting one common method for receiving access tokens as part of HTTP RESTful transactions, and one common method for processing these tokens.
+- Users, patients, and providers, expecting to be in control, do not want to depend on support staff to set up their applications, and want to minimize the interference from authorization requirements.
 
 Additional issues:
 
--   In-house application distribution needing to provide authorization for applications used within the facility.
-
--   IT administrators preferring a common method to authorize use of in-house web applications and access to in-house resources.
-
--   Providers and Specialists having authorization needs to deal with other organizations and with many resource services.
-
--   Granting subset access to specialized provider. For example, granting a physical therapy organization read access to a patient's cardiac information but forbidding access to other sensitive health data.
+- In-house application distribution needing to provide authorization for applications used within the facility.
+- IT administrators preferring a common method to authorize use of in-house web applications and access to in-house resources.
+- Providers and Specialists having authorization needs to deal with other organizations and with many resource services.
+- Granting subset access to specialized provider. For example, granting a physical therapy organization read access to a patient's cardiac information but forbidding access to other sensitive health data.
 
 There are also environmental assumptions made by this profile.
 
@@ -164,15 +154,12 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
 
-
 # IHE Technical Frameworks General Introduction Appendices
 
 | **Editor: Please update the following appendices to the General Introduction as indicated below. Note that these are not appendices to this domain's Technical Framework but rather, they are appendices to the IHE Technical Frameworks General Introduction.** |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-
 ## Appendix A - Actor Summary Definitions
-
 
 | **Editor: Please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
 |-----------------------------------------------------------------------------------------------------------------|
@@ -185,9 +172,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 | Authorization Server | A server that issues access tokens to requesting clients.                        |
 | Resource Server      | A server that provides services that need authorization.                         |
 
-
 ## Appendix B - Transaction Summary Definitions
-
 
 | **Editor: Please add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:** |
 |-----------------------------------------------------------------------------------------------------------------------------|
@@ -201,13 +186,10 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 | Introspect Token \[ITI-102\]                  | Obtain the state and claims associated with an access token.                                       |
 | Get Authorization Server Metadata \[ITI-103\] | Obtain metadata about a Authorization Server, such as endpoint locations and signing key material. |
 
-
 # Volume 1 -- Profiles
-
 
 | **Editor: Please add the following Section 34 to Volume 1** |
 |------------------------------------------------------------|
-
 
 # 34 Internet User Authorization (IUA) Profile
 
@@ -302,6 +284,7 @@ The Authorization Server may support these grant types (see Section [34.4.1.1 Au
 The Resource Servers and Authorization Servers may be grouped into an integrated product together with user authentication, access control, and other services.
 
 ## 34.2 IUA Actor Options
+
 Options that may be selected for each actor in this profile are listed in the Table 34.2-1. Dependencies between options, when applicable, are specified in notes.
 
 **Table 34.2-1: IUA - Actors and Options**
@@ -321,6 +304,7 @@ Options that may be selected for each actor in this profile are listed in the Ta
 *Note 1:* Authorization Server or Resource Server Actors shall support at least one of the following options: JWT Token, SAML, or Token Introspection. The Authorization Client is not and does not need to be aware of the token processing options.
 
 ### 34.2.1 Authorization Server Metadata Option
+
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
 An Authorization Client that supports this option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information.
@@ -332,6 +316,7 @@ Resource Servers supporting the Authorization Server Metadata Option shall have 
 See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for transaction requirements.
 
 ### 34.2.2 JWT Token Option
+
 This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option).
 
 An Authorization Servers that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers.
@@ -341,6 +326,7 @@ A Resource Server that supports this option shall be able to accept JWT access t
 See [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction requirements.
 
 ### 34.2.3 SAML Token Option
+
 This option enables integration of environments that use both the x[XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compatible SAML access token and the OAuth authorization infrastructure.
 
 An Authorization Servers that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 access tokens to be incorporated in RESTful requests to Resource Servers.
@@ -350,6 +336,7 @@ A Resource Server that supports this option shall be able to accept [XUA](http:/
 See [ITI TF-2: 3.71.4.2.2.2](#3714222-saml-token-option) for transaction requirements.
 
 ### 34.2.4 Token Introspection Option
+
 Actors that support this option use the [Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction to validate and obtain the claims associated with an access token. Introspection allows for custom token formats and re-evaluation of tokens after commission (enabling features like token revocation), at the cost of introspection calls to the Authorization Server.
 
 An Authorization Server that supports the Token Introspection option shall provide an endpoint that Resource Servers will use to validate and evaluate the access token. With this option, the Authorization Server may provide token formats other than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server shall provide the [Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction service.
@@ -363,7 +350,6 @@ See [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token-iti-102) for trans
 An actor from this profile shall implement the required transactions and/or content modules in this profile ***in addition to*** all of the transactions required for the grouped actor (Column 2).
 
 **Table 34.3-1: Required Actor Groupings**
-
 
   | IUA Actor            | Actor to be grouped with | Reference                  | Content Bindings Reference |
   |----------------------|--------------------------|----------------------------|----------------------------|
@@ -383,23 +369,23 @@ The IUA actors are expected to be grouped with other actors that perform HTTP RE
 
 The term "authorization" and "access control" are used colloquially for a variety of related activities. All of the concepts listed below are sometimes called "authorization" or "access control". See the IHE [ITI Access Control](https://www.ihe.net/Technical_Framework/upload/IHE_ITI_TF_WhitePaper_AccessControl_2009-09-28.pdf) white paper for a detailed discussion of Access Control concepts. This profile will use more specific terms for each of these activities. These are:
 
--   Provisioning -- Setting up the initial rules and updating them when the situation changes. The administrator may say "Authorize Dr. X to have access". The steps taken to make this happen are called provisioning.
+- Provisioning -- Setting up the initial rules and updating them when the situation changes. The administrator may say "Authorize Dr. X to have access". The steps taken to make this happen are called provisioning.
 
--   Delegation -- Adding, transferring, and revoking authorization from one person to another. This is closely related to provisioning. It differs in that it can only transfer authority that has already been provisioned, and it may track changes to provisioned access for the original person.
+- Delegation -- Adding, transferring, and revoking authorization from one person to another. This is closely related to provisioning. It differs in that it can only transfer authority that has already been provisioned, and it may track changes to provisioned access for the original person.
 
--   Authentication -- Determining that the actual user (at the moment of authentication) is the claimed identity.
+- Authentication -- Determining that the actual user (at the moment of authentication) is the claimed identity.
 
--   Authorization -- Determining that the authenticated user is authorized to have access to a resource (at the moment of authorization). The profile describes how to convey authorization decisions. It is not defining how the decision is made.
+- Authorization -- Determining that the authenticated user is authorized to have access to a resource (at the moment of authorization). The profile describes how to convey authorization decisions. It is not defining how the decision is made.
 
--   Access Control -- A system of provisioning, delegation, authentication, and authorization. It is normal to have multiple nested levels of access control. This profile is concerned with whether access is allowed to make the HTTP transaction requests to the specified resources. There are likely also building access controls, Resource Server access controls, and other access controls involved.
+- Access Control -- A system of provisioning, delegation, authentication, and authorization. It is normal to have multiple nested levels of access control. This profile is concerned with whether access is allowed to make the HTTP transaction requests to the specified resources. There are likely also building access controls, Resource Server access controls, and other access controls involved.
 
 #### 34.4.1.1 Authorization Grant Types
 
 The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the following authorization grant types:
 
--   *Authorization Code Grant* [OAuth 2.1, Section 4.1]. This grant type is optimized for confidential clients who make use of User Agents (e.g., web browsers).
+- *Authorization Code Grant* [OAuth 2.1, Section 4.1]. This grant type is optimized for confidential clients who make use of User Agents (e.g., web browsers).
 
--   *Client Credentials Grant* [OAuth 2.1, Section 4.2]. This grant type is optimized for clients requesting access tokens using only its client credentials and is restricted to confidential clients (e.g., medical devices, back end applications).
+- *Client Credentials Grant* [OAuth 2.1, Section 4.2]. This grant type is optimized for clients requesting access tokens using only its client credentials and is restricted to confidential clients (e.g., medical devices, back end applications).
 
 The OAuth 2.1 Authorization Framework further defines extension points to implement extension grant types [OAuth 2.1, Section 4.3], specifically:
 
@@ -543,13 +529,12 @@ The Cross-Enterprise User Assertion ([XUA](http://profiles.ihe.net/ITI/TF/Volume
 
 - While [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) supports SAML 2 Assertions only, the IUA Profile supports access token in JWT, SAML 2.0 Assertion or custom formats (in case the Token Introspection Option is implemented).  
 
-The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) X-Assertion Provider and use it in the Incorporate Access Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.   
+The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) X-Assertion Provider and use it in the Incorporate Access Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.
 
 # Volume 2 -- Transactions
 
 | **Editor: Please add Section 3.71** |
 |------------------------------------|
-
 
 ## 3.71 Get Access Token [ITI-71]
 
@@ -595,6 +580,7 @@ This transaction relies on standards defined in the following documents and the 
 The Get Access Token Request is performed by an Authorization Client or Resource Server (in case of the Introspect Option) to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform a Get Access Token transaction depends on the grant type (type of credentials) chosen.
 
 ##### 3.71.4.1.2 Message Semantics
+
 This transaction supports two distinct grants for obtaining an access token. These grants require their own variation in message sequences as depicted in the following sections:
 
 - Client Credential grant type - Section 3.71.4.1.2.1 and 3.71.4.1.3.1
@@ -649,6 +635,7 @@ grant_type=client_credentials
 &scope=scope_1 scope_2 ... scope_N
 &resource=https://rs.example.com/
 ```
+
 **Figure 3.71.4.1.2.1-2: Example Access Token Request**
 
 An Authorization Client that supports the Get Authorization Server Metadata Option shall use the *token_endpoint* URL from the Authorization Server Metadata Document to obtain the access token; see ITI TF-2: 3.103 Get Authorization Server Metadata.
@@ -726,6 +713,7 @@ GET /authorize?
   HTTP/1.1
 Host: server.example.com
 ```
+
 **Figure 3.71.4.1.2.2-2: Example Authorization Request**
 
 If the access request is granted (by the user or some other access policy), the Authorization Server issues an authorization code.
@@ -774,6 +762,7 @@ grant_type=authorization_code
 **Figure 3.71.4.1.2.2-3: Example Access Token Request**
 
 ##### 3.71.4.1.3 Expected Actions
+
 The Authorization Server, upon receiving a Get Access Token Request, validates all request parameters.
 
 The scope parameter incorporated in the token requests shall be used to restrict authorization grants to specific actions (e.g., restrict authorization to specific resources to read-only) and to convey claims, which at runtime are known to the Authorization Client only (e.g., if the user claims a breaking-the-glass access in a emergency situation). The Authorization Server may refuse token requests that mention scope values that are unknown to the Authorization Server.
@@ -807,6 +796,7 @@ The Authorization Client shall use the authorization code to request the access 
 The Get Access Token Response is returned by an Authorization Server upon request from an Authorization Client to obtain an access token to be used in further communication.
 
 ##### 3.71.4.2.2 Message Semantics
+
 The Authorization Server shall respond an error response as defined in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 5.2] if the request does not match the requirements or is not understood.
 
 If the access token request is valid and authorized, the Authorization Server responds with the access token response message in JSON format with the following attributes [OAuth 2.1, Section 4.2.3]:
@@ -841,9 +831,11 @@ Pragma: no-cache
   "example_parameter": "example_value"
 }
 ```
+
 **Figure 3.71.4.2.2-1: Example Access Token Response**
 
 ###### 3.71.4.2.2.1 JSON Web Token Option
+
 The OAuth2 specifications does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
 
 JWT token shall be signed as specified in JSON Web Signature [RFC7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) shall be used as described in [RFC7515, Section 7.1].
@@ -851,6 +843,7 @@ JWT token shall be signed as specified in JSON Web Signature [RFC7515]. If signe
 Any actor may support the JWE (unsigned but encrypted) alternative of the JWT token.
 
 Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC7518], the following algorithms shall be supported:
+
 - *HS256*: HMAC using SHA-256 hash algorithm.
 - *RS256*: RSA using SHA-256 hash algorithm.
 
@@ -874,7 +867,7 @@ In the JSON Web Token Option, the access token is defined as JSON object with th
 
 - *exp* (required): Expiration time of the token in Numeric Date format [JWT Access Token, Section 2.2].
 
-- *scope* (required): The scope granted by the Authorization Server [JWT Access Token, Section 2.2.3].   
+- *scope* (required): The scope granted by the Authorization Server [JWT Access Token, Section 2.2.3].
 
 - *nbf* (optional): The earliest time in Numeric Date format the token shall be accepted [JWT, Section 4.1.5].  
 
@@ -931,7 +924,6 @@ The mapping of IUA extension claims to [XUA](http://profiles.ihe.net/ITI/TF/Volu
 | national\_provider\_identifier | urn:oasis:names:tc:xspa:1.0:subject:npi             |
 | person\_id                     | *not defined*                                       |
 
-
 **3.71.4.2.2.1.2 JWT BPPC extension**
 
 In an environment that uses the IHE [Basic Patient Privacy Consents (BPPC)](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile for documenting the consent, the Authorization Server and Resource Server shall support the following extension parameter:
@@ -970,6 +962,7 @@ The mapping of IUA extension claims to XUA-compliant SAML 2.0 Assertion attribut
 The following is a non-normative example of JWT access token:
 
 JOSE Header:
+
 ```json
 {
 "typ": "IUA-JWT",
@@ -978,6 +971,7 @@ JOSE Header:
 ```
 
 JWS Payload:
+
 ```json
 {
     "iss": "urn:tiani-spirit:sts",
@@ -1053,7 +1047,6 @@ The Authorization Client is recommended to provide a resource value to limit usa
 
 The Authorization Client or Authorization Server that is grouped with an [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Secure Node or Secure Application shall be able to send an audit event as defined below:  
 
-
 |                                                     | Field Name              | Opt | Value Constraints                       |
 |-----------------------------------------------------|-------------------------|-----|-----------------------------------------|
 | **Event**<br/>(AuditMessage/EventIdentification)    | EventID                 | M   | EV(110114, DCM, "User Authentication")  |
@@ -1091,9 +1084,6 @@ Where:
 |                                                                | ParticipantObjectQuery           | M   | URL requested                                                                      |
 |                                                                | *ParticipantObjectDetail*        | *U* | *not specialized*                                                                  |
 
-
-
-
 | **Editor: Please add Section 3.72** |
 |------------------------------------|
 
@@ -1111,7 +1101,6 @@ This transaction is used to incorporate authorization information into HTTP REST
 |----------------------|---------------------------------------------------------------|
 | Authorization Client | Authorization component of a HTTP RESTful transaction client. |
 | Resource Server      | Authorization component of a HTTP RESTful transaction server. |
-
 
 ### 3.72.3 Referenced Standards
 
@@ -1156,11 +1145,11 @@ end
 
 **Main Flow:**
 
-1.  The Authorization Client sends a resource request to a Resource Server, together with the access token. The token is opaque to the Authorization Client.
+1. The Authorization Client sends a resource request to a Resource Server, together with the access token. The token is opaque to the Authorization Client.
 
 1. The Resource Server identifies the format of the token, validates the token, and obtains the claims associated with the token. To this end it may use the Authorization Server metadata, such as signing keys (for JWT or SAML tokens), or the introspect endpoint location.
 
-1.  The Resource Server makes an access control decision based upon the claims from the access token and the transaction details. It may provide access to the resource, a subset of the resource, or reject the request in total.
+1. The Resource Server makes an access control decision based upon the claims from the access token and the transaction details. It may provide access to the resource, a subset of the resource, or reject the request in total.
 
 This transaction works in conjunction with other HTTP RESTful transaction. It extends the other transaction by adding information to the HTTP request for that HTTP RESTful transaction.
 
@@ -1181,6 +1170,7 @@ Host: example.com
 ```
 
 #### 3.72.4.3 Expected Actions
+
 The Resource Server shall be able to determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document (see [ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or some other method.
 
 When the Resource Server is not able to process the token format (through local verification or introspection), it shall respond with HTTP 401 (Unauthorized).
@@ -1200,16 +1190,19 @@ If the token verification, or scope matching, or the access policy enforcement f
 Authorization Clients receiving a HTTP 401 (Unauthorized) error should NOT retry the request with the same token. An Authorization Client should reformulate the request or obtain a new token from the Authorization Server before retrying.
 
 ##### 3.72.4.3.1 JSON Web Token Option
+
 A Resource Server that supports the JSON Web Token Option shall be able to interpret and validate the access token as a JWT Token as defined in Section [3.71.4.2.2.1](#3714221-json-web-token-option).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the JWT token's signature.
 
 ##### 3.72.4.3.2 SAML Token Option
+
 A Resource Server that supports the SAML Token Option shall be able to interpret and validate the access token as a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML Assertion as defined in Section [3.71.4.2.2.2](#3714222-saml-token-option).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the keys published through the Authorization Server Metadata Document for validating the SAML token's signature.
 
 ##### 3.72.4.3.3 Introspect Token Option
+
 A Resource Server that supports the Token Introspection Option shall be able to interact with the Authorization Server using the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction as described in Section [3.102](#3102-introspect-token-iti-102) to validate the access token and obtain the related claims.
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the introspection endpoint published through the Authorization Server Metadata Document for validating the token and obtaining the related claims.
@@ -1229,19 +1222,20 @@ When an [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Audit message n
 **alias\"\<\"user\"@\"issuer\"\>\"**
 
 where:
--   **alias** shall match the JWT token's "aud" parameter
--   **user** shall match the JWT token's "sub" parameter
--   **issuer** shall match the JWT token's "iss" parameter
+
+- **alias** shall match the JWT token's "aud" parameter
+- **user** shall match the JWT token's "sub" parameter
+- **issuer** shall match the JWT token's "iss" parameter
 
 When an [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Audit message needs to be generated by the Resource Server and the user is authenticated by way of a SAML Token, the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Audit message **UserName** element shall record the SAML token information using the following encoding:
 
 **alias\"\<\"user\"@\"issuer\"\>\"**
 
 where:
--   **alias** shall match the optional string within the SAML Assertion\'s Subject element SPProvidedID attribute
--   **user** shall match the required content of the SAML Assertion\'s Subject element
--   **issuer** shall match the X-Assertion Provider entity identifier contained with the content of SAML Assertion\'s Issuer element
 
+- **alias** shall match the optional string within the SAML Assertion\'s Subject element SPProvidedID attribute
+- **user** shall match the required content of the SAML Assertion\'s Subject element
+- **issuer** shall match the X-Assertion Provider entity identifier contained with the content of SAML Assertion\'s Issuer element
 
 | **Editor: Please add Section 3.102** |
 |-------------------------------------|
@@ -1278,6 +1272,7 @@ This transaction relies on standards defined in the following documents and the 
 - *RFC7662*: OAuth 2.0 Token Introspection, published as RFC7662, October 2015
 
 ### 3.102.4 Messages
+
 Introspection entails a single request and response between a Resource Server and an Authorization Server. This flow is typically executed as part of the authorization of RESTful resource request as depicted in [ITI TF-1: 34.4.2.2 Process Flow](#34422-process-flow).
 
 ![ITI-102 Introspect Diagram](media/introspect.png)
@@ -1304,6 +1299,7 @@ autonumber stop
 ```
 
 **General flow:**
+
 1. Optionally, the Resource Server obtains a metadata document from the Authorization Server, providing the introspect endpoint location.
 1. The Authorization Client as well as the Resource Server independently obtain their access tokens from the Authorization Server. The Resource Server requires this token to invoke the introspection endpoint.
 1. The Authorization Client will invoke a Resource Server endpoint, embedding its client access token in the request.
@@ -1322,7 +1318,7 @@ Resource Server wishes to evaluate the validity and contents of an access token.
 
 The Resource Server shall perform an HTTP POST request to the introspect endpoint with the following parameters using the "application/x-www-form-urlencoded" format [RFC7662]:
 
-* *token (required)*: The string value of the token. This is the Authorization Client's access\_token as received in the Authorization header in the request towards the Resource Server as defined in the [ITI-72] transaction.
+- *token (required)*: The string value of the token. This is the Authorization Client's access\_token as received in the Authorization header in the request towards the Resource Server as defined in the [ITI-72] transaction.
 
 The Resource Server must securely identify himself towards the Authorization Server by using credentials agreed between the Authorization Server and Resource Server. See [ITI TF-2: 3.102.5 Security Considerations](#31025-security-considerations) for details.
 
@@ -1347,10 +1343,11 @@ The token being introspected may be opaque to the Resource Server. It may be for
 Upon receiving the introspect request, the Authorization Server shall evaluate the Resource Server's access to the introspect endpoint. If access is not allowed, the Authorization Server shall return HTTP 401 (Not Authorized).
 
 The Authorization Server shall:
-* Validate the structure and authenticity of the token to be introspected.
-* Validate the active state of the token (e.g., check expiry or revocation).
-* Evaluate configured access policies, taking into account the authorization claims related to the token and the Resource Server identity.
-* Formulate and return an introspect response.
+
+- Validate the structure and authenticity of the token to be introspected.
+- Validate the active state of the token (e.g., check expiry or revocation).
+- Evaluate configured access policies, taking into account the authorization claims related to the token and the Resource Server identity.
+- Formulate and return an introspect response.
 
 The Authorization Server may return different responses for the same inspected token. For example, an Authorization Server may limit which scopes from a given token are returned for each Resource Server to prevent a Resource Server from learning more about the larger network than is necessary for its operation.
 
@@ -1380,6 +1377,7 @@ The Resource Server shall use the introspection results as access token claims i
 The Resource Server may cache introspection results for a given access token in case the introspection result contains an expiry field. This cache shall not extend the period as defined by the expiry field. If no expiry field is provided, the Resource Server shall not cache the introspection results.
 
 ### 3.102.5 Security Considerations
+
 The Resource Server shall securely identify itself towards the Authorization Server by using credentials agreed between the Authorization Server and Resource Server.
 
 At minimum, the Authorization Server and Resource Server shall support the use of *Bearer* tokens for Resource Server authentication as defined in [OAuth2.1, Section 7.2]. To obtain a bearer token, the Resource Server may request such a token from the Authorization Server, reusing the client credential grant flow as described in the Get Access Token [ITI-71] transaction (see [ITI TF-2: 3.71.4.1.2.1 Client Credential Grant Type](#3714121-client-credential-grant-type)).
@@ -1409,7 +1407,6 @@ Resource Servers and Authorization Servers that support this transaction shall f
 #### 3.102.5.1 Security Audit Considerations
 
 Resource Servers shall use the introspection results as authorization claims when formulating audit messages, as specified in Section [3.72.5.1](#37251-security-audit-considerations).
-
 
 | **Editor: Please add Section 3.103** |
 |-------------------------------------|
@@ -1442,8 +1439,8 @@ This transaction relies on standards defined in the following documents and the 
 
 - *RFC7517*:  JSON Web Key (JWK), May 2015
 
-
 ### 3.103.4 Messages
+
 The Get Authorization Server Metadata transaction consists of a single request and response initiated by an Authorization Client or Resource Server as depicted in the diagram below:
 
 ![ITI-103 Get Authorization Server Metadata Diagram](media/get-authorization-server-metadata.png)
@@ -1512,25 +1509,24 @@ The response shall be structured as a plain JSON document.
 
 The document shall be structured according to the rules set forth in [RFC8414, Section 2], with these additional constraints:
 
-* *issuer (required)*: The Authorization Server's issuer identifier, which is a URL that uses the "https" scheme and has no query or fragment components. The URL shall use the "https" scheme. The URL shall contain the domain name of the URL at which the metadata document can be retrieved. The URL shall contain any path elements referring to a tenant. Other path elements, such as those referring to the document location (e.g., ".well-known" or "openid-configuration") should  be omitted, e.g., a valid issuer associated with a metadata document retrievable at `https://example.com/.well-known/oauth-authorization-server/tenant1` would be `https://example.com/tenant1`.
-* *authorization_endpoint (required)*: Authorization Server's Authorization endpoint as used for the "authorization code" flow.
-* *token_endpoint (required)*: Authorization Server's Authorization token endpoint location.
-* jwks_uri (conditional). URL of the Authorization Server's JWK Set [RFC7517, Section 5] document. An Authorization Server that supports the JWT Token or SAML Token Options shall provide this claim to communicate the public keys that can be used to verify JWT token or SAML token signatures.
-* *scopes_supported (optional)*: The list of scopes supported by the Authorization Server. Note this transaction does not define the scopes. Authorization Servers may opt to publish a subset of the scopes usable.
-* *response_types_supported (required)*: As the implicit grant flow is not supported in OAuth2.1, the response types should not include the value "token". Authorization Servers shall include the response type "code". Authorization Servers supporting [OpenId Connect] or other standards may include other token types, such as "id_token".
-* *grant_types_supported (required)*: A JSON array listing the type of grants supported toward the token endpoint. The list shall include the values "client_credentials", and "authorization_code".
-   * Authorization Servers supporting refresh tokens shall include "refresh-token".
-   * Authorization Servers supporting the JWT grant shall include "urn:ietf:params:oauth:grant-type:jwt-bearer".
-   * Authorization Servers supporting the SAML grant shall include "urn:ietf:params:oauth:grant-type:saml2-bearer".
-   * Authorization Servers supporting other types of grants should provide additional values to this list representing those grant types.
-* *token_endpoint_auth_methods_supported (optional)*: JSON array containing a list of client authentication methods supported by this token endpoint. When provided, this list shall include "client_secret_basic".
-* *introspection_endpoint (conditional)*: URL of the Authorization Server's OAuth 2.0 introspection endpoint. This claim must be provided by Authorization Servers supporting the Token Introspection Option.
-* *introspection_endpoint_auth_methods_supported (conditional)*: JSON array containing a list of client authentication methods supported by the introspection endpoint. This claim must be provided by Authorization Servers supporting the Token Introspection Option. As the introspect option mandates support for Resource Server bearer access tokens, this claim must include the "Bearer" value. Other authentication methods (e.g., "client_secret_basic") are allowed when supported by the Authorization Server.
+- *issuer (required)*: The Authorization Server's issuer identifier, which is a URL that uses the "https" scheme and has no query or fragment components. The URL shall use the "https" scheme. The URL shall contain the domain name of the URL at which the metadata document can be retrieved. The URL shall contain any path elements referring to a tenant. Other path elements, such as those referring to the document location (e.g., ".well-known" or "openid-configuration") should  be omitted, e.g., a valid issuer associated with a metadata document retrievable at `https://example.com/.well-known/oauth-authorization-server/tenant1` would be `https://example.com/tenant1`.
+- *authorization_endpoint (required)*: Authorization Server's Authorization endpoint as used for the "authorization code" flow.
+- *token_endpoint (required)*: Authorization Server's Authorization token endpoint location.
+- jwks_uri (conditional). URL of the Authorization Server's JWK Set [RFC7517, Section 5] document. An Authorization Server that supports the JWT Token or SAML Token Options shall provide this claim to communicate the public keys that can be used to verify JWT token or SAML token signatures.
+- *scopes_supported (optional)*: The list of scopes supported by the Authorization Server. Note this transaction does not define the scopes. Authorization Servers may opt to publish a subset of the scopes usable.
+- *response_types_supported (required)*: As the implicit grant flow is not supported in OAuth2.1, the response types should not include the value "token". Authorization Servers shall include the response type "code". Authorization Servers supporting [OpenId Connect] or other standards may include other token types, such as "id_token".
+- *grant_types_supported (required)*: A JSON array listing the type of grants supported toward the token endpoint. The list shall include the values "client_credentials", and "authorization_code".
+  - Authorization Servers supporting refresh tokens shall include "refresh-token".
+  - Authorization Servers supporting the JWT grant shall include "urn:ietf:params:oauth:grant-type:jwt-bearer".
+  - Authorization Servers supporting the SAML grant shall include "urn:ietf:params:oauth:grant-type:saml2-bearer".
+  - Authorization Servers supporting other types of grants should provide additional values to this list representing those grant types.
+- *token_endpoint_auth_methods_supported (optional)*: JSON array containing a list of client authentication methods supported by this token endpoint. When provided, this list shall include "client_secret_basic".
+- *introspection_endpoint (conditional)*: URL of the Authorization Server's OAuth 2.0 introspection endpoint. This claim must be provided by Authorization Servers supporting the Token Introspection Option.
+- *introspection_endpoint_auth_methods_supported (conditional)*: JSON array containing a list of client authentication methods supported by the introspection endpoint. This claim must be provided by Authorization Servers supporting the Token Introspection Option. As the introspect option mandates support for Resource Server bearer access tokens, this claim must include the "Bearer" value. Other authentication methods (e.g., "client_secret_basic") are allowed when supported by the Authorization Server.
 
 In addition to the claims provided in [RFC8414], Authorization Servers should provide the following claim:
 
-* *access_token_format (optional)*:  JSON string defining the format of the access token as provided by the Authorization Server. This allows Resource Servers to learn about methods of verification. Authorization Servers supporting the JWT Token Option shall set this claim value to "ihe-jwt". Authorization Servers supporting the SAML Token Option shall set this claim value to "ihe-saml". Authorization Servers providing tokens that are non-parsable shall set this value to "opaque". Authorization Servers supporting access tokens in other structured formats may use alternative format identifiers.
-
+- *access_token_format (optional)*:  JSON string defining the format of the access token as provided by the Authorization Server. This allows Resource Servers to learn about methods of verification. Authorization Servers supporting the JWT Token Option shall set this claim value to "ihe-jwt". Authorization Servers supporting the SAML Token Option shall set this claim value to "ihe-saml". Authorization Servers providing tokens that are non-parsable shall set this value to "opaque". Authorization Servers supporting access tokens in other structured formats may use alternative format identifiers.
 
 ##### 3.103.4.2.3 Expected Actions
 
@@ -1635,6 +1631,7 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 |---------------------------------------------------|
 
 #### 9.2.6.7 STX: HTTPS IUA
+
 The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the Internet User Authorization (IUA) Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2: 3.19.6.6.
 
 | **Editor: Please add the following section to Volume 2 as follows** |
@@ -1646,7 +1643,7 @@ This configuration utilizes server-side authenticated TLS (also known as https) 
 
 The ATNA Local Secure Node or Secure Application shall be grouped with an IUA Authorization Client. The ATNA Remote Secure Node or Secure Application shall be grouped with an IUA Resource Server.
 
-* TLS shall be server side authenticated, and may be client authenticated
-* TLS shall be compliant with BCP195
-* Local Secure Node or Secure Application shall reject connections that are not https, and may enforce other policies
-* Remote Secure Node or Secure Application shall reject connections that do not carry a valid IUA token, and may enforce other policies
+- TLS shall be server side authenticated, and may be client authenticated
+- TLS shall be compliant with BCP195
+- Local Secure Node or Secure Application shall reject connections that are not https, and may enforce other policies
+- Remote Secure Node or Secure Application shall reject connections that do not carry a valid IUA token, and may enforce other policies
