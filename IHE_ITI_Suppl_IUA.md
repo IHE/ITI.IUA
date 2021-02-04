@@ -1052,8 +1052,8 @@ The Authorization Client or Authorization Server that is grouped with an [ATNA](
 |-----------------------------------------------------|-------------------------|-----|-----------------------------------------|
 | **Event**<br/>(AuditMessage/EventIdentification)    | EventID                 | M   | EV(110114, DCM, "User Authentication")  |
 |                                                     | EventActionCode         | M   | "E" (Execute)                           |
-|                                                     | *EventDateTime*         | *M* | *not specialized*                       |
-|                                                     | *EventOutcomeIndicator* | *M* | *not specialized*                       |
+|                                                     | *EventDateTime*         | *U* | *not specialized*                       |
+|                                                     | *EventOutcomeIndicator* | *U* | *not specialized*                       |
 |                                                     | EventTypeCode           | M   | EV("ITI-71", IHE, "User Authorization") |
 | **Source (1)**                                      |                         |     |                                         |
 | **Human Requestor (0)**                             |                         |     |                                         |
