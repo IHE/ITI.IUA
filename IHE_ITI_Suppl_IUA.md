@@ -1569,7 +1569,7 @@ The IUA Profile provides support for user authentication, app authentication, an
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction-specific.
 
-An MHD Document Source, when grouped with an IUA Authorization Client, shall use [ITI-71] Get Access Token to request the following scope from the IUA Authorization Server to enable the MHD [ITI-65] transaction with the authorizing token [ITI-72].
+An MHD Document Source, when grouped with an IUA Authorization Client, shall request the following scope from the IUA Authorization Server in the [ITI-71] Get Access Token transaction, to enable the MHD [ITI-65] Provide Document Bundle transaction with an authorized token incorporated with the [ITI-72] Incorporate Access Token.
 
 The MHD Document Recipient, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-65] Provide Document Bundle transactions, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
