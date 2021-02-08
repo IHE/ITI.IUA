@@ -138,6 +138,8 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
 
+- **Issue 14**: The IETF OAuth Working group developed an extensions to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The commitee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests.    
+
 # Closed Issues
 
 - **Issue 1**: At this time, the method for assignment of client identifiers is not included in the profile. Registration of clients is a significant operational and security problem that is being postponed until there is more experience with problems in the field and reasonable solutions. In the field there are a variety of methods being tried. Many depend upon physical distribution methods or out of band communications to manage the authentication problems.
@@ -1172,7 +1174,7 @@ Host: example.com
 
 #### 3.72.4.3 Expected Actions
 
-The Resource Server shall be able to determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document 
+The Resource Server shall be able to determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document
 (see [ITI TF-2: ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or some other method.
 
 When the Resource Server is not able to process the token format (through local verification or introspection), it shall respond with HTTP 401 (Unauthorized).
