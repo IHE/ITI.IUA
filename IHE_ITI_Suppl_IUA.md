@@ -231,7 +231,7 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 
 | Actors               | Transactions                      | Optionality | Reference            |
 |----------------------|-----------------------------------|-------------|----------------------|
-| Authorization Client | Get Access Token                  | O           | [ITI TF-2: 3.71](#371-get-access-token-iti-71)   |
+| Authorization Client | Get Access Token                  | R           | [ITI TF-2: 3.71](#371-get-access-token-iti-71)   |
 |                      | Incorporate Access Token          | R           | [ITI TF-2: 3.72](#372-incorporate-access-token-iti-72)   |
 |                      | Get Authorization Server Metadata | O           | [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103)  |
 | Authorization Server | Get Access Token                  | R           | [ITI TF-2: 3.71](#371-get-access-token-iti-71)   |
