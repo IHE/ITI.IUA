@@ -398,9 +398,10 @@ The OAuth 2.1 Authorization Framework further defines extension points to implem
 
 - *JSON Web Token (JWT) grants* [RFC7523]: To use a JWT Token as credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant provides better security properties than the client credential flow as it allows for asymmetric keys to be used for client and user authentication.
 
-The SAML and JWT grants from RFC7522 and RFC7523 may be used in federation scenarios where an Authorization Server will accept tokens from another Authorization Server as credentials for issuing access tokens.
+The SAML and JWT grants from RFC7522 and RFC7523 may be used in federation scenarios where an Authorization Server will accept tokens from another Authorization Server as credentials for issuing access tokens. Both the RFC7522 and RFC7523 require the existence of a public key infrastructure. The operational aspects of such infrastructure are beyond the scope of this specification.
 
-Both the RFC7522 and RFC7523 require the existence of a public key infrastructure. The operational aspects of such infrastructure are beyond the scope of this specification.
+This profile specifies the use of the Authorization Code and Client Credential grant types. Actors of this profile may support other grant types as well.  
+
 
 #### 34.4.1.2 Terminology
 
