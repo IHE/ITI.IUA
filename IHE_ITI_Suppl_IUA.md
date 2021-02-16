@@ -408,8 +408,6 @@ The IUA Profile uses the terms "access token", "refresh token", "bearer token", 
 
 This profile also uses the terms "token introspection", "introspection endpoint", "introspection request", and "introspection response" as defined by the OAuth2 Token Introspection specification [RFC7662].
 
-The OAuth 2.1 Authorization Framework uses the term "resource owner" for the user an authorized client may access data on behalf of. Typically, in health related environments, a healthcare professional accesses patients or organization related data (resources) for which the healthcare professional is not the "legal owner", but may access according to the access policies of the environment. To avoid any misunderstandings related to the OAuth terms "resource owner" and "legal owner", this profile uses the term "user" instead.
-
 In accordance with the definitions in the OAuth 2.1 Authorization Framework [OAuth 2.1], this profile distinguishes confidential clients, credentialed clients, and public clients as follows:
 
 - *confidential client* - a client which stores the client authentication data (e.g., client\_id and client\_secret) in a way, that the user has no access to it (e.g., a server hosted web application)
