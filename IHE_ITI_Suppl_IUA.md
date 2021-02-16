@@ -770,8 +770,6 @@ The Authorization Server, upon receiving a Get Access Token Request, validates a
 
 The scope parameter incorporated in the token requests shall be used to restrict authorization grants to specific actions (e.g., restrict authorization to specific resources to read-only) and to convey claims, which at runtime are known to the Authorization Client only (e.g., if the user claims a breaking-the-glass access in a emergency situation). The Authorization Server may refuse token requests that mention scope values that are unknown to the Authorization Server.
 
-Authorization Servers should  limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.
-
 The Authorization Client is recommended to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server should evaluate any resource values provided as part of the token request procedure. The Authorization Server should execute policies to detect whether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers shall limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
 If the request is valid and all access policy criteria are met, the Authorization Server shall respond with the access token response as outlined [ITI TF-2: 3.71.4.2 Get Access Token Response](#37142-get-access-token-response).
