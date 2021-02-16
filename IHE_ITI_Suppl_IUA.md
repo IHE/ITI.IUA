@@ -1104,7 +1104,7 @@ This transaction is used to incorporate authorization information into HTTP REST
 
 This transaction relies on standards defined in the following documents and the references therein:
 
-- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-00. July 2020.
+- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-01, 1 February 2021.
 
 #### 3.72.3.1 Related IHE Profiles
 
@@ -1266,7 +1266,7 @@ This transaction shall be used by Resource Servers to request an OAuth2.1-compli
 
 This transaction relies on standards defined in the following documents and the references therein:
 
-- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-00, July 30, 2020.
+- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-01, 1 February 2021.
 
 - *RFC7662*: OAuth 2.0 Token Introspection, published as RFC7662, October 2015
 
@@ -1430,7 +1430,7 @@ This transaction is used by Authorization Clients and Resource Servers to obtain
 
 This transaction relies on standards defined in the following documents and the references therein:
 
-- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-00, July 30, 2020.
+- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-01, 1 February 2021.
 
 - *RFC8414*: OAuth 2.0 Authorization Server Metadata, June 2018
 
