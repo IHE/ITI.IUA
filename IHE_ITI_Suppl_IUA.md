@@ -93,7 +93,7 @@ The administrative actions needed to establish an Authorization Server for IUA a
 
 ## Background on the problem environment
 
-The application interacts with both patient and Authorization Server to support the granting of an access token. The application then uses the access token to retrieve and update health related data.
+The application interacts with the user and the Authorization Server to support the granting of an access token. The application then uses the access token to retrieve and update health related data.
 
 The key issues include:
 
@@ -207,7 +207,7 @@ This profile requires the capability of a *client_id* for client identification 
 
 Depending on the grant type, the OAuth 2.1 Framework also requires user authentication. For example, the *Authorization Code* grant type covered by this profile requires user authentication [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2]. The methods used by the Authorization Server to authenticate the user (e.g., username and password login, session cookies, delegation to Authentication Server) are not scoped in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 3.1].
 
-Since user authentication methods chosen depend on the projects or national security policy, they are not constrained in the IUA Profile and shall be defined in the specific implementation projects or national extensions of this profile. If the user authentication is not implemented in the Authorization Server, the use of OpenID Connect with the Authorization Grant or Hybrid flow is recommended.
+Since user authentication methods chosen depend on the projects or national security policies, they are not constrained in the IUA Profile and shall be defined in the specific implementation projects or national extensions of this profile. If the user authentication is not implemented in the Authorization Server, the use of OpenID Connect with the Authorization Grant or Hybrid flow is recommended.
 
 It is the responsibility of the Resource Server to enforce the access policies based on the transaction performed and the information provided in the access token. Therefore, the Resource Server must be able to rely upon the decisions made by the Authorization Server (e.g., client identification, user authentication) which requires that a trust relation between the Resource Server and the Authorization Server was established beforehand.  
 
@@ -266,15 +266,7 @@ The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* 
 
 - *Client Credential*
 
-#### 34.1.1.3 Resource Server
-
-The Resource Server provides services to access protected resources that need authorization. In IUA, the Resource Server accepts an HTTP RESTful transaction request with an incorporated access token. It evaluates the access token to verify that the Authorization Server has authorized the transaction. The Resource Server shall enforce this authorization and may perform additional authorization decisions that are specific to the requested service. The Resource Server may then allow the transaction to proceed, subject to access control constraints that may be in place.
-
-In general, Resource Servers perform additional access control decisions and may restrict responses even for transactions authorized by the Authorization Server.
-
-When the Incorporate Access Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL `http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
-
-The Authorization Server may support these grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)):
+The Authorization Server may support other grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)), e.g,:
 
 - *Device Authorization*
 
@@ -283,6 +275,14 @@ The Authorization Server may support these grant types (see [ITI TF-1: 34.4.1.1 
 - *JSON Web Token (JWT) Grants*
 
 - other OAuth 2.1 extension grant types
+
+#### 34.1.1.3 Resource Server
+
+The Resource Server provides services to access protected resources that need authorization. In IUA, the Resource Server accepts an HTTP RESTful transaction request with an incorporated access token. It evaluates the access token to verify that the Authorization Server has authorized the transaction. The Resource Server shall enforce this authorization and may perform additional authorization decisions that are specific to the requested service. The Resource Server may then allow the transaction to proceed, subject to access control constraints that may be in place.
+
+In general, Resource Servers perform additional access control decisions and may restrict responses even for transactions authorized by the Authorization Server.
+
+When the Incorporate Access Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code "IUA" at system canonical URL `http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
 
 The Resource Servers and Authorization Servers may be grouped into an integrated product together with user authentication, access control, and other services.
 
@@ -430,7 +430,7 @@ The IUA Profile applies to use cases where a user authorizes a client applicatio
 
 - A healthcare professional uses a single page web application to access a patient's electronic health record (EHR) using RESTful transactions. At initial startup, the app registers with the Authorization Server using a dynamic client registration protocol. When accessing a view on the EHR, the steps follow the same steps as in the web application use case above.
 
-- A clinical monitor managed by the hospital system administrators access a patients EHR using RESTful transactions in the hospital LAN. At installation time, clinical monitor has been registered at the Authorization Server with client identifier and client authentication method (e.g., client secret) by the system administrator and a contracts (policies) have been deposited at the Authorization Server and Resource Server(s) authorizing access to the EHR with application specific scope. Before accessing patient EHR data, the clinical monitor requests an access token from the Authorization Server (e.g., using the client credential grant type). The clinical monitor incorporates the access token to the RESTful transactions to access EHR data and documents stored in the EHR Resource Server(s) with an application specific scope.
+- A clinical monitor managed by the hospital system administrators access a patients EHR using RESTful transactions in the hospital LAN. At installation time, clinical monitor has been registered at the Authorization Server with client identifier and client authentication method (e.g., client secret) by the system administrator and contracts (policies) have been deposited at the Authorization Server and Resource Server(s) authorizing access to the EHR with application specific scope. Before accessing patient EHR data, the clinical monitor requests an access token from the Authorization Server (e.g., using the client credential grant type). The clinical monitor incorporates the access token to the RESTful transactions to access EHR data and documents stored in the EHR Resource Server(s) with an application specific scope.
 
 - A patient uses a native app on her mobile device to access data from her electronic health record (EHR) using RESTful transactions via the Internet. At first startup, the app registers with the Authorization Server using a dynamic client registration protocol. When accessing a view on the EHR, the native app is redirected to the EHR Authorization Server, which authenticates the patient either by presenting the views to enter the authentication factors (e.g., username, password and 2nd factor) or by delegating to an Identity Provider (IdP). After user authentication, the Authorization Server performs the necessary steps to authorize the native app to access to the EHR data with application-specific scope by explicit user consent. When authorized, the native app retrieves an access token which authorizes the app to request and retrieve the EHR data from the Resource Server(s) with an application specific scope on behalf of the patient.
 
@@ -839,7 +839,7 @@ Pragma: no-cache
 
 ###### 3.71.4.2.2.1 JSON Web Token Option
 
-The OAuth2 specifications does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
+The OAuth2.1 specification does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
 
 JWT token shall be signed as specified in JSON Web Signature [RFC7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) shall be used as described in [RFC7515, Section 7.1].
 
@@ -1041,8 +1041,6 @@ Authorization Client and Authorization Server that support with this transaction
 - Refresh token may be long lived.
 
 - To reduce the attack surface, client claims and authorization grants shall be the minimal; i.e., the authorization grant scope requested by the Authorization Client shall be the minimal required scope for the resource request to be used for.
-
-Authorization Servers should limit the list of identifiers in the audience claim to a minimum to avoid token misuse by unintended parties.
 
 The Authorization Client is recommended to provide a resource value to limit usability of the requested token to the intended Resource Server. If provided, the Authorization Server should evaluate any resource values provided as part of the token request procedure. The Authorization Server should execute policies to detect whether the client has access to the indicated resource. If the Authorization Client presented a resource value in the token request, the Authorization Servers shall limit the list of Resource Server identifiers in the audience claim to only those that are essential to interact with the specified resource (typically only the Resource Server itself).
 
