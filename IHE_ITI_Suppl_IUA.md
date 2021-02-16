@@ -1025,7 +1025,7 @@ The Authorization Server shall have means to retrieve the claims associated with
 
 ### 3.71.5 Security Considerations
 
-Authorization Client and Authorization Server that support with this transaction shall fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], including:  
+Authorization Client and Authorization Server that support this transaction shall fulfill the security requirements defined in the OAuth Authorization Framework [OAuth 2.1], including:  
 
 - All HTTP transactions shall be secured by using TLS or equivalent transport security (e.g., ATNA Option STX: HTTPS IUA).
 
