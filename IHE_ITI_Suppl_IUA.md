@@ -6,7 +6,7 @@
 
 **Technical Framework Supplement**
 
-**Internet User Authorization (IUA)** with updates to MHD and ATNA.
+**Internet User Authorization (IUA)**
 
 **Revision 2.0 - Public Comment**
 
