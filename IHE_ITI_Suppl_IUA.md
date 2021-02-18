@@ -481,6 +481,7 @@ else introspect token
 
   group Introspect Token (ITI-102)
         RS -> AS : Introspect Token Request
+        AS -> AS : validate token
         AS --> RS: Introspect Token Response
   end
 end
@@ -504,7 +505,7 @@ end
 
 1. The Authorization Client incorporates the access token to the requests of the protected resources to Resource Servers.
 
-1. The Resource Server obtains the claims associated with the access token. This may involve local validation of structured tokens or an additional token introspection request towards the Authorization Server.
+1. The Resource Server obtains the claims associated with the access token. This may involve local validation of structured tokens or validation through an additional token introspection request towards the Authorization Server.
 
 1. The Resource Server evaluates the claims and the request against a configured access policy and determines whether the client has access to the requested resources. If permitted, the Resource Server will return the requested resources.
 
@@ -581,7 +582,7 @@ This transaction relies on standards defined in the following documents and the 
 
 ##### 3.71.4.1.1 Trigger Events
 
-The Get Access Token Request is performed by an Authorization Client or Resource Server (in case of the Introspect Option) to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform a Get Access Token transaction depends on the grant type (type of credentials) chosen.
+The Get Access Token Request is performed by an Authorization Client to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform a Get Access Token transaction depends on the grant type (type of credentials) chosen.
 
 ##### 3.71.4.1.2 Message Semantics
 
