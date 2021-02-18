@@ -1136,6 +1136,7 @@ alt JWT or SAML token
 
 else introspect token
     rs -> as : Introspect Token (ITI-102)
+    as -> as: validate token
     as --> rs: token claims
 end
 
