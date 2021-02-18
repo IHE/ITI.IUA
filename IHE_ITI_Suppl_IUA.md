@@ -527,7 +527,8 @@ The Cross-Enterprise User Assertion ([XUA](http://profiles.ihe.net/ITI/TF/Volume
 
 - The [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile defines the Provide X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Access Token [ITI-71] for OAuth 2.1-compliant access token.
 
-- While the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile relies on the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Authenticate Node [ITI-19] transaction to authenticate the client (or client network node), IUA uses the mechanism defined in the OAuth 2.1 Authorization Framework to authenticate client applications.
+- While both IUA and XUA profiles relies on the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Authenticate Node [ITI-19] transaction to provide a secure communication and server side authentication; the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) would use the "STX: TLS 1.0 Floor with AES", "STX: TLS 1.0 Floor with BCP195", "STX: TLS 1.2 Floor using BCP195" Options or the "STX WS-Security" Option to authenticate the client (or client network node); and IUA uses the "STX: HTTPS IUA" Option to leverage IUA to authenticate client applications.
+
 
 - While [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) supports SAML 2 Assertions only, the IUA Profile supports access token in JWT, SAML 2.0 Assertion or custom formats (in case the Token Introspection Option is implemented).  
 
@@ -1570,7 +1571,7 @@ An MHD Document Source, when grouped with an IUA Authorization Client, shall use
 
 The MHD Document Recipient, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-65] Provide Document Bundle transactions, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
-scope: "ITI-65"
+scope: `ITI-65`
 
 This scope request authorizes the full ITI-65 transaction. This scope implicitly requests patient-specific Create/Update for DocumentManifest, DocumentReference, List, and Binary. Further scope refinement is allowed in realm or project-specific situations; these scopes would be in addition to the scope defined here.
 
@@ -1585,7 +1586,7 @@ An MHD Document Consumer, when grouped with an IUA Authorization Client, shall u
 
 The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-66] Find Document Manifests requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
-scope: "ITI-66"
+scope: `ITI-66`
 
 This scope request authorizes the full [ITI-66] transaction. This scope implicitly requests patient-specific Search/Read for DocumentManifest resources as defined in [ITI-66]. Further scope refinement is allowed in realm or project-specific situations; these additional scopes would be in addition to the scope defined here.
 
@@ -1600,7 +1601,7 @@ An MHD Document Consumer, when grouped with an IUA Authorization Client, shall u
 
 An MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-67] Find Document References requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
-scope: "ITI-67"
+scope: `ITI-67`
 
 This scope request authorizes the full [ITI-67] transaction. This scope implicitly requests patient-specific Search/Read for DocumentReference resources as defined in [ITI-67]. Further scope refinement is allowed in realm or project specific situations; these additional scopes would be in addition to the scope defined here.
 
@@ -1615,7 +1616,7 @@ An MHD Document Consumer, when grouped with an IUA Authorization Client, shall u
 
 The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-68] Retrieve Document requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
-scope: "ITI-68"
+scope: `ITI-68`
 
 This scope request authorizes the full [ITI-68] transaction. This scope implicitly requests patient-specific Read for Binary resources as defined in [ITI-68]. Further scope refinement is allowed in realm or project specific situations; these additional scopes would be in addition to the scope defined here.
 
@@ -1624,7 +1625,12 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 | **Editor: Please add the following row to ATNA Volume 1: Section 9.2 ATNA Actor Options Table for both the Secure Node and Secure Application Actors** |
 |--------------------------------------------------------------------------------------------------|
 
- "STX: HTTPS IUA" | ITI TF-1:9.2.6.7
+
+|------------------|------------------|
+| "STX: HTTPS IUA" | ITI TF-1:9.2.6.7 |
+|------------------|------------------|
+
+
 
 | **Editor: Please add Section 9.2.6.7 as follows** |
 |---------------------------------------------------|
