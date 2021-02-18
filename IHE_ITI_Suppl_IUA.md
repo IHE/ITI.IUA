@@ -483,6 +483,7 @@ else introspect token
   group Introspect Token (ITI-102)
         RS -> AS : Introspect Token Request
         AS -> AS : validate token
+        deactivate AS
         AS --> RS: Introspect Token Response
   end
 end
