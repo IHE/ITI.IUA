@@ -257,6 +257,15 @@ When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorizat
 
 Note that the Authorization Client may choose to publish a CapabilityStatement, if a CapabilityStatement is provided then the `IUA` code should also be indicated to show the capability of the Authorization Client.
 
+The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* and *Client Credential* grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)). The Authorization Client shall support at least one of the following grant types:
+
+- *Authorization Code*  
+
+- *Client Credential*
+
+The Authorization Client may support other grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)).
+
+
 #### 34.1.1.2 Authorization Server
 
 The Authorization Server provides access tokens to requesting clients. In IUA, the Authorization Server uses an authenticated user identity, the requested HTTP RESTful service URL to the Resource Server, and/or other information to determine whether HTTP RESTful transactions are authorized. If authorized, the Authorization Server provides an access token which authorizes the client to retrieve data and documents from the Resource Server.  
@@ -267,15 +276,7 @@ The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* 
 
 - *Client Credential*
 
-The Authorization Server may support other grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)), e.g,:
-
-- *Device Authorization*
-
-- *SAML Client or User Assertions*
-
-- *JSON Web Token (JWT) Grants*
-
-- other OAuth 2.1 extension grant types
+The Authorization Server may support other grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)).
 
 #### 34.1.1.3 Resource Server
 
@@ -482,6 +483,7 @@ else introspect token
   group Introspect Token (ITI-102)
         RS -> AS : Introspect Token Request
         AS -> AS : validate token
+        deactivate AS
         AS --> RS: Introspect Token Response
   end
 end
@@ -1136,6 +1138,7 @@ alt JWT or SAML token
 
 else introspect token
     rs -> as : Introspect Token (ITI-102)
+    as -> as: validate token
     as --> rs: token claims
 end
 
