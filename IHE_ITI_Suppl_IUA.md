@@ -582,7 +582,7 @@ This transaction relies on standards defined in the following documents and the 
 
 ##### 3.71.4.1.1 Trigger Events
 
-The Get Access Token Request is performed by an Authorization Client or Resource Server (in case of the Introspect Option) to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform a Get Access Token transaction depends on the grant type (type of credentials) chosen.
+The Get Access Token Request is performed by an Authorization Client to obtain an access token to be used in further communication. The sequence of HTTP(S) requests to perform a Get Access Token transaction depends on the grant type (type of credentials) chosen.
 
 ##### 3.71.4.1.2 Message Semantics
 
