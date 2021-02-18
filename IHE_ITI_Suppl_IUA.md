@@ -481,6 +481,7 @@ else introspect token
 
   group Introspect Token (ITI-102)
         RS -> AS : Introspect Token Request
+        AS -> AS : validate token
         AS --> RS: Introspect Token Response
   end
 end
@@ -504,7 +505,7 @@ end
 
 1. The Authorization Client incorporates the access token to the requests of the protected resources to Resource Servers.
 
-1. The Resource Server obtains the claims associated with the access token. This may involve local validation of structured tokens or an additional token introspection request towards the Authorization Server.
+1. The Resource Server obtains the claims associated with the access token. This may involve local validation of structured tokens or validation through an additional token introspection request towards the Authorization Server.
 
 1. The Resource Server evaluates the claims and the request against a configured access policy and determines whether the client has access to the requested resources. If permitted, the Resource Server will return the requested resources.
 
