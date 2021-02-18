@@ -253,7 +253,7 @@ Most requirements are documented in ITI TF-2 transactions. This section document
 
 The Authorization Client performs the network transactions and user interactions needed to obtain an access token and to attach that token to transactions to indicate that the transactions are authorized.
 
-When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports `IUA`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
+When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The Resource Server indicates IUA support with the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code `IUA` at system canonical URL `http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
 
 Note that the Authorization Client may choose to publish a CapabilityStatement, if a CapabilityStatement is provided then the `IUA` code should also be indicated to show the capability of the Authorization Client.
 
