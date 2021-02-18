@@ -276,15 +276,7 @@ The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* 
 
 - *Client Credential*
 
-The Authorization Server may support other grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)), e.g,:
-
-- *Device Authorization*
-
-- *SAML Client or User Assertions*
-
-- *JSON Web Token (JWT) Grants*
-
-- other OAuth 2.1 extension grant types
+The Authorization Server may support other grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)).
 
 #### 34.1.1.3 Resource Server
 
