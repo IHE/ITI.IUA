@@ -138,7 +138,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
 
-- **Issue 14**: The IETF OAuth Working group developed an extensions to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The commitee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests.    
+- **Issue 14**: The IETF OAuth Working group developed an extension to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The commitee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests.    
 
 # Closed Issues
 
@@ -852,7 +852,9 @@ Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC7518
 - *HS256*: HMAC using SHA-256 hash algorithm.
 - *RS256*: RSA using SHA-256 hash algorithm.
 
-Other algorithms such as *ES256*: ECDSA using P-256 curve and the SHA-256 hash algorithm ("ES256") are recommended.
+The following algorithms should be supported:
+- *ES256*: ECDSA using P-256 curve.
+- SHA-256 hash algorithm ("ES256").
 
 Other algorithms may be supported except the "NONE" that shall not be used.
 
@@ -979,7 +981,7 @@ JWS Payload:
 
 ```json
 {
-    "iss": "urn:tiani-spirit:sts",
+    "iss": "urn:vendor:sts",
     "sub": "b3ca1045-aa8b-42f9-9fd9-e0cbf5cb90a7",
     "aud": "http://ihe.connectathon.IUA/ResourceProvider-IHE-Connectathon",
     "exp": 1438251487,
@@ -1208,7 +1210,7 @@ A Resource Server that supports the Authorization Server Metadata Option (see [I
 
 ##### 3.72.4.3.3 Introspect Token Option
 
-A Resource Server that supports the Token Introspection Option shall be able to interact with the Authorization Server using the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction as described in Section [3.102](#3102-introspect-token-iti-102) to validate the access token and obtain the related claims.
+A Resource Server that claims the Token Introspection Option shall support the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction to exchange the access token with the related claims (see [ITI TF-2: 3.102](#3102-introspect-token-iti-102)).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the introspection endpoint published through the Authorization Server Metadata Document for validating the token and obtaining the related claims.
 
