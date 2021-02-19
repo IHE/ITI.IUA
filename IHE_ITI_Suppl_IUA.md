@@ -312,7 +312,7 @@ Options that may be selected for each actor in this profile are listed in the Ta
 
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
-An Authorization Client that supports this option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information.
+An Authorization Client that supports this option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information (see [ITI TF-2: 3.103.4.2.3](#3103423-expected-actions)).
 
 Authorization Servers supporting the Authorization Server Metadata Option shall provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
 
