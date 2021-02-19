@@ -336,7 +336,7 @@ This option enables integration of environments that use both the [XUA](http://p
 
 An Authorization Server that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 access tokens to be incorporated in RESTful requests to Resource Servers.
 
-A Resource Server that supports this option shall be able to accept [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant access tokens in RESTful requests, to extract and validate the information provided in the token, and to enforce access policies based on it.
+A Resource Server that supports this option shall be able to accept [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant access tokens in RESTful requests, to extract and validate the information provided in the token, and to enforce access policies based on it (see [ITI TF-2: 3.72.4.3](#37243-expected-actions)).
 
 See [ITI TF-2: 3.71.4.2.2.2](#3714222-saml-token-option) for transaction requirements.
 
