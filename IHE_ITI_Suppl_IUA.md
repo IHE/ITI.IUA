@@ -324,7 +324,7 @@ See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for trans
 
 This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option).
 
-An Authorization Server that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers.
+An Authorization Server that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers (see [3.71.4.1.3](#371413-expected-actions)).
 
 A Resource Server that supports this option shall be able to accept JWT access tokens in RESTful requests, to extract and validate the information provided in the JWT access token, and to enforce access policies based on it (see [ITI TF-2: 3.72.4.3](#37243-expected-actions)).
 
@@ -334,7 +334,7 @@ See [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction req
 
 This option enables integration of environments that use both the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compatible SAML access token and the OAuth authorization infrastructure.
 
-An Authorization Server that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 access tokens to be incorporated in RESTful requests to Resource Servers.
+An Authorization Server that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 access tokens to be incorporated in RESTful requests to Resource Servers (see [3.71.4.1.3](#371413-expected-actions)).
 
 A Resource Server that supports this option shall be able to accept [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant access tokens in RESTful requests, to extract and validate the information provided in the token, and to enforce access policies based on it (see [ITI TF-2: 3.72.4.3](#37243-expected-actions)).
 
