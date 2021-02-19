@@ -138,7 +138,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
 
-- **Issue 14**: The IETF OAuth Working group developed an extensions to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The commitee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests.    
+- **Issue 14**: The IETF OAuth Working group developed an extension to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The commitee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests.    
 
 # Closed Issues
 
@@ -270,7 +270,7 @@ The Authorization Client may support other grant types (see [ITI TF-1: 34.4.1.1 
 
 The Authorization Server provides access tokens to requesting clients. In IUA, the Authorization Server uses an authenticated user identity, the requested HTTP RESTful service URL to the Resource Server, and/or other information to determine whether HTTP RESTful transactions are authorized. If authorized, the Authorization Server provides an access token which authorizes the client to retrieve data and documents from the Resource Server.  
 
-The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* and *Client Credential* grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)). The Authorization Server shall support these grant types:
+The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* and *Client Credential* grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)). The Authorization Server shall support the following grant types:
 
 - *Authorization Code*  
 
@@ -312,11 +312,11 @@ Options that may be selected for each actor in this profile are listed in the Ta
 
 This option enables automated configuration of Resource Servers and Authorization Clients by enabling them to pull configuration metadata directly from the Authorization Server.
 
-An Authorization Client that supports this option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information.
+An Authorization Client that supports this option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information (see [ITI TF-2: 3.103.4.2.3](#3103423-expected-actions)).
 
-Authorization Servers supporting the Authorization Server Metadata Option shall provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
+Authorization Servers supporting the Authorization Server Metadata Option shall provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials (see [ITI TF-2: 3.103.4.2.3](#3103423-expected-actions)).
 
-Resource Servers supporting the Authorization Server Metadata Option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information.
+Resource Servers supporting the Authorization Server Metadata Option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information (see [ITI TF-2: 3.103.4.2.3](#3103423-expected-actions)).
 
 See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for transaction requirements.
 
@@ -324,9 +324,9 @@ See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for trans
 
 This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option).
 
-An Authorization Servers that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers.
+An Authorization Server that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers (see [ITI-TF 2: 3.71.4.1.3](#371413-expected-actions)).
 
-A Resource Server that supports this option shall be able to accept JWT access tokens in RESTful requests, to extract and validate the information provided in the JWT access token, and to enforce access policies based on it.
+A Resource Server that supports this option shall be able to accept JWT access tokens in RESTful requests, to extract and validate the information provided in the JWT access token, and to enforce access policies based on it (see [ITI TF-2: 3.72.4.3](#37243-expected-actions)).
 
 See [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction requirements.
 
@@ -334,9 +334,9 @@ See [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option) for transaction req
 
 This option enables integration of environments that use both the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compatible SAML access token and the OAuth authorization infrastructure.
 
-An Authorization Servers that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 access tokens to be incorporated in RESTful requests to Resource Servers.
+An Authorization Server that supports this option shall provide an endpoint to retrieve [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant SAML 2.0 access tokens to be incorporated in RESTful requests to Resource Servers (see [ITI TF-2: 3.71.4.1.3](#371413-expected-actions)).
 
-A Resource Server that supports this option shall be able to accept [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant access tokens in RESTful requests, to extract and validate the information provided in the token, and to enforce access policies based on it.
+A Resource Server that supports this option shall be able to accept [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)-compliant access tokens in RESTful requests, to extract and validate the information provided in the token, and to enforce access policies based on it (see [ITI TF-2: 3.72.4.3](#37243-expected-actions)).
 
 See [ITI TF-2: 3.71.4.2.2.2](#3714222-saml-token-option) for transaction requirements.
 
@@ -346,7 +346,7 @@ Actors that support this option use the [Token Introspection [ITI-102]](#3102-in
 
 An Authorization Server that supports the Token Introspection option shall provide an endpoint that Resource Servers will use to validate and evaluate the access token. With this option, the Authorization Server may provide token formats other than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server shall provide the [Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction service.
 
-A Resource Server that supports the Token Introspection Option shall have the ability to use the Token Introspection [ITI-102] transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server must authenticate itself. It may obtain an access token of its own from the Authorization Server for this purpose.
+A Resource Server that supports the Token Introspection Option shall have the ability to use the Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server must authenticate itself. It may obtain an access token of its own from the Authorization Server for this purpose.
 
 See [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token-iti-102) for transaction requirements.
 
@@ -852,7 +852,9 @@ Of the signature of JWT algorithms specified in the JSON Web Algorithms [RFC7518
 - *HS256*: HMAC using SHA-256 hash algorithm.
 - *RS256*: RSA using SHA-256 hash algorithm.
 
-Other algorithms such as *ES256*: ECDSA using P-256 curve and the SHA-256 hash algorithm ("ES256") are recommended.
+The following algorithms should be supported:
+- *ES256*: ECDSA using P-256 curve.
+- SHA-256 hash algorithm ("ES256").
 
 Other algorithms may be supported except the "NONE" that shall not be used.
 
@@ -979,7 +981,7 @@ JWS Payload:
 
 ```json
 {
-    "iss": "urn:tiani-spirit:sts",
+    "iss": "urn:vendor:sts",
     "sub": "b3ca1045-aa8b-42f9-9fd9-e0cbf5cb90a7",
     "aud": "http://ihe.connectathon.IUA/ResourceProvider-IHE-Connectathon",
     "exp": 1438251487,
@@ -1208,7 +1210,7 @@ A Resource Server that supports the Authorization Server Metadata Option (see [I
 
 ##### 3.72.4.3.3 Introspect Token Option
 
-A Resource Server that supports the Token Introspection Option shall be able to interact with the Authorization Server using the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction as described in Section [3.102](#3102-introspect-token-iti-102) to validate the access token and obtain the related claims.
+A Resource Server that claims the Token Introspection Option shall support the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction to exchange the access token with the related claims (see [ITI TF-2: 3.102](#3102-introspect-token-iti-102)).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the introspection endpoint published through the Authorization Server Metadata Document for validating the token and obtaining the related claims.
 
