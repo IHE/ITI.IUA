@@ -324,7 +324,7 @@ See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for trans
 
 This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option).
 
-An Authorization Server that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers (see [3.71.4.1.3](#371413-expected-actions)).
+An Authorization Server that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers (see [ITI-TF 2: 3.71.4.1.3](#371413-expected-actions)).
 
 A Resource Server that supports this option shall be able to accept JWT access tokens in RESTful requests, to extract and validate the information provided in the JWT access token, and to enforce access policies based on it (see [ITI TF-2: 3.72.4.3](#37243-expected-actions)).
 
@@ -346,7 +346,7 @@ Actors that support this option use the [Token Introspection [ITI-102]](#3102-in
 
 An Authorization Server that supports the Token Introspection option shall provide an endpoint that Resource Servers will use to validate and evaluate the access token. With this option, the Authorization Server may provide token formats other than JWT or SAML. Using this option, the token can be treated as an opaque data construct for Resource Servers. When Token Introspection option is used, the Authorization Server shall provide the [Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction service.
 
-A Resource Server that supports the Token Introspection Option shall have the ability to use the Token Introspection [ITI-102] transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server must authenticate itself. It may obtain an access token of its own from the Authorization Server for this purpose.
+A Resource Server that supports the Token Introspection Option shall have the ability to use the Token Introspection [ITI-102]](#3102-introspect-token-iti-102) transaction to obtain the details of the token from the Authorization Server. This transaction can be used by the Resource Server when it is uncertain about the format of the token (JWT, SAML, or opaque), or when it wants to re-evaluate the authorization policy. To be able to invoke the introspection endpoint, the Resource Server must authenticate itself. It may obtain an access token of its own from the Authorization Server for this purpose.
 
 See [ITI TF-2: 3.102 Introspect Token](#3102-introspect-token-iti-102) for transaction requirements.
 
