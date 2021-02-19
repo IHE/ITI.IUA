@@ -1210,7 +1210,7 @@ A Resource Server that supports the Authorization Server Metadata Option (see [I
 
 ##### 3.72.4.3.3 Introspect Token Option
 
-A Resource Server that claims the Token Introspection Option shall support the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction to exchange the access token with the related claims (see [ITI TF-2: 3.102](#3102-introspect-token-iti-102)).
+A Resource Server that supports the Token Introspection Option shall use the [Introspect Token [ITI-102]](#3102-introspect-token-iti-102) transaction to exchange the access token with the related claims (see [ITI TF-2: 3.102](#3102-introspect-token-iti-102)).
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the introspection endpoint published through the Authorization Server Metadata Document for validating the token and obtaining the related claims.
 
