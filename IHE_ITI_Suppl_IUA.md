@@ -314,9 +314,9 @@ This option enables automated configuration of Resource Servers and Authorizatio
 
 An Authorization Client that supports this option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information (see [ITI TF-2: 3.103.4.2.3](#3103423-expected-actions)).
 
-Authorization Servers supporting the Authorization Server Metadata Option shall provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials.
+Authorization Servers supporting the Authorization Server Metadata Option shall provide a metadata endpoint that provides configuration information to Authorization Client and Resource Servers. This information includes endpoint locations, supported authentication grants and signing key materials (see [ITI TF-2: 3.103.4.2.3](#3103423-expected-actions)).
 
-Resource Servers supporting the Authorization Server Metadata Option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information.
+Resource Servers supporting the Authorization Server Metadata Option shall have the means to be configured to interact with an Authorization Server metadata endpoint to retrieve configuration information (see [ITI TF-2: 3.103.4.2.3](#3103423-expected-actions)).
 
 See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for transaction requirements.
 
