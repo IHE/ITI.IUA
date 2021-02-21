@@ -413,7 +413,7 @@ This profile also uses the terms "token introspection", "introspection endpoint"
 
 In accordance with the definitions in the OAuth 2.1 Authorization Framework [OAuth 2.1], this profile distinguishes confidential clients, credentialed clients, and public clients as follows:
 
-- *confidential client* - a client which stores the client authentication data (e.g., client\_id and client\_secret) in a way, that the user has no access to it (e.g., a server hosted web application)
+- *confidential client* - a client which stores the client authentication data (e.g., client\_id and client\_secret) in a way that the user has no access to it (e.g., a server hosted web application)
 
 - *credentialed client* - a client which has credentials, but their identity has been not been confirmed by the Authorization Server
 
@@ -531,7 +531,7 @@ The Cross-Enterprise User Assertion ([XUA](http://profiles.ihe.net/ITI/TF/Volume
 
 - The [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Profile defines the Provide X-User Assertion [ITI-40] transaction to retrieve an SAML 2 assertion for authorization, but does not profile the transaction, leaving the details to national extensions and project-specific implementations. In contrast, the IUA Profile specifies the analog Get Access Token [ITI-71] for OAuth 2.1-compliant access token.
 
-- While both IUA and XUA profiles relies on the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Authenticate Node [ITI-19] transaction to provide a secure communication and server side authentication; the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) would use the "STX: TLS 1.0 Floor with AES", "STX: TLS 1.0 Floor with BCP195", "STX: TLS 1.2 Floor using BCP195" Options or the "STX WS-Security" Option to authenticate the client (or client network node); and IUA uses the "STX: HTTPS IUA" Option to leverage IUA to authenticate client applications.
+- While both IUA and XUA profiles rely on the [ATNA](http://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) Authenticate Node [ITI-19] transaction to provide a secure communication and server side authentication; the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) would use the "STX: TLS 1.0 Floor with AES", "STX: TLS 1.0 Floor with BCP195", "STX: TLS 1.2 Floor using BCP195" Options or the "STX WS-Security" Option to authenticate the client (or client network node); and IUA uses the "STX: HTTPS IUA" Option to leverage IUA to authenticate client applications.
 
 
 - While [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) supports SAML 2 Assertions only, the IUA Profile supports access token in JWT, SAML 2.0 Assertion or custom formats (in case the Token Introspection Option is implemented).  
@@ -551,7 +551,7 @@ This transaction is used by an Authorization Client to retrieve an OAuth 2.1-com
 
 ### 3.71.2 Actor Roles
 
-This profile defines the following actors and roles:
+This transaction defines the following actors and roles:
 
 **Table 3.71.2-1: Actor Roles**
 
@@ -802,7 +802,7 @@ The Get Access Token Response is returned by an Authorization Server upon reques
 
 ##### 3.71.4.2.2 Message Semantics
 
-The Authorization Server shall respond an error response as defined in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 5.2] if the request does not match the requirements or is not understood.
+If the request does not match the requirements or is not understood, the Authorization Server shall respond with an error response as defined in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 5.2].
 
 If the access token request is valid and authorized, the Authorization Server responds with the access token response message in JSON format with the following attributes [OAuth 2.1, Section 4.2.3]:
 
@@ -1177,7 +1177,7 @@ Host: example.com
 
 #### 3.72.4.3 Expected Actions
 
-The Resource Server shall be able to determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document
+The Resource Server determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document
 (see [ITI TF-2: ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or some other method.
 
 When the Resource Server is not able to process the token format (through local verification or introspection), it shall respond with HTTP 401 (Unauthorized).
@@ -1259,7 +1259,7 @@ Additionally, token introspection is carried out in the context of a particular 
 
 ### 3.102.1 Scope
 
-This transaction shall be used by Resource Servers to request an OAuth2.1-compliant bearer token evaluation from an Authorization Server.
+This transaction is used by Resource Servers to request an OAuth2.1-compliant bearer token evaluation from an Authorization Server.
 
 ### 3.102.2 Actor Roles
 
@@ -1327,7 +1327,7 @@ The Resource Server shall perform an HTTP POST request to the introspect endpoin
 
 - *token (required)*: The string value of the token. This is the Authorization Client's access\_token as received in the Authorization header in the request towards the Resource Server as defined in the [ITI-72] transaction.
 
-The Resource Server must securely identify himself towards the Authorization Server by using credentials agreed between the Authorization Server and Resource Server. See [ITI TF-2: 3.102.5 Security Considerations](#31025-security-considerations) for details.
+The Resource Server must securely identify itself towards the Authorization Server by using credentials agreed between the Authorization Server and Resource Server. See [ITI TF-2: 3.102.5 Security Considerations](#31025-security-considerations) for details.
 
 A Resource Server that supports the Authorization Server Metadata Option (see [ITI TF-1: 34.2.1](#3421-authorization-server-metadata-option)) shall use the introspection endpoint published through the Authorization Server Metadata Document for validating the token and obtaining the related claims.
 
@@ -1355,6 +1355,9 @@ The Authorization Server shall:
 - Validate the active state of the token (e.g., check expiry or revocation).
 - Evaluate configured access policies, taking into account the authorization claims related to the token and the Resource Server identity.
 - Formulate and return an introspect response.
+
+If the one of the above checks fails the Authorization Server shall return an introspection response with the
+"active" field set to "false" as described in RFC 7662, Section 2.2.  
 
 The Authorization Server may return different responses for the same inspected token. For example, an Authorization Server may limit which scopes from a given token are returned for each Resource Server to prevent a Resource Server from learning more about the larger network than is necessary for its operation.
 
@@ -1644,14 +1647,14 @@ This scope request authorizes the full [ITI-68] transaction. This scope implicit
 | **Editor: Please add Section 9.2.6.7 as follows** |
 |---------------------------------------------------|
 
-#### 9.2.6.7 STX: HTTPS IUA
+#### 9.2.6.7 STX: HTTPS IUA Option
 
-The system will utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. The system will utilize the Internet User Authorization (IUA) Profile to authenticate the client application to the server (IUA Resource Server). See ITI TF-2: 3.19.6.6.
+Actors that support this option utilize server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption. An actor that supports this option shall be grouped with actors in the Internet User Authorization (IUA) Profile to authenticate a client application to the server (IUA Resource Server). See [ITI TF-2: 3.19.6.6](#31966-stx-https-iua)).
 
 | **Editor: Please add the following section to Volume 2 as follows** |
 |---------------------------------------------------------------------|
 
-#### 3.19.6.6 STX: HTTPS IUA
+#### 3.19.6.6 STX: HTTPS IUA Option
 
 This configuration utilizes server-side authenticated TLS (also known as https) to authenticate the server to the client and provide communications integrity and encryption; and the IUA Profile to authenticate the client application to the server (IUA Resource Server).
 
