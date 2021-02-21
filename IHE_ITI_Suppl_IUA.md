@@ -750,7 +750,7 @@ The Authorization Client makes a HTTP POST request to the token endpoint with th
 
 - *client\_id* (required): The client identifier the Authorization Client is registered with at the Authorization Server, if no other authentication scheme is used for client authentication.
 
-- *code_verifier*: The original code verifier string. REQUIRED, if the "code_challenge" parameter was used in the authorization request. Shall not be used otherwise.
+- *code_verifier*: The original code verifier string. Required, if the "code_challenge" parameter was used in the authorization request. Shall not be used otherwise.
 
 Figure 3.71.4.1.2.2-3 shows a non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header:
 
