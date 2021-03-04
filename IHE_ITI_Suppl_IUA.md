@@ -157,7 +157,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 - **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
 
 # IHE Technical Frameworks General Introduction Appendices
-The [IHE Technical Framework General Introduction Appendices] (https://www.ihe.net/resources/technical_frameworks/#GenIntro) are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate. 
+The [IHE Technical Framework General Introduction Appendices](https://www.ihe.net/resources/technical_frameworks/#GenIntro) are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate. 
 
 | **Editor: Please update the following appendices to the General Introduction as indicated below. Note that these are not appendices to this domain's Technical Framework but rather, they are appendices to the IHE Technical Frameworks General Introduction.** |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
