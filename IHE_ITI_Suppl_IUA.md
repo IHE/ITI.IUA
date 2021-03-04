@@ -157,13 +157,14 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 - **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
 
 # IHE Technical Frameworks General Introduction Appendices
+The [IHE Technical Framework General Introduction Appendices] (https://www.ihe.net/resources/technical_frameworks/#GenIntro) are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate. 
 
 | **Editor: Please update the following appendices to the General Introduction as indicated below. Note that these are not appendices to this domain's Technical Framework but rather, they are appendices to the IHE Technical Frameworks General Introduction.** |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ## Appendix A - Actor Summary Definitions
 
-| **Editor: Please Add the following actors to the IHE Technical Frameworks General Introduction list of actors:** |
+| **Editor: Please add the following new or modified actors to the IHE Technical Frameworks General Introduction Appendix A:** |
 |-----------------------------------------------------------------------------------------------------------------|
 
 &nbsp;  
@@ -176,7 +177,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 ## Appendix B - Transaction Summary Definitions
 
-| **Editor: Please add the following transactions to the IHE Technical Frameworks General Introduction list of Transactions:** |
+| **Editor: Please add the following new or modified transactions to the IHE Technical Frameworks General Introduction Appendix B:** |
 |-----------------------------------------------------------------------------------------------------------------------------|
 
 &nbsp;  
@@ -187,6 +188,19 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 | Get Access Token \[ITI-71\]                   | Request and obtain an access token for use in authorized transactions.                             |
 | Introspect Token \[ITI-102\]                  | Obtain the state and claims associated with an access token.                                       |
 | Get Authorization Server Metadata \[ITI-103\] | Obtain metadata about a Authorization Server. |
+
+## Appendix D - Glossary
+
+| **Editor: Please add the following new or modified terms to the IHE Technical Frameworks General Introduction Appendix D:** |
+|-----------------------------------------------------------------------------------------------------------------------------|
+
+&nbsp;  
+
+| Term                                   | Definition                                                                                         |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------|
+| No new terms          |                                                              |
+
+&nbsp;
 
 # Volume 1 -- Profiles
 
