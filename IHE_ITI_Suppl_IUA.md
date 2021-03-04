@@ -49,7 +49,7 @@ The current version of the IHE Technical Framework can be found at [https://prof
 - [Open Issues and Question](#open-issues-and-question)
 - [Closed Issues](#closed-issues)
 - [IHE Technical Frameworks General Introduction](#ihe-technical-frameworks-general-introduction)
-	-[9 Copyright Licenses] (#9_copyright_licenses)
+	- [9 Copyright Licenses] (#9_copyright_licenses)
 - [IHE Technical Frameworks General Introduction Appendices](#ihe-technical-frameworks-general-introduction-appendices)
     - [Appendix A - Actor Summary Definitions](#appendix-a---actor-summary-definitions)
 	- [Appendix B - Transaction Summary Definitions](#appendix-b---transaction-summary-definitions)
@@ -159,11 +159,11 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
 
-#IHE Technical Frameworks General Introduction
+# IHE Technical Frameworks General Introduction
 The [IHE Technical Framework General Introduction](https://profiles.ihe.net/GeneralIntro/) is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
 
-##9 Copyright Licenses
-IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE IHE Technical Frameworks General Introduction, Chapter 9 - [Copyright Licenses] (https://profiles.ihe.net/GeneralIntro/ch-9.html) for copyright license information for frequently referenced base standards. 
+## 9  Copyright Licenses
+IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE IHE Technical Frameworks General Introduction, Chapter 9 - [Copyright Licenses](https://profiles.ihe.net/GeneralIntro/ch-9.html) for copyright license information for frequently referenced base standards. 
 
 # IHE Technical Frameworks General Introduction Appendices
 The [IHE Technical Framework General Introduction Appendices](https://profiles.ihe.net/GeneralIntro/) are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate. 
