@@ -16,7 +16,7 @@ Author: ITI Technical Committee
 
 Email: iti@ihe.net
 
-**Please verify you have the most recent version of this document.** See [here](http://profiles.ihe.net/ITI) for Trial Implementation and Final Text versions and [here](http://profiles.ihe.net/ITI/IUA/index.html) for Public Comment versions.
+**Please verify you have the most recent version of this document.** See [here](http://profiles.ihe.net/ITI) for Trial Implementation and Final Text versions and [here](https://www.ihe.net/resources/public_comment/) for Public Comment versions.
 
 **Foreword**
 
