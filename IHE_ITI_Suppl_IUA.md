@@ -466,7 +466,7 @@ Figure 34.4.2.2-1 shows the basis flow of information exchange common to IUA use
 
 ![ITI-71 Flow Diagram](media/basic-flow.png)
 
-**Figure 34.4.2.2-1: Basic Process of the Access Token Request and Incorporate Access Token transaction**
+**Figure 34.4.2.2-1: Basic Process of the Access Token Request and Incorporate Access Token Transaction**
 
 ```plantuml
 @startuml basic-flow
@@ -1144,7 +1144,7 @@ This transaction relies on standards defined in the following documents and the 
 
 ![simple-iauth](media/incorporate-token.png)
 
-**Figure 3.72.4-1: Process flow for Incorporate Access Token
+**Figure 3.72.4-1: Process Flow for Incorporate Access Token
 Transaction**
 
 ```plantuml
@@ -1307,7 +1307,7 @@ Introspection entails a single request and response between a Resource Server an
 
 ![ITI-102 Introspect Diagram](media/introspect.png)
 
-**Figure 3.102.4-1: ITI-102 Introspect Diagram**
+**Figure 3.102.4-1: Introspect Token (ITI-102] Diagram**
 
 ```plantuml
 @startuml introspect
@@ -1478,7 +1478,7 @@ The Get Authorization Server Metadata transaction consists of a single request a
 
 ![ITI-103 Get Authorization Server Metadata Diagram](media/get-authorization-server-metadata.png)
 
-**Figure 3.103.4-1: ITI-103 Get Authorization Server Metadata Diagram**
+**Figure 3.103.4-1: Get Authorization Server Metadata [ITI-103] Diagram**
 
 ```plantuml
 @startuml get-authorization-server-metadata
@@ -1600,9 +1600,9 @@ The IUA Profile provides support for user authentication, app authentication, an
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction-specific.
 
-An MHD Document Source, when grouped with an IUA Authorization Client, shall use [ITI-71] Get Access Token to request the following scope from the IUA Authorization Server. This enables the MHD Document Source to submit a document using the Provide Document Bundle [ITI-65] transaction with the authorizing token in the combined transaction [ITI-72] Incorporate Access Token.
+An MHD Document Source, when grouped with an IUA Authorization Client, shall use Get Access Token [ITI-71] to request the following scope from the IUA Authorization Server. This enables the MHD Document Source to submit a document using the Provide Document Bundle [ITI-65] transaction with the authorizing token in the combined transaction Incorporate Access Token [ITI-72].
 
-The MHD Document Recipient, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-65] Provide Document Bundle transactions, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+The MHD Document Recipient, when grouped with an IUA Resource Server, shall require Incorporate Access Token [ITI_72] in all Provide Document Bundle [ITI-65] transactions, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: `ITI-65`
 
@@ -1615,11 +1615,11 @@ This scope request authorizes the full ITI-65 transaction. This scope implicitly
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use [ITI-71] Get Access Token to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to use the [ITI-66] Find Document Manifests transaction with the authorizing token in the grouped transaction [ITI-72] Incorporate Authorization Token.
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use Get Access Token [ITI-72] to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to use the Find Document Manifests [ITI-66] transaction with the authorizing token in the grouped transaction Incorporate Authorization Token [ITI-72].
 
-An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use [ITI-71] Get Access Token to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to query using [ITI-66] transaction with the authorizing token in the combined transaction [ITI-72] Incorporate Access Token.
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use Get Access Token[ITI-71] to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to query using [ITI-66] transaction with the authorizing token in the combined transaction Incorporate Access Token [ITI-72].
 
-The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-66] Find Document Manifests requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+The MHD Document Responder, when grouped with an IUA Resource Server, shall require Incorporate Access Token [ITI-72] in all Find Document Manifests [ITI-66] requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: `ITI-66`
 
@@ -1632,9 +1632,9 @@ This scope request authorizes the full [ITI-66] transaction. This scope implicit
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use [ITI-71] Get Access Token to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to query using [ITI-67] transaction with the authorizing token in the combined transaction [ITI-72] Incorporate Access Token.
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use Get Access Token [ITI-71] to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to query using [ITI-67] transaction with the authorizing token in the combined transaction Incorporate Access Token [ITI-72].
 
-An MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-67] Find Document References requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+An MHD Document Responder, when grouped with an IUA Resource Server, shall require Incorporate Access Token [ITI-72] in all Find Document References [ITI-67] requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: `ITI-67`
 
@@ -1647,9 +1647,9 @@ This scope request authorizes the full [ITI-67] transaction. This scope implicit
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use [ITI-71] Get Access Token to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to query using [ITI-68] transaction with the authorizing token in the combined transaction [ITI-72] Incorporate Access Token.
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use Get Access Token [ITI-71] to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to query using [ITI-68] transaction with the authorizing token in the combined transaction Incorporate Access Token [ITI-72].
 
-The MHD Document Responder, when grouped with an IUA Resource Server, shall require [ITI-72] Incorporate Access Token in all [ITI-68] Retrieve Document requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+The MHD Document Responder, when grouped with an IUA Resource Server, shall require Incorporate Access Token [ITI-72] in all Retrieve Document [ITI-68] requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: `ITI-68`
 
