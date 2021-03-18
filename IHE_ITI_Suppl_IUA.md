@@ -49,7 +49,7 @@ The current version of the IHE Technical Framework can be found at [https://prof
 - [Open Issues and Question](#open-issues-and-question)
 - [Closed Issues](#closed-issues)
 - [IHE Technical Frameworks General Introduction](#ihe-technical-frameworks-general-introduction)
-	- [9 Copyright Licenses](#9_copyright_licenses)
+	- [9 Copyright Licenses](#9-copyright-licenses)
 - [IHE Technical Frameworks General Introduction Appendices](#ihe-technical-frameworks-general-introduction-appendices)
     - [Appendix A - Actor Summary Definitions](#appendix-a---actor-summary-definitions)
 	- [Appendix B - Transaction Summary Definitions](#appendix-b---transaction-summary-definitions)
