@@ -157,7 +157,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 9**: This profile does not explain the ways that some Resource Servers utilize HTTP redirects to automate some kinds of authorization activities. The actual HTTP transactions used for Obtain Access Token and Authorized RESTful Transaction are as defined within this profile. The other transactions are under the control of the Resource Server and its design.
 
-- **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.                 |
+- **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.
 
 # IHE Technical Frameworks General Introduction
 The [IHE Technical Framework General Introduction](https://profiles.ihe.net/GeneralIntro/) is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
