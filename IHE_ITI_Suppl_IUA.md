@@ -163,7 +163,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 The [IHE Technical Framework General Introduction](https://profiles.ihe.net/GeneralIntro/) is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
 
 ## 9 Copyright Licenses
-IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE IHE Technical Frameworks General Introduction, Chapter 9 - [Copyright Licenses](https://profiles.ihe.net/GeneralIntro/ch-9.html) for copyright license information for frequently referenced base standards. 
+IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE Technical Frameworks General Introduction, Chapter 9 - [Copyright Licenses](https://profiles.ihe.net/GeneralIntro/ch-9.html) for copyright license information for frequently referenced base standards. 
 
 # IHE Technical Frameworks General Introduction Appendices
 The [IHE Technical Framework General Introduction Appendices](https://profiles.ihe.net/GeneralIntro/) are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate. 
