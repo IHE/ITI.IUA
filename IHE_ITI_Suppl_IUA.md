@@ -1017,21 +1017,17 @@ JWS Payload:
         "subject_organization": "Central Hospital",
         "subject_organization_id": "urn:oid:1.2.3.4",
         "home_community_id": "urn:oid:1.2.3.4.5.6.7.8",
-        "person_id": "urn:uuid:1.2.3.4",
-        "subject_role": [
-          {
-            "system": "2.16.840.1.113883.6.96",
+        "person_id": "urn:uuid:fb45ea81-33f3-4600-9940-95cd46852e84",
+        "subject_role": {
+            "system": "urn:oid:2.16.840.1.113883.6.96",
             "code": "46255001",
             "display": "Pharmacist"
-          }
-        ],
-        "purpose_of_use": [
-          {
-            "system": "1.0.14265.1",
+        },
+        "purpose_of_use": {
+            "system": "urn:oid:1.0.14265.1",
             "code": "12",
             "display": "Law Enforcement"
-          }
-        ]
+        }
       }
     }
 }
