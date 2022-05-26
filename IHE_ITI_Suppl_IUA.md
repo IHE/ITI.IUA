@@ -771,9 +771,11 @@ The Authorization Client makes a HTTP POST request to the token endpoint with th
 
 - *redirect_uri* (required): The redirect URI of the Authorization Client callback. The value shall match the redirect URI the Authorization Client is registered at the Authorization Server and the value of the *redirect_uri*, if presented in the authorization request.
 
-- *client\_id* (required): The client identifier the Authorization Client is registered with at the Authorization Server, if no other authentication scheme is used for client authentication.
+- *client\_id* (conditional): The client identifier the Authorization Client is registered with at the Authorization Server.  The *client\_id* may be omitted in the request entity-body when the *client\_id* can be derived from the client authentication (e.g. from the HTTP Authorization header).
 
 - *code_verifier*: The original code verifier string. Required, if the "code_challenge" parameter was used in the authorization request. Shall not be used otherwise.
+
+These parameters are specified in OAuth 2.1, Section 4.1.3.  Please refer there for additional behavioral requirements.
 
 Figure 3.71.4.1.2.2-3 shows a non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header:
 
