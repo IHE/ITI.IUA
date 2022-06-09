@@ -8,9 +8,9 @@
 
 **Internet User Authorization (IUA)**
 
-**Revision 2.1 - Trial Implementation**
+**Revision 2.2 - Trial Implementation**
 
-Date: March 19, 2021
+Date: June 17, 2022
 
 Author: ITI Technical Committee
 
@@ -22,7 +22,7 @@ Email: iti@ihe.net
 
 This is a supplement to the IHE IT Infrastructure Technical Framework. Each supplement undergoes a process of public comment and trial implementation before being incorporated into the volumes of the Technical Frameworks.
 
-This supplement is published on March 19, 2021 for trial implementation and may be available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the IT Infrastructure Technical Framework. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=).
+This supplement is published on June 17, 2022 for trial implementation and may be available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the IT Infrastructure Technical Framework. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=).
 
 This supplement describes changes to the existing technical framework documents.
 
@@ -54,7 +54,7 @@ The current version of the IHE Technical Framework can be found at [https://prof
     - [Appendix A - Actor Summary Definitions](#appendix-a---actor-summary-definitions)
 	- [Appendix B - Transaction Summary Definitions](#appendix-b---transaction-summary-definitions)
 	- [Appendix D - Glossary](#appendix-d---glossary)
-- [Volume 1 -- Profiles](#volume-1----profiles)
+- [Volume 1 - Profiles](#volume-1---profiles)
 - [34 IUA Profile](#34-iua-profile)
     - [34.1 IUA Actors, Transactions, and Content Modules](#341-iua-actors-transactions-and-content-modules)
     - [34.2 IUA Actor Options](#342-iua-actor-options)
@@ -62,7 +62,7 @@ The current version of the IHE Technical Framework can be found at [https://prof
     - [34.4 IUA Overview](#344-iua-overview)
     - [34.5 IUA Security Considerations](#345-iua-security-considerations)
     - [34.6 IUA Cross Profile Considerations](#346-iua-cross-profile-considerations)
-- [Volume 2 -- Transactions](#volume-2----transactions)
+- [Volume 2 - Transactions](#volume-2---transactions)
     - [3.71 Get Access Token [ITI-71]](#371-get-access-token-iti-71)
     - [3.72 Incorporate Access Token [ITI-72]](#372-incorporate-access-token-iti-72)
     - [3.102 Introspect Token [ITI-102]](#3102-introspect-token-iti-102)
@@ -193,8 +193,8 @@ The [IHE Technical Framework General Introduction Appendices](https://profiles.i
 
 | Transaction                                   | Definition                                                                                         |
 |-----------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Incorporate Access Token \[ITI-72\]           | Add an access token to a transaction.                                                              |
-| Get Access Token \[ITI-71\]                   | Request and obtain an access token for use in authorized transactions.                             |
+| Get Access Token \[ITI-71\]                   | Request and obtain an access token for use in authorized transactions.                                                              |
+| Incorporate Access Token \[ITI-72\]           | Add an access token to a transaction.                             |
 | Introspect Token \[ITI-102\]                  | Obtain the state and claims associated with an access token.                                       |
 | Get Authorization Server Metadata \[ITI-103\] | Obtain metadata about a Authorization Server. |
 
@@ -211,7 +211,7 @@ The [IHE Technical Framework General Introduction Appendices](https://profiles.i
 
 &nbsp;
 
-# Volume 1 -- Profiles
+# Volume 1 - Profiles
 
 | **Editor: Please add the following Section 34 to Volume 1** |
 |------------------------------------------------------------|
@@ -270,7 +270,7 @@ Table 34.1-1 lists the transactions for each actor directly involved in the IUA 
 
 ### 34.1.1 Actor Descriptions and Actor Profile Requirements
 
-Most requirements are documented in ITI TF-2 transactions. This section documents any additional requirements on this profile’s actors.
+Most requirements are documented in ITI TF-2 transactions. This section documents any additional requirements on this profile's actors.
 
 #### 34.1.1.1 Authorization Client
 
@@ -347,7 +347,7 @@ See [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103) for trans
 
 This option uses JSON Web Token encoding as access token issued by the Authorization Server. The JSON Web Token constraints are defined in [ITI TF-2: 3.71.4.2.2.1](#3714221-json-web-token-option).
 
-An Authorization Server that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers (see [ITI-TF 2: 3.71.4.1.3](#371413-expected-actions)).
+An Authorization Server that supports this option shall provide an endpoint to retrieve JWT access tokens to be incorporated in RESTful requests to Resource Servers (see [ITI TF-2: 3.71.4.1.3](#371413-expected-actions)).
 
 A Resource Server that supports this option shall be able to accept JWT access tokens in RESTful requests, to extract and validate the information provided in the JWT access token, and to enforce access policies based on it (see [ITI TF-2: 3.72.4.3](#37243-expected-actions)).
 
@@ -417,7 +417,7 @@ The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the followi
 
 The OAuth 2.1 Authorization Framework further defines extension points to implement extension grant types [OAuth 2.1, Section 4.3], specifically:
 
-- *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don’t provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
+- *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don't provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
 
 - *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
 
@@ -561,7 +561,7 @@ The Cross-Enterprise User Assertion ([XUA](http://profiles.ihe.net/ITI/TF/Volume
 
 The SAML Token Option in IUA enables an Authorization Client to incorporate access token originally retrieved and issued from a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) X-Assertion Provider and use it in the Incorporate Access Token [ITI-72] transaction, when accessing protected data from a Resource Server via RESTful transactions.
 
-# Volume 2 -- Transactions
+# Volume 2 - Transactions
 
 | **Editor: Please add Section 3.71** |
 |------------------------------------|
@@ -771,7 +771,7 @@ The Authorization Client makes a HTTP POST request to the token endpoint with th
 
 - *redirect_uri* (required): The redirect URI of the Authorization Client callback. The value shall match the redirect URI the Authorization Client is registered at the Authorization Server and the value of the *redirect_uri*, if presented in the authorization request.
 
-- *client\_id* (conditional): The client identifier the Authorization Client is registered with at the Authorization Server.  The *client\_id* may be omitted in the request entity-body when the *client\_id* can be derived from the client authentication (e.g. from the HTTP Authorization header).
+- *client\_id* (conditional): The client identifier the Authorization Client is registered with at the Authorization Server.  The *client\_id* may be omitted in the request entity-body when the *client\_id* can be derived from the client authentication (e.g., from the HTTP Authorization header).
 
 - *code_verifier*: The original code verifier string. Required, if the "code_challenge" parameter was used in the authorization request. Shall not be used otherwise.
 
@@ -887,7 +887,7 @@ Other algorithms may be supported except the "NONE" that shall not be used.
 
 In the JSON Web Token Option, the access token is defined as JSON object with the following attributes:
 
-- *iss* (required): A single valued string identifying the instance which issued the access token (e.g.,the Authorization Server) [JWT Access Token, Section 2.2].
+- *iss* (required): A single valued string identifying the instance which issued the access token (e.g., the Authorization Server) [JWT Access Token, Section 2.2].
 
 - *sub* (required): If known, unique identifier of the user; the *client\_id* otherwise [JWT Access Token, Section 2.2].  
 
@@ -1146,8 +1146,7 @@ This transaction relies on standards defined in the following documents and the 
 
 ![simple-iauth](media/incorporate-token.png)
 
-**Figure 3.72.4-1: Process Flow for Incorporate Access Token
-Transaction**
+**Figure 3.72.4-1: Process Flow for Incorporate Access Token Transaction**
 
 ```plantuml
 @startuml incorporate-token
@@ -1203,7 +1202,7 @@ Host: example.com
 #### 3.72.4.3 Expected Actions
 
 The Resource Server determine the token format (JWT, SAML, or other) by evaluating the "access_token_format" value in the Authorization Server Metadata document
-(see [ITI TF-2: ITI-103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or some other method.
+(see [ITI TF-2: 3.103](#3103-get-authorization-server-metadata-iti-103)), inspection of the access token value, or some other method.
 
 When the Resource Server is not able to process the token format (through local verification or introspection), it shall respond with HTTP 401 (Unauthorized).
 
@@ -1608,7 +1607,7 @@ The MHD Document Recipient, when grouped with an IUA Resource Server, shall requ
 
 scope: `ITI-65`
 
-This scope request authorizes the full ITI-65 transaction. This scope implicitly requests patient-specific Create/Update for DocumentManifest, DocumentReference, List, and Binary. Further scope refinement is allowed in realm or project-specific situations; these scopes would be in addition to the scope defined here.
+This scope request authorizes the full [ITI-65] transaction. This scope implicitly requests patient-specific Create/Update for DocumentManifest, DocumentReference, List, and Binary. Further scope refinement is allowed in realm or project-specific situations; these scopes would be in addition to the scope defined here.
 
 | **Editor: Please add the following to MHD Volume 2: Section 3.66.5 Security Considerations** |
 |----------------------------------------------------------------------------------------------|
