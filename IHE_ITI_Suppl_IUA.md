@@ -417,7 +417,7 @@ The OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4] defines the followi
 
 The OAuth 2.1 Authorization Framework further defines extension points to implement extension grant types [OAuth 2.1, Section 4.3], specifically:
 
-- *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don't€™t provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
+- *Device Authorization* [RFC8628]: This grant type is optimized for devices that cannot use a browser to perform a user-agent-based authorization or don't provide interfaces for the user to input text required for authorization and authentication (e.g., medical devices, mobile health sensors).
 
 - *SAML Client or User Assertions* [RFC7522]: To use a SAML Assertion as a credential for client or user authentication, the Authorization Client shall perform the access token request in conformance with the *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*. This type of grant may be used to exchange a [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) Compliant SAML 2.0 assertion to a token format preferred by the Authorization Server.
 
