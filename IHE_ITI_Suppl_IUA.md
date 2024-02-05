@@ -1616,11 +1616,11 @@ This scope request authorizes the full [ITI-65] transaction. This scope implicit
 
 The IUA Profile provides support for user authentication, app authentication, and authorization decisions. When MHD actors are grouped with IUA actors there are additional security and privacy functionality enabled by this grouping. There are additional requirements and functionality enabled through scope definitions that are transaction specific.
 
-An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use Get Access Token [ITI-72] to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to use the Find Document Manifests [ITI-66] transaction with the authorizing token in the grouped transaction Incorporate Authorization Token [ITI-72].
+An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use Get Access Token [ITI-72] to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to use the Find Document Lists [ITI-66] transaction with the authorizing token in the grouped transaction Incorporate Authorization Token [ITI-72].
 
 An MHD Document Consumer, when grouped with an IUA Authorization Client, shall use Get Access Token[ITI-71] to request the following scope from the IUA Authorization Server. This enables the MHD Document Consumer to query using [ITI-66] transaction with the authorizing token in the combined transaction Incorporate Access Token [ITI-72].
 
-The MHD Document Responder, when grouped with an IUA Resource Server, shall require Incorporate Access Token [ITI-72] in all Find Document Manifests [ITI-66] requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
+The MHD Document Responder, when grouped with an IUA Resource Server, shall require Incorporate Access Token [ITI-72] in all Find Document Lists [ITI-66] requests, shall enforce the authorization decision in the token, and may further enforce policies beyond those made by the Authorization Server such as consent or business rules.
 
 scope: `ITI-66`
 
