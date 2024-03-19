@@ -46,7 +46,7 @@ The current version of the IHE Technical Framework can be found at [https://prof
 <!-- TOC depthFrom:1 depthTo:2 -->
 
 - [Introduction to this Supplement](#introduction-to-this-supplement)
-- [Open Issues and Question](#open-issues-and-question)
+- [Open Issues and Questions](#open-issues-and-questions)
 - [Closed Issues](#closed-issues)
 - [IHE Technical Frameworks General Introduction](#ihe-technical-frameworks-general-introduction)
 	- [9 Copyright Licenses](#9-copyright-licenses)
@@ -135,13 +135,12 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 # Open Issues and Questions
 
-- **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) and does define a Scope for use with [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) transactions. That Scope for [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
-
 - **Issue 12**: Given that the IUA Resource Server is grouped with some other IHE-defined actor, and that actor has audit logging requirements, IUA does not need to give a defined audit event for success. IUA does require adding an AuditEvent.entity to the AuditEvent defined in the other profile. IHE requests comments on a need to define in IUA an AuditEvent specific to a Resource Server that is enforcing a DENY. This AuditEvent would be used when the Resource Server prevented the transaction from reaching the grouped Profile/Actor (e.g., [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) Document Responder). This AuditEvent would cover reasons for DENY that are not specific to the content of the grouped transaction, e.g., reasons such as: Missing Token, Token validation failure, Token expiration, Scope mismatch, IUA required attributes missing, etc. The expectation is that we can leverage some codes from OAuth.
 
-- **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
+- **Issue 14**: The IETF OAuth Working group developed an extension to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The committee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests. 
 
-- **Issue 14**: The IETF OAuth Working group developed an extension to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The committee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests.    
+- **Issue 15**: This Change Proposal cites version 9 of the OAuth 2.1 draft specification, which was the latest version at the date of the ballot of the latest Change Proposal. Oauth 2.1 is still under development and new version are scheduled every few month. Therefore the IUA Trial Implementation will not be able to align with the latest version of the OAuth 2.1 draft specification. The author verified that the latest versions do not add new breaking changes to the IUA Trial Implementation.  The committee will watch the development of the OAuth 2.1 draft specifications and will open new CPs if a future version adds breaking changes. A new version of the IUA Trial Implementation will be prepared as soon as the Oauth 2.1 specification is finalized. 
+
 
 # Closed Issues
 
@@ -158,6 +157,11 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 - **Issue 9**: This profile does not explain the ways that some Resource Servers utilize HTTP redirects to automate some kinds of authorization activities. The actual HTTP transactions used for Obtain Access Token and Authorized RESTful Transaction are as defined within this profile. The other transactions are under the control of the Resource Server and its design.
 
 - **Issue 10**: The selected standards are: The OAuth 2.1 Framework, JWT Token, with defined extensions, SAML Token, using the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) extensions.
+
+- **Issue 11**: IUA does not define scopes at all; therefore, IUA is not in conflict with SMART-on-FHIR. However, this supplement includes updates to [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) and does define a Scope for use with [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) transactions. That Scope for [MHD](http://profiles.ihe.net/ITI/TF/Volume1/ch-33.html) does not use a SMART pattern, but it does not forbid SMART scopes. IHE requests comments on the IUA, MHD, and SMART-on-FHIR Scope harmonization.
+
+- **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
+
 
 # IHE Technical Frameworks General Introduction
 The [IHE Technical Framework General Introduction](https://profiles.ihe.net/GeneralIntro/) is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
@@ -587,9 +591,11 @@ This transaction defines the following actors and roles:
 
 This transaction relies on standards defined in the following documents and the references therein:
 
-- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-01, 1 February 2021.
+- *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-09, 10 July 2023.
 
-- *JWT Access Token*: JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens, published as draft-ietf-oauth-access-token-jwt-10, September 2020.
+- *RFC 8693*: OAuth 2.0 Token Exchange, January 2020.
+
+- *RFC 8707*: Resource Indicators for OAuth 2.0, February 2020.
 
 - *RFC7519*: JSON Web Token (JWT), May 2015.  
 
@@ -645,9 +651,9 @@ The Authorization Client requests an access token using client credentials (or o
 The Authorization Client makes a HTTP(s) POST request to the token endpoint with the following parameters in the HTTP request entity-body [OAuth 2.1, Section 4.2.2]:
 
 - *grant_type* (required): The value of the parameter shall be *client_credentials*.
-- *resource* (optional): Single valued identifier of the Resource Server api endpoint to be accessed [JWT Access Token, Section 3].
-
+- *resource* (optional): Single valued identifier of the Resource Server api endpoint to be accessed [RFC 8707 Resource Indicators for OAuth 2.0, Section 2].
 - *scope* (optional): The scope claimed by the Authorization Client.
+- *requested_token_type* (optional): The requested token format shall be urn:ietf:params:oauth:token-type:jwt, urn:ietf:params:oauth:token-type:saml2 or urn:ietf:params:oauth:token-type:access-token [RFC 8693 OAuth 2.0 Token Exchange, Section 3].
 
 The request shall use the *application/x-www-form-urlencoded* format with a character encoding of UTF-8 [OAuth 2.1, Section 4.2.2].
 
@@ -664,6 +670,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials
 &scope=scope_1 scope_2 ... scope_N
 &resource=https://rs.example.com/
+&requested_token_type=urn:ietf:params:oauth:token-type:jwt
 ```
 
 **Figure 3.71.4.1.2.1-2: Example Access Token Request**
@@ -718,7 +725,7 @@ The Authorization Client directs the user-agent to make a HTTP GET request to th
 
 - *state* (required): An unguessable value used by the client to track the state between the authorization request and the callback to the redirect URI. While this parameter is optional in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 4.1.1.3] it is required in this profile for security reasons.
 
-- *resource* (optional): Single valued identifier of the Resource Server endpoint to be accessed [JWT Access Token, Section 3].
+- *resource* (optional): Single valued identifier of the Resource Server endpoint to be accessed [RFC 8707 Resource Indicators for OAuth 2.0].
 
 - *code_challenge* (required): A challenge derived from the client generated code verifier used to correlate the authorization request to the token request [OAuth 2.1, Section 4.1.1 and references therein].
 
@@ -727,6 +734,8 @@ The Authorization Client directs the user-agent to make a HTTP GET request to th
 - *redirect_uri* (optional): The absolute URI of the Authorization Client callback endpoint to which the Authorization Server will send the user agent back once access is granted (or denied). This parameter is required if the Authorization Client is registered at the Authorization Server with multiple redirect URI, optional otherwise [OAuth 2.1, Section 3.1.2.3].  
 
 - *scope* (optional): The scope claimed by the Authorization Client.
+
+
 
 Figure 3.71.4.1.2.2-2 is a non-normative example of the authorization request:
 
@@ -769,13 +778,13 @@ The Authorization Client makes a HTTP POST request to the token endpoint with th
 
 - *code* (required): The authorization code received from the Authorization Server in the authorization response.
 
-- *redirect_uri* (required): The redirect URI of the Authorization Client callback. The value shall match the redirect URI the Authorization Client is registered at the Authorization Server and the value of the *redirect_uri*, if presented in the authorization request.
-
 - *client\_id* (conditional): The client identifier the Authorization Client is registered with at the Authorization Server.  The *client\_id* may be omitted in the request entity-body when the *client\_id* can be derived from the client authentication (e.g., from the HTTP Authorization header).
 
 - *code_verifier*: The original code verifier string. Required, if the "code_challenge" parameter was used in the authorization request. Shall not be used otherwise.
 
-These parameters are specified in OAuth 2.1, Section 4.1.3.  Please refer there for additional behavioral requirements.
+- *requested_token_type* (optional): The requested token format shall be urn:ietf:params:oauth:token-type:jwt, urn:ietf:params:oauth:token-type:saml2 or urn:ietf:params:oauth:token-type:access-token [RFC 8693 OAuth 2.0 Token Exchange, Section 3]. 
+
+These parameters are specified in OAuth 2.1, Section 4.1.3 and and RFC 8693 OAuth 2.0 Token Exchange, Section 3. Please refer there for additional behavioral requirements.
 
 Figure 3.71.4.1.2.2-3 shows a non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header:
 
@@ -787,8 +796,8 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code
 &code=SplxlOBeZQQYbYS6WxSbIA
-&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb
 &code_verifier=3641a2d12d66101249cdf7a79c000c1f8c05d2aafcf14bf146497bed
+& requested_token_type=urn:ietf:params:oauth:token-type:jwt
 ```
 
 **Figure 3.71.4.1.2.2-3: Example Access Token Request**
@@ -924,7 +933,7 @@ The Authorization Server and Resource Server shall support the following extensi
 
 - *national\_provider\_identifier* (optional): A unique identifier issued to health care providers by their national authority.
 
-- *person\_id* (optional): Patient identifier, Citizen identifier, or other similar public identifier.
+- *person\_id* (optional): When accessing a patients EHR, the Patient identifier, Citizen identifier, or other similar public identifier of the patient.
 
 The above claims shall be wrapped in an "extensions" object with key 'ihe\_iua' and a JSON value object containing the claims. For example:
 
@@ -1560,7 +1569,7 @@ The document shall be structured according to the rules set forth in [RFC8414, S
 
 In addition to the claims provided in [RFC8414], Authorization Servers should provide the following claim:
 
-- *access_token_format (optional)*:  JSON string defining the format of the access token as provided by the Authorization Server. This allows Resource Servers to learn about methods of verification. Authorization Servers supporting the JWT Token Option shall set this claim value to "ihe-jwt". Authorization Servers supporting the SAML Token Option shall set this claim value to "ihe-saml". Authorization Servers providing tokens that are non-parsable shall set this value to "opaque". Authorization Servers supporting access tokens in other structured formats may use alternative format identifiers.
+- *access_token_format* (optional): JSON Array defining the format of the access tokens provided by the Authorization Server. This allows Authorization Clients and Resource Servers to learn about the available access token types which may be requested in the Get Access Token transaction (see Section [3.71.4.1.2.1](#3714121-client-credential-grant-type) and [3.71.4.1.2.2](#3714122-authorization-code-grant-type)).
 
 ##### 3.103.4.2.3 Expected Actions
 
