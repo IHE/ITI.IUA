@@ -226,11 +226,11 @@ The IUA Profile adds authorization information to HTTP RESTful transactions. The
 
 The actors in the IUA Profile manage the access tokens used for authorization of access to HTTP RESTful services based on the flows and transactions defined in the OAuth 2.1 Authorization Framework [OAuth 2.1]. Authorization Clients interact with the Authorization Server to retrieve access tokens and incorporate them into HTTP RESTful transactions to authorize access to resources on the Resource Servers.
 
-The OAuth 2.1 Authorization Framework requires client identification, which may be based on a *client\_id* parameter [OAuth 2.1, Section 2.2]. Depending on the grant type, the use of the *client\_id* may be required. For example, the *Authorization Code* grant type requires the use of the *client\_id* for client identification [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2].
+The OAuth 2.1 Authorization Framework requires client identification, which may be based on a *client\_id* parameter [OAuth 2.1, Section 2.2]. Depending on the grant type, the use of the *client\_id* may be required. For example, the *Authorization Code* grant type requires the use of the *client\_id* for client identification [OAuth 2.1, Section 4.1].
 
-The OAuth 2.1 Authorization Framework also requires client authentication for confidential and credential clients [OAuth 2.1, Section 2.3]. It recommends the use of asymmetric (public-key based) methods for client authentication [OAuth 2.1, Section 2.4], but allows other suitable HTTP-based authentication schemes matching the security policy of the Authorization Server [OAuth 2.1, Section 2.4].
+The OAuth 2.1 Authorization Framework also requires client authentication for confidential [OAuth 2.1, Section 2.3]. It recommends the use of asymmetric (public-key based) methods for client authentication [OAuth 2.1, Section 2.4], but allows other suitable HTTP-based authentication schemes matching the security policy of the Authorization Server [OAuth 2.1, Section 2.4].
 
-This profile requires the capability of a *client_id* for client identification and a *client_secret* used with the HTTP Basic Authentication scheme for client authentication of confidential and credentialed clients. Other methods for identification and authentication are allowed.  
+This profile requires the capability of a *client_id* for client identification and a *client_secret* used with the HTTP Basic Authentication scheme for client authentication of confidential clients. Other methods for identification and authentication are allowed.  
 
 Depending on the grant type, the OAuth 2.1 Framework also requires user authentication. For example, the *Authorization Code* grant type covered by this profile requires user authentication [OAuth 2.1, Section 4.1], while the *Client Credential* grant type does not [OAuth 2.1, Section 4.2]. The methods used by the Authorization Server to authenticate the user (e.g., username and password login, session cookies, delegation to Authentication Server) are not scoped in the OAuth 2.1 Authorization Framework [OAuth 2.1, Section 3.1].
 
@@ -438,11 +438,9 @@ The IUA Profile uses the terms "access token", "refresh token", "bearer token", 
 
 This profile also uses the terms "token introspection", "introspection endpoint", "introspection request", and "introspection response" as defined by the OAuth2 Token Introspection specification [RFC7662].
 
-In accordance with the definitions in the OAuth 2.1 Authorization Framework [OAuth 2.1], this profile distinguishes confidential clients, credentialed clients, and public clients as follows:
+In accordance with the definitions in the OAuth 2.1 Authorization Framework [OAuth 2.1], this profile distinguishes confidential clients and public clients as follows:
 
 - *confidential client* - a client which stores the client authentication data (e.g., client\_id and client\_secret) in a way that the user has no access to it (e.g., a server hosted web application)
-
-- *credentialed client* - a client which has credentials, but their identity has been not been confirmed by the Authorization Server
 
 - *public client* - a client where the user (in principle) has access to the client code and client data. Public clients cannot store client authentication data in a confidential way (e.g., single page web applications, native mobile apps on a device, if no additional features are implemented to make the client authentication data unavailable for the user)
 
