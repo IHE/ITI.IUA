@@ -162,6 +162,7 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 13**: The SMART-on-FHIR standard is gaining world-wide adoption and increases in importance. IUA does not utilize SMART-on-FHIR as base-standard, but refers to OAuth2.1 and FHIR directly. It is recognized that IUA and SMART-on-FHIR do have a (partial) overlap in the supported use-cases. IHE requests comments on IUA and SMART-on-FHIR flow harmonization.
 
+- Integrated approved CP-ITI-1288.
 
 # IHE Technical Frameworks General Introduction
 The [IHE Technical Framework General Introduction](https://profiles.ihe.net/GeneralIntro/) is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
