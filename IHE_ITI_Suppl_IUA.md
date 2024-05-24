@@ -37,9 +37,9 @@ General information about IHE can be found at [http://www.ihe.net](http://www.ih
 
 Information about the IHE IT Infrastructure domain can be found at [https://www.ihe.net/IHE_Domains](https://www.ihe.net/IHE_Domains/).
 
-Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at [https://www.ihe.net/about_ihe/ihe_process](https://www.ihe.net/about_ihe/ihe_process/) and [https://www.ihe.net/resources/profiles](https://www.ihe.net/resources/profiles/).
+Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at [https://www.ihe.net/resources/profiles](https://www.ihe.net/resources/profiles/) and [https://www.ihe.net/about_ihe/ihe_process](https://www.ihe.net/about_ihe/ihe_process/).
 
-The current version of the IHE Technical Framework can be found at [https://profiles.ihe.net/](https://profiles.ihe.net/).
+The current version of the IHE Technical Framework can be found at [https://profiles.ihe.net](https://profiles.ihe.net/).
 
 **CONTENTS**
 
@@ -49,11 +49,12 @@ The current version of the IHE Technical Framework can be found at [https://prof
 - [Open Issues and Questions](#open-issues-and-questions)
 - [Closed Issues](#closed-issues)
 - [IHE Technical Frameworks General Introduction](#ihe-technical-frameworks-general-introduction)
-	- [9 Copyright Licenses](#9-copyright-licenses)
+    - [9 Copyright Licenses](#9-copyright-licenses)
+    - [10 Trademark](#10-trademark)
 - [IHE Technical Frameworks General Introduction Appendices](#ihe-technical-frameworks-general-introduction-appendices)
-    - [Appendix A - Actor Summary Definitions](#appendix-a---actor-summary-definitions)
-	- [Appendix B - Transaction Summary Definitions](#appendix-b---transaction-summary-definitions)
-	- [Appendix D - Glossary](#appendix-d---glossary)
+    - [Appendix A - Actors](#appendix-a---actors)
+    - [Appendix B - Transactions](#appendix-b---transactions)
+    - [Appendix D - Glossary](#appendix-d---glossary)
 - [Volume 1 - Profiles](#volume-1---profiles)
 - [34 IUA Profile](#34-iua-profile)
     - [34.1 IUA Actors, Transactions, and Content Modules](#341-iua-actors-transactions-and-content-modules)
@@ -72,7 +73,7 @@ The current version of the IHE Technical Framework can be found at [https://prof
 
 <!-- /TOC -->
 
-# Introduction to this Supplement
+# Introduction to This Supplement
 
 ## Problem Statement
 
@@ -90,7 +91,7 @@ The HTTP RESTful services may include user-driven browser activity, downloaded a
 
 The [Basic Patient Privacy Consent (BPPC)](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile is associated with this profile and these other existing profiles. [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) covers the legal and administrative needs for consent documentation and associating the patient consent with policy documentation. The [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile includes the ability to associate the electronic authorizations with the patient agreements and organizational policies.
 
-IUA is not a substitute for the administrative activities such as withdrawing consent, policy setting, and other activities that [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) documents provide. The current scope of IUA is the basic authorization activities.  Future scope may include greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile.
+IUA is not a substitute for the administrative activities such as withdrawing consent, policy setting, and other activities that [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) documents provide. The current scope of IUA is the basic authorization activities. Future scope may include greater integration of this authorization with third party authorization and consent documentation profiles, such as those found in the IHE [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile.
 
 The administrative actions needed to establish an Authorization Server for IUA are not covered by this profile. These activities depend upon the operational needs, and organizational and privacy policies that apply to a particular deployment.
 
@@ -116,13 +117,13 @@ There are also environmental assumptions made by this profile.
 
 IUA assumes that there will many systems working together to build the access control environment, where IUA provides one part only. For example, a glucose monitor may be authorized to have access to a patient's medical record. The expectation is that this will mean access to all of the glucose-related information, which will include a variety of measurements and prescriptions. But, it is expected that if the device requests other sensitive health data about the patient, it will be rejected.
 
-IUA also assumes that this profile is operating in an environment where access consents are managed by [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) or other mechanisms.  For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
+IUA also assumes that this profile is operating in an environment where access consents are managed by [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) or other mechanisms. For example, there will be a documented consent agreement between a patient and a provider that the provider will provide medical records to a healthcare proxy that is identified and authorized by the patient. [BPPC](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) is one way to document that agreement. IUA is not a substitute for documenting, establishing, and modifying these legal agreements.
 
 ## Relation to SMART-on-FHIR
 
 IUA is not based on SMART-on-FHIR, but does strive to not conflict with that standard.
 
-Concerns about SMART were raised surrounding the tight dependency between Resource and Authorization Server, the inclusion of launch/view context in the authorization flow, and the dependency on FHIR.  The IHE IT Infrastructure Domain believes that IUA provides the following advantages over SMART:
+Concerns about SMART were raised surrounding the tight dependency between Resource and Authorization Server, the inclusion of launch/view context in the authorization flow, and the dependency on FHIR. The IHE IT Infrastructure Domain believes that IUA provides the following advantages over SMART:
 
 - IUA promotes a loose coupling of Resource Server and Authorization Servers. This allows for deployments with multiple Resource Servers per Authorization Server as well as deployments with several or even no Authorization Servers.
 - IUA supports a wide range of use-cases ranging from mobile application access to data, cross-enterprise data exchange to complex system integration scenarios.
@@ -139,14 +140,14 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 
 - **Issue 14**: The IETF OAuth Working group developed an extension to the OAuth framework that specifies an option to convey more fine grained claims with the authorization request. The OAuth 2.0 Rich Authorization Requests (draft-ietf-oauth-rar-03) specification introduces a new parameter "authorization_details" in authorization requests that allows clients to specify fine-grained scope claims in a JSON data structure. IUA currently does not define scopes at all and therefore does not mandate the way to convey more fine-grained scope claims in authorization requests. The committee will watch the acceptance and the development of the draft and future versions may rely on rich authorization requests. 
 
-- **Issue 15**: This Change Proposal cites version 9 of the OAuth 2.1 draft specification, which was the latest version at the date of the ballot of the latest Change Proposal. Oauth 2.1 is still under development and new version are scheduled every few month. Therefore the IUA Trial Implementation will not be able to align with the latest version of the OAuth 2.1 draft specification. The author verified that the latest versions do not add new breaking changes to the IUA Trial Implementation.  The committee will watch the development of the OAuth 2.1 draft specifications and will open new CPs if a future version adds breaking changes. A new version of the IUA Trial Implementation will be prepared as soon as the Oauth 2.1 specification is finalized. 
+- **Issue 15**: This Change Proposal cites version 9 of the OAuth 2.1 draft specification, which was the latest version at the date of the ballot of the latest Change Proposal. Oauth 2.1 is still under development and new version are scheduled every few month. Therefore the IUA Trial Implementation will not be able to align with the latest version of the OAuth 2.1 draft specification. The author verified that the latest versions do not add new breaking changes to the IUA Trial Implementation. The committee will watch the development of the OAuth 2.1 draft specifications and will open new CPs if a future version adds breaking changes. A new version of the IUA Trial Implementation will be prepared as soon as the Oauth 2.1 specification is finalized. 
 
 
 # Closed Issues
 
 - **Issue 1**: At this time, the method for assignment of client identifiers is not included in the profile. Registration of clients is a significant operational and security problem that is being postponed until there is more experience with problems in the field and reasonable solutions. In the field there are a variety of methods being tried. Many depend upon physical distribution methods or out of band communications to manage the authentication problems.
 
-- **Issue 2**: This profile does support access token in JWT format and SAML 2.0 Assertions compliant with the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) profile requirements. An operational environment must ensure, that access tokens are understood by the authorization and Resource Servers. The Bearer Token Option of earlier versions of the profile has been removed, since it does not specify the access token format and attributes used and was thus not interoperable by design.  
+- **Issue 2**: This profile does support access token in JWT format and SAML 2.0 Assertions compliant with the [XUA](http://profiles.ihe.net/ITI/TF/Volume1/ch-13.html) profile requirements. An operational environment must ensure, that access tokens are understood by the authorization and Resource Servers. The Bearer Token Option of earlier versions of the profile has been removed, since it does not specify the access token format and attributes used and was thus not interoperable by design.
 
 - **Issue 3**: Audit messages are only defined for clients that are also Secure Applications. There is no defined auditing for other clients.
 
@@ -168,7 +169,10 @@ That said, it is recognized that SMART-on-FHIR is evolving and adoption rates ar
 The [IHE Technical Framework General Introduction](https://profiles.ihe.net/GeneralIntro/) is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
 
 ## 9 Copyright Licenses
-IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE Technical Frameworks General Introduction, Chapter 9 - [Copyright Licenses](https://profiles.ihe.net/GeneralIntro/ch-9.html) for copyright license information for frequently referenced base standards. 
+IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE Technical Frameworks General Introduction, [Section 9 - Copyright Licenses](https://profiles.ihe.net/GeneralIntro/ch-9.html) for copyright license information for frequently referenced base standards. Information pertaining to the use of IHE International copyrighted materials is also available there.
+
+## 10 Trademark
+IHE® and the IHE logo are trademarks of the Healthcare Information Management Systems Society in the United States and trademarks of IHE Europe in the European Community. Please refer to the IHE Technical Frameworks General Introduction, [Section 10 - Trademark](https://profiles.ihe.net/GeneralIntro/ch-10.html) for information on their use.
 
 # IHE Technical Frameworks General Introduction Appendices
 The [IHE Technical Framework General Introduction Appendices](https://profiles.ihe.net/GeneralIntro/) are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate. 
@@ -176,9 +180,9 @@ The [IHE Technical Framework General Introduction Appendices](https://profiles.i
 | **Editor: Please update the following appendices to the General Introduction as indicated below. Note that these are not appendices to this domain's Technical Framework but rather, they are appendices to the IHE Technical Frameworks General Introduction.** |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-## Appendix A - Actor Summary Definitions
+## Appendix A - Actors
 
-| **Editor: Please add the following new or modified actors to the IHE Technical Frameworks General Introduction Appendix A:** |
+| **Editor: Please add the following new or modified actors to the [IHE Technical Frameworks General Introduction Appendix A](https://profiles.ihe.net/GeneralIntro/ch-A.html):** |
 |-----------------------------------------------------------------------------------------------------------------|
 
 &nbsp;  
@@ -189,9 +193,9 @@ The [IHE Technical Framework General Introduction Appendices](https://profiles.i
 | Authorization Server | A server that issues access tokens to requesting clients.                        |
 | Resource Server      | A server that provides services that need authorization.                         |
 
-## Appendix B - Transaction Summary Definitions
+## Appendix B - Transactions
 
-| **Editor: Please add the following new or modified transactions to the IHE Technical Frameworks General Introduction Appendix B:** |
+| **Editor: Please add the following new or modified transactions to the [IHE Technical Frameworks General Introduction Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html):** |
 |-----------------------------------------------------------------------------------------------------------------------------|
 
 &nbsp;  
@@ -205,7 +209,7 @@ The [IHE Technical Framework General Introduction Appendices](https://profiles.i
 
 ## Appendix D - Glossary
 
-| **Editor: Please add the following new or modified terms to the IHE Technical Frameworks General Introduction Appendix D:** |
+| **Editor: Please add the following new or modified terms to the [IHE Technical Frameworks General Introduction Appendix D](https://profiles.ihe.net/GeneralIntro/ch-D.html):** |
 |-----------------------------------------------------------------------------------------------------------------------------|
 
 &nbsp;  
@@ -247,7 +251,7 @@ The IUA Profile relies on the OAuth 2.1 Authorization Framework. Since the origi
 
 ## 34.1 IUA Actors, Transactions, and Content Modules
 
-This section defines the actors, transactions, and/or content modules in this profile. General definitions of actors are given in the Technical Frameworks General Introduction Appendix A. IHE Transactions can be found in the Technical Frameworks General Introduction Appendix B. Both appendices are located at http://ihe.net/Technical_Frameworks/#GenIntro.
+This section defines the actors, transactions, and/or content modules in this profile. General definitions of actors are given in the Technical Frameworks General Introduction Appendix A. IHE Transactions can be found in the Technical Frameworks General Introduction Appendix B. Both appendices are located at [https://profiles.ihe.net/GeneralIntro/index.html](https://profiles.ihe.net/GeneralIntro/index.html).
 
 Figure 34.1-1 shows the actors directly involved in the IUA Profile and the relevant transactions between them. If needed for context, other actors that may be indirectly involved due to their participation in other related profiles are shown in dotted lines. Actors which have a required grouping are shown in conjoined boxes (see [ITI TF-1: 34.3 IUA Required Actor Groupings](#343-iua-required-actor-groupings)).
 
@@ -293,7 +297,6 @@ The Get Access Token [ITI-71] transaction is scoped to the *Authorization Code* 
 
 The Authorization Client may support other grant types (see [ITI TF-1: 34.4.1.1 Authorization Grant Types](#34411-authorization-grant-types)).
 
-
 #### 34.1.1.2 Authorization Server
 
 The Authorization Server provides access tokens to requesting clients. In IUA, the Authorization Server uses an authenticated user identity, the requested HTTP RESTful service URL to the Resource Server, and/or other information to determine whether HTTP RESTful transactions are authorized. If authorized, the Authorization Server provides an access token which authorizes the client to retrieve data and documents from the Resource Server.  
@@ -331,7 +334,7 @@ Options that may be selected for each actor in this profile are listed in the Ta
 |                      | Authorization Server Metadata | Section 34.2.1 |
 | Resource Server      | JWT Token (Note 1)            | Section 34.2.2 |
 |                      | SAML Token (Note 1)           | Section 34.2.3 |
-|                      | Token Introspection (Note 1)   | Section 34.2.4 |
+|                      | Token Introspection (Note 1)  | Section 34.2.4 |
 |                      | Authorization Server Metadata | Section 34.2.1 |
 
 *Note 1:* Authorization Server or Resource Server Actors shall support at least one of the following options: JWT Token, SAML, or Token Introspection. The Authorization Client is not and does not need to be aware of the token processing options.
@@ -394,7 +397,7 @@ The IUA actors are expected to be grouped with other actors that perform HTTP RE
 
 - Grouping an Authorization Client with another actor means that this other actor will provide an access token as part of the HTTP transaction to a HTTP RESTful server. It may perform the Get Access Token transaction to obtain the access token.
 
-- The corresponding HTTP RESTful server should  be grouped with the Resource Server to indicate that the server can perform access control.
+- The corresponding HTTP RESTful server should be grouped with the Resource Server to indicate that the server can perform access control.
 
 ## 34.4 IUA Overview
 
@@ -431,7 +434,6 @@ The OAuth 2.1 Authorization Framework further defines extension points to implem
 The SAML and JWT grants from RFC7522 and RFC7523 may be used in federation scenarios where an Authorization Server will accept tokens from another Authorization Server as credentials for issuing access tokens. Both the RFC7522 and RFC7523 require the existence of a public key infrastructure. The operational aspects of such infrastructure are beyond the scope of this specification.
 
 This profile specifies the use of the Authorization Code and Client Credential grant types. Actors of this profile may support other grant types as well.  
-
 
 #### 34.4.1.2 Terminology
 
@@ -584,7 +586,7 @@ This transaction defines the following actors and roles:
 | Actor                | Role                                                                        |
 |----------------------|-----------------------------------------------------------------------------|
 | Authorization Client | Client requesting an access token to authorize RESTful transactions         |
-| Authorization Server | Server that grants access tokens.                                           |
+| Authorization Server | Server that grants access tokens                                           |
 
 ### 3.71.3 Referenced Standards
 
@@ -596,7 +598,7 @@ This transaction relies on standards defined in the following documents and the 
 
 - *RFC 8707*: Resource Indicators for OAuth 2.0, February 2020.
 
-- *RFC7519*: JSON Web Token (JWT), May 2015.  
+- *RFC7519*: JSON Web Token (JWT), May 2015.
 
 - *RFC7522*: Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants, May 2015.
 
@@ -604,7 +606,7 @@ This transaction relies on standards defined in the following documents and the 
 
 - *RFC7518*: JSON Web Algorithms (JWA), May 2015.
 
-- *RFC4648*: The Base16, Base32, and Base64 Data Encodings, October 2006
+- *RFC4648*: The Base16, Base32, and Base64 Data Encodings, October 2006.
 
 ### 3.71.4 Messages
 
@@ -777,13 +779,13 @@ The Authorization Client makes a HTTP POST request to the token endpoint with th
 
 - *code* (required): The authorization code received from the Authorization Server in the authorization response.
 
-- *client\_id* (conditional): The client identifier the Authorization Client is registered with at the Authorization Server.  The *client\_id* may be omitted in the request entity-body when the *client\_id* can be derived from the client authentication (e.g., from the HTTP Authorization header).
+- *client\_id* (conditional): The client identifier the Authorization Client is registered with at the Authorization Server. The *client\_id* may be omitted in the request entity-body when the *client\_id* can be derived from the client authentication (e.g., from the HTTP Authorization header).
 
 - *code_verifier*: The original code verifier string. Required, if the "code_challenge" parameter was used in the authorization request. Shall not be used otherwise.
 
 - *requested_token_type* (optional): The requested token format shall be urn:ietf:params:oauth:token-type:jwt, urn:ietf:params:oauth:token-type:saml2 or urn:ietf:params:oauth:token-type:access-token [RFC 8693 OAuth 2.0 Token Exchange, Section 3]. 
 
-These parameters are specified in OAuth 2.1, Section 4.1 and and RFC 8693 OAuth 2.0 Token Exchange, Section 3. Please refer there for additional behavioral requirements.
+These parameters are specified in OAuth 2.1, Section 4.1 and RFC 8693 OAuth 2.0 Token Exchange, Section 3. Please refer there for additional behavioral requirements.
 
 Figure 3.71.4.1.2.2-3 shows a non-normative example of the access token request with client authentication using the *client\_id* and *client_secret* in the HTTP Authorization header:
 
@@ -921,14 +923,14 @@ The Authorization Server and Resource Server shall support the following extensi
 
 - *subject\_name* (optional): The user's name as String.
 
-- *subject\_organization\_id* (optional): Unique identifier of the user's organization. Its value should  be an URI, i.e., an URL or an OID in URN notation.  
+- *subject\_organization\_id* (optional): Unique identifier of the user's organization. Its value should be an URI, i.e., an URL or an OID in URN notation.  
 
 - *subject\_organization* (optional): Name or description of the user's organization.
 
 - *subject\_role* (optional): Coded value indicating the user's role. If present, the value shall be formatted as FHIR Coding data type.   
 - *purpose\_of\_use* (optional): Purpose of use for the request. If a coded value is used, the value shall be formatted as FHIR Coding data type.   
 
-- *home\_community\_id* (optional): Home community identifier where the request originated. Its value should  be an OID in URN notation.
+- *home\_community\_id* (optional): Home community identifier where the request originated. Its value should be an OID in URN notation.
 
 - *national\_provider\_identifier* (optional): A unique identifier issued to health care providers by their national authority.
 
@@ -968,9 +970,9 @@ The mapping of IUA extension claims to [XUA](http://profiles.ihe.net/ITI/TF/Volu
 
 In an environment that uses the IHE [Basic Patient Privacy Consents (BPPC)](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile for documenting the consent, the Authorization Server and Resource Server shall support the following extension parameter:
 
-- *patient\_id*: Patient identifier related to the Patient Privacy Policy Identifier. Its value should  be the patient identifier in CX syntax or as URL.
+- *patient\_id*: Patient identifier related to the Patient Privacy Policy Identifier. Its value should be the patient identifier in CX syntax or as URL.
 
-- *doc\_id*: Patient Privacy Policy Acknowledgment Document. Its value should  be an URN or URL.
+- *doc\_id*: Patient Privacy Policy Acknowledgment Document. Its value should be an URN or URL.
 
 - *acp*: Patient Privacy Policy Identifier.
 
@@ -1308,7 +1310,7 @@ This transaction relies on standards defined in the following documents and the 
 
 - *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-01, 1 February 2021.
 
-- *RFC7662*: OAuth 2.0 Token Introspection, published as RFC7662, October 2015
+- *RFC7662*: OAuth 2.0 Token Introspection, published as RFC7662, October 2015.
 
 ### 3.102.4 Messages
 
@@ -1475,11 +1477,11 @@ This transaction relies on standards defined in the following documents and the 
 
 - *OAuth 2.1*: The OAuth 2.1 Authorization Framework, published as draft-ietf-oauth-v2-1-01, 1 February 2021.
 
-- *RFC8414*: OAuth 2.0 Authorization Server Metadata, June 2018
+- *RFC8414*: OAuth 2.0 Authorization Server Metadata, June 2018.
 
-- *OpenID Connect Discovery*: OpenID Connect Discovery 1.0 incorporating errata set 1, November 2014
+- *OpenID Connect Discovery*: OpenID Connect Discovery 1.0 incorporating errata set 1, November 2014.
 
-- *RFC7517*:  JSON Web Key (JWK), May 2015
+- *RFC7517*: JSON Web Key (JWK), May 2015.
 
 ### 3.103.4 Messages
 
@@ -1551,7 +1553,7 @@ The response shall be structured as a plain JSON document.
 
 The document shall be structured according to the rules set forth in [RFC8414, Section 2], with these additional constraints:
 
-- *issuer (required)*: The Authorization Server's issuer identifier, which is a URL that uses the "https" scheme and has no query or fragment components. The URL shall use the "https" scheme. The URL shall contain the domain name of the URL at which the metadata document can be retrieved. The URL shall contain any path elements referring to a tenant. Other path elements, such as those referring to the document location (e.g., ".well-known" or "openid-configuration") should  be omitted, e.g., a valid issuer associated with a metadata document retrievable at `https://example.com/.well-known/oauth-authorization-server/tenant1` would be `https://example.com/tenant1`.
+- *issuer (required)*: The Authorization Server's issuer identifier, which is a URL that uses the "https" scheme and has no query or fragment components. The URL shall use the "https" scheme. The URL shall contain the domain name of the URL at which the metadata document can be retrieved. The URL shall contain any path elements referring to a tenant. Other path elements, such as those referring to the document location (e.g., ".well-known" or "openid-configuration") should be omitted, e.g., a valid issuer associated with a metadata document retrievable at `https://example.com/.well-known/oauth-authorization-server/tenant1` would be `https://example.com/tenant1`.
 - *authorization_endpoint (required)*: Authorization Server's Authorization endpoint as used for the "authorization code" flow.
 - *token_endpoint (required)*: Authorization Server's Authorization token endpoint location.
 - jwks_uri (conditional). URL of the Authorization Server's JWK Set [RFC7517, Section 5] document. An Authorization Server that supports the JWT Token or SAML Token Options shall provide this claim to communicate the public keys that can be used to verify JWT token or SAML token signatures.
@@ -1582,7 +1584,7 @@ Resource Servers requesting the metadata document should use the "access_token_f
 
 All security considerations as described in [RFC8414, Section 6.2] shall be implemented.
 
-*Note:* The issuer claim value of the metadata document is not necessarily the same as the issuer claim value associated with access-tokens. The issuer value in the metadata document refers to the source of the metadata document itself. This document may point to an token endpoint at a server other than the metadata document server. The issuer claim associated with the access token should  refer to the server that implements the token endpoint.
+*Note:* The issuer claim value of the metadata document is not necessarily the same as the issuer claim value associated with access-tokens. The issuer value in the metadata document refers to the source of the metadata document itself. This document may point to an token endpoint at a server other than the metadata document server. The issuer claim associated with the access token should refer to the server that implements the token endpoint.
 
 As the metadata document is intended to support the authorization processes, there is no need to provide client credentials towards the metadata endpoint. To prevent unnecessary disclosure of credentials, the Authorization Server Metadata Request shall not include and credentials from the Authorization Client or Resource Server.
 
