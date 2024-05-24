@@ -815,13 +815,13 @@ If the request is valid and all access policy criteria are met, the Authorizatio
 
 If the authorization request is invalid, the Authorization Server shall react as defined in [OAuth 2.1, Section 4.1.2.1].
 
-##### 3.71.4.1.3.1 Client Credential grant type
+###### 3.71.4.1.3.1 Client Credential grant type
 
 The Authorization Server shall authenticate the Authorization Client using its client identifier and secret as communicated in the HTTP Authorization header.
 
 The Authorization Server shall verify the access token request as described in [OAuth 2.1, Section 4.2].
 
-##### 3.71.4.1.3.2 Authorization Code grant type
+###### 3.71.4.1.3.2 Authorization Code grant type
 
 The Authorization Server shall authenticate confidential and credential clients using the *client\_id* and *client\_secret*, or by other reliable client authentication method. In the latter case, the Authorization Server shall resolve the client authentication to a *client\_id* which was registered beforehand.     
 
@@ -874,7 +874,7 @@ Pragma: no-cache
 
 **Figure 3.71.4.2.2-1: Example Access Token Response**
 
-##### 3.71.4.2.2.1 JSON Web Token Option
+###### 3.71.4.2.2.1 JSON Web Token Option
 
 The OAuth2.1 specification does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
 
@@ -917,7 +917,7 @@ In the JSON Web Token Option, the access token is defined as JSON object with th
 
 The JWT token may contain other parameters or extensions depending on the implementation details.
 
-##### 3.71.4.2.2.1.1 JWT IUA extension
+**3.71.4.2.2.1.1 JWT IUA extension**
 
 The Authorization Server and Resource Server shall support the following extensions to the JWT access token:
 
@@ -966,7 +966,7 @@ The mapping of IUA extension claims to [XUA](http://profiles.ihe.net/ITI/TF/Volu
 | national\_provider\_identifier | urn:oasis:names:tc:xspa:1.0:subject:npi             |
 | person\_id                     | *not defined*                                       |
 
-##### 3.71.4.2.2.1.2 JWT BPPC extension
+**3.71.4.2.2.1.2 JWT BPPC extension**
 
 In an environment that uses the IHE [Basic Patient Privacy Consents (BPPC)](http://profiles.ihe.net/ITI/TF/Volume1/ch-19.html) Profile for documenting the consent, the Authorization Server and Resource Server shall support the following extension parameter:
 
@@ -999,7 +999,7 @@ The mapping of IUA extension claims to XUA-compliant SAML 2.0 Assertion attribut
 | doc\_id     | urn:ihe:iti:bppc:2007:docid                       |
 | acp         | urn:ihe:iti:xua:2012:acp                          |
 
-##### 3.71.4.2.2.1.3 Example
+**3.71.4.2.2.1.3 Example**
 
 The following is a non-normative example of JWT access token:
 
@@ -1049,7 +1049,7 @@ JWS Payload:
 }
 ```
 
-##### 3.71.4.2.2.2 SAML Token Option
+###### 3.71.4.2.2.2 SAML Token Option
 
 An Authorization Server that supports the SAML Token Options shall be able to format the access token as a SAML 2.0 assertion.
 
@@ -1057,7 +1057,7 @@ The SAML 2.0 assertion content shall comply with [XUA](http://profiles.ihe.net/I
 
 In accordance with [RFC7522, Section 2.2], the value of the access token contains a SAML 2.0 Assertion. It shall not contain more than one SAML 2.0 Assertion. The SAML Assertion XML data must be encoded using base64url, where the encoding adheres to the definition in Section 5 of RFC4648 [RFC4648] and where the padding bits are set to zero. To avoid the need for subsequent encoding steps (by "application/x-www-form-urlencoded" [W3C.REC-html401-19991224], for example), the base64url-encoded data must not be line wrapped and pad characters ("=") must not be included.
 
-##### 3.71.4.2.2.3 Token Introspection Option
+###### 3.71.4.2.2.3 Token Introspection Option
 
 Actors that support the Token Introspection Option shall provide a non-empty, unique and non-guessable access token value.
 
