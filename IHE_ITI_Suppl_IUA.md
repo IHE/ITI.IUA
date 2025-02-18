@@ -878,7 +878,7 @@ Pragma: no-cache
 
 The OAuth2.1 specification does not indicate the structure of the access token. Actors conforming to the JSON Web Token Option shall support access tokens formatted as signed JWT Tokens.
 
-JWT token shall be signed as specified in JSON Web Signature [RFC7515]. If signed, the JWS Compact Serialization (base64 encoded, with single signature or MACed) shall be used as described in [RFC7515, Section 7.1].
+If the JWT token is signed, it must be done in accordance with JSON Web Signature [RFC7515]; in particular, the JWS Compact Serialization (base64 encoded, with single signature or MACed) shall be used as described in [RFC7515, Section 7.1].
 
 Any actor may support the JWE (unsigned but encrypted) alternative of the JWT token.
 
