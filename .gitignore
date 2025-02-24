@@ -1,2 +1,13 @@
 index.html
+
+### Apple 
 .DS_Store
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/

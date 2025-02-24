@@ -915,7 +915,8 @@ The Authorization Server and Resource Server shall support the following extensi
 
 - *subject\_organization* (optional): Name or description of the user's organization.
 
-- *subject\_role* (optional): Coded value indicating the user's role. If present, the value shall be formatted as FHIR Coding data type.   
+- *subject\_role* (optional): Coded value indicating the user's role. If present, the value shall be formatted as FHIR Coding data type.
+   
 - *purpose\_of\_use* (optional): Purpose of use for the request. If a coded value is used, the value shall be formatted as FHIR Coding data type.   
 
 - *home\_community\_id* (optional): Home community identifier where the request originated. Its value should  be an OID in URN notation.
