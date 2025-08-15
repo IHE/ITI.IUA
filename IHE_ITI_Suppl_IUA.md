@@ -1020,14 +1020,18 @@ JWS Payload:
         "home_community_id": "urn:oid:1.2.3.4.5.6.7.8",
         "person_id": "urn:uuid:fb45ea81-33f3-4600-9940-95cd46852e84",
         "subject_role": [{
-            "system": "urn:oid:2.16.840.1.113883.6.96",
-            "code": "46255001",
+            "system": "http://terminology.hl7.org/CodeSystem/practitioner-role",
+            "code": "pharmacist",
             "display": "Pharmacist"
-        }],
+          }],
         "purpose_of_use": [{
-            "system": "urn:oid:1.0.14265.1",
-            "code": "12",
-            "display": "Law Enforcement"
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+            "code": "TREAT",
+            "display": "treatment"
+          },{
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+            "code": "BTG",
+            "display": "break the glass"
         }]
       }
     }
