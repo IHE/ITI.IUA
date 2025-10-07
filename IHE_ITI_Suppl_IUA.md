@@ -927,8 +927,9 @@ The Authorization Server and Resource Server shall support the following extensi
 
 - *subject\_organization* (optional): Name or description of the user's organization.
 
-- *subject\_role* (optional): Coded value indicating the user's role. If present, the value shall be formatted as FHIR Coding data type.   
-- *purpose\_of\_use* (optional): Purpose of use for the request. If a coded value is used, the value shall be formatted as FHIR Coding data type.   
+- *subject\_role* (optional): Coded values indicating the user's roles. If present, the value shall be formatted as array of FHIR Coding data type.
+   
+- *purpose\_of\_use* (optional): Purpose of use for the request. If present, the value shall be formatted as array of FHIR Coding data type.   
 
 - *home\_community\_id* (optional): Home community identifier where the request originated. Its value should be an OID in URN notation.
 
@@ -1029,21 +1030,21 @@ JWS Payload:
         "subject_organization": "Central Hospital",
         "subject_organization_id": "urn:oid:1.2.3.4",
         "home_community_id": "urn:oid:1.2.3.4.5.6.7.8",
-        "person_id": "urn:uuid:1.2.3.4",
-        "subject_role": [
-          {
-            "system": "2.16.840.1.113883.6.96",
-            "code": "46255001",
+        "person_id": "urn:uuid:fb45ea81-33f3-4600-9940-95cd46852e84",
+        "subject_role": [{
+            "system": "http://terminology.hl7.org/CodeSystem/practitioner-role",
+            "code": "pharmacist",
             "display": "Pharmacist"
-          }
-        ],
-        "purpose_of_use": [
-          {
-            "system": "1.0.14265.1",
-            "code": "12",
-            "display": "Law Enforcement"
-          }
-        ]
+          }],
+        "purpose_of_use": [{
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+            "code": "TREAT",
+            "display": "treatment"
+          },{
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+            "code": "BTG",
+            "display": "break the glass"
+        }]
       }
     }
 }
