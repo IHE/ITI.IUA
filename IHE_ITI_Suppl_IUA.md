@@ -10,7 +10,7 @@
 
 **Revision 2.4 - Trial Implementation**
 
-Date: Novemeber xx, 2025
+Date: November xx, 2025
 
 Author: ITI Technical Committee
 
