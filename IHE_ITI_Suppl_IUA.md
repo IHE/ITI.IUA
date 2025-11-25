@@ -10,7 +10,7 @@
 
 **Revision 2.4 - Trial Implementation**
 
-Date: November xx, 2025
+Date: November 25, 2025
 
 Author: ITI Technical Committee
 
@@ -22,7 +22,7 @@ Email: iti@ihe.net
 
 This is a supplement to the IHE IT Infrastructure Technical Framework. Each supplement undergoes a process of public comment and trial implementation before being incorporated into the volumes of the Technical Frameworks.
 
-This supplement is published on November xx, 2025 for trial implementation and may be available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the IT Infrastructure Technical Framework. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=).
+This supplement is published on November 25, 2025 for trial implementation and may be available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the IT Infrastructure Technical Framework. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=).
 
 This supplement describes changes to the existing technical framework documents.
 
@@ -285,7 +285,7 @@ Most requirements are documented in ITI TF-2 transactions. This section document
 
 The Authorization Client performs the network transactions and user interactions needed to obtain an access token and to attach that token to transactions to indicate that the transactions are authorized.
 
-When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The Resource Server indicates IUA support with the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code `IUA` at system canonical URL `http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
+When Incorporate Access Token [ITI-72] is used with a FHIR server, an Authorization Client should query the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint on the Resource Server to determine if the Resource Server supports IUA. The Resource Server indicates IUA support with the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code `IUA` at system canonical URL `http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codeSystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codeSystem-IHE_securitytypes.xml).
 
 Note that the Authorization Client may choose to publish a CapabilityStatement, if a CapabilityStatement is provided then the `IUA` code should also be indicated to show the capability of the Authorization Client.
 
@@ -315,7 +315,7 @@ The Resource Server provides services to access protected resources that need au
 
 In general, Resource Servers perform additional access control decisions and may restrict responses even for transactions authorized by the Authorization Server.
 
-When the Incorporate Access Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code `IUA` at system canonical URL `http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codesystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codesystem-IHE_securitytypes.xml).
+When the Incorporate Access Token [ITI-72] transaction is used with a FHIR server, the Resource Server shall declare support for IUA in the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) endpoint using the element [**CapabilityStatement.rest.security.service**](http://hl7.org/fhir/R4/capabilitystatement.html) and the code `IUA` at system canonical URL `http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes`. The CodeSystem can be retrieved from the IHE FHIR GitHub repository, [codeSystem-IHE_securitytypes.xml](https://github.com/IHE/fhir/blob/master/CodeSystem/codeSystem-IHE_securitytypes.xml).
 
 The Resource Servers and Authorization Servers may be grouped into an integrated product together with user authentication, access control, and other services.
 
@@ -1410,8 +1410,8 @@ The Authorization Server has formulated an access policy decision for the intros
 
 The introspect response is a JSON-formatted object. There are two variants of this object.
 
-1. The Authorization Server considers the token to be invalid for the given Resource Server because of formatting issues, revocation data, expiry, or other access policy considerations. The introspect result object shall contain a single field "active" with boolean value "false".
-2. The Authorization Server considers the token to be valid for the given Resource Server. The object shall contain a field "active" with boolean value "true". In addition, it shall contain the same fields and values as formulated for the JWT token content as specified in [ITI TF-2: 3.71.4.2.2.1 JSON Web Token](#3714221-json-web-token-option), including defined extensions.
+1. The Authorization Server considers the token to be invalid for the given Resource Server because of formatting issues, revocation data, expiry, or other access policy considerations. The introspect result object shall contain a single field "active" with Boolean value "false".
+2. The Authorization Server considers the token to be valid for the given Resource Server. The object shall contain a field "active" with Boolean value "true". In addition, it shall contain the same fields and values as formulated for the JWT token content as specified in [ITI TF-2: 3.71.4.2.2.1 JSON Web Token](#3714221-json-web-token-option), including defined extensions.
 
 ##### 3.102.4.2.3 Expected Actions
 
