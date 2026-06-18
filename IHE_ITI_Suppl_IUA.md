@@ -8,9 +8,9 @@
 
 **Internet User Authorization (IUA)**
 
-**Revision 2.4 - Trial Implementation**
+**Revision 2.5 - Trial Implementation**
 
-Date: November 25, 2025
+Date: June 18, 2026
 
 Author: ITI Technical Committee
 
@@ -22,7 +22,7 @@ Email: iti@ihe.net
 
 This is a supplement to the IHE IT Infrastructure Technical Framework. Each supplement undergoes a process of public comment and trial implementation before being incorporated into the volumes of the Technical Frameworks.
 
-This supplement is published on November 25, 2025 for trial implementation and may be available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the IT Infrastructure Technical Framework. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=).
+This supplement is published on June 18, 2026 for trial implementation and is available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the IT Infrastructure Technical Framework. Comments are invited and can be submitted using the [ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/) or by creating a [GitHub Issue](https://github.com/IHE/ITI.IUA/issues/new?assignees=&labels=&template=public-comment-issue-template.md&title=).
 
 This supplement describes changes to the existing technical framework documents.
 
@@ -45,7 +45,7 @@ The current version of the IHE Technical Framework can be found at [https://prof
 
 <!-- TOC depthFrom:1 depthTo:2 -->
 
-- [Introduction to this Supplement](#introduction-to-this-supplement)
+- [Introduction to This Supplement](#introduction-to-this-supplement)
 - [Open Issues and Questions](#open-issues-and-questions)
 - [Closed Issues](#closed-issues)
 - [IHE Technical Frameworks General Introduction](#ihe-technical-frameworks-general-introduction)
